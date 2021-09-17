@@ -13,3 +13,78 @@
     \minitoc
 \fi
 \thispagestyle{empty}
+
+\begin{dfn}
+    Un ensemble $X$ est dénombrable\footnotemark\index{dénombrable}  si et seulement s'il est en bijection avec $\N$
+\end{dfn}
+
+\footnotetext{Parfois, on autorise la finitude dans le caractère dénombrable}
+
+\begin{prop}
+Toute partie infinie de $\N$ est dénombrable
+\end{prop}
+
+\begin{proof}
+\begin{itemize}
+    \item $\varphi(0)=\min A$
+    \item  $\varphi(i)=\min A\setminus \left\{ \varphi(k), k<i \right\} $
+\end{itemize}
+Ainsi, $\varphi: \N \hookdoubleheadrightarrow A$ est bijective.
+\end{proof}
+
+\begin{prop}
+S'il existe $f: E \hookrightarrow \N$ ou $g: \N \twoheadrightarrow E$ alors $E$ est fini ou dénombrable
+\end{prop}
+
+\begin{proof}
+\begin{itemize}
+    \item $f:E \hookdoubleheadrightarrow f(E)$ fini ou dénombrable
+    \item  Cette fonction est injective: \[
+    \begin{array}{rrcl}
+        \varphi:& E & \longrightarrow & \N \\
+                & x & \longmapsto & \displaystyle g^{-1}(\left\{  x \right\} )
+    \end{array}
+    \] 
+\end{itemize}
+\end{proof}
+
+\begin{cor}
+\begin{itemize}
+    \item Un produit fini de dénombrables est dénombrables
+    \item $ \Q$ est dénombrable
+    \item Une union finie ou dénombrable de parties finies ou dénombrables est finie ou dénombrable
+    \item $\mathcal  P_f(\N)$ dénombrable
+    \item $\Z[X]$ dénombrable
+    \item Les algébriques sont dénombrables
+\end{itemize}
+\end{cor}
+
+\begin{thm}
+$\left\{ 0, 1 \right\} ^{\N}$ n'est pas dénombrable
+\end{thm}
+
+\begin{proof}
+    Par l'absurde, on numérote $(\varphi_k)$.  \[
+    \begin{array}{rrcl}
+        \psi:&\N  & \longrightarrow & \left\{  0,1 \right\}  \\
+             & n & \longmapsto & \displaystyle 1-\varphi_n(n)
+    \end{array}
+    \]
+    $\forall  k \in  \N, \psi \neq \varphi_k$, c'est absurde.
+\end{proof}
+
+\begin{cor}
+    $\mathcal  P(\N)$ n'est pas dénombrable
+\end{cor}
+
+\begin{thm}
+$ \R$ n'est pas dénombrable
+\end{thm}
+
+\begin{proof}
+\begin{itemize}
+    \item $x \in  \R \longmapsto \Q\cap ]-\infty; x[ \in  \mathcal  P(\Q)$ injective.
+    \item $\displaystyle u \in  \left\{  0,1 \right\} ^{\N} \longmapsto \sum_{n\geq 0}\frac{2u_n}{3^{n+1}} \in  \R$ injective
+\end{itemize}
+Donc (Cantor-Bernstein) $\R \cong \left\{ 0,1 \right\} ^{\N}$
+\end{proof}

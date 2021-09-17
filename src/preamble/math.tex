@@ -103,6 +103,10 @@
 \NewDocumentCommand\scalar{mmO{\langle}O{\rangle}}{\ensuremath{\left#3 \, #1 \;\middle|\; #2 \,\right#4}}
 \NewDocumentCommand\pscalar{mm}{\scalar{#1}{#2}[(][)]}
 
+\newcommand{\hookdoubleheadrightarrow}{%
+  \hookrightarrow\mathrel{\mspace{-15mu}}\rightarrow
+}
+
 % \xnrightarrow pour "ne tend pas vers"
 \makeatletter
 \newcommand*{\xnrightarrow}[2][]{%

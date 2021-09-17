@@ -1,0 +1,73 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE $\sigma$-algèbres et mesures} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{$\sigma$-algèbres et mesures}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions}
+
+\begin{dfn}
+    Si $X$ est un ensemble,  $\mathcal  A \subset \mathcal  P(X)$ est une algèbre\index{algèbre} sur $X$ si  \begin{itemize}
+        \item $\emptyset \in  \mathcal  A$
+        \item $\forall  A, B \in  \mathcal  A, A \cup B \in  \mathcal  A$
+        \item $\forall  A \in  \mathcal  A, A^c \in \mathcal  A$
+    \end{itemize}
+\end{dfn}
+
+\begin{rem}
+C'est aussi stable par intersection finie
+\end{rem}
+
+\begin{ex}~
+\begin{itemize}
+    \item $\mathcal  A= \left\{ \emptyset, X \right\} $
+    \item $\mathcal  A = \mathcal  P(X)$
+    \item $\left\{ A \subset X, A \text{ fini ou }A^c \text{ fini } \right\} $
+    \item $\left\{ A \subset X, A \text{ fini ou dénombrable ou }A^c \text{ fini ou dénombrable } \right\} $ 
+    \item $B$ fixé,  $\left\{ A \supset B \text{ ou } A\cap B=\emptyset\right\} $
+    \item Dans $\R$, $\left\{ \text{unions finies d'intervalles} \right\} $
+\end{itemize}
+\end{ex}
+
+\begin{dfn}
+    $A\subset \mathcal  P(X)$ est une $\sigma$-algèbre (ou tribu\index{tribu}) si et seulement si
+    \begin{itemize}
+        \item $\emptyset \in  \mathcal  A$
+        \item $\displaystyle \forall  (A_i \in  \mathcal A, i \in  \N), \bigcup_{i \in  \N} A_i \in  \mathcal  A$
+        \item $A^c \in  \mathcal  A, \forall  A \in  \mathcal  A$
+    \end{itemize}
+\end{dfn}
+
+\begin{rem}
+\begin{itemize}
+    \item Les $\sigma$-algèbres sont des algèbres
+    \item $X \in  A$
+    \item Stable par intersection dénombrable
+\end{itemize}
+\end{rem}
+
+\section{$\sigma$-algèbre  engendrée}
+
+\begin{lmm}
+Une intersection quelconque de $\sigma$-algèbres est une $\sigma$-algèbre.
+\end{lmm}
+
+\begin{dfn}
+    La $\sigma$-algèbre engendrée par  $\mathcal  M \subset \mathcal  P(X)$ est \[
+        \sigma(\mathcal  M)=\bigcap_{\substack{\mathcal A \text{ tribu }\\ \mathcal  M \subset \mathcal  A}}\mathcal  A
+    \] 
+\end{dfn}
+
+\begin{dfn}
+    Si $X$ a une topologie, on appelle  $\sigma$-algèbre borélienne  $B(X)$ la  $\sigma$-algèbre engendrée par les ouverts.
+\end{dfn}

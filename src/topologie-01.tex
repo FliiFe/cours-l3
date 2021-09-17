@@ -4,7 +4,7 @@
     \vspace{1cm}
 
     \begin{center}
-        \textbf{\LARGE Premier chapitre} \\[1em]
+        \textbf{\LARGE Espaces métriques} \\[1em]
     \end{center}
     \tableofcontents
 \else
@@ -13,3 +13,195 @@
     \minitoc
 \fi
 \thispagestyle{empty}
+
+\section{Distances}
+
+\begin{dfn}
+    Un espace métrique\index{espace métrique} $(E, d)$ est un espace vectoriel $E$ muni d'une distance\index{distance} $d:E\times E \longrightarrow  \R$ qui satisfait, pour tous $x,y,z \in  E$
+    \begin{itemize}
+        \item $d(x, y)\geq 0$ et $d(x, y)=0 \iff  x=y$
+        \item $d(x, y)=d(y, x)$
+        \item  $d(x, z)\leq d(x, y)+d(y, z)$
+    \end{itemize}
+\end{dfn}
+
+\begin{ex}
+\begin{itemize}
+    \item $E=\R$, $d(x, y)=|x-y|$
+    \item  $E$ un e.v.n,  $d(x, y)=\|x-y\|$ 
+    \item $E$ un ensemble,  \[
+            d(x, y)=
+            \begin{dcases}
+                0 & \text{ si } x=y \\
+                1 & \text{ sinon }
+            \end{dcases}
+    \] 
+    Cette distance est appelée distance discrète\index{distance!discrète}
+    \item $(E_1, d_1), (E_2, d_2)$ des espaces métriques. On peut définir sur $E_1\times E_2$ \[
+            d((x_1, x_2), (y_1, y_2))= \max (d_1(x_1, y_1), d_2(x_2, y_2))
+    \]
+\item $E=\R^2 $, Distance euclidienne: \[ d(x, y)=\sqrt{(x_1-x_2)^2 + (y_1-y_2)^2 } \]
+    Distance "Manhattan": \[
+        d(x, y)=|x_1-x_2|+|y_1-y_2|
+    \] 
+\item $(E, d_E)$,  $A\subset E$. La distance induite sur  $A$ par  $E$ est  $d_{E}\!\left|_{A}\right.$
+    \item  $\Q\subset \R$. On se donne $p$ un nombre premier. La valeur absolue  $p$-adique vaut  \[
+            \left| \frac{a}{b} \right|_p=p^{v_p(b)-v_p(a)}
+    \] 
+    et $|0|_p=0$. La distance  $d(a, b)=|a-b|_p$ est la distance $p$-adique\index{distance!p-adique}. Elle est dite ultramétrique\index{distance!ultramétrique} car elle satisfait  \[
+        \forall  x, y, z \in  \Q, \quad d(x, y) \leq  \max (d(x, z), d(z, y))
+    \] 
+\end{itemize}
+\end{ex}
+
+\begin{exo}
+Quels sont les $p>0$ tels que  \[
+    d(x, y)=\sqrt[p]{(x_1-x_2)^p + (y_1-y_2)^p } 
+\] 
+définit une distance ?
+\end{exo}
+
+\begin{dfn}
+    Soit $(E, d)$ un espace métrique. Si  $\{x_i\}^{i\geq 1}$ est une suite de $E$ et  $x \in  E$, alors on dit que $\{x_i\}^{i\geq 1}$ converge vers $x$ si pour tout  $\epsilon>0$, il existe
+    $N\geq 1$ tel que $d(x_i, x)\leq \epsilon$ si $i\geq N$. Dans ce cas, on dit que $x$ est la limite de  $\{x_i\}^{i\geq 1}$
+\end{dfn}
+
+\begin{dfn}
+    Une valeur d'adhérence\index{valeur d'adhérence} (ou point d'accumulation\index{point d'accumulation}) de $\{x_i\}_{i\geq 1}$ est un $x \in  E$ tel qu'il existe une extraction $\varphi$ telle que  $\{x_{\varphi(i)}\}_{i\geq  1}$ converge vers $x$
+\end{dfn}
+
+\begin{dfn}
+    La boule\index{boule} ouverte de centre $a$ et de rayon  $r>0$ est  $\B(a, r)=\{x \in  E, d(x, a)<r\}$. La boule fermée de centre $a$ et de rayon  $r>0$ est  $\bar{\B(a, r)}=\{x \in  E, d(x, a)\leq r\}$. La sphère\index{sphère} de centre $a$ et de rayon  $r>0$ est $\bar{\B(a, r)}\setminus \B(a, r)$
+\end{dfn}
+
+% TODO: Exemples dans R^2 avec la distance euclidienne et la distance manhattan. Exemple aussi avec la distance issue de la norme infinie
+
+\begin{exo}
+$\Z$ muni de la distance $p$-adique. Montrer \[
+    \bar{\B(a, \sfrac{1}{p})}= \left\{ b \in  \Z, \; b\equiv a \mod p \right\} 
+\] 
+\end{exo}
+
+\begin{dfn}
+    Un voisinage\index{voisinage} de $x \in  E$ est une partie de $E$ qui contient  $\B(x, r)$ pour un $r>0$
+\end{dfn}
+
+\begin{dfn}
+    On dit qu'une partie $U$ de $E$ est ouverte\index{ouvert} si pour tout $x \in  U$, il existe $r>0$ tel q e $ \B(x, r) \subset U$. Une partie est fermée\index{fermé} si son complémentaire est ouvert.
+\end{dfn}
+
+\begin{prop}
+    Une union quelconque d'ouverts est ouverte. Une intersection \emph{finie} d'ouverts est ouverte.
+\end{prop}
+
+\begin{rem}
+Une intersection infinie d'ouverts n'est \emph{a priori} pas ouverte.
+\end{rem}
+
+\begin{cor}
+Une intersection quelconque de fermés est fermée, et une union finie de fermés est fermée.
+\end{cor}
+
+\begin{exo}
+    Si $d$ est ultramétrique,  $\B(a, r)=\B(x, r)$ pour tout $x \in  \B(a, r)$. Les boules ouvertes d'un espace ultramétrique sont fermées
+\end{exo}
+
+\begin{thm}[Caractérisation séquentielle des fermés\index{caractérisation des fermés}]
+    Une partie $F\subset E$ est fermée  si et seulement si pour tout suite $\{x_i\}_{i\geq 1}$ de $F$ qui converge vers $x \in  E$, on a $x \in  F$
+\end{thm}
+
+\begin{proof}
+    $\implies )$ On suppose $F$ fermé. On se donne une suite  $\{x_i\}$ de  $F$ qui converge vers  $x \in E$. Supposons que $x \in F^c$. Alors, il existe $r>0$ tel que  \[
+        \B(x, r)\cap F=\emptyset
+    \]
+    En particulier, $\forall  i \geq 1, d(x, x_i)\geq r$ ce qui est absurde. Donc $x \in  F$.
+
+    $\impliedby )$ Montrons que  $F^c$ est ouvert. On se donne  $x \in  F^c$. S'il n'existe pas $r>0$ tel que  $\B(x, r)\subset F^c$ alors \[
+        \forall  n\geq 1, \exists x_n \in  \B\left(x, \frac{1}{n}\right)\cap F \qquad  \text{donc} \qquad  x_n\xrightarrow[n\to +\infty]{}x \in F
+    \]
+    absurde.\footnote{Démonstration constructive en exercice}
+\end{proof}
+
+\begin{dfn}
+    Si $P \subset E$, alors l'adhérence\index{adhérence}  $\bar P$ de  $P$ est l'intersection des fermés de  $E $ qui contiennent $P$.
+    C'est aussi\footnotemark{} l'ensemble des limites de suites de $P$ qui convergent dans  $E$.
+
+    L'intérieur\index{intérieur} $\mathring P$ d'une partie $P$ est l'union des ouverts contenus dans $P$. La frontière\index{frontière} de $P$ est  $\partial P=\bar P\setminus \mathring P$.
+\end{dfn}
+\footnotetext{Les limites sont dans tous les sur-ensembles fermés. Toutes les boules ouvertes autour d'un point de l'adhérence rencontrent $P$}
+
+
+\begin{dfn}
+    On dit que $P$ est dense\index{densité} dans  $E$ si $\bar P=E$. On dit que $E$ est séparable\index{séparabilité}\index{espace séparable} s'il contient une partie dénombrable et dense.
+\end{dfn}
+
+\begin{ex}
+    L'espace $E=\mathcal  C^0([0,1], \R)$ muni de la norme infinie est séparable (Approximation polynomiale de Weierstrass). $\R$ muni de la distance discrète n'est pas séparable.
+\end{ex}
+
+\begin{rem}
+    Toute partie d'un espace séparable est séparable.\footnote{pas si facile}
+\end{rem}
+
+\begin{dfn}
+    Un point $a \in  E$ est isolé\index{point isolé} s'il existe $r>0$ tel que  $\B(a, r)=\{a\}$. L'espace $E$ est discret\index{espace discret} si tous ses points sont isolés.
+\end{dfn}
+
+\begin{ex}
+    \begin{itemize}
+        \item 
+ Un ensemble  $E$, muni de la distance discrète est un espace discret.
+ \item Tous les points sauf $0$ sont discrets dans  \[
+         \bar{ \left\{ \frac{1}{n}, \quad n>0 \right\}  }
+ \] 
+ \item $\Z$ avec sa distance usuelle est discret
+ \item $\Z$ muni de la distance $p$-adique n'est pas discret, aucun point n'est pas isolé:  \[
+         \forall  a \in  \Z, \qquad  a+p^n \xrightarrow[n\to +\infty]{}a \quad  \text{ et } \quad a+p^n \neq a
+ \]
+    \end{itemize}
+\end{ex}
+
+\begin{dfn}
+    Deux distances sont (fortement) équivalentes\index{distances équivalentes} s'il existe $C, C'$ telles que  $Cd_2 \leq d_1 \leq  C'd_2$
+\end{dfn}
+
+\begin{exo}
+Les ouverts sont identiques pour deux distances équivalentes.
+\end{exo}
+
+\section{Fonctions continues}
+
+\begin{dfn}
+On se donne deux espaces métriques $X$ et  $Y$. On dit que  $f:X \longrightarrow Y$ est continue en  $x \in X$ si \[
+    \forall  \epsilon>0, \exists \delta >0, \forall  x' \in  X, d_X(x, x')\leq \delta \implies d_Y(f(x), f(x'))\leq  \epsilon
+\] 
+On dit que  $f$ est continue\index{continuité} si elle est continue pour tout  $x \in  X$.
+\end{dfn}
+
+\begin{exo}
+    Toutes les fonctions $f:(\R, \text{discrète}) \longrightarrow (\R, \text{usuelle})$ sont continues.
+\end{exo}
+
+\begin{thm}
+Soit $f:X \longrightarrow Y$ une fonction. Les propriétés suivantes sont équivalentes:  \begin{enumerate}
+    \item $f$ est continue
+    \item  Pour toute suite $\{x_n\}_{n\geq 1}$ qui converge vers $x$, la suite  $\{f(x_n)\}_{n\geq 1}$ converge vers $f(x)$
+    \item Pour tout ouvert  $U$ de  $Y$,  $f^{-1}(U)$ est ouvert dans $X$.
+    \item Pour tout fermé  $F$ de  $Y$,  $f^{-1}(F)$ est fermé dans $X$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+    $(3 \iff  4)$ par passage au complémentaire.
+
+    $(1 \implies 2)$  $ \left\{ x_n \right\} $ qui converge vers $x$,  $\epsilon>0$,  $\delta>0$ associé en  $x$,  \[
+        d_X(x_n, x)<\delta \implies  d_Y(f(x_n), f(x))<\epsilon
+    \] 
+    On en déduit facilement $f(x_n)\longrightarrow f(x)$
+
+    $(2 \implies 3)$ Soit $U$ un ouvert de  $Y$ et  $x \in  f^{-1}(U)$. Montrons qu'il existe $r>0$ tel que  $\B(x, r)\subset f^{-1}(U)$. Si ce n'est pas le cas, alors pour tout $n\geq 1$, il existe $x_n \in  \B(x, \sfrac 1n)\cap (X\setminus f^{-1} (U))$. On a $x_n \to  x$ et donc $f(x_n) \to  f(x)$. Les $f(x_n)$ sont dans  $Y\setminus U$ fermé donc $f(x) \in  U^c$ absurde.
+
+    $(3 \implies 1)$ Soit $x \in  X$, $\epsilon>0$. $f^{-1}(\B(f(x), \epsilon))$ est un ouvert de $X$ qui contient  $x$. Donc il existe  $\delta>0$ tel que  \[
+        \B(x, \delta) \subset f^{-1}(\B(f(x), \epsilon))
+    \] 
+\end{proof}

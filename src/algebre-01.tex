@@ -13,3 +13,216 @@
     \minitoc
 \fi
 \thispagestyle{empty}
+
+\section{Relation d'équivalence}
+
+\begin{dfn}
+    Une relation binaire sur un ensemble $E$ est une partie  $R\subset E\times E$. On dit que  $x, y \in  E$ sont en relation si $(x, y)\in  R$. On note alors $xRy$
+\end{dfn}
+
+\begin{dfn}
+    Une relation d'équivalence\index{relation d'équivalence} est une relation: \begin{itemize}
+        \item Réflexive: $\forall  x \in  E, xRx$
+            \item Symétrique: $\forall  x, y \in  E, xRy \iff  yRx$
+            \item Transitive: $\forall  x, y, z \in  E, xRy \text{ et }yRz \implies xRz$
+    \end{itemize}
+\end{dfn}
+
+\begin{ex}~
+\begin{itemize}
+    \item $R= \left\{ (x, x) \in  E\times E, x \in  E \right\} $ (égalité)
+    \item $R = E\times E$
+    \item  $E = \Z, n\geq 1, \qquad  x\equiv_n y \iff  n \mid x-y$
+    \item $E$ l'ensemble des droites du plan, la relation de parallélisme est donnée par  \[
+            D\sim D' \iff  D \text{ et } D' \text{ parallèles }
+    \] 
+\item La similitude de matrices dans  $E=\mathcal  M_n(k)$: \[
+    A\sim B \iff  \exists P \in  \mathrm{GL}_n(k), \quad  A=P^{-1}BP
+\]
+\item $f:E\longrightarrow E$,  \[
+        x\sim y \iff  \exists m,n\geq 0, \quad  f^m(x)=f^n(y)
+\] 
+\end{itemize}
+\end{ex}
+
+\section{Classes d'équivalence}
+
+\begin{dfn}
+    Soit $\sim$ une relation d'équivalence sur un ensemble  $E$. La classe d'équivalence de  $x \in  E$ pour $\sim$ est  $\left\{  y \in  E, x\sim y \right\} $. On peut noter $\mathrm{Cl}(x), \bar x, [x], [x]_\sim$
+\end{dfn}
+
+\begin{lmm}
+Soient $x, y \in  E$. On a \[
+    x\sim y \iff  [x]=[y]
+\] 
+\end{lmm}
+
+\begin{proof}
+    $\implies )$ Si $z \in  [x], z\sim x$ donc $z\sim y$ et  $z \in  [y]$. Un argument de symétrie donne la double inclusion
+
+    $\impliedby )$ Si  $[x]=[y]$ alors $y\sim y\implies y \in  [y]$ donc $y \in  [x]$ et $y\sim x$
+\end{proof}
+
+\begin{dfn}
+    Une partition\index{partition} de $E$ est la donnée d'un ensemble $P$ de parties de $E$ tel que \begin{itemize}
+        \item $\displaystyle \bigcup_{X \in  P}X=E$
+        \item  $ \forall  X, X' \in  P, X \neq X \implies X\cap X'=\emptyset$
+        \item   $\emptyset \in  P$
+    \end{itemize}
+\end{dfn}
+
+\begin{prop}
+Les classes d'équivalence d'une relation d'équivalence sur $E$ partitionnent  $E$
+\end{prop}
+
+\begin{rem}
+La donnée d'une relation d'équivalence équivaut à celle d'une partition
+\end{rem}
+
+\section{Ensemble quotient}
+
+\begin{dfn}
+    Soit $\sim$ une relation d'équivalence sur  $E$. On appelle ensemble quotient\index{ensemble quotient} de  $E$ par  $\sim$ l'ensemble des classes d'équivalence. On le note  $E/\sim$
+\end{dfn}
+
+\begin{dfn}
+L'application canonique de $E$ dans  $E / \sim$ est définie par \[
+\begin{array}{rrcl}
+    \pi:& E & \longrightarrow & E / \sim \\
+        & x & \longmapsto & \displaystyle [x]
+\end{array}
+\]
+\end{dfn}
+
+\begin{dfn}
+    Un système de représentants\index{système de représentants} de $\sim$ est : \begin{itemize}
+        \item La donnée, pour chaque classe  $a \in  E / \sim$ d'un élément $x \in  a$.
+        \item Une partie de $S$ de  $E$ telle que  $\pi\left|_{S}\right.:S\longrightarrow E / \sim$ est bijective.
+        \item Une section de $\pi$, c'est à dire une application $s: E / \sim \longrightarrow E$ telle que  $\pi\circ s=\id_{E / \sim}$
+    \end{itemize}
+\end{dfn}
+
+\begin{ex}
+    \begin{itemize}
+        \item L'ensemble des droites vectorielles est un système de représentants de l'ensemble des droites du plan pour la relation de parallélisme
+        \item $\llbracket 1, n \rrbracket $ est un système de représentants pour $\Z/n\Z$ 
+        \item Similitude dans $\mathcal M_n(k)$: trouver un système de représentants est l'objet de la réduction des endomorphismes (e.g. Jordan)
+    \end{itemize}
+\end{ex}
+
+\begin{thm}[Passage au quotient\index{passage au quotient (théorème)}]
+Soit $f:E\longrightarrow F$ et  $\sim$ une relation d'équivalence sur  $E$. Il y a équivalence entre  \begin{enumerate}
+    \item $\forall  x, y \in  E, x\sim y \implies f(x)=f(y)$
+    \item $ \exists  \bar f: E / \sim \longrightarrow F$ tq $f = \bar f\circ \pi$
+\end{enumerate}
+Dans ce cas, $\bar f$ est unique. Le diagramme suivant commute
+\begin{center}
+    \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
+    E \arrow[r, "f"] \arrow[rd, "\pi", two heads] & F \\
+                                       & E/\sim \arrow[u, "\bar f", dashed]
+\end{tikzcd}
+\end{center}
+\end{thm}
+
+\begin{proof}
+    $(2 \implies 1)$ Clair.
+
+    $(1 \implies  2)$ On se donne $c \in  E / \sim$. Vu le lemme, $f(c)= \left\{ y \right\} $ et on doit poser $\bar f(c)=y$. L'unicité est imposée par le choix de $y$ et la surjectivité de  $\pi$
+\end{proof}
+
+\section{Quotients d'espaces vectoriels}
+
+\begin{dfn}
+On se donne $E$ un  $k$-espace vectoriel et $F$ un sous-espace vectoriel de  $E$. On définit la relation d'équivalence \[
+x \mathcal  R_f y \iff  x-y \in  F
+\] 
+\end{dfn}
+
+\begin{prop}
+\begin{itemize}
+    \item $\mathcal  R_F$ est une relation d'équivalence
+    \item $\forall  x, x', y, y' \in E, \lambda \in  k$, \[
+            (x \mathcal R_F y \text{ et }x'\mathcal R_Fy' )\implies (x+x')\mathcal  R_F(y+y')
+    \] 
+    et \[
+        x\mathcal R_F y \implies \lambda x \mathcal  R_F \lambda y
+    \] 
+\end{itemize}
+\end{prop}
+
+\begin{dfn}[Espace vectoriel quotient\index{espace vectoriel quotient}]
+    On appelle espace vectoriel quotient de $E$ par  $F$, noté  $E / F$ l'ensemble quotient $E / \mathcal R_F$
+\end{dfn}
+
+\begin{prop}
+Il existe une unique structure de $k$-espace vectoriel sur $E / F$ tel que  $ \pi$ est linéaire. De plus, $\pi$ est surjective et $\ker \pi = F$
+\end{prop}
+
+\begin{proof}
+    $c, c' \in  E / F$, $x \in c, x' \in  c'$. On pose $c+c'=[x+x'] \in  E / F$. C'est une loi de groupe. La loi $\forall  \lambda \in  k, \forall  c \in  E / F, x \in  c, \lambda.c=[\lambda x] \in  E / F$ est une lce.
+
+    $\pi$ est alors linéaire. L'unicité provient de la surjectivité de $ \pi$ (et de la linéarité).
+\end{proof}
+
+\begin{ex}
+$E=\R^3$, $F$ un plan vectoriel et  $D$ une droite telle que  $E=F\oplus D$. On va voir  $E / F \simeq D$. Le choix de  $D$ n'est pas canonique.
+\end{ex}
+
+\begin{exo}
+$E$ un espace vectoriel, $\mathcal  R$ une relation d'équivalence, on suppose que $E / \mathcal  R$ a une structure d'espace vectoriel telle que $\pi$ est linéaire. Montrer que $\mathcal  R$ est de la forme $\mathcal  R_F$
+\end{exo}
+
+\begin{thm}
+$E$ un  $k$-ev, $F$ un sev de $E$. Soit  $S$ un sev de  $E$. Il y a équivalence entre  \begin{enumerate}
+    \item $E=F\oplus S$ 
+    \item $\pi \left|_{S}\right.:S \longrightarrow E / F$ est un isomorphisme
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+    $(a \implies b)$ Soit $x \in  \ker(\pi\left|_S\right.)$. On a $x \in  \ker \pi = F$ donc $x \in  S\cap F= \left\{  0 \right\}$ donc $\pi\left|_S\right.$ injective
+
+    Soit $c \in  E / F, c \in  \pi(x)$ pour un $x \in  E$, $x=y+z$ avec  $y \in  F, z \in  S$ et $\pi(z)=[z]=[x]$ car $z-x \in  F$ donc $\pi\left|_S\right.$ est surjective.
+
+$(b \implies  a)$ $x \in  F \cap S \implies  \pi\left|_S\right.(x)=0 \implies  x=0$.
+
+$x \in  E, c = [x]$. Soit $y=\pi\left|_S^{-1}\right.([x])$ alors $[y]=[x]$ et  $x=x-y+y$
+\end{proof}
+
+\begin{thm}
+\Hyp $F$ sev de  $E$ un  $k$-ev de dimension finie
+\Conc $E / F$ de dimension finie et $\dim(E / F)=\dim E-\dim F$
+\end{thm}
+
+\begin{rem}
+    $F$ sev de  $E$. L'application  $\pi:E \longrightarrow E / F$ admet une section linéaire. Cela revient à choisir un supplémentaire de $F$ ($\pi\left|_S^{-1}\right.$)
+\end{rem}
+
+\begin{thm}[Passage au quotient pour les espaces vectoriels]
+    $f:E \longrightarrow E' \in  \mathcal  L(E, E')$ et $F$ sev de $E$. Il y a équivalence entre \begin{enumerate}
+        \item $F\subset \ker f$
+        \item  $ \exists \bar f: E / F \longrightarrow E'$ linéaire telle que $f=\bar f\circ \pi$
+    \end{enumerate}
+    Dans ce cas, $\bar f$ est unique et le diagramme suivant commute.
+\begin{center}
+    \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
+    E \arrow[r, "f"] \arrow[rd, "\pi", two heads] & F \\
+                                       & E/\sim \arrow[u, "\bar f", dashed]
+\end{tikzcd}
+\end{center}
+\end{thm}
+
+\begin{proof}
+Idem que dans le cas général. La linéaire est héritée de $f$ et  $\pi$.
+\end{proof}
+
+\begin{thm}[Premier théorème d'isomorphisme\index{premier théorème d'isomorphisme}]
+    $f:E \longrightarrow E'$ induit un isomorphisme canonique  $\bar f: E / \ker f \xrightarrow{\simeq} \im f$
+\end{thm}
+
+\begin{proof}
+Passage au quotient avec $F=\ker F$.  \[
+    \im \bar f=\im(\bar f\circ \pi)=\im f
+\]
+Puis, $c \in  \ker \bar f, x \in  c, f(x)=0$ donc $x \in  \ker f=F$ donc $[x]=c=0$
+\end{proof}

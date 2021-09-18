@@ -15,7 +15,7 @@ jobs:
       uses: xu-cheng/texlive-action/full@master
       with:
         run: |
-          apk add make
+          apk add make zip
           # tlmgr install mlmodern
           make clean
           env VERBOSE=y make all

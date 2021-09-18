@@ -19,6 +19,7 @@ jobs:
           # tlmgr install mlmodern
           make clean
           env VERBOSE=y make all
+          zip -j cours.zip target/*.pdf
     # - name: Compilation
     #   uses: xu-cheng/latex-action@master
     #   with:
@@ -92,3 +93,12 @@ jobs:
         asset_path: ./target/algebre.pdf
         asset_name: algebre.pdf
         asset_content_type: application/pdf
+    - name: Release courss
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./cours.zip
+        asset_name: cours.zip
+        asset_content_type: application/zip

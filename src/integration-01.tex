@@ -40,7 +40,7 @@ C'est aussi stable par intersection finie
 \end{ex}
 
 \begin{dfn}
-    $A\subset \mathcal  P(X)$ est une $\sigma$-algèbre (ou tribu\index{tribu}) si et seulement si
+    $A\subset \mathcal  P(X)$ est une $\sigma$-algèbre\index{sigma-algèbre@$\sigma$-algèbre} (ou tribu\index{tribu}) si et seulement si
     \begin{itemize}
         \item $\emptyset \in  \mathcal  A$
         \item $\displaystyle \forall  (A_i \in  \mathcal A, i \in  \N), \bigcup_{i \in  \N} A_i \in  \mathcal  A$
@@ -56,6 +56,10 @@ C'est aussi stable par intersection finie
 \end{itemize}
 \end{rem}
 
+\begin{dfn}[Espace mesurable]
+    Un couple $(X, \mathcal  A)$ où $\mathcal  A$ est une $\sigma$-algèbre est appelé \textbf{espace mesurable}\index{espace mesurable}
+\end{dfn}
+
 \section{$\sigma$-algèbre  engendrée}
 
 \begin{lmm}
@@ -68,6 +72,163 @@ Une intersection quelconque de $\sigma$-algèbres est une $\sigma$-algèbre.
     \] 
 \end{dfn}
 
-\begin{dfn}
-    Si $X$ a une topologie, on appelle  $\sigma$-algèbre borélienne  $B(X)$ la  $\sigma$-algèbre engendrée par les ouverts.
+\begin{dfn}[Boréliens]
+    Si $X$ a une topologie, on appelle  $\sigma$-algèbre borélienne (ou des boréliens\index{boréliens})  $B(X)$ la  $\sigma$-algèbre engendrée par les ouverts.
 \end{dfn}
+
+\begin{prop}
+    Les parties suivantes de $\mathcal  P(\R)$ engendrent les boréliens de $\R$.
+    \begin{itemize}
+        \item Les ouverts de $\R$
+        \item Les fermés de $\R$
+        \item Les intervalles ouverts bornés (les ouverts sont des unions d'intervalles ouverts d'extrémités rationnelles)
+        \item Les intervalles ouverts d'extrémités rationnelles
+        \item Les $\{]a, b]\}$ ou  $\{[a, b[\}$ (par exemple $]a, c[=\bigcup ]a, r_n]$ avec  $r_n \in \Q \longrightarrow c$ croissante)
+        \item $\{]a, +\infty[\}$
+    \end{itemize}
+\end{prop}
+
+\begin{prop}
+Dans $\R^n$, les ensembles de parties suivants engendrent les boréliens:
+\begin{itemize}
+    \item Les ouverts, les fermés
+    \item Les boules ouvertes
+    \item Les boules ouvertes de centre à coordonnées rationnelles et de rayon rationnel
+    \item Les produits cartésiens d'intervalles ouverts bornés, fermés bornés, ...
+    \item Les $\left\{ \R^{i-1}\times ]a, +\infty[ \times \R^{n-i} \right\} $
+\end{itemize}
+\end{prop}
+
+\begin{exo}
+    On munit $[0, +\infty]$ de la distance \[
+        d(x, y)= \left| \arctan x-\arctan y \right|
+    \] 
+    Donner des parties qui engendrent les borélien de l'espace métrique $([0, +\infty], d)$
+\end{exo}
+
+\section{Mesures}
+
+\begin{dfn}[Mesure\index{mesure}]
+    Si $(X, \mathcal  A)$ est un espace mesurable, une mesure sur $(X, \mathcal  A)$ est une application $\mu: \mathcal  A \longrightarrow [0, +\infty]$ telle que \begin{enumerate}[label=(\emph{\roman*})]
+        \item $\mu(\emptyset)=0$
+        \item Si $(A_i)_{i \in  \N} \in  \mathcal  A^{\N}$ est une suite d'ensembles deux à deux disjoints, alors \[
+                \mu \left(\bigcup_{i \in  \N}A_i\right)= \sum_{i \in  \N} \mu(A_i)
+        \] 
+    \end{enumerate}
+    Cette seconde propriété s'appelle $\sigma$-additivité\index{sigma-additivité@$\sigma$-additivité}. On dit alors que $(X, \mathcal  A, \mu)$ est un espace mesuré\index{espace mesuré}
+\end{dfn}
+
+\begin{ex}
+\begin{itemize}
+    \item $(X, \mathcal  P(X), \mathrm{Card})$ est un espace mesuré
+    \item $(X, \mathcal  P(X), \delta_a)$ où $\delta_a$ est la mesure de Dirac\index{mesure de Dirac}  \[
+            \delta_a(A)=\1_A(a)
+    \] 
+    est un espace mesuré
+\end{itemize}
+\end{ex}
+
+\begin{thm}[Théorème fondamental\index{théorème fondamental}]
+    Il existe une unique mesure, appelée mesure de Lebesgue\index{mesure de Lebesgue}, sur $B(\R^n)$ telle que: \begin{itemize}
+        \item Sur $\R$, $\mu([a, b])=b-a$ pour tous  $a<b$
+        \item Sur $\R^n$, \[
+                \mu \left( \prod_{i=1}^{n} [a_i, b_i] \right)= \prod_{i=1}^{n} (b_i-a_i)
+        \] 
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+On admet ce théorème pour l'instant.
+\end{proof}
+
+\begin{prop}
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré. Alors \begin{enumerate}[label=(\alph*)]
+        \item $\mu$ est finiment additive
+        \item $\mu$ est croissante
+        \item $\mu$ est  $\sigma$-sous-additive
+    \end{enumerate}
+\end{prop}
+
+\begin{prop}
+\begin{enumerate}
+    \item $A_i \in  \mathcal  A$ une suite croissante. Alors $\mu(\cup A_i)=\lim \mu(A_i)$ (cette limite existe)
+    \item  $A_i \in  \mathcal  A$ une suite décroissante telle que $\mu(A_0)<+\infty$. Alors $\mu(\cap A_i)=\lim \mu(A_i)$
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+    \item $B_i=A_i\setminus A_{i-1}$. \[
+            \mu \left(\bigcup_{i \in  \N}B_i\right)= \sum_{i \in  \N} \mu(B_i)=\lim_{n\to +\infty} \sum_{i=0}^{n} \mu(B_i)=\lim_{n \to  +\infty} \mu(A_n)
+    \] 
+    \item Même principe avec $B=A_i \setminus A_{i+1}$
+\end{enumerate}
+\end{proof}
+
+\begin{dfn}
+\begin{itemize}
+    \item $\mu$ est finie\index{mesure finie} si  $\mu(X)<+\infty$
+    \item  $\mu$ est une mesure de probabilité\index{mesure de probabilité} si  $\mu(X)=1$ 
+    \item $\mu$ est $\sigma$-finie \index{sigma-finie@$\sigma$-finie} s'il existe des $X_k \in  \mathcal  A$ qui recouvrent $\mathcal  X$ et tels que $\mu(X_k)<+\infty$
+\end{itemize}
+\end{dfn}
+
+\begin{rem}
+La mesure de Lebesgue est $\sigma$-finie
+\end{rem}
+
+\section{Fonctions mesurables}
+
+\begin{dfn}[Fonction mesurable]
+    $(X, \mathcal  A), (Y, \mathcal  B)$ des espaces mesurables. Une fonction $f:X \longrightarrow Y$ est mesurable\index{fonction mesurable}  si et seulement si $\forall  B \in  \mathcal  B, f^{-1}(B) \in  \mathcal A$
+\end{dfn}
+
+\begin{rem}[Cas particulier important]
+Lorsque $Y$ a une topologie, la tribu choisie par défaut sera la tribu des boréliens
+\end{rem}
+
+\begin{prop}
+    Dans les conditions de la définition,  i $ \mathcal  B=\sigma(\mathcal  M)$ alors $f$ est mesurable si et seulement si \[
+        \forall  B \in  \mathcal  M, f^{-1}(B) \in  \mathcal  A
+    \] 
+\end{prop}
+
+\begin{proof}
+    Sens direct immédiat. Dans l'autre sens, on pose $\mathcal C= \left\{  C \in  Y \suchthat f^{-1}(C) \in  \mathcal  A \right\} $. C'est une tribu qui contient $\mathcal  M$.
+\end{proof}
+
+\begin{cor}
+    \begin{itemize}
+        \item $f: (X, \mathcal  A)\longrightarrow Y$ topologique, dans ce cas mesurable équivaut à  $\forall  O \text{ ouvert }, f^{-1}(O) \in  \mathcal  A$
+        \item $(f_k)_k$ mesurables,  $(X, \mathcal  A)\longrightarrow [0, +\infty]$. Les fonctions $\sup f_k$ et  $\inf f_k$ sont mesurables.
+    \end{itemize}
+\end{cor}
+
+\begin{proof}
+    Pour le 2, on prend $\mathcal  M = \left\{ ]a, +\infty] \right\} $. \[
+        \sup f_k^{-1}(]a, +\infty])= \left\{  x \suchthat f_k(x)>a \right\} = \bigcup_k f_k^{-1}(]a, +\infty])
+    \] 
+\end{proof}
+
+\begin{prop}
+    On se donne $f:(X, \mathcal  A) \longrightarrow (Y, \mathcal B)$ et $g:(Y, \mathcal  B)\longrightarrow (Z, \mathcal  C)$ mesurables, alors $g\circ f$ est mesurable.
+    Si  $Y$ a une topologie, $Z$ aussi et $g$ continue alors  $g\circ f $ est mesurable
+\end{prop}
+
+\begin{cor}
+    Si $f:(X, \mathcal  A)\longrightarrow \C$ est mesurable, alors $|f|, \Re f, \Im f$ aussi.
+\end{cor}
+
+\begin{prop}
+    Si $X$ et  $Y$ sont deux espaces topologiques à bases dénombrables d'ouverts et  $f:(X, \mathcal  A)\longrightarrow Y$, $g:(X, \mathcal  A)\longrightarrow Z$ mesurables, alors $(f, g):(X, \mathcal  A)\longrightarrow Y\times Z$ est mesurable.
+\end{prop}
+
+\begin{cor}
+    Si $f,g:(X, \mathcal  A)\longrightarrow \R\text{ ou }\C$ sont mesurables alors $f+g, f\times g, f-g, \frac{f}{g}$ (si possible) sont mesurables
+\end{cor}
+
+\section{Limites de fonctions mesurables}
+
+\begin{thm}
+    Si $(f_k)_k$ mesurables $(X, \mathcal A)\longrightarrow Y$ qui convergent simplement vers $f$, avec $Y$ un espace \textbf{métrique}, alors  $f$ est mesurable.
+\end{thm}

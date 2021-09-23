@@ -1,0 +1,290 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Formes linéaires et dualité} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Formes linéaires et dualité}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+On se fixe un corps $k$. On travaille avec des espaces vectoriels sur  $k$.
+
+\section{Formes linéaires}
+
+ \begin{dfn}
+     Soit $E$ un espace vectoriel. Une forme linéaire\index{forme linéaire} sur $E$ est un élément de $ \mathcal  L(E, k)$. On note $E^*$ l'espace dual\index{espace dual} $ \mathcal  L(E, k)$
+\end{dfn}
+
+\begin{prop}
+    \begin{enumerate}
+        \item Le noyau d'une forme linéaire est un hyperplan\footnotemark de $E$.
+        \item Tout hyperplan de $E$ est le noyau d'une forme linéaire.
+        \item Deux formes qui ont le même noyau sont colinéaires
+    \end{enumerate}
+\end{prop}
+
+\footnotetext{sev de $E$ tq  $\forall  x \in  E \setminus H  $ alors $E = H \oplus kx$}
+
+\begin{proof}
+\begin{enumerate}
+    \item Soit $\mu$ une forme linéaire non nulle,  $H=\ker \mu$. Soit  $x \in  E \setminus H$, alors $\mu(x)\neq 0$. Soit $y \in  E$, alors \[
+            y- \frac{\mu(y)}{\mu(x)}x \in  H
+    \] 
+    donc $E=kx+H$
+    \item Soit  $H$ un hyperplan,  $x \in  E \setminus  H$ de sorte que $E=H\oplus kx$. Tout élément de  $E$ s'écrit uniquement  $y=z+\lambda x$,  $z \in  H, \lambda \in  k$. En posant $\mu(y)=\lambda$, on a bien construit une forme linéaire de noyau  $H$. 
+    \item Si $H=\ker \mu=\ker \mu'$ alors pour  $x \in  E \setminus  H, E=H\oplus kx$. Alors \[
+            \mu = \frac{\mu(x)}{\mu'(x)}\mu'
+    \]
+\end{enumerate}
+\end{proof}
+
+Dans toute la suite, on supposera $E$ de dimension finie.
+
+\begin{thm}
+    Soit $(e_1, \cdots , e_n)$ une base de $E$. L'application  \[
+    \begin{array}{rrcl}
+        \phi:& E^* & \longrightarrow & k^n \\
+             & \mu & \longmapsto & \displaystyle (\mu(e_1), \cdots , \mu(e_n))
+    \end{array}
+    \] 
+    est un isomorphisme.
+\end{thm}
+
+\begin{cor}
+$\dim E^*=\dim E$
+\end{cor}
+
+\begin{cor}[Base duale\index{base duale}]
+    Soit $(e_1, \cdots , e_n)$ une base de $E$. La base duale de $E^*$ associée  $(e_1^*, \cdots , e_n^*)$ est définie par \[
+        e_i^*(e_j)=\delta_{i,j}
+    \] 
+    On les appelle aussi "formes coordonnées".
+\end{cor}
+
+\begin{rem}
+Si $\mu \in  E^*$, alors \[
+    \mu = \sum_{i=1}^{n} \mu(e_i)e_i^*
+\] 
+\end{rem}
+
+\begin{rem}[Notation]
+    Si $(E_i)_{i \in  I}$ est une famille d'espaces vectoriels, alors $\prod_{i \in  I}E_i$ est l'espace produit (l'ensemble des $(x_i)_{i \in  I}$). Puis \[
+        \bigoplus_{i \in  I}E_i \subseteq \prod_{i \in  I} E_i
+    \] 
+    est le sous-espace formé des $(x_i)_{i \in  I}$ à support fini.
+\end{rem}
+
+% TODO: prop ?
+Soient $E_1, \cdots , E_n$ des espaces vectoriels de dimension finie. Si  $\displaystyle E = \bigoplus_{i=1}^nE_i$ alors $E^*\simeq \displaystyle \bigoplus_{i=1}^n E^*$ de la façon suivante  \[
+\begin{array}{rrcl}
+    & E^* & \longrightarrow & \displaystyle\bigoplus{i=1}^nE_i^* \\
+    & \mu & \longmapsto & \displaystyle (\mu\left|_{E_i}\right.)_{i \in  \llbracket 1, n \rrbracket }
+\end{array}
+\] 
+
+\section{Bidualité}
+
+\begin{thm}
+L'application suivante est un isomorphisme. \[
+\begin{array}{rrcl}
+    \Phi:& E & \longrightarrow & E^{**} \\
+         & x & \longmapsto & \displaystyle (\mu \longmapsto \mu(x))
+\end{array}
+\] 
+\end{thm}
+
+\begin{proof}
+    On vérifie l'injectivité. Si $x \in  E \setminus  \left\{ 0 \right\} $ alors, on note $H$ un supplémentaire de  $kx$ de sorte que  $H$ est un hyperplan donc c'est le noyau d'une forme linéaire  $\mu$, et  $\Phi(x)(\mu)\neq 0$ donc  $\Phi(x) \neq 0$ et $\ker \Phi = \left\{ 0 \right\} $. L'égalité des dimensions conclut.
+\end{proof}
+
+\begin{prop}
+    Soit $\mathcal  B = (e_1, \cdots , e_n)$ une base de $E$. On note  $\mathcal  B^*$ la base duale associée, et $\mathcal  B^{**}$ la base duale associée à $\mathcal  B^{*}$. Alors \[
+        \Phi(e_i^*)=e_i^{**}
+    \] 
+\end{prop}
+
+\begin{proof}
+La base duale $\mathcal  B^{**}$ est caractérisée par \[
+    e_i^{**}(e_i^*)=\delta_{i,j}
+\] 
+Par ailleurs, \[
+    e_j^*(e_i)=\delta_{i,j}=\Phi(e_i)(e_j^*)
+\] 
+donc $\Phi(e_i)=e_i^{**}$
+\end{proof}
+
+\begin{cor}
+Soit $\mathcal  B'$ une base de $E^{**}$. Alors il existe $ \mathcal  B$ une base de $E$ dont la base duale est  $\mathcal  B'$.
+\end{cor}
+
+\section{Transposition}
+
+\begin{dfn}
+    Soit $u \in  \mathcal  L(E, F)$. On définit $\transpose u \in  \mathcal  L(F^*, E^*)$ par \[
+        \forall  \mu \in  F^*, \quad  \transpose u(\mu)=\mu\circ u
+    \]
+    On l'appelle transposée\index{transposée} de $u$
+\end{dfn}
+
+\begin{rem}
+    La transposition renverse l'ordre des compositions. \[
+        E \xrightarrow{u}F \xrightarrow{v}G
+    \]
+    On a $\transpose(v\circ u)=\transpose u\circ \transpose v$
+\end{rem}
+
+\begin{prop}
+    Soit $\mathcal  B_E=(e_1, \cdots , e_n)$ une base de $E$,  $\mathcal  B_F=(f_1, \cdots , f_m)$ une base de $F$. Si  \[
+        A=\mathcal  M_{\mathcal B_E, \mathcal  B_F}(u)
+    \] 
+    alors \[
+        \transpose A = \mathcal  M_{\mathcal  B_F^*, \mathcal  B_E^*}(\transpose u)
+    \] 
+\end{prop}
+
+\begin{proof}
+    On suppose $A=(a_{i,j})_{\substack{1\leq i \leq m \\ 1\leq j\leq m}}$, c'est à dire \[
+        \mu(e_j)= \sum_{i=1}^{m} a_{i,j}f_i
+    \] 
+    Alors \begin{align*}
+        \transpose u(f_j^*)&=f_j^*\circ u \\
+                           &= \sum_{i=1}^{n} (f_j^*\circ u)(e_i)e_i^* \\
+                           &= \sum_{i=1}^{n} f_j^*(u(e_i))e_i^* \\
+                           &= \sum_{i=1}^{n} f_j^*\left( \sum_{\ell=0}^{m} a_{\ell,j}f_{\ell}\right)e_i^* \\
+                           &= \sum_{i=1}^{n} a_{j,i}e_i^*
+    \end{align*}
+\end{proof}
+
+\begin{cor}
+La transposition est linéaire et bijective.
+\end{cor}
+
+\begin{cor}
+    $u \in  \mathcal  L(E, F)$, $\transpose \transpose u \in  \mathcal  L(E^{**}, F^{**})\simeq \mathcal  L(E, F)$ canoniquement, et pour cette identification, $\transpose \transpose u=u$
+\end{cor}
+
+\section{Orthogonalité}
+
+\begin{dfn}
+    Soit $X \subset E$. On note\index{espace orthogonal} \[
+    X^\bot = \left\{ \mu \in  E^* \suchthat \mu(X)= \left\{ 0 \right\}  \right\} 
+\] 
+\end{dfn}
+
+\begin{rem}
+\begin{itemize}
+    \item $X \subset Y \subset E \implies X^\bot \subset Y^\bot \subset E^*$
+    \item $X^\bot$ est un sev de  $E^*$
+    \item  $X^\bot =\Vect(X)^\bot$
+\end{itemize}
+\end{rem}
+
+\begin{prop}
+    Soient $F, G$ deux sev de  $E$. Alors  $(F+G)^\bot =F^\not \cap G^\bot$
+\end{prop}
+
+\begin{proof}
+    Si $\forall  x \in  F\cup G, \mu(x)=0$ alors $\forall  x \in  F+G, \mu(x)=0$ donc $F^\bot \cap G^\bot \subset (F+G)^\bot$.
+
+    Puis  $(F+G)\bot \subset F^\bot$ et  $\subset G^\bot$ d'où l'autre inclusion.
+\end{proof}
+
+\begin{prop}
+    Soit $F$ un sev de  $E$. Alors  $F^\bot$ s'identifie canoniquement à  $(E / F)^*$
+\end{prop}
+
+\begin{proof}
+    $\pi:E \longrightarrow E / F$ la projection canonique. Alors $\transpose \pi:(E / F)^* \longrightarrow  E^*$ est injective car si $\mu \in  (E / F)^* \setminus \left\{ 0 \right\} $ alors $\mu \circ \pi\neq 0$ (surjectivité de $\pi$) donc $\transpose \pi (\mu)\neq  0$. L'application $\transpose \pi$ identifie donc  $(E / F)^*$ à un sev de  $E^*$.
+
+    Puis, $\mu \in  \im(\transpose \pi)$ se factorise en $\mu=\mu'\circ \pi$ donc $F=\ker \pi \subset \ker \mu$ donc $\im(\transpose \pi)\subset F^\bot$. Même principe pour l'autre inclusion.
+\end{proof}
+
+\begin{cor}
+    $\dim F^\bot=\dim (E / F)^* = \dim E / F = \dim E-  \dim F$ d'où  \[
+    \dim F+\dim F\bot = \dim E
+    \] 
+\end{cor}
+
+\begin{dfn}
+Soit $G\subset E^*$ un sev. Alors  on note\[
+    G^\top = \left\{ x \in  E, \mu(x)=0, \forall  \mu \in  G \right\} 
+\] 
+\end{dfn}
+
+\begin{prop}
+$G^\bot\subset E ^{**}$ s'identifie à $G^\top \subset E$ par  $\Phi_E$
+\end{prop}
+
+\begin{cor}
+$\dim G^\top+\dim G=\dim E$
+\end{cor}
+
+\begin{prop}
+Soit $F\subset E$ un sev. Alors  $F^{\bot\top}=F$
+\end{prop}
+
+\begin{proof}
+    Clairement $F \subset F ^{\bot \top}$. Par ailleurs, $\dim F^{\bot\top}+\dim F^\top=\dim E^*$ et $\dim F+\dim F^\top=\dim E$ donc $\dim F=\dim F^{\bot\top}$
+\end{proof}
+
+\begin{prop}
+    Soient $F, G$ deux sev de  $E$. Alors  $(F\cap G)^\bot=F^\bot+G^\bot$
+\end{prop}
+
+\begin{proof}
+    $(F^\bot+G^\bot)^\top=F^{\bot\top}\cap G^{\bot\top}=F\cap G$ donc $(F\bot+G^\bot)=(F^\bot+G^\bot)^{\top\bot}=(F\cap G)^\bot$
+\end{proof}
+
+\begin{thm}
+L'application $F \longrightarrow F^\bot$ établit une bijection décroissante entre les sev de $E$ et ceux de $E^*$. Sa réciproque est  $G\longmapsto G^\top$. Les sev de dimension $d$ correspondent aux sev de dimension  $\dim E-d$
+\end{thm}
+
+\section{Orthogonalité et transposition}
+
+\begin{thm}
+    Pour $u \in  \mathcal  L(E, F)$, \begin{itemize}
+        \item $(\ker u)^\bot=\im(\transpose u)$
+        \item  $(\im u)^\bot = \ker (\transpose u)$
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+    On note $(f_1, \cdots , f_m)$ une base de $F$,  $(f_1^*, \cdots , f_m^*)$ la base duale associée. \[
+        \mu_i=\transpose u(f_i^*) \in  E^*
+    \] 
+    Si $x \in E$ alors \[
+        u(x)=\sum_{i=1}^{m} \mu_i(x)f_i
+    \] 
+    donc $\ker u=\cap \ker \mu_i=\cap (k\mu_i)^\top=\Vect(\mu_1, \cdots , \mu_m)^\top=\im(\transpose u)^\top$ 
+
+    Pour l'autre résultat, on applique le premier à $\transpose u$
+\end{proof}
+
+\begin{cor}
+$\rg u=\rg \transpose u$
+\end{cor}
+
+\begin{proof}
+\begin{align*}
+    \dim \im u &= \dim E - \dim \im(u)^\bot \\&= \dim E - \dim (\ker \transpose u)\\ &= \dim E - (\dim E - \rg \transpose u)=\rg\transpose u
+\end{align*}
+\end{proof}
+
+\section{Application concrète}
+
+Soit $F\subset k^n$ un sev donné par une famille génératrice  $(f_1, \cdots , f_m)$. On veut décrire $F$ par des équations\footnote{cela revient à donner une famille génératrice de l'orthogonal}.
+
+On note $A$ la matrice ayant pour colonnes  $(f_1, \cdots , f_m)$. C'est la matrice de  \[
+\begin{array}{rrcl}
+    u:& k^m  & \longrightarrow & k^n \\
+    & e_i & \longmapsto & \displaystyle f_i
+\end{array}
+\] 
+$F = \im u=\ker(\transpose u)^\bot$ donc  $F^\bot-\ker\transpose u$. Il reste à calculer le noyeau (pivot de gauss)

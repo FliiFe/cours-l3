@@ -262,6 +262,16 @@ Il existe donc un unique $z \in  \bar{\B}(a, r)$ tel que $g_b(z)=z \iff  f(z)=b$
 
 
 Notons $W=\B \left(f(a), \frac{r'}2 |f'(a)|\right)$ et  $V=f^{-1}(W)\cap \B(a, r)$. L'application $f:V\longrightarrow f(V)=W$ est bijective. 
+Comme
+\[
+\left|g_{b}(z)-g_{b'}(z)\right|=\frac{1}{\left|f'(a)\right|}\left|b-b'\right|
+\]
+pour tous $b, b' \in \C$ et tout $z \in U$, il résulte du point (b) du théorème du point fixe et $\diff u$ critère séquentiel de continuité que l'application $f^{-1}: W \rightarrow V$ est continue.
 
-% TODO: fin de la preuve
+Il reste à démontrer qu'elle est holomorphe. Soit $b \in W$ et soit $z \in W-\{b\} .$ Comme $f^{-1}(b) \in$ $B(a, r)$, il résulte de $(1)$ que $f'\left(f^{-1}(b)\right) \neq 0 .$ De plus, on a les relations
+\[
+\frac{f^{-1}(z)-f^{-1}(b)}{z-b}=\left(\frac{f\left(f^{-1}(z)\right)-f\left(f^{-1}(b)\right)}{f^{-1}(z)-f^{-1}(b)}\right)^{-1}
+\]
+qui converge vers $f'\left(f^{-1}(b)\right)^{-1}$ puisque $f^{-1}$ est continue.
+
 \end{proof}

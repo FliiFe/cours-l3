@@ -1,0 +1,214 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Intégration} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Intégration}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Fonctions simples}
+
+\begin{dfn}
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré. Une fonction simple\index{fonction simple} sur $X$ est une fonction  $X\longrightarrow [0, +\infty[$ mesurable qui prend un nombre fini de valeurs.
+\end{dfn}
+
+\begin{rem}
+    Si on note $\alpha_i$ les valeurs et $A_i=f^{-1}(\left\{ \alpha_i \right\} )$, alors \[
+        s=\sum_{i=1}^n \alpha_i \times \1_{A_i}
+    \] 
+    Cette écriture est unique si on impose que les $ \alpha_i$ soient deux à deux distincts et de préimage non vide.
+\end{rem}
+
+\begin{prop}
+    Si $f:(X, \mathcal  A)\longrightarrow [0, +\infty]$ est mesurable alors il existe $(s_k)$ une suite de fonctions simples telle que  $s_k(x)\leq s_{k+1}(x)$ pour tout $x$
+\end{prop}
+
+\begin{prop}
+\[
+    \forall  i \in \llbracket 1, k2^k \rrbracket, A_i^k= f^{-1} \left( \left[ \frac{i-1}{2^k}, \frac{i}{2^k}  \right[ \right)
+\] 
+et $B^k=f^{-1}([k, +\infty]) \in  \mathcal  A$ car $f$ est mesurable. On pose \[
+    s_k\defeq\sum_{i=1}^{k2^k} \frac{i-1}{2^k} \1_{A_i^k}+k\1_{B^k}
+\] 
+qui convient. La suite $(s_k)$ est bien croissante, et:  \begin{itemize}
+    \item Si $f(x)=+\infty$ alors  $s_k(x)=k \longrightarrow +\infty$
+    \item Si $f(x)<+\infty$ alors on prend $k>f(x)$ de sorte que  \[
+            0\leq f(x)-s_k(x)<\frac{1}{2^k}
+    \] 
+\end{itemize}
+\end{prop}
+
+\begin{rem}
+Si $f$ est bornée, alors la convergence est uniforme
+\end{rem}
+
+\section{Produit sur \texorpdfstring{$[0,+\infty]$}{[0,+inf]}}
+
+L'addition est continue sur $[0, +\infty]$. On définit la multiplication comme la multiplication usuelle de  $\R$, puis si $a$ ou  $b$ vaut  $0$, on impose  $ab=0$, et sinon  c'est $+\infty$ qui prime. Cette multiplication n'est pas continue ($\frac{n}{n=1}$ ne tend pas vers $+\infty\times 0=0$)
+
+\section{Intégrale de fonction simple}
+
+\begin{dfn}
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré, $s$ une fonction simple. On définit l'intégrale\index{intégrale} de  $s$ pour la mesure  $\mu$ sur  $E \in  \mathcal  A$, notée \[
+        \int_E s\diff \mu=\sum_{i=1}^n \alpha_i \mu(A_i\cap E)
+    \] 
+    où  on écrit avec la condition d'unicité mentionnée \[
+        s=\sum \alpha_i \1_{A_i}
+    \] 
+\end{dfn}
+
+\begin{prop}
+L'intégrale est additive
+\end{prop}
+
+\begin{prop}
+\[
+    s=\sum_{i=1}^n \alpha_i \1_{A_i} \qquad  t=\sum_{j=1}^m \beta_j \1_{B_j}
+\] 
+On note $C_{i,j}=A_i\cap B_j$. Puis \[
+    s+t=\sum_{i, j} (\alpha_i+\beta_j)\1_{C_{i,j}}
+\] 
+Pour satisfaire la condition d'unicité, il reste à regrouper les ensembles $C_{i,j}$ et $C_{i',j'}$ si $\alpha_i+\beta_j=\alpha_{i'}+\beta_{j'}$ et se débarrasser des $C_{i,j}$ vides.
+\end{prop}
+
+\begin{cor}
+    Si $s=\sum \alpha_i\1_{A_i}$ même sans condition d'unicité, alors \[
+        \int_E s\diff \mu=\sum \alpha_i\mu(A_i\cap E)
+    \] 
+\end{cor}
+
+\begin{prop}
+\begin{itemize}
+    \item L'intégrale est croissante
+    \item $\displaystyle \int_E s\diff \mu=\int_X s\1_E\diff \mu$ 
+    \item $c \in  \R_+^\star$, alors $\displaystyle \int_E cs\diff \mu=c\int_Es\diff \mu$
+    \item  $\varphi:E \in  \mathcal  A \longmapsto \int_E s\diff \mu$ est une mesure sur $(X, \mathcal  A)$ (très important)
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+\begin{itemize}
+    \item On décompose sur les $A_i\cap B_j$ 
+    \item Découle de la définition
+    \item Idem
+    \item On a bien $\varphi(\emptyset)=0$. Puis, si les  $E_k$ sont deux à deux distincts,  \[
+            \varphi \left( \bigcup_{k \in  \N}E_k \right)=\sum_{i=1}^n \alpha_i \mu\left(A_i\cap \bigcup_{k \in  \N}E_k\right)=\sum_{i=1}^n \alpha_i \mu\left(\bigcup_{k \in  \N}A_i\cap E_k\right)=\sum_{i=1}^n \alpha_i \sum_{k \in  \N} \mu(A_i\cap E_k)
+    \] 
+    On peut intervertir les deux sommes car la somme est continue. Donc, \[
+        \varphi \left( \bigcup_{k \in  \N}E_k \right)=\sum_{k \in  \N}\int_Es\diff \mu
+    \] 
+\end{itemize}
+\end{proof}
+
+\section{Intégration des fonctions à valeurs dans \texorpdfstring{$[0, +\infty]$ }{[0,+inf]}}
+
+\begin{dfn}
+    Si $(X, \mathcal  A, \mu)$ est un espace mesuré et $f:(X, \mathcal  A, \mu)\longrightarrow [0, +\infty]$ est mesurable, alors pour $E \in  \mathcal  A$, on appelle intégrale\index{intégrale} de $f$ sur $E$ pour $\mu$ notée \[
+    \int_E f\diff \mu
+    \]
+    la borne supérieure \[
+    \sup \left\{ \int_E s\diff \mu, \quad  s \text{ fonction simple } \leq f \right\} \in  [0, +\infty]
+    \] 
+\end{dfn}
+
+\begin{thm}[Inégalité de Tchebychev\index{inégalité de Tchebychev}]
+    Si $f$ est mesurable est positive, \[ \mu(f^{-1}([\alpha, +\infty])) \leq \frac{\int_Xf\diff \mu}{\alpha} \]
+\end{thm}
+
+\begin{proof}
+    $\alpha \times \1_{f^{-1} ([\alpha, +\infty])}$ est simple et $\leq f$ donc \[
+        \int_Xf\diff u\geq \mu(f^{-1} ([\alpha, +\infty]))\times \alpha
+    \] 
+\end{proof}
+
+\begin{cor}
+    Si $\int_Xf\diff \mu<+\infty$ alors  $\mu(f^{-1}(\left\{ +\infty \right\} ))=0$. Pour le voir, $ \alpha\longrightarrow +\infty$ donne \[
+        \mu(f^{-1}(\left\{ +\infty \right\} ))\leq \mu(\left\{ f^{-1}([\alpha, +\infty]) \right\} )\leq \frac{\int_Xf\diff \mu}{\alpha} \xrightarrow[\alpha \to +\infty]{}0
+    \]
+\end{cor}
+
+\begin{prop}
+\begin{enumerate}
+    \item Si $f\leq g$ alors $\int_E f\diff \mu\leq \int_Eg\diff \mu$
+    \item Si $E\subset F$ alors  $\int_E f\diff \mu \leq  \int_Ff\diff\mu$
+    \item $\int_Ef\diff \mu=\int_Xf\1_E\diff \mu$
+    \item  $c \in  [0, +\infty]$ alors $\int_Ecf\diff\mu=c\int_Ef\diff\mu$
+    \item  $f\equiv 0$ sur  $E$ alors  $\inf_Ef\diff \mu=0$
+    \item  $\mu(E)=0 \implies \int_Ef\diff \mu=0$
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+    \item Sup sur un surensemble
+    \item Clair
+    \item $s$ simple et  $\leq f$. Alors $s\times \1_E\leq f\1_E$ et réciproque facile aussi.
+    \item Si $c$ est fini, cf. fonctions simples. Pour le cas  $c=+\infty$, exercice (facile). 
+    \item Clair
+    \item Clair
+\end{enumerate}
+\end{proof}
+
+\begin{thm}[Beppo Levi\index{Beppo-Levi}]
+    Soit $f_k:(X, \mathcal  A, \mu)\longrightarrow [0, +\infty]$ des fonctions mesurables telles que $(f_k)$ est croissante. Soit  $f$ la limite simple des  $f_k$. Alors,  \[
+        \forall  E \in  \mathcal  A, \inf_Ef\diff \mu=\lim_{k\to +\infty}\int_Ef_k\diff \mu
+    \] 
+
+\end{thm}
+
+\begin{proof}
+    En écrivant $\int_E\diff\mu=\int_X\1_E\diff\mu$, il suffit de le faire pour  $E=X$.  \[
+        f_k\leq f_{k+1}\leq f \implies \left( \int_X f_k\diff\mu \right) \text{ est croissante  } \leq \int_Xf\diff\mu
+    \] 
+    Soit $\alpha=\lim\int_Xf_k\diff \mu\leq \int_X f\diff \mu$. Soit $s$ simple et  $\leq f$ et $c \in  ]0,1[$. On note \[
+        E_n = \left\{ x / f_n(x)\geq cs(x) \right\} 
+    \] 
+    Les $E_n$ sont dans  $\mathcal  A$, forment une suite croissante et $\cup E_n=X$. Si  $f(x)=+\infty$ alors $x \in  E_n$ pour tout $n$ assez grand. Idem pour $f(x)<+\infty$.
+
+    La fonction  $\varphi(E)=\int_E s\diff\mu$ est une mesure et  \[
+        \varphi(E_n)=\underbrace{\int_{E_n}cs\diff\mu}_{\xrightarrow{}\int_Xcs\diff\mu}\leq \int_{E_n}f_n\diff\mu\leq \int_X f_n\diff\mu \xrightarrow[n\to +\infty]{\text{croissance}}\alpha
+    \] 
+    donc \[
+    c\int_Xs\diff \mu\leq \alpha \implies \int_Xs\diff \mu\leq \alpha
+    \]
+    d'où en passant au sup sur $s$,  \[
+    \int_Xf\diff\mu\leq \alpha
+    \]
+    On a donc \[
+    \int_Xf\diff\mu = \alpha =\lim \int_X f_n\diff\mu
+    \] 
+\end{proof}
+
+\begin{cor}
+    Si $f$ et  $g$ sont à valeurs dans  $[0, +\infty]$ alors  \[
+        \int_E(f+g)\diff \mu=\int_Ef\diff\mu+\int_E g\diff\mu
+    \] 
+    et \[
+        \int_E \left(\sum_{k \in  \N} f_k\right)\diff\mu=\sum_{k \in  \N}\int_Ef_k\diff\mu
+    \] 
+\end{cor}
+
+\begin{proof}
+    On écrit $f=\lim s_k$ avec  $(s_k)$ croissante, idem $g=\lim t_k$.  Alors $s_k+t_k$ tend simplement vers  $f+g$ et Beppo-Levi donne:  \[
+        \int_E(f+g)\diff\mu=\lim\int_E(s_k+t_k)\diff\mu=\lim \left(\int_Es_k\diff \mu+\int_Et_k\diff\mu\right)
+    \] 
+    et Beppo-Levi sur $(s_k)$ et sur  $(f_k)$ conclut. C'est idem pour les séries.
+\end{proof}
+
+\begin{lmm}[Lemme de Fatou\index{Fatou (lemme)}]
+    Soient $f_k:(X, \mathcal  A, \mu)\longrightarrow [0, +\infty]$ des fonctions mesurables. \[
+    \int_E \liminf_{k\to +\infty}f_k\leq \liminf_{k\to +\infty} \int_E f_k\diff\mu
+    \] 
+\end{lmm}
+
+\begin{proof}
+On écrit la limite inférieure comme une limite de $g_k$ et Beppo-Levi.
+\end{proof}

@@ -61,7 +61,6 @@ newchapter: ## Make a new chapter
 		if ! [[ -z "$$cn" ]]; then \
 			cat .latex_templates/chapter-base.tex | sed s/FN/$$fn/g >$$fn.tex; \
 			cat .latex_templates/chapter-src.tex | sed "s/CN/$$cn/g" >src/$$fn.tex; \
-			echo \\input{src/$$fn.tex} >> src/chapterlist.tex; \
 		else \
 			echo "Chapter name empty"; \
 			exit 1; \

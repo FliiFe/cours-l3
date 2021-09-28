@@ -47,6 +47,11 @@
 \genmrm{ch}
 \genmrm{Aut}
 
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+\renewcommand\limsup\uplim
+\renewcommand\liminf\lowlim
+
 % continu par morceaux
 \NewDocumentCommand\CPM{O{0}}{\mathcal{C}^{#1}_{{P\!M}}}
 

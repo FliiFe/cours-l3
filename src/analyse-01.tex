@@ -273,5 +273,20 @@ Il reste à démontrer qu'elle est holomorphe. Soit $b \in W$ et soit $z \in W-\
 \frac{f^{-1}(z)-f^{-1}(b)}{z-b}=\left(\frac{f\left(f^{-1}(z)\right)-f\left(f^{-1}(b)\right)}{f^{-1}(z)-f^{-1}(b)}\right)^{-1}
 \]
 qui converge vers $f'\left(f^{-1}(b)\right)^{-1}$ puisque $f^{-1}$ est continue.
-
 \end{proof}
+
+\section{Lien avec la géométrie}
+
+\begin{rem}
+Soit $ \ell:\C\longrightarrow \C$ une application $\R$-linéaire. Il y a équivalence entre \begin{enumerate}
+    \item Il existe $ \lambda \in  \C$ tel que $\ell:z\longmapsto \lambda z$
+    \item $\ell$ est une similitude directe
+    \item $\forall  u,v \in  \C\setminus  \left\{ 0 \right\} $, $\hat{\ell(u)\ell(v)}=\hat{uv}$
+\end{enumerate}
+\end{rem}
+
+\begin{prop}
+    Soient $U$ un ouvert  e $ \C$, $f:U\longrightarrow \C$ et $a \in  U$. Alors $f$ est holomorphe en $a$ si et seulement si elle est différentiable en $a$, la différentielle $\diff f_a$ est nulle ou injective et préserve les angles orientés de vecteurs.
+\end{prop}
+
+

@@ -205,3 +205,167 @@ Soit $f:X \longrightarrow Y$ une fonction. Les propriétés suivantes sont équi
         \B(x, \delta) \subset f^{-1}(\B(f(x), \epsilon))
     \] 
 \end{proof}
+
+\begin{dfn}
+    On dit qu'une fonction $f: X \rightarrow Y$ est \textbf{uniformément continue}\index{continuité uniforme} si pour tout $\epsilon>0$, il existe $\delta>0$ tel que pour tous $x, x' \in X$ vérifiant $d_{X}\left(x, x'\right)<\delta$, on a $d_{Y}\left(f(x), f\left(x'\right)\right)<\epsilon$.
+
+    On dit qu'une fonction continue $f: X \rightarrow Y$ est un \textbf{homéomorphisme}\index{homéomorphisme}  si $f$ est bijective, et si $f^{-1}$ est continue. On dit que $f$ est une \textbf{isométrie} \index{isométrie} si $d_{Y}\left(f(x), f\left(x'\right)\right)=d_{X}\left(x, x'\right)$ quels que soient $x, x' \in X$
+\end{dfn}
+
+% TODO: trou ici (jusqu'à complétude inclus)
+
+\section{Complétude}
+
+\begin{dfn}[Complétude]
+    Si $(E, d)$ est un espace métrique, on dit qu'une suite $\left\{x_{n}\right\}_{n \geq 1}$ est de Cauchy si pour tout $\epsilon>0$, il existe $N \geq 1$ tel que si $m, n \geq N$, alors $d\left(x_{m}, x_{n}\right)<\epsilon$. Par exemple, si $\left\{x_{n}\right\}_{n \geq 1}$ converge, alors elle est de Cauchy. Une suite de Cauchy qui admet une valeur d'adhérence est convergente.
+
+    On dit que $E$ est complet\index{espace complet} si toute suite de Cauchy\index{suite de Cauchy} admet une limite. 
+    Un espace vectoriel normé complet est appelé espace de Banach\index{espace de Banach}\index{Banach!espace}
+\end{dfn}
+
+\begin{ex}
+L'espace $\R^{n}$ est un espace métrique complet. Si $E$ est complet et si $F \subset E$, alors $F$ est fermé dans $E$ si et seulement s'il est complet.
+\end{ex}
+
+\begin{thm}
+    Si $(X, d)$ est un espace métrique et si  $E$ est l'espace des fonctions continues et bornées sur  $X$ à valeurs dans $\R$, muni de la norme $\|f\|_X= \sup_{x \in  X} |f(x)|$, alors $E$ est complet.
+\end{thm}
+
+\begin{proof}
+    Soit $\left\{ f_n \right\} _{n\geq 1}$ une suite de Cauchy de $E$. Montrons qu'il existe  $f \in  E$ telle que $f_n \longrightarrow f$. Soit $x \in  X$. La suite $\left\{ f_n(x) \right\} _{n\geq 1}$ est une suite de Cauchy de $\R$ qui admet donc une limite. On définit $f:X \longrightarrow  \R$ par $f(x)=\lim_nf_n(x)$.
+
+    Montrons que  $f$ est bornée et continue et que  $f_n \longrightarrow f$. Soit $\epsilon>0$ et $N\geq 1$ tel que $\|f_n-f_m\|\leq \epsilon$ si $m,n\geq N$. On a \[
+        f(x)-f_n(x)=\underbrace{f(x)-f_m(x)}_{|\,\cdot\,|<\epsilon\text{ APCR}}+\underbrace{f_m(x)-f_n(x)}_{|\,\cdot\,|<\epsilon \text{ APCR}}
+    \] 
+    On a donc $|f(x)-f_n(x)|<2\epsilon$ si $n\geq N'$ donc $f_n \longrightarrow f$ et $f$ est bornée. Puis la continuité de $f$ est héritée par convergence uniforme.
+\end{proof}
+
+\begin{rem}~
+\begin{enumerate}
+    \item On n'a pas supposé $X$ complet 
+    \item Le même résultat est vrai avec des fonctions à valeurs dans un espace de Banach.
+    \item On a montré que l'espace des fonctions bornées (sans hypothèse de continuité) est complet, et que l'espace des fonctions continues bornées est fermé donc complet.
+\end{enumerate}
+\end{rem}
+
+\begin{thm}[Théorème du point fixe de Banach\index{point fixe de Banach (théorème)}\index{Banach!point fixe (théorème)}]
+    Soit $(E, d)$ un espace métrique complet, et  $f:E\longrightarrow E$ une fonction telle qu'il existe $\lambda \in  [0, 1[$ vérifiant $d(f(x), f(y))\leq \lambda f(x, y)$. On dit que $f$ est  $ \lambda$-contractante\index{fonction contractante}. La fonction $f$ admet alors un et un seul point fixe dans  $E$.
+\end{thm}
+
+\begin{proof}
+    On se donne $x_0\in E$ et $x_n=f(x_{n-1})$ pour $n>0$. On a  \[ d(x_{n+1}, x_n)\leq \lambda d(x_n, x_{n-1})\leq (\cdots ) \lambda^k d(x_{n-k+1}, x_{n-k}) \leq (\cdots ) \leq \lambda^n d(x_1, x_0)\]
+
+    Si $m\geq 1$, alors $f(x_{n+m}, x_n)\leq d(x_{n+m}, x_{n+m-1})+\cdots +d(x_{n+1}, x_n)\leq \frac{\lambda^n}{1-\lambda}d(x_1, x_0)$. Donc, la suite $\left\{ x_n \right\} $ est de Cauchy. Soit $x$ sa limite. Alors  $f(x)=x$ en passant à la limite dans $f(x_n)=x_{n+1}$. On a donc trouvé un point fixe de $f$. 
+
+    Puis, si $x, y$ sont des points fixes alors  \[
+        d(x, y)=d(f(x), f(y))\leq \lambda d(x, y)
+    \] 
+    donc $d(x, y)=0$ et  $x=y$.
+\end{proof}
+
+Si $(E, d)$ est un espace métrique, alors on peut le compléter en y ajoutant les limites des suites de Cauchy de  $E$. Cela se formalise par le théorème suivant.
+
+\begin{thm}[Espace complété\index{espace complété}]
+    Si $(X, d)$ est un espace métrique alors il existe un espace métrique complet  $(\hat{X}, d)$ et une isométrie $i:X \longrightarrow  \hat{X}$, tels que $i(X)$ est dense dans $\hat{X}$.
+
+    Cet espace est unique à isométrie près et satisfait la propriété suivante: si $Y$ est complet et si  $f:X \longrightarrow Y$ est uniformément continue, alors $f$ se prolonge de manière unique en  $f:\hat{X}\longrightarrow Y$ uniformément continue.
+\end{thm}
+
+\begin{proof}[Démonstration partielle]
+Il y a au moins deux manières de construire le complété.
+\begin{itemize}
+    \item 
+\textbf{Première méthode (naturelle)}. On pose $C= \left\{ s = \left\{ s_n \right\}_n \suchthat  \left\{ s_n \right\} \text{ est de Cauchy }   \right\} $, et on définit la relation d'équivalence \[
+    s\sim t \iff  d(s_n, t_n) \xrightarrow[n\to+\infty]{}0
+\]
+On pose alors $\hat{C}=C / \sim$. Si $\bar{s}$ et $ \bar{t}$ sont dans $\hat{X}$ alors on pose $d(\bar{s}, \bar{t})=\lim_{n\to +\infty}d(s_n, t_n)$.
+
+Exercice: vérifier que $d$ est bien définie, que c'est une distance de  $\hat{X}$, que $\hat{X}$ est complet pour cette distance et que $i:X \longrightarrow \hat{X}, x \longmapsto \bar{\left\{ x \right\}_{n\geq 1} }$ est une isométrie.
+
+\item \textbf{Seconde méthode (moins naturelle)}. On a construit précédemment une isométrie $i:X \longrightarrow E$ où $E$ est l'espace des fonctions continues bornées sur  $X$ munie de la norme  $\|\;\|_X$. On a vu que cet espace est complet, il suffit de prendre $\hat{X}=\bar{i(X)}$
+\end{itemize}
+
+Montrons à présent que si $f: X \longrightarrow Y$ est uniformément continue alors elle se prolonge à $\hat{X}$.
+Soit $x \in  \hat{X}$ la limite d'une suite $\left\{ x_n \right\} _{n\geq 1}$ de Cauchy de $X$ et  $\epsilon>0$. Il existe $\delta>0$ d'uniforme continuité de  $f$ et si $d(x_n, x_m)<\delta$ alors  $d(f(x_n), f(x_m))<\epsilon$. La suite $\left\{ f(x_n) \right\} _{n\geq 1}$ est donc de Cauchy. Comme $Y$ est complet, cette suite admet une limite dans  $Y$. On pose  $f(x)$ cette limite. La fonction est bien définie car si $x_n \longrightarrow  x$ et $x_n' \longrightarrow x$ alors $d(x_n, x_n')\longrightarrow 0$ et donc $d(f(x_n), f(x_n'))\longrightarrow 0$ par uniforme continuité. On a donc $\lim f(x_n)=\lim f(x_n')$. Exercice: montrer que  $f:\hat{X}\longrightarrow Y$ est uniformément continue
+
+Finalement, montrons l'unicité.
+Enfin, si $\hat{X}_{1}$ et $\hat{X}_{2}$ sont deux espaces munis d'isométries $i_{1,2}: X \longrightarrow  \hat{X}_{1,2}$ d'images denses, alors $i_{1}$ se prolonge en une isométrie $\hat{X}_{2} \longrightarrow \hat{X}_{1}$ dont l'image est dense et complète (car elle est isométrique à $\hat{X}_{2}$ ) ce qui fait que $i_{1}: \hat{X}_{2} \longrightarrow \hat{X}_{1}$ est surjective et donc bijective.
+\end{proof}
+
+\begin{rem}
+La première construction de $\hat{X}$ permet de montrer que si $X$ est un evn, alors $\hat{X}$ est un espace de Banach, et que l'application $i: X \rightarrow \hat{X}$ est linéaire.
+\end{rem}
+
+\begin{ex}~
+\begin{enumerate}
+    \item $ \hat{\Q}\simeq\R$
+    \item $E=\R[X]$ et $\|P\|_{[0,1]}=\sup_{[0,1]} |P|$, $ \hat{E}=\mathcal C^0([0, 1], \R)$
+    \item $E=\mathcal  C^0([0, 1], \R)$ muni de sa norme $\|f\|_2=\sqrt{\int |f|^2 }$ se complète en $ \hat{E}=\mathcal  L^2([0, 1])$
+    \item $(\Z, d_p)$ n'est pas complet: $x_n=1+p+\cdots +p^n$ est de Cauchy pour $d_p$ et ne converge pas dans  $\Z$ si $p\neq 0$ car  $(p-1)x_n \longrightarrow -1$ et $-\frac{1}{p-1} \in \Z$. Le complété de cet espace est $\Z_p$ l'ensemble des entiers $p$-adiques.
+\end{enumerate}
+\end{ex}
+
+\begin{exo}
+Pour $p\neq 2$ premier, montrer que  $ \sqrt{1+p^2 } \in  \Z_p $
+\end{exo}
+
+\section{Espaces topologiques}
+
+\begin{dfn}[Espace topologique\index{espace topologique}]
+    Soit $X$ un ensemble. Une \textbf{topologie} \index{topologie} sur  $X$ est un ensemble de parties de  $X$, qu'on appelle les ouverts de  $X$, qui satisfait: \begin{itemize}
+        \item $\emptyset$ et  $X$ sont ouverts
+        \item Une intersection finie d'ouverts est ouverte
+        \item Une réunion quelconque d'ouverts est ouverte.
+    \end{itemize}
+    Un ensemble $X$ muni d'une topologie est appelé \textbf{espace topologique}.
+\end{dfn}
+
+\begin{ex}~
+\begin{itemize}
+    \item Topologie discrète: $ \mathcal P(X)$
+    \item $ \left\{ \emptyset, X \right\} $ (topologie triviale)
+    \item Si $(E, d)$ est un espace métrique alors l'ensemble des ouverts définis avec la distance est une topologie.
+\end{itemize}
+\end{ex}
+
+\begin{dfn}[Base d'ouverts\index{base d'ouverts}]
+Une base d'ouverts est un ensemble $\mathcal  B$ d'ouverts de $X$ tel que tout ouvert de  $X$ est une réunion d'éléments de  $\mathcal  B$.
+\end{dfn}
+
+\begin{ex}
+Dans un espace métrique, l'ensemble des boules ouvertes est une base d'ouverts.
+\end{ex}
+
+\begin{dfn}
+    Un espace topologique est dit métrisable\index{espace métrisable} s'il existe une distance qui induit cette topologie. Deux distances qui donnent la même topologie sont dites topologiquement équivalentes\index{équivalence topologique}\index{distances équivalentes!topologiquement}
+\end{dfn}
+
+\begin{exo}
+    $X=]0, 1]$ muni de  $d_1(x, y)=|x-y|$ et  $d_2(x, y)=|\sfrac1x-\sfrac1y|$. Montrer que ce sont des distances, qu'elles ne sont pas équivalentes, mais qu'elles sont topologiquement équivalentes. Montrer que $(X, d_2)$ est complet mais pas $(X, d_1)$.
+\end{exo}
+
+\begin{dfn}
+    Si $X$ et  $Y$ sont des espaces topologiques, et  $f:X \longrightarrow Y$ est une fonction, alors on dit que $f$ est continue\index{continuité} si  $f^{-1}(U)$ est ouvert pour tout ouvert $U$. De même, on peut définir la connexité et la connexité par arcs sur des espaces topologiques.
+\end{dfn}
+
+\begin{dfn}
+On dit qu'un espace topologique $X$ est séparé\footnotemark si pour tous $x\neq y \in X$, il existe un voisinage de $x$ et un voisinage de $y$ qui ne se rencontrent pas.
+\end{dfn}
+
+\footnotetext{Attention: aucun rapport avec la notion de séparabilité}
+
+\begin{ex}
+Un espace métrisable est séparé
+\end{ex}
+
+\begin{ex}[Cas particulier de la topologie de Zariski]
+On peut munir $\R$ de la topologie qui contient $\emptyset$ et les complémentaires de parties finies. Cet espace n'est pas séparé.
+\end{ex}
+
+\begin{dfn}[Topologie produit\index{topologie produit}]
+Si $X$ et $Y$ sont deux espaces topologiques, alors la \textbf{topologie produit}  sur $X \times Y$ est la topologie qui a pour base d'ouverts les parties de $X \times Y$ de la forme $U \times V$ avec $U$ ouvert de $X$ et $V$ ouvert de $Y$.
+\end{dfn}
+
+\begin{rem}
+La distance produit donne la topologie produit.
+\end{rem}

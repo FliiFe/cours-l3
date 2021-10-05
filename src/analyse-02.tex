@@ -183,5 +183,95 @@ Soit $U$ un ouvert de  $\K$ et $f:U \longrightarrow \K$ une fonction analytique.
 \end{thm}
 
 \begin{proof}
+   Par le paragraphe précédent, il existe $r_{0} \in \R_{+}^{*}$ tel que la série $\sum_{n \in \N} \frac{f^{(n)}(a)}{n !} T^{n}$ a un rayon de convergence $R>r_{0}$ et
+\[
+\forall z \in B\left(a, r_{0}\right), \quad f(z)=\sum_{n \geqslant 0} \frac{f^{(n)}(a)}{n !}(z-a)^{n}
+\]
+    Si $f^{(n)}(a)=0$ pour tout $n \in \N$, il en résulte que l'application $f$ est nulle sur $\B(a, r_{0})$. Dans le cas contraire, posons $\alpha_{n}=\frac{f^{(n)}(a)}{n !}$ pour $n \in \N$ et
+\[
+n_{0}=\min \left\{n \in \N \mid f^{(n)}(a) \neq 0\right\}
+\]
+On peut alors écrire
+\[
+\forall z \in \B\left(a, r_{0}\right), \quad f(z)=(z-a)^{n_{0}}\left(\alpha_{n_{0}}+g(z-a)\right)
+\]
+où $g(z)=\sum_{n \geqslant 1} \alpha_{n+n_{0}} z^{n}$ pour $z \in \B\left(0, r_{0}\right)$. L'application $g$ est continue et $g(0)=0 .$ Comme $\alpha_{n_{0}} \neq 0$, on peut choisir un nombre réel $\left.r \in\right] 0, r_{0}[$ tel que
+\[
+\forall z \in \B(0, r), \quad|g(z)|<\left|\alpha_{n_{0}}\right|
+\]
+Donc, pour $z \in B(a, r)$
+\[
+\begin{aligned}
+|f(z)| &=|z-a|^{n_{0}}\left|\alpha_{n_{0}}\right|\left|1+\frac{1}{\alpha_{n_{0}}} g(z-a)\right| \\
+& \geqslant|z-a|^{n_{0}}\left|\alpha_{n_{0}}\right|\left|1-\frac{1}{\left|\alpha_{n_{0}}\right|}\right| g(z-a)||
+\end{aligned}
+\]
+Mais comme $\frac{1}{\left|\alpha_{n_{0}}\right|} g(z-a)<1$ pour $z \in \B(a, r)$, on obtient que $|f(z)|>0$ pour $z \in \B(a, r)\setminus \{a\}$
+\end{proof}
 
+\begin{cor}
+Soit $U$ un ouvert connexe de $\K$ et soit $f$ une fonction non identiquement nulle analytique sur $U$, alors l'ensemble de ses zéros
+\[
+Z(f)=\{z \in \K \mid f(z)=0\}
+\]
+est une partie localement finie de $U$.
+\end{cor}
+
+\begin{cor}[Principe du prolongement analytique\index{prolongement analytique}]
+    Soit $U$ un ouvert connexe de $\K$. Soient $f$ et $g$ des applications analytiques sur $U$. Si l'une des deux conditions suivantes est vérifiée \begin{enumerate}[label=(\roman*)]
+\item $\exists a \in U, \quad \mathrm{DT}_{a}(f)=\mathrm{DT}_{a}(g)$
+\item L'ensemble $\{z \in U \mid f(z)=g(z)\}$ n'est pas localement fini dans $U$
+\end{enumerate}
+alors $f=g$
+\end{cor}
+\begin{proof}
+Tout d'abord l'assertion (i) implique (ii). En effet, si $\mathrm{DT}_{a}(f-g)=0$, alors il existe $r \in \R_{+}^{\star}$ tel que $f_{\mid \B(a, r)}=g_{\mid \B(a, r)}$.
+
+Si l'assertion (ii) est vérifiée, alors $f-g$ est l'application constante nulle.
+\end{proof}
+
+\begin{cor}
+    Soit $U$ un ouvert connexe de C. Soit $Z \subset U$ une partie qui n'est pas localement finie dans U. Soit $f: Z \longrightarrow \K$ une application. Alors il existe au plus une application analytique $\tilde{f}$ sur $U$ qui prolonge $f$ (i.e. $\tilde{f}_{\mid Z}=f$)
+\end{cor}
+
+\begin{cor}
+Soit $U$ un ouvert connexe de $\K$, et $f,g$ des applications analytiques sur $U$. Si $f$ et $g$ sont non nulles alors $fg$ est non nulle.
+\end{cor}
+
+\section{Détermination principale du logarithme}
+
+\begin{rem}[Rappel]
+    La série $\sum \sfrac{T^n}{n!}$ a un rayon de convergence infini. L'application associée définit l'exponentielle complexe\index{exponentielle complexe}. \[
+    \begin{array}{rrcl}
+        \exp:& \C & \longrightarrow & \C \\
+             & z & \longmapsto & \displaystyle \sum_{n\geq 0} \frac{z^n}{n!}
+    \end{array}
+    \] 
+    Cette application a les propriétés suivantes pour tous $a, b, z, z' \in  \C$: \begin{itemize}
+        \item $\exp(a+b)=\exp(a)\exp(b)$
+        \item $\exp (\bar{z})=\bar{\exp (z)}$ 
+        \item $|\exp(z)|=\exp(\Re(z))$
+        \item $\exp(z)=\exp(z')\iff  \exists k \in  \Z, \quad , z-z'=2ik\pi$
+    \end{itemize}
+\end{rem}
+
+\begin{prop}
+L'exponentielle est holomorphe sur $ \C$ et $\exp'=\exp$.
+\end{prop}
+
+\begin{defprop}[Détermination principale du logarithme]
+Il existe une unique application continue \[
+    \Log: \C \setminus ]-\infty, 0] \longrightarrow \C
+\] 
+telle que \begin{enumerate}
+    \item $\Log(1)=0$
+    \item $\exp\circ\Log=\id_{\C\setminus ]-\infty, 0]}$
+\end{enumerate}
+On l'appelle la détermination principale du logarithme\index{logarithme!détermination principale}. Cette application est holomorphe de dérivée $z\longmapsto \sfrac1z$ et \[
+    \forall  z \in  \B(0, 1), \quad  \Log(1-z)=-\sum_{n\geq 1}\frac{z^n}{n}
+\] 
+\end{defprop}
+
+\begin{proof}
+%TODO: cette preuve
 \end{proof}

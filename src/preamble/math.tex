@@ -47,6 +47,7 @@
 \genmrm{sh}
 \genmrm{ch}
 \genmrm{Aut}
+\genmrm{Log}
 
 \DeclareMathOperator*\lowlim{\underline{lim}}
 \DeclareMathOperator*\uplim{\overline{lim}}
@@ -102,6 +103,8 @@
 % fields
 \DeclareDocumentCommand\K{}{\mathbf K}
 \DeclareDocumentCommand\F{}{\mathbf F}
+% espaces fonctionnels
+\DeclareDocumentCommand\L{m}{\mathbf L^#1}
 % logo d'indépendance
 \newcommand\indep{\protect\mathpalette{\protect\indepT}{\perp}}
 \def\indepT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}

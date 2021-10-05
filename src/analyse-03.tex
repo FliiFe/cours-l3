@@ -1,0 +1,26 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Intégrales de Cauchy} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Intégrales de Cauchy}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Intégration complexe (première version)}
+
+\begin{dfn}
+    Soit $X$ un espace topologique. Un chemin\index{chemin} de $X$ est une application continue $\gamma:[0,1]\longrightarrow X$ continue. On note $o(\gamma)=\gamma(0)$ son origine\index{chemin!origine} et $t(\gamma)=\gamma(1)$ son terme\index{chemin!terme}. Si $o(\gamma)=t(\gamma)$ alors on dit que $\gamma$ est un lacet\index{lacet}\index{chemin!lacet}.
+\end{dfn}
+
+\begin{dfn}
+    Une subdivision d'un intervalle $[a, b]$ avec $a<b$ est une famille finie $\sigma=(\lambda_0, \cdots , \lambda_n)$ telle que \[a=\lambda_0<\lambda_1<\cdots <\lambda_n=b\]
+    On dit que $\gamma:[a, b]\longrightarrow \C$ est $\mathcal C^1$ par morceaux s'il existe une subdivision $(\lambda_0, \cdots , \lambda_n)$ de $[a, b]$ telle que $\gamma_{|]\lambda_i, \lambda_{i+1}[}$ est $\mathcal  C^1$ prolongeable en $\lambda_i, \lambda_{i+1}$
+\end{dfn}

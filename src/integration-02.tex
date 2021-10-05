@@ -196,6 +196,12 @@ Pour satisfaire la condition d'unicité, il reste à regrouper les ensembles $C_
     \] 
 \end{cor}
 
+\begin{rem}
+    La relation de Chasles découle de l'additivité. Si $f:(X, \mathcal  A) \longrightarrow [0, +\infty]$ et $E, F \in  \mathcal  A$ avec $E\cap F=\emptyset$ alors $\1_{E\sqcup F}=\1_E+\1_F$ donc \[
+        \int_{E\sqcup F} f\diff \mu=\int_X f\1_{E\sqcup F}\diff \mu=\int_Ef\diff \mu+\int_Ff\diff\mu
+    \]
+\end{rem}
+
 \begin{proof}
     On écrit $f=\lim s_k$ avec  $(s_k)$ croissante, idem $g=\lim t_k$.  Alors $s_k+t_k$ tend simplement vers  $f+g$ et Beppo-Levi donne:  \[
         \int_E(f+g)\diff\mu=\lim\int_E(s_k+t_k)\diff\mu=\lim \left(\int_Es_k\diff \mu+\int_Et_k\diff\mu\right)
@@ -209,6 +215,165 @@ Pour satisfaire la condition d'unicité, il reste à regrouper les ensembles $C_
     \] 
 \end{lmm}
 
+
+\begin{rem}
+    Il n'y a pas toujours égalité. Dans $(\R, \mathcal B(\R), \lambda)$, on prend $f_k=\1_{[k, +\infty[}$. Alors $\liminf_{k\to +\infty} f_k=0$ mais \[
+    \int_X f_k\diff\lambda=+\infty
+    \] 
+\end{rem}
+
 \begin{proof}
-On écrit la limite inférieure comme une limite de $g_k$ et Beppo-Levi.
+% On écrit la limite inférieure comme une limite de $g_k$ et Beppo-Levi.
+    On pose $g_n=\inf_{k\geq n}f_k$, c'est une suite croissante de fonctions mesurables positives et qui converge vers $\liminf f_k$. Beppo-Levi donne \[\inf_X\liminf_{k\to +\infty} f_k\diff \mu=\lim_{n\to +\infty}\int_Xg_n\diff\mu\leq \int_Xf_n\diff\mu\]
 \end{proof}
+
+\section{Intégration des fonctions à valeurs dans \texorpdfstring{$\C$}{C}}
+
+\begin{dfn}
+    Une fonction mesurable $f:(X, \mathcal  A)\longrightarrow \C$ est dite intégrable\index{intégrable}\index{fonction intégrable} si \[\int_X|f|\diff\mu<+\infty\]
+    Dans ce cas, si on écrit $f=u+iv$ puis on définit  $u^+, u^-, v^+, v^-$ avec des notations évidentes, ces quatre fonctions sont mesurables et  $\leq |f|$ donc elles sont intégrables. On appelle alors intégrale de $f$ pour la mesure  $\mu$ sur  $E$ le complexe \[\int_Ef\diff\mu=\int_Eu^+\diff\mu-\int_Eu^-\diff\mu+i\int_Ev^+\diff\mu-i\int_Eu^-\diff\mu\]
+\end{dfn}
+
+\begin{rem}[Terminologie]
+    Une fonction mesurable positive admet toujours une intégrale mais n'est pas toujours intégrable (elle l'est si et seulement si cette intégrale est finie).
+\end{rem}
+
+\begin{rem}
+Il découle de la définition: \begin{itemize}
+    \item Si $f$ est à valeurs réelles alors \[\int_Xf\diff\mu=\int_Xf^+\diff\mu-\int_Xf^-\diff\mu\] 
+    \item Si $f$ est à valeurs complexes, \[\int_X f\diff\mu=\int_X\Re(f)\diff\mu+i\int_X\Im(f)\diff\mu\]
+\end{itemize}
+\end{rem}
+
+\begin{lmm}
+En ne considérant que des fonctions intégrables et des ensembles mesurables: \begin{itemize}
+    \item $\displaystyle f\leq g \implies \int_Ef\diff\mu\leq \int_Eg\diff\mu$
+    \item $\displaystyle \int_Ef\diff\mu=\int_Xd\1-E\diff\mu$
+    \item  $\mu(E)=0 \implies \displaystyle \int_Ef\diff\mu=0$
+    \item $f_{|E}\equiv 0 \implies  \displaystyle \int_Ef\diff\mu=0$
+\end{itemize}
+\end{lmm}
+
+\begin{proof}~
+\begin{itemize}
+    \item Si $f\leq g$ alors $f^+\leq g^+$ et $f^- \geq g^-$ et il reste à exploiter la croissance de l'intégrale sur les fonctions positives.
+    \item Pour le reste, on décompose $f$ en  $\Re(f)^+, \Re(f)^-, \Im(f)^+, \Im(f)^-$.
+\end{itemize}
+\end{proof}
+
+\begin{thm}
+    Soient $f, g : (X, \mathcal  A)\longrightarrow \C$ intégrables, $\alpha, \beta \in  \C$. Alors $ \alpha f+\beta g$ est intégrable et \[\int_X(\alpha f + \beta g)\diff\mu=\alpha\int_Xf\diff\mu+\beta\int_Xg\diff\mu\]
+\end{thm}
+
+
+\begin{thm}
+    Soit $f:(X, \mathcal  A) \longrightarrow  \C$ intégrable alors \[
+    \left|\int_X f\diff\mu \right|\leq \int_X |f|\diff\mu.
+    \] 
+\end{thm}
+
+\begin{proof}
+    Soit $ \alpha \in  \C, |\alpha|=1$ tel que \[ \alpha\int_Xf\diff\mu=\left| \int_Xf\diff\mu \right|.\]
+    Alors \begin{align*}
+        \left| \int_Xf\diff\mu \right|=\int_X\Re(\alpha f)\diff\mu+i\underbrace{\int_X\Im(\alpha f)\diff\mu}_{=0}&=\int_X\Re(\alpha f)^+\diff\mu-\int_X \Re(\alpha f)^-\diff\mu\\ &\leq \int_X(\Re(\alpha f)^++\Re(\alpha f)^-)\diff\mu)\\&=\int_X|\Re(\alpha f)|\diff \mu \\
+                                                                                                                 &\leq \int_X|\alpha f|\diff\mu=\int_X |f|\diff\mu
+    \end{align*}
+\end{proof}
+
+
+\begin{thm}[Convergence dominée de Lebesgue\index{Convergence dominée de Lebesgue (théorème)}]
+    Soit $(f_n:(X, \mathcal  A)\longrightarrow \C)$ une suite de fonctions mesurables qui converge simplement vers $f$. On suppose qu'il existe une fonction  $g:(X, \mathcal  A)\longrightarrow [0, +\infty]$ mesurable et telle que \begin{itemize}
+        \item $|f_n|\leq g$ pour $n\geq 0$
+        \item $g$ est intégrable.
+    \end{itemize}
+    Alors, chaque $f_n$ est intégrable et \[\int_Xf_n\diff\mu \xrightarrow[n\to+\infty]{}\int_Xf\diff\mu\]
+\end{thm}
+
+\begin{proof}
+    L'intégrabilité ne pose pas de problème. Remarquons  $|f_n-f|\leq 2g$ donc $h_n=2g-|f_n-f|$ est positive. On applique le lemme de Fatou à  $(h_n)$. \[
+        \int_X\underbrace{\liminf_{n\to +\infty}2g-|f_n-f|}_{=2g}\diff\mu\leq \liminf_{n\to +\infty}\int_X2g-|f_n-f|\diff\mu
+    \]
+    donc \[
+        2\int_Xg\diff\mu\leq 2\int_Xg\diff\mu -\limsup_{n\to +\infty}\int_X |f_n-f|\diff\mu
+    \] 
+    d'où \[
+        \limsup_{n\to +\infty} \int_X\underbrace{|f_n-f|}_{\geq 0}\diff\mu \leq 0
+    \] 
+    donc \[\int_X|f_n-f|\diff\mu \xrightarrow[n\to+\infty]{}0\]
+    D'où finalement \[
+        \left| \int_Xf_n\diff\mu-\int_Xf\diff\mu \right|\leq \int_X |f_n-f|\diff\mu \xrightarrow[n\to+\infty]{}0
+    \] 
+\end{proof}
+
+\section{Presque partout}
+
+\begin{dfn}
+    On dit d'une propriété qu'elle est vraie presque partout\index{presque partout} ou pour presque tout $x$ dans  $(X, \mathcal  A, \mu)$ mesuré si la propriété est vraie pour tout $x \in  A$ avec $\mu(A^c)=0$
+\end{dfn}
+
+\begin{rem}
+Pour la mesure, deux fonctions égales presque partout ont les mêmes propriétés, et on les confondra souvent. De même, on hésitera pas à considérer des fonctions définies presque partout.
+\end{rem}
+
+\begin{lmm}
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré, si  $f, g$ positives ou intégrables et $E$ un ensemble mesurable,  \begin{itemize}
+        \item $f=g$ p.p  $\implies \int_Ef\diff\mu=\int_Eg\diff\mu$
+        \item $f\geq g$ p.p $\implies \int_Xf\diff\mu\geq \int_G g\diff\mu$
+        \item si $f\geq 0$, $\int_Xf\diff\mu<+\infty \implies f \text{ finie p.p.}$
+        \item si $f\geq 0$, $\int_Xf\diff\mu=0\implies f=0$ p.p.
+        \item $|\int_X f\diff\mu|=\int_X|f|\diff\mu \implies \exists  \alpha \in \C, \alpha f=|f|$ p.p.
+    \end{itemize}
+\end{lmm}
+
+\section{Intégrales à paramètres}
+
+\begin{thm}[Continuité sous le signe $\int$\index{continuité sous le signe somme@continuité sous le signe $\int$}]
+    Soient $(X, \mathcal  A, \mu)$ un espace mesuré et $T$ un espace métrique. Soit  $f:T\times X \longrightarrow \C$ telle que
+        $\forall  t \in  T, x \longmapsto f(t, x)$ est mesurable. Soit $t_0 \in  T$, et supposons que \begin{enumerate}
+            \item Pour $\mu$-presque tout  $x$,  $t\longmapsto f(t, x)$ est continue en $t_0$
+            \item Il existe  $g:(X, \mathcal A, \mu)\longrightarrow [0, +\infty]$ intégrable telle que $\forall  t \in  T, $ pour $\mu-$presque tout  $x \in  X$, $|f(t, x)|\leq g(x)$
+        \end{enumerate}
+        Alors la fonction \[F(t)=\int_Xf(t, x)\diff \mu(x)\] est définie en tout $t \in  T$ et $F$ est continue en  $t_0$.
+\end{thm}
+
+\begin{proof}
+    Par caractérisation séquentielle de la limite. Soit $t_n \longrightarrow t_0$ et posons pour tout $n\geq 1, f_n=f(t_n, \cdot)$ et $f_0=f(t_0, \cdot)$. La suite  $(f_n)$ converge  $\mu$-presque partout vers  $f_{0}$ et est dominée par $g$ donc par le théorème de convergence dominée de Lebesgue,  \[
+        F(t_n)=\int_Xf_n(x)\diff\mu(x) \xrightarrow[n\to+\infty]{}\int_X f_{0}(x)\diff \mu(x)=\int_X f(t_0, x)\diff \mu(x)=F(t_0)
+    \] 
+\end{proof}
+
+\begin{thm}[Dérivation sous le signe $\int$\index{dérivation sous le signe somme@dérivation sous le signe $\int$}]
+    On note $(X, \mathcal  A, \mu)$ un espace mesuré, $I$ un intervalle ouvert de  $\R$. Soit $f:I]times X \longrightarrow \R$ une fonction mesurable telle que $\forall  \mathcal  A \in I, x \longmapsto f(t, x)$ est mesurable. Supposons qu'il existe un ensemble $A \in  \mathcal  A$ avec $\mu(A^c)=0$ tel que  \begin{enumerate}[label=(\alph*)]
+        \item Il existe $t_0 \in  I$ tel que $x\longmapsto f(t_0, x)$ est intégrable
+        \item Pour tout $x \in  A$, $t \longmapsto f(t, x)$ est dérivable sur $I$.
+        \item Il existe  $g:(X, \mathcal  A,  \mu)\longrightarrow [0, +\infty]$ intégrable telle que \[
+                \forall  x \in  A, \forall  t \in  I, \left| \frac{\partial f}{\partial t}(t, x) \right|\leq g(x)
+        \] 
+        Alors la fonction \[
+            F(t)=\int_Xf(t, x)\diff\mu(x)
+        \] 
+        est bien définie sur $I$ et dérivable sur  $I$ avec  \[
+            \forall  t \in  I, F'(t)=\int_X \frac{\partial f}{\partial t}(t, x)\diff\mu(x)
+        \] 
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+Si $t \in  I$ alors \[
+    \frac{\partial f}{\partial t}(t, x)\1_A(x)=\lim_{n\to +\infty} n(f(t+\sfrac1n, x)-f(t, x))\1_A(x)
+\] 
+donc $\sfrac{\partial f}{\partial x}(t, x)\1_A(x)$ est mesurable et même par (c) intégrable. Puis si $x \in  A$ et $(t, t') \in  I^2 $, par le TAF on a \[
+    \left| \frac{f(t, x)-f(t', x)}{t-t'} \right|= \left| \frac{\partial f}{\partial t}(c, x) \right|\leq g(x)
+\]
+donc si $t'=t_0$ alors \[
+    |f(t, x)|\leq \underbrace{|f(t_0, x)|+|t-t_0|g(x)}_{\text{intégrable}}
+\] 
+donc $F$ est bien définie. Soient  $t_0 \in  I$ et $t_n \xrightarrow[n\to+\infty]{}t_0$ avec $t_n \neq  t_0$. \[
+    \frac{F(t_n)-F(t_0)}{t_n-t_0}=\int_X\underbrace{\frac{f(t_n, x)-f(t_0,x)}{t_n-t_0}}_{\xrightarrow[n\to+\infty]{}\frac{\partial f}{\partial t}(t_0, x)}\diff\mu(x)
+\]
+pour tout $x \in  A$ et par (c), on déduit alors par convergence dominée de Lebesgue que $F(t_0)$ existe et a bien la bonne valeur.
+\end{proof}
+
+\begin{rem}
+Dans le premier résultat, le "presque partout" dépend du $t_0$ où l'on veut montrer la continuité, mais pas dans le second.
+\end{rem}

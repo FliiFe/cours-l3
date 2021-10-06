@@ -18,7 +18,7 @@ jobs:
           apk add make zip
           # tlmgr install mlmodern
           make clean
-          env VERBOSE=y make all
+          env VERBOSE=y make all -j3
           zip -j cours.zip target/*.pdf
     # - name: Compilation
     #   uses: xu-cheng/latex-action@master

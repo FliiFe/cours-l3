@@ -1,0 +1,140 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Formes bilinéaires} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Formes bilinéaires}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+Soit $k$ un corps, on considère des espaces vectoriels de dimension finie sur $k$.
+
+\section{Matrice d'une forme bilinéaire}
+
+ \begin{dfn}
+     Soient $E$ et  $F$ des espaces vectoriels et  $\phi \in  \Bil(E, F)$. Soient $\mathcal  B_E$ et $ \mathcal  B_F$ des bases de $E$ et de  $F$. La matrice de  $\phi$ dans les bases  $\mathcal B_E, \mathcal  B_F$ est \[
+         \mathcal  M_{\mathcal  B_E, \mathcal  B_F}(\phi)= (\phi(e_i, f_j))_{i,j}
+     \] 
+
+     On obtient aussi un isomorphisme\footnotemark entre $\Bil(E, F)$ et  $\mathcal  M_{m,n}(k)$ (avec $m=\dim E, n=\dim F$)
+\end{dfn}
+
+\footnotetext{non canonique}
+
+\begin{rem}[Changement de base]
+Soient $\mathcal  B_E', \mathcal  B_F'$ d'autres bases. Alors \[
+    \mathcal  M_{\mathcal  B_E', \mathcal  B_F'}(\phi)=\transpose P_E \mathcal M_{\mathcal  B_E, \mathcal  B_F}(\phi)P_F
+\] 
+où $P_E, P_F$ sont les matrices de passage.
+\end{rem}
+
+\begin{dfn}
+Le rang de $\phi$ est le rang de sa matrice. Il ne dépend pas de la base choisie.
+\end{dfn}
+
+\begin{rem}
+Si $E=F$, alors  \[
+    \mathcal  M_{\mathcal  B_E', \mathcal  B_E'}(\phi)=\transpose P_E \mathcal M_{\mathcal  B_E, \mathcal B_E}(\phi)P_E
+\] 
+Ces matrices sont dites congruentes\index{congruence (matrices)}\index{matrices congruentes}
+\end{rem}
+
+
+\section{Formes bilinéaires et dualité}
+
+\begin{dfn}
+    Soit $\phi \in  \Bil(E, F)$. On définit les applications linéaires \[
+    \begin{array}{rrcl}
+        L_\phi:& E & \longrightarrow &F^\star  \\
+               & x & \longmapsto & \displaystyle (y \longmapsto \phi(x, y))\\
+        R_\phi:& F & \longrightarrow &E^\star  \\
+               & y & \longmapsto & \displaystyle (x \longmapsto \phi(x, y))
+    \end{array}
+    \] 
+\end{dfn}
+
+\begin{rem}
+L'isomorphisme de bidualité permet de montrer que ces deux application sont transposées l'une de l'autre
+\end{rem}
+
+\begin{ex}
+Si $\phi$ est le crochet de dualité \[
+\begin{array}{rrcl}
+    \langle \;\rangle:& E\times E^\star & \longrightarrow & k \\
+                      & (x, \lambda) & \longmapsto & \displaystyle \lambda(x)
+\end{array}
+\] 
+alors $L_\phi$ est l'isomorphisme canonique de bidualité et  $R_\phi$ est l'identité de  $E^\star$
+\end{ex}
+
+\begin{prop}
+    Les applications $L:\phi \longmapsto L_\phi$ et $R:\phi \longmapsto R_\phi$ fournissent des isomorphismes canoniques \[
+        \Bil(E, F)\cong \Hom(E, F^\star) \qquad \text{ et }\qquad \Bil(E, F)\cong \Hom(F, E^\star)
+    \] 
+\end{prop}
+
+\begin{proof}
+    Il y a égalité des dimensions, puis $L_\phi=0 \implies \forall  x \in E, L_\phi(x)=0 \implies \phi\equiv 0$
+\end{proof}
+
+\begin{prop}
+    Soient $\mathcal  B_E, \mathcal  B_F$ des bases de $E, F$, et soit  $ \phi \in \Bil(E, F)$. Alors \[
+        \mathcal  M_{\mathcal  B_E, \mathcal  B_F}(\phi)=\mathcal  M_{\mathcal  B_E, \mathcal  B_F^\star}(L_\phi)=\mathcal M_{\mathcal  B_F, \mathcal  B_E^\star}(R_\phi)
+    \] 
+\end{prop}
+
+\begin{proof}
+    Si $\mathcal  B_E=(e_1, \cdots , e_m)$ et $\mathcal  B_F=(f_1, \cdots , f_n)$ alors \[
+        R_\phi(f_j)=\sum_{i=1}^m \phi(e_i, f_j)e_i^\star
+    \] 
+\end{proof}
+
+\begin{cor}
+\[
+\rg \phi=\rg L_\phi=\rg R_\phi
+\] 
+\end{cor}
+
+\section{Formes bilinéaires non dégénérées}
+
+\begin{prop}
+    Une forme bilinéaire est dite non-dégénérée\index{forme bilinéaire non-dégénérée} si et seulement si: \begin{enumerate}
+        \item $\exists  \mathcal  B_E, \mathcal  B_F$ tels que $\mathcal  M_{\mathcal  B_E, \mathcal  B_F}(\phi)$ est inversible
+        \item $\forall  \mathcal  B_E, \mathcal  B_F$, $\mathcal  M_{\mathcal  B_E, \mathcal  B_F}(\phi)$ est inversible
+        \item $L_\phi$ est un isomorphisme
+        \item  $R_\phi$ est un isomorphisme
+    \end{enumerate}
+\end{prop}
+
+\begin{ex}
+Le crochet de dualité est une forme bilinéaire non dégénérée car $R_{\langle\;\rangle}=\id_{E^\star}$ est un isomorphisme.
+\end{ex}
+
+\begin{rem}
+Si $\dim E=\dim F$ alors c'est équivalent à l'injectivité de  $L_\phi$ ou  $R_\phi$
+\end{rem}
+
+\section{Orthogonalité}
+
+\begin{dfn}
+    Soit $\phi \in  \Bil(E, F)$ et $V$ un sev de $E$. On pose \[
+        V^\top = V^{\top, \phi}= \left\{ y \in  F \suchthat \forall  x  \in  V, \phi(x, y)=0 \right\} 
+    \] 
+    De même, si $W$ est un sev de $F$, on pose \[
+        W^\top = W^{\top, \phi}= \left\{ x \in  E \suchthat \forall  y  \in  W, \phi(x, y)=0 \right\} 
+    \] 
+    $V^\top$ et $W^\top$ sont des sev respectifs de $F, E$.
+\end{dfn}
+
+\begin{rem}
+Si $\phi$ est le crochet de dualité, on retrouve la notion d'orthogonalité définie dans le chapitre correspondant.
+\end{rem}
+
+

@@ -63,53 +63,53 @@ Puis on définit \[
 Soient $E$ et  $F$ des espaces vectoriels 
 
 \begin{thm}
-Il existe un espace vectoriel noté $E \otimes F$ et une application bilinéaire  $b:E\times F \longrightarrow E\otimes F$ qui vérifie la propriété universelle suivante: pour tout espace vectoriel $G$ et toute application bilinéaire  $\phi:E\times F\longrightarrow G$, il existe une unique application linéaire $f:E\otimes F\longrightarrow G$ telle que $\phi=f\circ b$.
+Il existe un espace vectoriel noté $E \tens F$ et une application bilinéaire  $b:E\times F \longrightarrow E\tens F$ qui vérifie la propriété universelle suivante: pour tout espace vectoriel $G$ et toute application bilinéaire  $\phi:E\times F\longrightarrow G$, il existe une unique application linéaire $f:E\tens F\longrightarrow G$ telle que $\phi=f\circ b$.
 
  \begin{center}
 \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
     E\times F \arrow[r, "\phi"] \arrow[dr,"b"] & G \\
-                                                & E\otimes F \arrow[u, "f", dashed]
+                                                & E\tens F \arrow[u, "f", dashed]
 \end{tikzcd}
 \end{center}
 \end{thm}
 
 \begin{proof}~
 \begin{itemize}
-    \item Existence: Soit $(e_1, \cdots , e_m)$ une base de $E$ et  $(f_1, \cdots , f_n)$ une base de $F$. On définit  $E\otimes F$ comme l'espace vectoriel de base indexée par  $\llbracket 1,m \rrbracket \times \llbracket 1,n \rrbracket $. On note $e_i\oplus f_j$ l'élément de la base correspondant au couple  $(i, j)$ 
+    \item Existence: Soit $(e_1, \cdots , e_m)$ une base de $E$ et  $(f_1, \cdots , f_n)$ une base de $F$. On définit  $E\tens F$ comme l'espace vectoriel de base indexée par  $\llbracket 1,m \rrbracket \times \llbracket 1,n \rrbracket $. On note $e_i\oplus f_j$ l'élément de la base correspondant au couple  $(i, j)$ 
     
         Soient $(x, y) \in  E\times F$, et $(a_i)_i, (b_i)_i$ les coordonnées dans les bases choisies. On pose \[
-            b(x, y)= \sum_{(i, j)} a_ib_j(e_i\otimes f_j) \in  E\otimes F
+            b(x, y)= \sum_{(i, j)} a_ib_j(e_i\tens f_j) \in  E\tens F
         \] 
-        C'est une application bilinéaire. Montrons la propriété universelle. Soit $\phi \in  \mathrm{Bil}(E, F, G)$. On prend $f$ l'unique application linéaire envoyant  $e_i\otimes f_j$ sur  $\phi(e_i, f_j)$. Montrons que  $\phi=f\circ b$. Les deux applications  $\phi$ et  $f\circ b$ sont bilinéaires. Par la proposition ci-dessus, il suffit de montrer qu'elles coïncident sur  les $(e_i, f_j)$. On a  \[
-            \phi(e_i, f_j)=f(e_i\otimes f_j)=f\circ b(e_i, f_j)
+        C'est une application bilinéaire. Montrons la propriété universelle. Soit $\phi \in  \mathrm{Bil}(E, F, G)$. On prend $f$ l'unique application linéaire envoyant  $e_i\tens f_j$ sur  $\phi(e_i, f_j)$. Montrons que  $\phi=f\circ b$. Les deux applications  $\phi$ et  $f\circ b$ sont bilinéaires. Par la proposition ci-dessus, il suffit de montrer qu'elles coïncident sur  les $(e_i, f_j)$. On a  \[
+            \phi(e_i, f_j)=f(e_i\tens f_j)=f\circ b(e_i, f_j)
         \] 
-    \item Unicité: Soit $(T, b')$ un autre couple vérifiant  (PU). Alors en appliquant (PU) sur $E\otimes F$ et avec la symétrie, on obtient  $g:T\longrightarrow E\otimes F$. On va montrer que $f$ et  $g$ sont inverses l'une de l'autre.
+    \item Unicité: Soit $(T, b')$ un autre couple vérifiant  (PU). Alors en appliquant (PU) sur $E\tens F$ et avec la symétrie, on obtient  $g:T\longrightarrow E\tens F$. On va montrer que $f$ et  $g$ sont inverses l'une de l'autre.
  \begin{center}
 \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
     E\times F \arrow[r, "b'"] \arrow[dr,"b"] & T\arrow[d,"g",shift left] \\
-                                                & E\otimes F \arrow[u,"f",shift left] % TODO: fix.
+                                                & E\tens F \arrow[u,"f",shift left] % TODO: fix.
 \end{tikzcd}
 \end{center}
-On a $g\circ f: E\otimes F \longrightarrow E\otimes F$ et l'unicité dans la (PU) pour $(E\otimes F, b)$ donne 
+On a $g\circ f: E\tens F \longrightarrow E\tens F$ et l'unicité dans la (PU) pour $(E\tens F, b)$ donne 
  \begin{center}
 \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
-    E\times F \arrow[r, "b"] \arrow[dr,"b"] & E\otimes F \\
-                                                & E\otimes F \arrow[u, "\id"]
+    E\times F \arrow[r, "b"] \arrow[dr,"b"] & E\tens F \\
+                                                & E\tens F \arrow[u, "\id"]
 \end{tikzcd}
 \end{center}
 et $g\circ f$ est aussi une factorisation
  \begin{center}
 \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
-    E\times F \arrow[r, "b"] \arrow[dr,"b"] & E\otimes F \\
-                                                & E\otimes F \arrow[u, "g\circ f"]
+    E\times F \arrow[r, "b"] \arrow[dr,"b"] & E\tens F \\
+                                                & E\tens F \arrow[u, "g\circ f"]
 \end{tikzcd}
 \end{center}
-Donc $g\circ f=\id_{E\otimes F}$ et par symétrie $f\circ g=\id_T$
+Donc $g\circ f=\id_{E\tens F}$ et par symétrie $f\circ g=\id_T$
 \end{itemize}
 \end{proof}
 
 \begin{prop}
-    On a $\dim(E\otimes F)=\dim(E)\times \dim(F)$
+    On a $\dim(E\tens F)=\dim(E)\times \dim(F)$
 \end{prop}
 
 \begin{proof}
@@ -117,42 +117,42 @@ Par construction
 \end{proof}
 
 \begin{rem}
-    Si on applique (PU) à $G=k$, on obtient un isomorphisme canonique  $\mathrm {Bil}(E, F, k) \cong (E\otimes F)^\star $. Plus généralement, $\mathrm {Bil}(E, F, G)\cong \mathrm {Hom}(E\otimes F, G)$
+    Si on applique (PU) à $G=k$, on obtient un isomorphisme canonique  $\mathrm {Bil}(E, F, k) \cong (E\tens F)^\star $. Plus généralement, $\mathrm {Bil}(E, F, G)\cong \mathrm {Hom}(E\tens F, G)$
 \end{rem}
 
 \section{Tenseurs}
 
 \begin{dfn}
     Pour $(x, y) \in  E\times F$. On pose \[
-        x\otimes y=b(x, y) \in  E\otimes F
+        x\tens y=b(x, y) \in  E\tens F
     \] 
-    Les éléments $x\otimes y$ sont appelés tenseurs simples\index{tenseurs simples}.
+    Les éléments $x\tens y$ sont appelés tenseurs simples\index{tenseurs simples}.
 \end{dfn}
 
 \begin{rem}
-En général, il existe des éléments de $E\otimes F$ qui ne sont pas des tenseurs simples.
+En général, il existe des éléments de $E\tens F$ qui ne sont pas des tenseurs simples.
 \end{rem}
 
 \begin{exo}
-Si $\dim F=\dim E=2$ alors l'élément  $e_1\otimes f_1+e_2\otimes f_2$ n'est pas un tenseur simple.
+Si $\dim F=\dim E=2$ alors l'élément  $e_1\tens f_1+e_2\tens f_2$ n'est pas un tenseur simple.
 \end{exo}
 
 \begin{prop}
     Si $(e_1, \cdots , e_m)$ est une base de $E$,  $(f_1, \cdots , f_n)$ une base de $F$,  et $(x, y) \in  E\times F$ de coefficients respectifs $(a_i)_i, (b_j)_j$. Alors  \[
-        x\otimes y= \sum_{i=1}^{m} \sum_{j=1}^{n} a_ib_j(e_i\otimes f_j)
+        x\tens y= \sum_{i=1}^{m} \sum_{j=1}^{n} a_ib_j(e_i\tens f_j)
     \] 
 \end{prop}
 
 \begin{proof}
-    C'est la bilinéarité de $(x, y)\longmapsto x\otimes y$
+    C'est la bilinéarité de $(x, y)\longmapsto x\tens y$
 \end{proof}
 
 \begin{prop}
-Tout élément de $E\otimes F$ est somme de tenseurs simples.
+Tout élément de $E\tens F$ est somme de tenseurs simples.
 \end{prop}
 
 \begin{proof}
-    On décompose sur la base des $(e_i\otimes f_j)$ et  $\alpha (x\otimes y)=(\alpha x)\otimes y$.
+    On décompose sur la base des $(e_i\tens f_j)$ et  $\alpha (x\tens y)=(\alpha x)\tens y$.
 \end{proof}
 
 \begin{rem}
@@ -160,7 +160,7 @@ L'écriture d'un tenseur comme somme de tenseurs simples n'est pas unique.
 \end{rem}
 
 \begin{prop}
-    Soit $A=(e_1, \cdots , e_p)$ une famille de $E$ et  $B=(f_1, \cdots , f_q)$ une famille de $F$. Posons  $C=(e_i\otimes f_j)_{\substack{1\leq i\leq p\\1\leq j\leq q}}$. Si $A$ et  $B$ sont libres (resp. génératrices, resp. des bases), alors  $C$ est libre (resp. génératrice, resp. une base).
+    Soit $A=(e_1, \cdots , e_p)$ une famille de $E$ et  $B=(f_1, \cdots , f_q)$ une famille de $F$. Posons  $C=(e_i\tens f_j)_{\substack{1\leq i\leq p\\1\leq j\leq q}}$. Si $A$ et  $B$ sont libres (resp. génératrices, resp. des bases), alors  $C$ est libre (resp. génératrice, resp. une base).
 \end{prop}
 
 \begin{proof}
@@ -175,7 +175,7 @@ L'écriture d'un tenseur comme somme de tenseurs simples n'est pas unique.
 
 \begin{prop}
 Soient $E, F$ des espaces vectoriels. Il y a un isomorphisme canonique \[
-    E^\star \otimes F\cong \Hom(E, F)
+    E^\star \tens F\cong \Hom(E, F)
 \] 
 \end{prop}
 
@@ -186,49 +186,49 @@ Soient $E, F$ des espaces vectoriels. Il y a un isomorphisme canonique \[
              & (\lambda, y) & \longmapsto & \displaystyle (x \longmapsto \lambda(x)y)
     \end{array}
     \] 
-    Donc il existe une unique application linéaire $\psi : E^\star \otimes F \longrightarrow \Hom(E, F)$ telle que $\psi(\lambda\otimes y)=\phi(\lambda, y)$ pour tout  $\lambda \in  E^\star, y \in  F$. Puis, \[
-        \dim(E^\star\otimes F)=\dim (E)\times \dim (F)=\dim\Hom(E, F)
+    Donc il existe une unique application linéaire $\psi : E^\star \tens F \longrightarrow \Hom(E, F)$ telle que $\psi(\lambda\tens y)=\phi(\lambda, y)$ pour tout  $\lambda \in  E^\star, y \in  F$. Puis, \[
+        \dim(E^\star\tens F)=\dim (E)\times \dim (F)=\dim\Hom(E, F)
     \] 
     Il va suffire de montrer la surjectivité. Soit $(f_1, \cdots , f_n)$ une base de $F$ et  $g \in \Hom(E, F)$. Posons $g_i=f_i^\star\circ g$ où $(f_i^\star)$ est la base duale de  $(f_1, \cdots , f_n)$. Les $g_i$ sont des formes linéaires et \[
-        g=\sum_{i=1}^n \phi(g_i, f_i)=\sum_{i=1}^n\psi(g_i\otimes f_i)=\psi\left(\sum_{i=1}^n g_i\oplus f_i\right)
+        g=\sum_{i=1}^n \phi(g_i, f_i)=\sum_{i=1}^n\psi(g_i\tens f_i)=\psi\left(\sum_{i=1}^n g_i\oplus f_i\right)
     \] 
 \end{proof}
 
 \begin{prop}
 Pour tout espace vectoriel $E$, il y a un isomorphisme canonique  \[
-E\otimes k\cong E
+E\tens k\cong E
 \]
 \end{prop}
 
 \begin{proof}
-    On définit $\varphi:E \longrightarrow E\otimes k, x\longmapsto x\otimes 1$. Dans l'autre sens, on considère $h:E\times k \longrightarrow E, (x, a)\longmapsto ax$, qu'on factorise avec (PU) qui donne $\psi:E\otimes k \longrightarrow E, x\otimes a \longmapsto ax$. Montrons que $\psi\circ \varphi=\id$ et  $\varphi\circ \psi=\id$. Soit  $x \in  E$. Alors \[
-        \psi\circ \varphi(x)=\psi(x\otimes 1)=1.x=x
+    On définit $\varphi:E \longrightarrow E\tens k, x\longmapsto x\tens 1$. Dans l'autre sens, on considère $h:E\times k \longrightarrow E, (x, a)\longmapsto ax$, qu'on factorise avec (PU) qui donne $\psi:E\tens k \longrightarrow E, x\tens a \longmapsto ax$. Montrons que $\psi\circ \varphi=\id$ et  $\varphi\circ \psi=\id$. Soit  $x \in  E$. Alors \[
+        \psi\circ \varphi(x)=\psi(x\tens 1)=1.x=x
     \]
-    Soit $t \in  E\otimes k$. Alors  c'est une somme de tenseurs simples. La linéarité permet de se contenter d'une vérification sur les tenseurs simples. \[
-        \varphi\circ \psi(x\otimes a)=\varphi(ax)=ax\otimes a=a(x\otimes 1)=x\otimes a
+    Soit $t \in  E\tens k$. Alors  c'est une somme de tenseurs simples. La linéarité permet de se contenter d'une vérification sur les tenseurs simples. \[
+        \varphi\circ \psi(x\tens a)=\varphi(ax)=ax\tens a=a(x\tens 1)=x\tens a
     \]
 \end{proof}
 
 \begin{prop}
 Pour tous espaces vectoriels $E_1, E_2, F$, on a un isomorphisme canonique \[
-    (E_1\oplus E_2)\otimes F\cong (E_1\otimes F)\oplus(E_2\otimes F)
+    (E_1\oplus E_2)\tens F\cong (E_1\tens F)\oplus(E_2\tens F)
 \] 
 \end{prop}
 
 \begin{prop}
  \[
-E\otimes F\cong F\otimes E
+E\tens F\cong F\tens E
 \] 
 \end{prop}
 
 \begin{prop}
 \[
-    (E\otimes F)^\star \cong E^\star \otimes F^\star
+    (E\tens F)^\star \cong E^\star \tens F^\star
 \] 
 \end{prop}
 
 \begin{prop}
     \[
-        (E\otimes F)\otimes G \cong E\otimes(F\otimes G)
+        (E\tens F)\tens G \cong E\tens(F\tens G)
     \] 
 \end{prop}

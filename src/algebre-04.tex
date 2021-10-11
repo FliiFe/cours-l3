@@ -125,12 +125,12 @@ Si $\dim E=\dim F$ alors c'est équivalent à l'injectivité de  $L_\phi$ ou  $R
 
 \begin{dfn}
     Soit $\phi \in  \Bil(E, F)$ et $V$ un sev de $E$. On pose \[
-        V^\top = V^{\top, \phi}= \left\{ y \in  F \suchthat \forall  x  \in  V, \phi(x, y)=0 \right\} 
+        V^\bot = V^{\bot, \phi}= \left\{ y \in  F \suchthat \forall  x  \in  V, \phi(x, y)=0 \right\} 
     \] 
     De même, si $W$ est un sev de $F$, on pose \[
-        W^\top = W^{\top, \phi}= \left\{ x \in  E \suchthat \forall  y  \in  W, \phi(x, y)=0 \right\} 
+        W^\bot = W^{\bot, \phi}= \left\{ x \in  E \suchthat \forall  y  \in  W, \phi(x, y)=0 \right\} 
     \] 
-    $V^\top$ et $W^\top$ sont des sev respectifs de $F, E$.
+    $V^\bot$ et $W^\bot$ sont des sev respectifs de $F, E$.
 \end{dfn}
 
 \begin{rem}
@@ -146,7 +146,7 @@ Si $V$ est un sev de  $E$, alors  \[
 
 \begin{proof}
     On considère $L_\phi: V\longmapsto L_\phi(V)$. On a \[\dim V\geq \dim L_\phi(V)\geq \dim F-\dim (L_\phi(V))^\bot\]
-    or $L_\phi(V)^\top=\left\{ y \in F, \quad \forall x \in  V, \phi(x, y)=0 \right\}  =V^\bot$.
+    or $L_\phi(V)^\bot=\left\{ y \in F, \quad \forall x \in  V, \phi(x, y)=0 \right\}  =V^\bot$.
 \end{proof}
 
 \begin{prop}
@@ -203,9 +203,9 @@ On suppose désormais que $E=F$
 
  \begin{dfn}
      On dit que $\phi \in  \Bil(E)$ est \begin{itemize}
-         \item Symétrique\index{forme bilinéaire!symétrique} si $\forall  x, y \in  E, \phi(x, y)=\phi(y, x)$ 
-         \item Antisymétrique\index{forme bilinéaire!antisymétriques} si $\forall  x, y \in  E, \phi(x, y)=-\phi(y, x)$ 
-         \item Alternée\index{forme bilinéaire!alternée} si $\forall  x \in  E, \phi(x, x)=0$
+         \item Sétrique\index{forme bilinéaire!symétrique} si $\forall  x, y \in  E, \phi(x, y)=\phi(y, x)$ 
+         \item Antisymétrique\index{forme bilinéaire!antisymétrique} si $\forall  x, y \in  E, \phi(x, y)=-\phi(y, x)$ 
+         \item Aernée\index{forme bilinéaire!alternée} si $\forall  x \in  E, \phi(x, x)=0$
      \end{itemize}
 \end{dfn}
 
@@ -222,5 +222,69 @@ Si $\phi$ est alternée alors  $\phi$ est antisymétrique.
 \end{rem}
 
 \begin{rem}
-    On note $\Sym(E), \AS(E), \Alt(E)$ les sev de  $\Bil(E)$ correspondants aux formes bilinéaires symétriques, antisymétriques, alternées.
+    On note $\S(E), \AS(E), \A(E)$ les sev de  $\Bil(E)$ correspondants aux formes bilinéaires symétriques, antisymétriques, alternées.
 \end{rem}
+
+\begin{prop}
+    Soit $\phi \in  \Bil(E)$ et $M$ la matrice de  $\phi$ dans une base  $\mathcal  B$. Alors \begin{itemize}
+        \item $\phi \in  \S(E) \iff  \transpose M=M$
+        \item $\phi \in  \AS(E) \iff  \transpose M=-M$
+        \item $\phi \in  \A(E) \iff  \transpose M=-M$ et la diagonale de $M$ est nulle
+    \end{itemize}
+\end{prop}
+
+\begin{prop}
+Soit $n=\dim E$. Alors \[
+    \dim \S(E)= \frac{n(n+1)}{2}\qquad \text{ et }\qquad  \dim \A(E)= \frac{n(n-1)}{2}
+\]
+\end{prop}
+
+\begin{prop}
+    On suppose que $2\neq 0$. Alors  $\Bil(E)=\S(E)\oplus \A(E)$
+\end{prop}
+
+\begin{proof}
+    Il y a la bonne dimension et  \[\S(E)\cap \A(E)\subset \AS(E) \implies \forall  \phi \in  \S(E)\cap \A(E), \forall  x, y \in  E, \phi(x,y)=\phi(y,x)=-\phi(x,y)=0\]
+\end{proof}
+
+\begin{rem}
+On a la décomposition explicite \[
+    \phi(x, y)=\underbrace{\frac12(\phi(x, y)+\phi(y, x))}_{\in \S(E)}+\underbrace{\frac12(\phi(x, y)-\phi(y, x))}_{\in \A(E)}
+\] 
+\end{rem}
+
+\section{Interprétation tensorielle}
+
+Si $V$ est un espace vectoriel alors on a déjà vu que  $\Bil(V)\cong (V\tens V)^\star$.
+
+ \begin{dfn}
+     On note $X(V)=\Vect((x\tens y-y\tens x)_{x,y \in  V})$ et $Y(V)=\Vect((x\tens x)_{x \in  V})$
+\end{dfn}
+
+\begin{dfn}
+    On appelle carré symétrique de $V$\index{carré symétrique} \[
+    \Sym ^2 V=(V\tens V) / X(V)
+\] 
+et carré extérieur\index{carré extérieur} de  $V$  \[
+    \Lambda ^2 V = (V\tens V) / Y(V)
+\] 
+\end{dfn}
+
+\begin{prop}
+Les isomorphismes suivants sont canoniques \[
+    \S(V)\cong (\Sym^2 V)^\star \qquad  \qquad  \A(V)\cong (\Lambda ^2 V)^\star
+\] 
+\end{prop}
+
+\begin{proof}
+\begin{align*}
+    \phi \in  \S(V) &\iff  \forall  x, y \in  V, \phi(x, y) = \phi(y, x)\\ & \iff  \forall  x, y \in  V, f(x\tens y)=f(y\tens x) \\
+                    & \iff  \forall  t \in  X(V), f(t)=0\\
+                    & \iff  f\text{ passe au quotient par } \Sym^2 V
+\end{align*}
+C'est pareil pour l'autre.
+\end{proof}
+
+\begin{prop}
+L'application canonique $V\tens V \longmapsto \Sym^2 V \oplus \Lambda^2 V$ est un isomorphisme si $2\neq 0$.
+\end{prop}

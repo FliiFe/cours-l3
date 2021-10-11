@@ -23,7 +23,7 @@
 % opérateurs usuels
 \NewDocumentCommand\genmrm{O{#2}m}{%
     \expandafter\DeclareDocumentCommand\csname#1\endcsname{}{%
-        \mathop{\mathrm{#2}}\nolimits%
+        \mathop{\mathrm{#2}{}}\nolimits%
     }%
 }
 \genmrm{det}
@@ -50,8 +50,9 @@
 \genmrm{Log}
 \genmrm{Bil}
 \genmrm{AS}
-\genmrm[Sym]{S}
-\genmrm[Alt]{A}
+\genmrm{Sym}
+\genmrm{S}
+\genmrm{A}
 
 \DeclareMathOperator*\lowlim{\underline{lim}}
 \DeclareMathOperator*\uplim{\overline{lim}}
@@ -98,15 +99,17 @@
 % Probabilité, Espérance
 \DeclareDocumentCommand\P{}{\mathbf P}
 \DeclareDocumentCommand\E{}{\mathbf E}
-% usual sets
+% Espaces usuels
 \DeclareDocumentCommand\R{}{\mathbf R}
 \DeclareDocumentCommand\N{}{\mathbf N}
 \DeclareDocumentCommand\Z{}{\mathbf Z}
 \DeclareDocumentCommand\Q{}{\mathbf Q}
 \DeclareDocumentCommand\C{}{\mathbf C}
-% fields
+% Corps
 \DeclareDocumentCommand\K{}{\mathbf K}
 \DeclareDocumentCommand\F{}{\mathbf F}
+% Produit tensoriel
+\NewDocumentCommand\tens{}{\otimes}
 % espaces fonctionnels
 \DeclareDocumentCommand\LL{m}{\mathbf L^#1}
 % logo d'indépendance

@@ -138,3 +138,89 @@ Si $\phi$ est le crochet de dualité, on retrouve la notion d'orthogonalité dé
 \end{rem}
 
 
+\begin{prop}
+Si $V$ est un sev de  $E$, alors  \[
+\dim V+\dim V^{\bot, \phi}\geq \dim F
+\] 
+\end{prop}
+
+\begin{proof}
+    On considère $L_\phi: V\longmapsto L_\phi(V)$. On a \[\dim V\geq \dim L_\phi(V)\geq \dim F-\dim (L_\phi(V))^\bot\]
+    or $L_\phi(V)^\top=\left\{ y \in F, \quad \forall x \in  V, \phi(x, y)=0 \right\}  =V^\bot$.
+\end{proof}
+
+\begin{prop}
+    Si $\phi$ est non dégénérée, alors pour tout sev  $V$ de  $E$, on a \[\dim V+\dim V^{\bot, \phi}=\dim F=\dim E\]
+\end{prop}
+\begin{proof}
+    Puisque $L_\phi$ est un isomorphisme,  $\dim V=\dim L_\phi(V)$
+\end{proof}
+
+\begin{prop}
+    Soit $\phi \in  \Bil(E, F)$. Alors \begin{itemize}
+        \item Si  $V_1$ et $V_2$ sont des sev de $E$, $(V_1+V_2)^\bot=V_1^\bot\cap V_2^\bot$
+    \end{itemize}
+    Si  de plus $ phi$ n'est pas dégénérée alors \begin{itemize}
+        \item Pou $V$ sev de $E$, $V ^{\bot\bot}=V$ (idem pour les sev de $F$)
+        \item $(V_1\cap V_2)^\bot=V_1 \bot+V_2^\bot$
+        \item  $V=\left\{ 0 \right\} \iff  V^\bot=F $  et $V=E \iff  V^\bot =\left\{ 0 \right\} $. Idem pour les sev de $F$.
+    \end{itemize}
+\end{prop}
+
+\begin{proof}
+Dans les cas où $\phi$ n'est pas dégénérée:  \begin{itemize}
+    \item $V\subseteq V^{\bot\bot}$ et il y a égalité des dimensions
+    \item $(V_1^\bot+V_2^\bot)^\bot=V_1^{\bot\bot}\cap V_2^{\bot\bot}=V_1\cap V_2$ et on passe à l'orthogonal
+    \item Si $V = \left\{ 0 \right\} $ alors $V^\bot =F$ clair, et dans l'autre sens si  $V^\bot=F$ alors  $V^{\bot\bot}=V=F^\bot=\left\{ 0 \right\} $
+\end{itemize}
+\end{proof}
+
+% TODO: exemple
+
+\section{Restriction, passage au quotient}
+
+\begin{prop}
+    Soit $\phi\in \Bil (E, F)$. Si  $E'$ et  $F'$ sont des sev de  $E, F$ alors  $\phi'=\phi\left|_{E'\times F'}\right.$ est une forme bilinéaire. En général,  $\phi'$ n'hérite pas de la non-dégénérescence de  $\phi$
+\end{prop}
+
+% TODO: exemple
+
+\begin{prop}
+    Soit $\phi \in  \Bil(E, F)$. On pose $E'=E / \ker L_\phi$ et  $F'=F / \ker R_\phi$. On note  $\pi_E, \pi_F$ les applications canoniques associées. Il existe une forme bilinéaire $\phi' \in  \Bil(E', F')$ non dégénérée telle que $\phi'(\pi_E, \pi_F)=\phi$.
+\end{prop}
+
+\begin{proof}
+    Soit $x \in  E$. L'application $L_\phi(x)$ est nulle sur  $\ker R_\phi$. Par théorème de passage au quotient,  $L_\phi(x)$ induit une forme linéaire sur  $F'$ qu'on note  $f(x):(F')^\star \longrightarrow k$. On peut ainsi définir $f:E \longmapsto (F')^\star$, et cette application est linéaire.
+
+    De plus, $\ker f=\ker L_\phi= \left\{ x \in E, \quad  \forall  y \in  F, \phi(x, y)=0 \right\} $. Par théorème de passage au quotient pour $f$, on obtient  $\bar{f} : E' \longrightarrow (F')^\star$, et cette fonction est injective (on a quotienté par $\ker f$).
+
+    Cette fonction $\bar{f}$ définit une forme bilinéaire $\phi' \in  \Bil(E, F)$ qui convient, et on sait déjà que $L_{\phi'}$ est injective. La même construction en partant de  $R_\phi$ donne lieu à la même forme bilinéaire, donc  $R_{\phi'}$ est aussi injective et  $\phi'$ n'est pas dégénérée.
+\end{proof}
+
+\section{Formes bilinéaires symétriques, antisymétriques et alternées}
+
+On suppose désormais que $E=F$
+
+ \begin{dfn}
+     On dit que $\phi \in  \Bil(E)$ est \begin{itemize}
+         \item Symétrique\index{forme bilinéaire!symétrique} si $\forall  x, y \in  E, \phi(x, y)=\phi(y, x)$ 
+         \item Antisymétrique\index{forme bilinéaire!antisymétriques} si $\forall  x, y \in  E, \phi(x, y)=-\phi(y, x)$ 
+         \item Alternée\index{forme bilinéaire!alternée} si $\forall  x \in  E, \phi(x, x)=0$
+     \end{itemize}
+\end{dfn}
+
+\begin{lmm}
+Si $\phi$ est alternée alors  $\phi$ est antisymétrique.
+\end{lmm}
+
+\begin{proof}
+    $0=\phi(x + y, x+y)=\phi(x, y)+\phi(y, x)$
+\end{proof}
+
+\begin{rem}
+    Si $2\neq 0$ alors les formes antisymétriques sont alternées car  $2\phi(x, x)=\phi(x, x)+\phi(x, x)=0$
+\end{rem}
+
+\begin{rem}
+    On note $\Sym(E), \AS(E), \Alt(E)$ les sev de  $\Bil(E)$ correspondants aux formes bilinéaires symétriques, antisymétriques, alternées.
+\end{rem}

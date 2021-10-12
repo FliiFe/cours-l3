@@ -377,3 +377,63 @@ pour tout $x \in  A$ et par (c), on déduit alors par convergence dominée de Le
 \begin{rem}
 Dans le premier résultat, le "presque partout" dépend du $t_0$ où l'on veut montrer la continuité, mais pas dans le second.
 \end{rem}
+
+\section{Lien avec l'intégrale de Riemann pour les fonctions continues par morceaux}
+
+Si $f:[a, b] \longrightarrow \C$ est continue (par morceaux), alors cette fonction est mesurable pour $(\R, \mathcal  B(\R))$ et bornée, donc intégrable au sens de Lebesgue. En particulier, elle est intégrable pour la mesure de Lebesgue, de sorte que \[
+\int_{[a, b]}|f|\diff\lambda <\infty
+\]
+et $f \in  \mathcal  L^1(\R, \mathcal  B(\R), \lambda)$. Comme $f$ est limite uniforme sur  $[a, b]$ de fonctions  $f_n$ en escalier (donc simples), on a  \[
+    \int_{[a, b]}f_n\diff\lambda \xrightarrow[n\to+\infty]{} \int_{[a, b]}f\diff\lambda
+\] 
+par convergence dominée. On note \[
+    \int_a^bf\diff\lambda \defeq\sgn(b-a)\int_{[a, b]}f\diff\lambda
+\] 
+et cette intégrale coïncide avec l'intégrale de Riemann de $f$ (par l'approximation vue).
+
+\begin{prop}[Théorème fondamental de l'analyse]
+Si $f:I \longrightarrow  \C$ est continue sur l'intervalle ouvert $I$ et  $x_o \in  I$ alors \[
+\begin{array}{rrcl}
+    F:& I & \longrightarrow & \C \\
+      & x & \longmapsto & \displaystyle \int_{x_0}^x f(t)\diff t
+\end{array}
+\] 
+est continue, dérivable de dérivée $f$.
+\end{prop}
+
+\begin{proof}
+On fixe $x \in  I$, $h$ tel que  $x+h \in  I$ et \[
+    \frac{F(x+h)-F(x)}{h}-f(x)=\frac{1}{h}\int_{x}^{x+h}(f(t)-f(x))\diff t
+\] 
+dont le module est majoré par \[
+    \frac{1}{h} \int_x^{x+h}|f(t)-f(x)|\diff t
+\]
+Soit $\epsilon>0$ et $\delta$ le module de continuité associé pour  $f$. Alors pour  $|h|<\delta$ le majorant est borné par  $\epsilon$.
+\end{proof}
+
+\begin{cor}
+    Si $g$ est de classe  $\mathcal  C^1$ sur l'intervalle ouvert $I$ et  $a<b$ sont dans  $I$ alors  \[
+        g(b)-g(a)=\int_a^b g'(t)\diff t
+    \]
+\end{cor}
+
+\begin{proof}
+On prend $f=g'$ dans la proposition précédente de sorte que $F$ et  $g$ sont deux primitives de  $g'$ donc  $F=g+K$.
+\end{proof}
+
+\begin{rem}[Intégrale impropre]
+    Si $f:]a, b[ \longrightarrow \C$ est mesurable (par exemple continue) intégrable, on a que $\int_{]a, b[}f\diff\lambda$ est bien définie et vaut \[
+        \lim_{\substack{\alpha_n\to a,\beta_n\to b}}\int_{[\alpha_n, \beta_n]}f\diff\lambda
+    \]
+\end{rem}
+
+On voit que la notion coïncide avec les intégrales impropres au sens de Riemann.
+
+ \begin{rem}
+Attention à distinguer cette notion de la notion d'intégrale semi-convergente comme \[
+    \int_0^{+\infty} \frac{\sin x}{x}\diff x
+\] 
+qui n'est pas une intégrale de Lebesgue\footnotemark
+\end{rem}
+
+\footnotetext{Pour définir l'intégrale de Lebesgue, on a supposé la convergence des parties positives et négatives}

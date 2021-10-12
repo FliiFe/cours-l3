@@ -150,6 +150,47 @@
 }
 \makeatother
 
+% Union croissante, intersection décroissante
+% https://tex.stackexchange.com/questions/559250/symbols-for-ascending-union-descending-intersection
+\makeatletter
+\DeclareRobustCommand{\ubigcup}{\DOTSB\mathop{\,\ubigcup@\,}\slimits@}
+\DeclareRobustCommand{\dbigcap}{\DOTSB\mathop{\,\dbigcap@\,}\slimits@}
+
+\newcommand{\ubigcup@}{\mathpalette\ubigcup@@\relax}
+\newcommand{\ubigcup@@}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\bigcup$}%
+  \sbox\tw@{$\m@th#1\uparrow$}%
+  \copy\z@
+  \mkern-6.3mu\ifx#1\scriptscriptstyle\mkern0.3mu\fi
+  \dimen@=\dimexpr\ht\z@-\ht\tw@
+  \ifx#1\displaystyle\else
+    \ifx#1\scriptscriptstyle\advance\dimen@ 0.5pt\else
+      \advance\dimen@ 1pt
+  \fi\fi
+  \raisebox{\dimen@}[0pt][0pt]{\rlap{\copy\tw@}}%
+  \mkern6.3mu\ifx#1\scriptscriptstyle\mkern-0.3mu\fi
+  \endgroup
+}
+\newcommand{\dbigcap@}{\mathpalette\dbigcap@@\relax}
+\newcommand{\dbigcap@@}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\bigcap$}%
+  \sbox\tw@{$\m@th#1\downarrow$}%
+  \copy\z@
+  \mkern-6.3mu\ifx#1\scriptscriptstyle\mkern0.3mu\fi
+  \dimen@=\dimexpr\dp\z@-\dp\tw@
+  \ifx#1\displaystyle\else
+    \ifx#1\scriptscriptstyle\advance\dimen@ 0.5pt\else
+      \advance\dimen@ 1pt
+  \fi\fi
+  \raisebox{-\dimen@}[0pt][0pt]{\rlap{\copy\tw@}}%
+  \mkern6.3mu\ifx#1\scriptscriptstyle\mkern-0.3mu\fi
+  \endgroup
+}
+
+\makeatother
+
 % underbrace pour une partie d'une matrice
 \newcommand\undermat[2]{%
   \makebox[0pt][l]{$\smash{\underbrace{\phantom{%

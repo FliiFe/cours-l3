@@ -25,7 +25,7 @@ On va par ailleurs développer des outils généraux très utiles en théorie de
     Une classe monotone\index{classe monotone} sur un ensemble $X$ est une famille  $\mathcal  M\subset \mathcal  P(X)$ telle que \begin{enumerate}
         \item $X \in  \mathcal  M$
         \item Pour tous $A, B \in  \mathcal  M$, $A\subseteq B \implies B \setminus A \in  \mathcal  M$
-        \item Pour tout  $A \in  \mathcal  M$, $(A_i\subseteq A_{i+1})\implies \bigcup_{i\geq 0}A_i \in  \mathcal  M$
+        \item Pour tout  $A \in  \mathcal  M$, $(A_i\subseteq A_{i+1})\implies \ubigcup_{i\geq 0}A_i \in  \mathcal  M$
     \end{enumerate}
     On parle parfois de $\lambda$-système ou de classes de Dynkin.
 \end{dfn}
@@ -48,13 +48,13 @@ L'ensemble des classes monotones sur $X$ est stable par intersection.
         (B' \setminus B)\cap A = \underbrace{(B'\cap A)}_{\in \lambda(\mathcal  P)} \setminus  \underbrace{(B\cap A)}_{\in  \lambda(\mathcal P)} \in \lambda(\mathcal  P)
     \] 
     donc $B' \setminus B \in \mathcal  C_1$. Finalement, si $(B_i)_i$ est croissante dans  $\mathcal  C_1$ alors \[
-        A\cap \left( \bigcup_{i\geq 0} B_i \right)= \bigcup_{i\geq 0}(A\cap B_i)
+        A\cap \left( \ubigcup_{i\geq 0} B_i \right)= \ubigcup_{i\geq 0}(A\cap B_i)
     \] 
-    et cette union est croissante donc dans $\lambda(\mathcal  P)$, d'où $\bigcup B_i \in  \mathcal  C_1$. On a donc $\lambda(\mathcal  P)\subseteq \mathcal  C_1\subseteq \lambda(\mathcal  P)$ donc $\mathcal  C_1 - \lambda(\mathcal  P)$. Par les mêmes arguments, pour $A \in  \lambda(\mathcal  P)$, \[
+    et cette union est croissante donc dans $\lambda(\mathcal  P)$, d'où $\ubigcup B_i \in  \mathcal  C_1$. On a donc $\lambda(\mathcal  P)\subseteq \mathcal  C_1\subseteq \lambda(\mathcal  P)$ donc $\mathcal  C_1 - \lambda(\mathcal  P)$. Par les mêmes arguments, pour $A \in  \lambda(\mathcal  P)$, \[
         \mathcal  C_2 = \left\{ B \in  \lambda(\mathcal  P) \quad \suchthat \quad  A\cap B \in  \lambda(\mathcal  P)  \right\} 
     \] 
     on a $\mathcal  C_2=\lambda(\mathcal  P)$. Ainsi, $\lambda(\mathcal  P)$ est stable par intersection finie, et par complémentation, $\lambda(\mathcal  P)$ est stable par union finie. Si  $(A_i)$ est une suite dans  $\lambda(\mathcal  P)$, on écrit \[
-        \bigcup A_i=\bigcup_{n\geq 1} \left(\bigcup_{i=1}^nA_i\right) \in \lambda(\mathcal  P)
+        \bigcup A_i=\ubigcup_{n\geq 1} \left(\bigcup_{i=1}^nA_i\right) \in \lambda(\mathcal  P)
     \] 
     donc $\lambda(\mathcal  P)$ est une $\sigma$-algèbre et donc  $\lambda(\mathcal  P)\subset \sigma(\mathcal  P)$. Comme $\sigma(\mathcal  P)$ est une $\sigma$-algèbre, c'est aussi une classe monotone d'où l'autre inclusion.
 \end{proof}
@@ -63,7 +63,7 @@ L'ensemble des classes monotones sur $X$ est stable par intersection.
     Soit $\mu$ et  $\nu$ deux mesures que  $(X, \mathcal  A)$ espace mesurable. Soit $\mathcal  P \subseteq \mathcal  P(X)$ une famille stable par intersection finie. Si \begin{itemize}
         \item $\sigma(\mathcal  P)=\mathcal  A$
         \item $\forall  A \in  \mathcal P, \mu(A)=\nu(A)$
-        \item $ \exists  X\subseteq X_1\subseteq \cdots $ dans $\mathcal  P$ telle que $\mu(X_k)=\nu(X_k)<\infty$ et  $X=\bigcup X_k$
+        \item $ \exists  X_0\subseteq X_1\subseteq \cdots $ dans $\mathcal  P$ telle que $\mu(X_k)=\nu(X_k)<\infty$ et  $X=\ubigcup X_k$
     \end{itemize}
     alors $\mu=\nu$
 \end{cor}
@@ -180,11 +180,11 @@ Fixons $d\geq 1$. On a vu que la mesure de Lebesgue est unique, si elle existe. 
         \lambda^\star \left( \bigcup_{n\geq 1}E_n \right) \leq \sum_{n,i\geq 1} \mathrm{Vol}(P_i^n) \leq \sum_{n\geq 1} \left( \lambda^\star(E_n)+ \frac{\epsilon}{2^n} \right)\leq \epsilon + \sum_{n\geq 1}\lambda^\star(E_n)
     \] 
     et comme $\epsilon$ est arbitraire,  $\lambda^\star$ est sous-additive. Montrons que les demi-espaces $D_a=\R^{i-1}\times ]-\infty, a[\times \R^{d-i}$ sont dans $\mathcal  M(\lambda^\star)$, ce qui suffira car cette partie engendre les boréliens. Soit $E \subseteq \R^d$ recouvert par des pavés ouverts $(P_k)_k$. Alors  $(P_k\cap D_a)$ sont des pavés ouverts recouvrant  $E\cap D_a$. Puis si on pose  \[
-        P_k'=P_k\cap\left(\R^{i-1}\times \left]a-\frac{\epsilon}{2^kc_k}\right[\right)
+        P_k'=P_k\cap\left(\R^{i-1}\times \left]a-\frac{\epsilon}{2^kc_k}\right[\times \R^{d-i}\right)
     \]
-    avec \[c_k=\prod_{j\neq i}(b_j^{(k)}-a_j^{(k)})\] alors les $P_k'$ sont des pavés ouverts recouvrant  $E\cap D_a^c$ et alors  \[
-    \lambda^\star(E)\leq \lambda^\star(E\cap D_a)+\lambda^\star(E\cap D_a^c)\leq \sum_{k\geq 1}\mathrm{Vol}(P_k\cap D_a)+\sum_{k\geq 1}\mathrm{Vol}(P_k')\leq \sum_{k\geq 1}\mathrm{Vol}(P_k\cap D_a)+\mathrm{Vol}(P_k\cap D_a^c)+ \frac{\epsilon}{c_k2^k}c_k\leq \epsilon+\sum_{k\geq 1}\mathrm{Vol}(P_k)
-    \] 
+    avec \[c_k=\prod_{j\neq i}(b_j^{(k)}-a_j^{(k)})\] alors les $P_k'$ sont des pavés ouverts recouvrant  $E\cap D_a^c$ et alors  \begin{align*}
+    \lambda^\star(E)\leq \lambda^\star(E\cap D_a)+\lambda^\star(E\cap D_a^c)&\leq \sum_{k\geq 1}\mathrm{Vol}(P_k\cap D_a)+\sum_{k\geq 1}\mathrm{Vol}(P_k')\\&\leq \sum_{k\geq 1}\mathrm{Vol}(P_k\cap D_a)+\mathrm{Vol}(P_k\cap D_a^c)+ \frac{\epsilon}{c_k2^k}c_k\\&\leq \epsilon+\sum_{k\geq 1}\mathrm{Vol}(P_k)
+\end{align*}
 \end{proof}
 
 \begin{prop}

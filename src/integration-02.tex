@@ -294,10 +294,10 @@ En ne considérant que des fonctions intégrables et des ensembles mesurables: \
         \int_X\underbrace{\liminf_{n\to +\infty}2g-|f_n-f|}_{=2g}\diff\mu\leq \liminf_{n\to +\infty}\int_X2g-|f_n-f|\diff\mu
     \]
     donc \[
-        2\int_Xg\diff\mu\leq 2\int_Xg\diff\mu -\limsup_{n\to +\infty}\int_X |f_n-f|\diff\mu
+        2\int_Xg\diff\mu\leq 2\int_Xg\diff\mu -\liminf_{n\to +\infty}\int_X |f_n-f|\diff\mu
     \] 
     d'où \[
-        \limsup_{n\to +\infty} \int_X\underbrace{|f_n-f|}_{\geq 0}\diff\mu \leq 0
+        \liminf_{n\to +\infty} \int_X\underbrace{|f_n-f|}_{\geq 0}\diff\mu \leq 0
     \] 
     donc \[\int_X|f_n-f|\diff\mu \xrightarrow[n\to+\infty]{}0\]
     D'où finalement \[

@@ -1,0 +1,94 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Espaces compacts} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Espaces compacts}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Compacité}
+
+\begin{dfn}
+    On dit qu'un espace métrique $(E, d)$ est compact\index{compact} si toute suite  $\left\{ x_n \right\} _{n\geq 1}$ admet une valeur d'adhérence. On dit que $(E, d)$ est précompact\index{précompact} si pour tout  $r>0$,  $E$ est l'union d'un nombre fini de boules de rayon  $r$.
+\end{dfn}
+
+\begin{thm}
+    Un espace métrique $(E, d)$ est compact  si et seulement s'il est complet et précompact.
+\end{thm}
+
+\begin{proof}
+    Supposons que toute suite de $E$ admet une valeur d'adhérence.  i $ \left\{ x_n \right\}_{n\geq 1} $ est de Cauchy, et $x$ en est une valeur d'adhérence, alors $x$ en est la limite. $E$ est donc complet. Soit $r>0$ et $x_1 \in  E$. On construit par récurrenc $x _{k+1} \in  E \setminus \B(x_1,r)\cup \cdots \cup \B(x_k, r)$. Si ce n'est plus possible à l'étape $k$, c'est qu'on a recouvert $E$ avec des boules de rayon $r$. Sinon, $ \left\{ x_n \right\}_{n\geq 1} $ n'admet par de valeur d'adhérence car la différence entre deux termes est toujours $ \geq r$, ce qui est absurde.
+
+    Montrons la réciproque. Soit $ \left\{ x_n \right\}_{n\geq 1} $ une suite de $E$.  'espace $E$ est l'union d'un nombre fini de boules de rayon $1$ et l'une d'elle, notée $ \B_1$, contient donc une infinité de termes de la suite. De même, $E$ est l'union d'un nombre fini de boules de rayon $\sfrac12$ de sorte que l'une d'entre elle, notée  $\B_2$ est telle que  $\B_1\cap \B_2$ contient une infinité de termes. En itérant, on construit une sous-suite de Cauchy de $\left\{ x_n \right\} $, et comme $E$ est complet, cette sous-suite converge vers une valeur d'adhérence de la suite  $\left\{ x_n \right\} $.
+\end{proof}
+
+\begin{rem}
+    On en déduit facilement que les compacts de $\R^n$ sont les fermés bornés. En général, les parties compactes d'un espace complet sont les fermés bornés qui satisfont en plus une condition d'uniformité (on le verra par exemple avec le théorème d'Ascoli)
+\end{rem}
+
+\begin{rem}
+\begin{itemize}
+    \item Un fermé inclus dans un compact est compact
+    \item Le produit cartésien de compacts est compact
+    \item Un compact est séparable
+    \item L'image d'un compact par une application continue est un compact
+\end{itemize}
+\end{rem}
+
+\begin{thm}[Heine\index{Heine (théorème)}]
+Si $X$ est compact, alors toute fonction  $f:X \longrightarrow Y$ continue est aussi uniformément continue.
+\end{thm}
+
+\begin{proof}
+    Si $\epsilon>0$, on veut montrer qu'il existe $\delta >0$ de continuité de  $f$ valable pour tout  $x$. Si ce n'est pas le cas, alors pour tout $n\geq 1$, il existe $x_n,x_n' \in  X$ tels que $d(x_n, x_n')<\sfrac1n $ mais  $d(f(x_n, x_n'))>\epsilon$. Si $x$ est une valeur d'adhérence de  $\left\{ x_n \right\} $ alors c'est aussi une valeur d'adhérence de $\left\{ x_n' \right\} $ et on trouve $d(f(x), f(x))>\epsilon$
+\end{proof}
+
+\begin{thm}[Poincaré\index{Poincaré (théorème)}]
+Si $X$ est un compact et si  $f: X\longrightarrow Y$ est une bijection continue, alors $f$ est un homéomorphisme.
+\end{thm}
+
+\begin{proof}
+    Il s'agit de montrer que si $F$ est un fermé de  $X$, alors  $f(F)$ est fermé dans  $Y$, ce qui est vrai car $F$ est compact donc  $f(F)$ aussi.
+\end{proof}
+
+\begin{dfn}
+    Soit $E$ un  $\R-$espace vectoriel. On dit que deux normes $N_1, N_2$ sont équivalentes\index{normes équivalentes} s'il existe $C>0$ tel que  $N_1<CN_2$ et  $N_2<CN_1$.
+\end{dfn}
+
+\begin{rem}
+    Si $N_1$ et  $N_2$ sont des normes équivalentes sur $E$ alors l'application identité  $(E, N_1)\longrightarrow (E, N_2)$ est un homéomorphisme, et si de plus $E$ est complet pour l'une des normes, il l'est aussi pour l'autre.
+\end{rem}
+
+\begin{thm}
+Si $E$ est un  $\R$-espace vectoriel de dimension finie, alors toutes les normes sont équivalentes sur $E$.
+\end{thm}
+
+\begin{proof}
+    Si $\left\{ e_1, \cdots , e_n \right\} $ est une base de $E$, on pose  \[
+        \left\|\sum_{i=1}^nx_ie_i\right\|_\infty=\sup_{1\leq i\leq n} |x_i|
+    \]
+    On a \[
+    \left\|\sum_{i=1}^nx_ie_i\right\|\leq \sum_{i=1}^n |x_i| \|e_i\|\leq C_1 \|x\|_\infty
+    \] 
+    avec $C_1=\sum \|e_i\|$. Puis, notons $B\defeq\partial \B^\infty(0, 1)$. C'est un compact et $\|\;\cdot\;\|^{-1}:b\longrightarrow \R$ est continue, donc admet un maximum $C_2$ sur $B$ ce qui donne $\|x\|_\infty\leq C_2\|x\|$, donc toutes les normes sont équivalentes à la norme infinie.
+\end{proof}
+
+\begin{rem}
+Les $\R$-ev de dimension finie sont complets pour toutes les normes. Si $E$ est un evn et si  $F$ est un sev de  $E$ de dimension finie alors la norme de  $E$ induit une norme sur  $F$ pour laquelle  $F$ est complet et donc  $F$ est fermé dans  $E$.
+\end{rem}
+
+\begin{lmm}
+    Si $F$ est un sev de dimension finie d'un evn  $E$, et si  $y \in  E$, alors il existe $z \in  F$ tel que $\|y-z\|=d(y,F)$
+\end{lmm}
+
+\begin{proof}
+    $d(y, F)\leq  \|y\|$ et comme $F$ est fermé dans  $E$,  $F\cap \B(y, \|y\|)$ est compact et $x\longmapsto  \|x-y\|$ admet un minimum $z \in F$ sur ce compact.
+\end{proof}

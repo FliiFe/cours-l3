@@ -212,7 +212,74 @@ Soit $f:X \longrightarrow Y$ une fonction. Les propriétés suivantes sont équi
     On dit qu'une fonction continue $f: X \rightarrow Y$ est un \textbf{homéomorphisme}\index{homéomorphisme}  si $f$ est bijective, et si $f^{-1}$ est continue. On dit que $f$ est une \textbf{isométrie} \index{isométrie} si $d_{Y}\left(f(x), f\left(x'\right)\right)=d_{X}\left(x, x'\right)$ quels que soient $x, x' \in X$
 \end{dfn}
 
-% TODO: trou ici (jusqu'à complétude inclus)
+\begin{thm}
+    Si $(X, d)$ est un espace métrique, alors il existe un espace vectoriel normé  $(E, \|\,\cdot\,\|)$ et une isométrie $i:X\longrightarrow E$.
+\end{thm}
+
+\begin{proof}
+    Soit $E$ l'espace des fonctions continues bornées sur  $X$ à valeurs dans  $\R$ muni de la norme infinie. Si $y \in  X$, posons $f_y(x)=d(x, y)$. Comme  \[
+        |d(x, y)-d(x, z)|\leq d(y, z)
+    \] 
+    avec égalité si $x=z$, on voit que si  $z \in  X$ alors $f_y-f_z \in E$ et que $\|f_y-f_z\|_X=d(y, z)$. Si l'on fixe $a \in  X$, l'application $i:X \longrightarrow E, y \longmapsto f_y-f_a$ est une isométrie.
+\end{proof}
+
+\section{Connexité}
+
+\begin{dfn}
+    On dit qu'un espace métrique $(X, d)$ est connexe\index{connexe} si on ne peut pas écrire  $X=U\cup V$ où  $U$ et  $V$ sont deux ouverts non-vides disjoints. Ceci est équivalent à dire que toute fonction continue  $f: X \longrightarrow \{0,1\}$ est constante
+\end{dfn}
+
+\begin{thm}
+    L'intervalle $[0,1]$ de  $\R$ est connexe
+\end{thm}
+
+\begin{proof}
+    Supposons que $[0,1]=U\cup V$ avec  $U,V$ deux ouverts disjoints non vides. Les ensembles  $U$ et  $V$ sont aussi fermés. Si  $0 \in  U$ alors $v=\inf V=\min V>0$ donc  $[0,v[\subset U$ or  $U$ fermé donc  $v \in  U$ et $v \in  U\cap V$ absurde.
+\end{proof}
+
+\begin{prop}
+Si $E$ est une partie connexe de $X$ alors $ \bar{E} $ aussi.
+\end{prop}
+
+\begin{proof}
+    Si $f: \bar{E} \longrightarrow \{0,1\}$ est continue, alors sa restriction à $E$ est constante car  $E$ est connexe. Puis,  $E$ est dense dans $ \bar{E} $ donc $f$ est aussi constante sur  $\bar{E} $
+\end{proof}
+
+\begin{dfn}
+    La composante connexe\index{composante connexe} de $a \in  X$, notée $C(a)$, est l'union des parties connexes de  $X$ qui contiennent  $a$
+\end{dfn}
+
+\begin{thm}
+Les composantes connexes sont connexes et fermées
+\end{thm}
+
+\begin{proof}
+    Écrivons $C(a)=\bigcup P$ où  $P$ parcourt l'ensemble des parties connexes de  $X$ qui contiennent  $a$. Si  $f:C(a)\longrightarrow \{0,1\}$ est continue alors sa restriction à $P$ est constante égale à  $f(a)$ donc  $f$ est constante sur  $C(a)$ égale à  $f(a)$. Puis,  $C(a)$ est fermée car elle contient son adhérence (l'adhérence d'un connexe est connexe)
+\end{proof}
+
+\begin{dfn}
+    On dit que $X$ est totalement déconnecté\index{totalement déconnecté} si la composante connexe de tout point est réduite à ce point. On dit que  $X$ est connexe par arcs\index{connexe par arcs} si pour tous  $a,b \in  X$, il existe une fonction continue $f:[0,1]\longrightarrow X$ telle que $f(0)=a$ et  $f(1)=b$
+\end{dfn}
+
+\begin{thm}
+Si $X$ est connexe par arcs, alors il est connexe
+\end{thm}
+
+\begin{proof}
+    Si $X=U\cup V$ avec $U,V$ ouverts non vides disjoints,  $a \in  U, b \in  V$ alors il existe un chemin continu $f:[0,1] \longrightarrow X$ tel que $f(0)=a, f(1)=b$, donc  $[0,1]=f^{-1}(U)\cup f^{-1}(V)$ donc $[0,1]$ n'est pas connexe: c'est absurde.
+\end{proof}
+
+\begin{dfn}
+    On dit que $X$ est localement connexe par arcs\index{connexe par arcs (localement)}\index{localement connexe par arcs} si pour tous  $x \in  X$, il existe un voisinage de $x$ qui est connexe par arcs.
+\end{dfn}
+
+\begin{prop}
+Si $X$ est connexe et localement connexe par arcs alors  $X$ est connexe par arcs
+\end{prop}
+
+\begin{proof}
+Si $a \in  X$, soit $G(a)$ la composante connexe par arcs (l'ensemble des $b \in  X$ atteignables par un chemin continu partant de $a$). Si $X$ est localement connexe par arcs alors  $G(a)$ est ouvert. L'espace  $X$ est une réunion disjointe de différentes composantes connexes par arcs, qui sont ouvertes et disjointes. Si  $X$ est connexe, il n'y a donc qu'une seule composante connexe par arcs, qui est donc  $X$.
+\end{proof}
 
 \section{Complétude}
 

@@ -14,6 +14,8 @@
 \fi
 \thispagestyle{empty}
 
+% TODO: gras pour les déf
+
 \section{Compacité}
 
 \begin{dfn}
@@ -78,7 +80,7 @@ Si $E$ est un  $\R$-espace vectoriel de dimension finie, alors toutes les normes
     On a \[
     \left\|\sum_{i=1}^nx_ie_i\right\|\leq \sum_{i=1}^n |x_i| \|e_i\|\leq C_1 \|x\|_\infty
     \] 
-    avec $C_1=\sum \|e_i\|$. Puis, notons $B\defeq\partial \B^\infty(0, 1)$. C'est un compact et $\|\;\cdot\;\|^{-1}:b\longrightarrow \R$ est continue, donc admet un maximum $C_2$ sur $B$ ce qui donne $\|x\|_\infty\leq C_2\|x\|$, donc toutes les normes sont équivalentes à la norme infinie.
+    avec $C_1=\sum \|e_i\|$. Puis, notons $B=\partial \B^\infty(0, 1)$. C'est un compact et $\|\;\cdot\;\|^{-1}:b\longrightarrow \R$ est continue, donc admet un maximum $C_2$ sur $B$ ce qui donne $\|x\|_\infty\leq C_2\|x\|$, donc toutes les normes sont équivalentes à la norme infinie.
 \end{proof}
 
 \begin{rem}
@@ -91,4 +93,35 @@ Les $\R$-ev de dimension finie sont complets pour toutes les normes. Si $E$ est 
 
 \begin{proof}
     $d(y, F)\leq  \|y\|$ et comme $F$ est fermé dans  $E$,  $F\cap \B(y, \|y\|)$ est compact et $x\longmapsto  \|x-y\|$ admet un minimum $z \in F$ sur ce compact.
+\end{proof}
+
+\begin{thm}[Riesz\index{Riesz (théorème)}]
+    Si $E$ est un evn, alors  $\bar{\B}(0,1)$ est compacte si et seulement si $E$ est de dimension finie.
+\end{thm}
+
+\begin{proof}
+    On a déjà vu q e $B= \bar\B(0, 1)$ est compacte si $E$ est de dimension finie. Il reste à voir la réciproque. On suppose $B$ compacte. Il existe $x_1, \cdots , x_n$ dans $B$ tels que \[
+        B\subset \B(x_1, \sfrac12)\cup \cdots \cup \B(x_n, \sfrac 12)
+    \] 
+    Soit $F=\Vect(x_1, \cdots , x_n)$ et $y \in  E$. On va montrer que $y \in F$. Par le lemme, $d(y, F)=d(y, z)$ pour un  $z \in  F$, avec $\|y-z\|>0$ si $y \not \in F$ et par construction des $x_i$, il existe  $i$ tel que  $\sfrac{y-z}{\|y-z\|} \in  \B(x_i, \sfrac12)$. On a alors \[
+        \|y-\underbrace{(z+ \|y-z\|x_i)}_{\in  F}\|< \frac{\|y-z\|}2
+    \]
+    ce qui est absurde par minimalité de $z$. Donc  $y \in  F$ pour tout $y \in  E$ et $E=F$ est de dimension finie.
+\end{proof}
+
+\begin{dfn}
+    Si $(E, d)$ est un espace métrique, alors un \textbf{recouvrement ouvert} \index{recouvrement ouvert} de  $E$ est un ensemble  $\left\{ U_i \right\}_{i \in  I} $ d'ouverts de $E$ tels que  $E$ est inclus dans l'union  des $U_i$. Un \textbf{sous-recouvrement}  de $\left\{ U_i \right\} _{i \in I}$ est un ensemble $\left\{ U_i \right\} _{i \in  J}$ avec $J\subset I$ qui recouvre toujours  $E$. On dit qu'il est fini si  $J$ est fini. On dit que $E$ a la  \textbf{propriété de l'intersection finie} si et seulement si pour toute famille de fermés $\left\{ F_i \right\} _{i \in  I}$ telle que l'intersection d'un nombre fini d'entre eux est non vide, l'intersection de tous les fermés est elle même non vide. En passant aux complémentaires, on voit que $E$ a la propriété de l'intersection finie  si et seulement si tout recouvrement ouvert de $E$ admet un sous-recouvrement fini.
+\end{dfn}
+
+\begin{thm}[Borel-Lebesgue\index{Borel-Lebesgue}]
+    Si $(E, d)$ est un espace métrique, alors  $E$ est compact  si et seulement si tout recouvrement ouvert de $E$ admet un sous-recouvrement fini
+\end{thm}
+
+\begin{proof}
+    Supposons que $E$ est compact, et soit  $\left\{ U_i \right\} _{i \in  I}$ un recouvrement ouvert de $E$. Montrons qu'il existe  $r>0$ (un \emph{nombre de Lebesgue} du recouvrement) ayant la propriété que pour tout $x \in  E$, il existe $ i \in  I$ tel que $\B(x, r)\subset U_i$. Si ce n'est pas le cas, alors pour tout $n$ il existe  $x_n \in  E$ tel que $\B(x_n, \sfrac1n)$ n'est contenu dans aucun des $U_i$. Si  $x$ est une valeur d'adhérence de la suite  $\left\{ x_n \right\} $ alors il existe $\epsilon>0$ et $i \in  I$ tels que $\B(x, \epsilon)\subset U_i$ et alors $\B(x_n, \sfrac1n)\subset U_i$ dès que $d(x_n, x)+\sfrac1n<\epsilon$, ce qui est absurde. Comme $E$ est compact, il est précompact et donc s'écrit comme une réunion finie de boules de rayon  $r$, chacune étant contenu dans un ouvert du recouvrement, ce qui conclut.
+
+    Montrons maintenant que si $E$ a la propriété de l'intersection finie, alors il est compact. Soit  $\left\{ x_n \right\} _{n\geq 1}$ une suite de $E$ et  $k\geq 1$. On note $F_k$ l'adhérence de  $\left\{ x_n \right\} _{n\geq k}$. L'intersection d'un nombre fini de $F_k$ est non vide, et il en est donc de même pour  \[
+    \dbigcap_{k\geq 1} F_k
+    \] 
+    or cet ensemble est précisément l'ensemble des valeurs d'adhérence de $\left\{ x_n \right\}_{n\geq 1} $
 \end{proof}

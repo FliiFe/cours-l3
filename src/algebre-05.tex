@@ -1,0 +1,92 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Formes quadratiques} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Formes quadratiques}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+Dans tout le chapitre, $k$ est un corps, et on supposera que les espaces vectoriels sont de dimension finie.
+
+\section{Forme polaire}
+
+
+\begin{dfn}
+    Soit $E$ un  $k$-ev. Une forme quadratique\index{forme quadratique} sur  $E$ est une application  $q:E \longrightarrow k$ telle qu'il existe $\phi \in  \Bil(E)$ telle que $q(x)=\phi(x, x)$ pour tout  $x \in  E$. On note $Q(E)$ le  $k$-ev des formes quadratiques sur  $E$.
+\end{dfn}
+
+\begin{rem}
+    Si $q \in  Q(E)$ est associée à $\phi\in \Bil(E)$ et si $(e_1, \cdots , e_n)$ est une base de $E$ alors \[q(x)=\phi(x, x)=\sum_{1\leq i,j\leq n}\phi(e_i,e_j)x_ix_j\]
+    Une fonction de la forme \[f(x)=\sum_{i,j}a_{i,j}x_ix_j\] est dite polynomiale homogène de degré $2$.
+\end{rem}
+
+
+\begin{dfn}
+Dans $k$ de caractéristique différente de $2$, on pose \[
+\begin{array}{rrcl}
+    \pi:& \Bil(E) & \longrightarrow & Q(E) \\
+        & \phi & \longmapsto & \displaystyle (x \longmapsto \phi(x,x))
+\end{array}
+\] 
+\end{dfn}
+
+\begin{prop}
+    $\pi$ est linéaire, surjective, et son noyau est exactement $\A(E)$.
+\end{prop}
+
+\begin{cor}
+On sait $\Bil(E)=\S(E)\oplus \A(E)$, donc $\pi\left|_{\S(E)}\right.$ est un isomorphisme de $\S(E)$ dans $Q(E)$. Si $E$ est de dimension $n$, alors \[\dim Q(E)= \frac{n(n+1)}{2}\]
+\end{cor}
+
+\begin{dfn}
+    Soit $q$ une forme quadratique. La forme polaire\index{forme polaire} de $q$ est l'unique $\phi \in  \S(E)$ telle que $\forall  x \in  E, q(x)=\phi(x,x)$.
+\end{dfn}
+
+\begin{prop}
+    Soit $\phi \in  \Bil(E)$ et $q \in  Q(E)$ associée. Alors, la forme polaire de $q$ est \[\phi_s(x, y)=\frac12(\phi(x, y)+\phi(y, x))=\frac12(q(x+y)-q(x)-q(y))\]
+    Cette dernière égalité est l'identité de polarisation\index{identité de polarisation}
+\end{prop}
+
+\begin{proof}
+    $\phi_S$ est symétrique et $\pi(\phi_S)=q$, et \[q(x+y)-q(x)-q(y)= (\cdots )=\phi(x,y)+\phi(y,x)\]
+\end{proof}
+
+\begin{dfn}
+    Soit $q \in  Q(E)$. Le rang de $q$ est le rang de sa forme polaire. On dit que $q$ est non-dégénérée si et seulement si sa forme polaire est non-dégénérée
+\end{dfn}
+
+\begin{prop}
+Si $q \in  Q(E)$ et $F$ est un sev de $E$ alors $q\left|_F\right. \in  Q(F)$ et la forme polaire de cette restriction est la restriction de la forme polaire de $q$ à $F\times F$.
+\end{prop}
+
+\begin{rem}
+Il est possible que $q$ soit non-dégénérée et que $q\left|_{F}\right.$ le soit.
+\end{rem}
+
+\section{Matrice d'une forme quadratique}
+
+\begin{dfn}
+    Soit $q \in  Q(E)$ et $\mathcal  B$ une base de $E$. La matrice de  $q$ dans la base  $\mathcal  B$ est $\mathcal  M_{\mathcal  B}(\phi)$ où $\phi$ est la forme polaire de  $q$.
+\end{dfn}
+
+\begin{ex}
+    Prenons $E=k^n$ et  $q:E \longrightarrow k$ avec \[q(x)=\sum_{1\leq i\leq j\leq n}a_{i,j}x_ix_j\]
+    Alors, la matrice $M$ de $q$ dans la base canonique est donnée par \[
+    \begin{cases}
+        M_{i,i}=a_{i,i}\text{ si }1\leq i\leq n\\
+        M_{i,j}= \sfrac{a_{i,j}}2 \;\;\text{ si }\;\;i<j, \;\;\sfrac{a_{j,i}}2\;\;\text{ sinon }
+    \end{cases}
+    \] 
+\end{ex}
+
+\begin{prop}
+    Soit $q \in  Q(E)$
+\end{prop}

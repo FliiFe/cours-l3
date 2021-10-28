@@ -1,0 +1,150 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Groupes} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Groupes}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions}
+
+\begin{dfn}
+    Un groupe\index{groupe} est un triplet $(G, \star, e)$ où  $G$ est un ensemble,  $\star$ est une loi de composition interne associative,  $e$ est neutre pour  $\star$ et tous les éléments de  $G$ possèdent un inverse pour  $\star$.
+\end{dfn}
+
+\begin{rem}
+\begin{itemize}
+    \item L'élément neutre est unique
+    \item L'inverse est unique (on note $a ^{-1}$ l'inverse de $a$)
+    \item On dit que $G$ est abélien ou commutatif si $ \forall  a,b \in  G, a\star b=b\star a$
+    \item On appelle ordre de $G$ son cardinal
+\end{itemize}
+\end{rem}
+
+\begin{dfn}
+    $H\subset G$ est un sous-groupe\index{sous-groupe} de  $G$ si  $e \in  H$ et la restriction de la loi de $G$ à  $H$ est une loi de groupe
+\end{dfn}
+
+\begin{rem}
+C'est équivalent à \begin{itemize}
+    \item $e \in  H$
+    \item $\forall  x,y \in  H, xy \in H$
+    \item $\forall  x \in  H, x^{-1} \in  H$
+\end{itemize}
+Ces deux dernières conditions peuvent encore s'écrire $\forall  x,y \in  H, xy^{-1}\in H$.
+\end{rem}
+
+\begin{prop}
+Les sous-groupes de $\Z$ sont de la forme $n\Z$ pour $n \in  \N$.
+\end{prop}
+
+\begin{proof}
+    Les $n\Z$ sont des sous-groupes. Si $H\subset \Z$ est un sous-groupe non trivial alors $n=\inf (H\cap \N^\star) $ est tel que $n\Z\subset H$ et par division euclidienne, $n\Z=H$ (si $x=qn+r$ est la division de  $x \in  H$ par $n$, alors $r\in H$ et $0\leq r<n$ donc $r=0$ et  $x \in  n\Z$)
+\end{proof}
+
+\begin{prop}
+Une intersection de sous-groupes est un sous-groupe.
+\end{prop}
+
+\begin{dfn}
+Si $X\subset G$, le sous-groupe engendré par  $X$, noté  $\langle X\rangle$ est l'intersection de tous les sous-groupes contenant  $X$.
+\end{dfn}
+
+\begin{prop}
+    $\langle X\rangle$ est l'ensemble des éléments de  $G$ qui s'écrivent  $x_1^{n_1}\cdots x_p^{n_p}$, $p \in \N, n_i \in  \Z, x_i \in  X$.
+\end{prop}
+
+\begin{dfn}[Groupe monogène]
+    Un groupe est monogène\index{monogène} s'il existe $x \in  G$ tel que $\langle x\rangle =G$. Si  $G$ est fini et monogène, on dira qu'il est cyclique\index{cyclique}.
+\end{dfn}
+
+\section{Morphismes de groupes}
+
+\begin{dfn}
+    Soient $G, G'$ deux groupes. Un morphisme\index{morphisme} de groupes $G \longrightarrow  G'$ est une application $f:G\longrightarrow G'$ qui vérifie $f(e)=e'$ et  $f(x\cdot y)=f(x)\cdot f(y)$ pour tous  $x,y \in  G$.
+\end{dfn}
+
+\begin{rem}
+    Automatiquement, $f(x^{-1})=f(x)^{-1}$
+\end{rem}
+
+\begin{dfn}
+    On appelle noyau\index{noyau} du morphisme $f$ l'ensemble  $f^{-1} (\left\{ e' \right\} )$, et image l'ensemble  $f(G)$.
+\end{dfn}
+
+\begin{prop}
+L'image et le noyau d'un morphismes sont des sous-groupes
+\end{prop}
+
+\begin{prop}
+$f$ est injective  si et seulement si $\ker f= \left\{ e \right\} $, surjective si et seulement si $\im f=G'$.
+\end{prop}
+
+\begin{dfn}
+    Un morphisme bijectif est appelé isomorphisme\index{isomorphisme}
+\end{dfn}
+
+\begin{prop}
+L'inverse d'un isomorphisme est un morphisme
+\end{prop}
+
+\begin{prop}
+Si $G$ est un groupe monogène, alors  $G\cong \Z$ ou $G\cong \frac{\Z}{n\Z}$ pour un $n \in  \N^\star$.
+\end{prop}
+
+\begin{proof}
+    Si  $G=\langle x\rangle$, on pose  $f(n)=x^n$. C'est un morphisme de groupes surjectif. Si  $f$ est injectif, alors  $G\cong \Z$. Sinon $\ker f=n\Z$ pour un $n \in  \N^\star$, et $\frac{\Z}{n\Z}\cong G$
+\end{proof}
+
+\section{Classe définie par un sous-groupe}
+
+\begin{defprop}
+Si $H\subset G$ est un sous-groupe, alors on note  $x\sim y \iff  \exists h \in  H, x=yh$. C'est une relation d'équivalence (facile) et on note $G/H$ l'ensemble des classes d'équivalence pour cette relation. Ce sont les classes à gauche La classe de $x$ s'écrit  $xH$. 
+
+De même, on peut définir les classes à droite.
+\end{defprop}
+
+\begin{dfn}
+Si $G / H$ est fini, on dit que  $H$ est d'indice fini dans  $G$ et on note  \[
+    [G:H]=\# \sfrac GH
+\] 
+l'indice de $H$ dans  $G$. Sinon, on dit que  $H$ est d'indice infini.
+\end{dfn}
+
+\begin{prop}
+Toutes les classes à gauche modulo $H$ sont en bijection avec $H$.
+\end{prop}
+
+\begin{proof}
+    $f_a:aH\longrightarrow H, x\longmapsto a^{-1}x$ convient (bijectif car $f_a\circ f_{a ^{-1}}=\id$ et $f_{a^{-1}}\circ f_a=\id$).
+\end{proof}
+
+\begin{cor}
+    Si $G$ est fini, alors  \[\#G=[G:H]\cdot \#H\]
+\end{cor}
+
+\begin{thm}[Lagrange]
+Si $G$ est fini et  $H$ est un sous-groupe de  $G$ alors  $\#H$ divise $\#G$
+\end{thm}
+
+\begin{cor}
+Si $x \in  G$ et $G$ est fini alors l'ordre de  $x$ divise $\#G$
+\end{cor}
+
+\section{Sous-groupe distingué}
+
+\begin{dfn}
+$H$ est un sous-groupe distingué de  $G$  si et seulement si c'est un sous-groupe et $\forall  a \in G, aH=Ha$
+\end{dfn}
+
+\begin{prop}
+Si $f$ est un morphisme de groupes, alors  $\ker f$ est distingué
+\end{prop}

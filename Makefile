@@ -2,6 +2,7 @@ INTEGRATION_FN := integration
 ALGEBRE_FN := algebre
 TOPOLOGIE_FN := topologie
 ANALYSE_FN := analyse
+PREMASTER_FN := premaster
 
 .PHONY: clean all figures help integration newchapter init
 
@@ -27,6 +28,7 @@ INTEGRATION_TARGET := target/$(INTEGRATION_FN).pdf
 ALGEBRE_TARGET     := target/$(ALGEBRE_FN).pdf
 TOPOLOGIE_TARGET   := target/$(TOPOLOGIE_FN).pdf
 ANALYSE_TARGET     := target/$(ANALYSE_FN).pdf
+PREMASTER_TARGET     := target/$(PREMASTER_FN).pdf
 
 help: ## Print available targets
 	@echo "${PURPLE}:: ${BOLD}${GREEN}$$(basename $$(pwd))${RESET} ${PURPLE}::${RESET}"
@@ -74,6 +76,7 @@ integration: $(INTEGRATION_TARGET) ## Cours d'intégration, théorie de la mesur
 algebre: $(ALGEBRE_TARGET) ## Cours d'algèbre
 analyse: $(ANALYSE_TARGET) ## Cours d'analyse complexe
 topologie: $(TOPOLOGIE_TARGET) ## Cours de topologie et de calcul différentiel
+premaster: $(PREMASTER_TARGET) ## Cours de prémaster
 
 all: $(PDFS) ## Build everything
 
@@ -97,6 +100,11 @@ $(ALGEBRE_TARGET): $(ALGEBRE_FN).tex src/$(ALGEBRE_FN)-*.tex src/preamble.tex sr
 	cp build/$(@F) $@
 
 $(TOPOLOGIE_TARGET): $(TOPOLOGIE_FN).tex src/$(TOPOLOGIE_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
+	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
+	$(LATEXMK) $<
+	cp build/$(@F) $@
+
+$(PREMASTER_TARGET): $(PREMASTER_FN).tex src/$(PREMASTER_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
 	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
 	$(LATEXMK) $<
 	cp build/$(@F) $@

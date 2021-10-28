@@ -1,0 +1,108 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Théorie de Ramsay} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Théorie de Ramsay}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+La théorie de Ramsay est une branche de la combinatoire: "Le désordre complet n'existe pas".
+
+Voici deux exemples de résultats de la théorie de Ramsay.
+
+\begin{thm}[Ramsay]
+Soit $k\geq 1$. Si $n$ est assez grand, tout groupe de $n$ personnes contient  $k$ personnes deux à deux amies entre elles, ou $k$ personnes deux à deux non-amies.
+\end{thm}
+
+\begin{thm}[Van der Waerden]
+Si on colorie les entiers naturels en $r$ couleurs, alors il existe des progressions arithmétiques monochromes arbitrairement longues
+\end{thm}
+
+Les techniques de preuves sont souvent élémentaires (mais pas simples), et beaucoup de questions "simples" restent ouvertes.
+
+\section{Théorème de Ramsay}
+
+\begin{thm}[Principe des tiroirs]
+    Soient $k,l\geq 2$. Si on colorie en $k$ couleurs les éléments d'un ensemble $S$ de taille $k(l-1)+1$, alors il existe  $A\subset S$ de taille  $l$ dont tous les éléments sont de la même couleur.
+\end{thm}
+
+\begin{dfn}[Graphe]
+    Un graphe\index{graphe}  est un ensemble de sommets reliés entre eux par des arêtes. Un graphe complet\index{graphe complet} à $n\geq 2$ sommets, noté $K_n$ est un graphe à  $n$ sommets dans lequel tous les sommets distincts sont reliés entre eux.
+\end{dfn}
+
+\begin{rem}[Thm de Ramsay sur un exemple]
+On montre que si on colorie en bleu et rouge les arêtes de $K_6$, il existe un $K_3$ tout bleu ou tout rouge.
+
+Soit  $v$ un sommet de  $K_6$. Il y a au moins trois arêtes de la même couleur partant de  $v$ (p.ex bleues). On note  $a,b,c$ les autres extrémités de ces arêtes. Soit deux des sommets  $a,b,c$ sont reliés par une arrête bleue, et donc on a trouvé un triangle bleu, soit elles sont toutes rouges et on a un triangle rouge. 
+
+De plus, on peut colorier $K_5$ sans  $K_3$ monochrome. % TODO: le dessin
+On dit que  $6$ est le  $3$-ième nombre de Ramsay.
+\end{rem}
+
+\begin{dfn}
+    Soit $l,m\geq 2$. On note $R(l,m)$ le plus petit  entier  $n$ tel que tout coloriage des arêtes de  $K_n$ en bleu et rouge contient un  $K_l$ bleu ou un  $K_m$ rouge. Si $n$ n'existe pas, alors on pose  $R(l,m)=+\infty$.
+\end{dfn}
+
+\begin{rem}
+     \begin{itemize}
+         \item $R(l,m)=R(m,l)$
+         \item  $R(2, l)=R(l, 2)=l$
+         \item  $R(3, 3)=6$ 
+         \item $R(l_1, m_1)\leq R(l_2,m_2)$ si $l_1\leq l_2$ et $m_1\leq m_2$
+    \end{itemize}
+\end{rem}
+
+\begin{thm}[Ramsay 1930 --- Erös-Szekeres 1935]
+    Pour tous $l,m\geq 3$, on a \[R(l,m)\leq R(l-1,m)+R(l,m-1)\]
+    En particulier, \[R(l,m)\leq \binom{l+m-1}{l-1}<+\infty\]
+\end{thm}
+
+\begin{proof}
+    Soit $n=R(l-1, m)+R(l,m-1)$. Considérons un coloriage des arêtes de  $K_n$. Soit  $v$ un sommet. On note  $B$ l'ensemble des sommets atteints par une arête bleue qui part de  $v$, et  $C$ pour les rouges. On a \[\#B+\#C=R(l-1, m)+R(l,m-1)-1\] donc \[\#B\geq R(l-1, m) \qquad \text{ ou }\qquad  \#C\geq R(l,m-1).\] Supposons le premier cas.
+    Par définition de $R(l-1, m)$, $B$ contient un  $K_{l-1}$ bleu ou un $K_m$ rouge. Dans le premier cas, en ajoutant  $v$ on a un  $K_l$ bleu. Finalement,  $R(l,m)\leq n$. On en déduit la deuxième borne par récurrence sur $l+m$
+\end{proof}
+
+\begin{rem}
+\begin{itemize}
+    \item Cette borne donne $R(3, 3)\leq \binom 42=6$, $R(3, 4)\leq 10$, $R(4,4)\leq 20$
+    \item $R(5, 5)$ est inconnu:  $43\leq R(5, 5)\leq 48$
+    \item $798\leq R(10, 10)\leq 23556$
+    \item Asymptotiques: on a montré \[R(l,l)\leq  \binom{2l-1}{l-1}\underset{l\to+\infty}\sim \frac1{4\sqrt \pi}\frac{4^l}{\sqrt l}\]
+        La meilleure borne supérieure connue est de la forme \[R(l,l)\leq \exp(-c(\log l)^2)4^l\]
+        La meilleure borne inférieure connue est de la forme \[R(l,l)\geq  \sqrt{2}^{l+o(l)}\]
+    \item Le théorème se généralise à $R(l_1, \cdots , l_k)$ avec des $k$-coloriages
+\end{itemize}
+\end{rem}
+
+\begin{thm}[Théorème de Ramsay infini]
+Soit $S$ un ensemble dénombrable. On relie chaque paire d'éléments distincts de  $S$ par une arête soit bleue soit rouge. Alors il existe un sous-ensemble  $A\subset S$ infini tel que toutes les arêtes reliant deux sommets de  $A$ sont de la même couleur.
+\end{thm}
+
+\begin{proof}
+    On va construire par récurrence une suite $(x_n)_{n\geq 1}$ d'éléments de $S$ et une suite  $(S_n)_{n\geq 1}$ de sous-ensembles de $S$ telles que  \begin{itemize}
+        \item $\forall  n, S_n$ est infini
+        \item $\forall  n, S_{n+1}\subset S_n$
+        \item $\forall n, x_{n+1}\in S_n$ mais $x_{n+1}\not \in S_{n+1}$
+        \item $\forall  n,$ les arêtes entre $x_n$ et  $S_n$ sont toutes de la même couleur  $c_n$
+    \end{itemize}
+
+    On choisi $x_1 \in  S$ quelconque. Il existe une couleur $c_1$ telle qu'une infinité d'arêtes de couleur  $c_1$ sont issues de  $x_1$. Soit  $S_1$ l'ensemble des autres extrémités de ces arêtes. C'est un ensemble infini.
+
+    Supposons  $x_n,S_n$ construits. On choisit  $x_{n+1}\in S_n$, et il y a une couleur $c_{n+1}$ qui apparait une infinité de fois entre $x_{n+1}$ et les sommets de $S_n\setminus \left\{ x_{n+1} \right\}   $. On note ces sommets $S_{n+1}$. Il existe une couleur qui apparait une infinité de fois dans les  $(c_n)_n$ (bleu par exemple). On prend  $A$ l'ensemble des  $x_i$ tels que  $c_i$ est bleu.
+\end{proof}
+
+\begin{rem}
+On peut montrer que les nombres de Ramsay sont finis à partir du théorème infini.
+\end{rem}
+
+% TODO: preuve
+
+

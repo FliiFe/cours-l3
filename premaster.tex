@@ -1,0 +1,62 @@
+\documentclass{report}
+\newif\ifsolo
+
+\solofalse
+
+\input{src/preamble.tex}
+
+\begin{document}
+
+\pagestyle{empty}
+\begin{center}
+
+    ~ \vfill
+
+    \textsc{\LARGE ENS de Lyon}\\[1.5cm]
+    \textsc{\Large Cours de L3}\\[0.5cm]
+
+    \rule{\linewidth}{0.5mm} \\[0.4cm]
+    {\huge \bfseries Prémaster }\\[0.1cm]
+    \rule{\linewidth}{0.5mm} \\[0.4cm]
+    % \textsc{\large et th mesure ?}\\[1.5cm]
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Professeur}\\
+            Thomas \textsc{Budzinski}
+        \end{flushleft}
+        \end{minipage}\hspace{1cm}\begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Prise de notes} \\
+            Théophile \textsc{Cailliau}
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=7cm]{ensl.pdf}\\[1cm]
+    \vfill
+    {\large Année 2021-2022}\\
+\end{center}
+
+\newpage
+
+\dominitoc
+\tableofcontents
+\faketableofcontents
+
+\newpage
+
+\pagestyle{main}
+
+\foreach \i in {00, 01, 02, 03, 04, 05, 06} {%
+    \edef\FileName{premaster-\i}%
+    \IfFileExists{\FileName}{%
+       \input{src/\FileName}%
+    }
+}
+
+\newpage
+\pagestyle{empty}
+
+\printindex
+
+\end{document}

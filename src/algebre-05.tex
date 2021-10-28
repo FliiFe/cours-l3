@@ -90,3 +90,65 @@ Il est possible que $q$ soit non-dégénérée et que $q\left|_{F}\right.$ le so
 \begin{prop}
     Soit $q \in  Q(E)$
 \end{prop}
+
+%TODO: rattrapage ici
+
+% TODO: potentiellement titre ici
+
+On se place dans un $ \R$-ev E muni d'un produit scalaire
+
+\begin{thm}
+    Soit $u \in  \S(E)$. Alors il existe une base orthonormée de $E$ qui diagonalise  $u$. Réciproquement, si  $u \in  L(E)$ peut être diagonalisée dans une base orthonormée, alors  $u$ est symétrique.
+\end{thm}
+
+\begin{lmm}
+    Soit $u \in  \S(E)$. Alors ses valeurs propres sont réelles.
+\end{lmm}
+
+\begin{lmm}
+    Soit $u \in  \S(E)$ et $F\subset E$ stable par  $u$. Alors,  $F^\bot$ est aussi stable par  $u$
+\end{lmm}
+
+\begin{proof}[Preuve du second lemme]
+    Si $x \in  F^bot, y \in  F$ alo s $ \scalar{u(x)}{y}= \scalar{x}{u(y)}=0  $ donc $u(x)\in F^\bot$
+\end{proof}
+
+\begin{proof}[Preuve du théorème]
+    Soit $u \in  \S(E)$. On fait une récurrence sur $n=\dim E$. Si  $n=1$, il n'y a rien à faire. Sinon, soit  $x\in  E$ un vecteur propre unitaire de $u$. On pose $F=\R x$ et $E=F\oplus F^\bot$ et  $F^\bot$ est stable par  $u$ donc  $u\left|_{F^\bot}\right.$ se diagonalise dans une base orthonormée, ce qui conclut.
+\end{proof}
+
+% TODO: les corollaires de sasha
+
+\begin{cor}
+    $u \in  \S(E)$. Alors $q_u(x)= \scalar{u(x)}{x} $ est une forme quadratique. Il existe une base orthonormée directe pour $q_u$
+\end{cor}
+
+% TODO: rattraper ça aussi
+
+\section{Décomposition polaire}
+
+\begin{prop}
+    Soit $u \in  \S^{++}(E)$. Alors il existe un unique $v \in  \S ^{++}(E)$ tel que $v^2 =u$. Puis, $v$ est polynomial en  $u$.
+\end{prop}
+
+\begin{proof}
+    Soit $(e_1, \cdots , e_n)$ une BON qui diagonalise $u$:  $ u(e_i)=\lambda_i e_i$. On pose $v(e_i)=\sqrt{\lambda_i}e_i$, on a bien  $v \in  \S ^{++}(E)$.
+
+    Si $P \in  \R[X]$ est tel que $P(\lambda_i)=\sqrt{\lambda_i}$ alors  $P(u)=v$. Pour l'unicité, on se donne  $w$ qui convient. Les applications  $w$ et  $u$ commutent donc il existe une base de diagonalisation commune, et dans cette base on peut identifier les valeurs propres. Puis  $E=\bigoplus E_{\lambda_i}^u$ et  ces espaces propres sont stables par  $w$, puis  $E_{\lambda_i}^u=E_{\sqrt{\lambda_i}}^w$ donc  $v=w$.
+\end{proof}
+
+\begin{thm}[Décomposition polaire]
+    On se donne $g \in  \GL{E}$. Il existe un unique $u \in  \O(E)$ et $s \in  \S ^{++}(E)$ tels que $g=us$. De plus,  $s$ est un polynôme en  $g^\star=g$
+\end{thm}
+
+\begin{proof}
+    Remarquons que $h\defeq g^\star g \in  \S ^{++}(E)$, puisque $h^\star=(g^\star g)^\star=g^\star g=h$. Puis, si  $\lambda$ est une valeur propre de  $h$ et  $x$ un vecteur propre associé, alors  \[
+        \scalar{h(x)}{x} = \scalar{\lambda x}{x} = \lambda \|x\|^2 = \scalar{g^\star g (x)}{x} = \|g(x)\|^2 
+    \] 
+    donc $ \lambda >0$. Il existe $s \in \S^{ ++ }(E)$ tel que $s^2 =h$. On pose $u=gs^{-1}$ de sorte que $g=us$. Puis  \[
+    u^\star u=s^{-1}g^\star g s^{-1}=s ^{-1} s^2 s ^{-1}=\id
+    \] 
+    d'où $u \in  \O(E)$, ce qui conclut sur l'existence.
+
+    Pour l'unicité, on peut remarquer que $g^\star g=s^2$ donc  $s$ est uniquement déterminé par  $g$.
+\end{proof}

@@ -88,8 +88,124 @@ Il est possible que $q$ soit non-dégénérée et que $q\left|_{F}\right.$ le so
 \end{ex}
 
 \begin{prop}
-    Soit $q \in  Q(E)$
+    Soit $q \in  Q(E)$, $\mathcal  B, \mathcal  B'$ des bases de $E$ et $P \in  \GL_n(k)$ la matrice de passage de $\mathcal  B$ à $\mathcal  B'$. Alors $ \mathcal  M_{\mathcal  B'}(q)=\transpose P\mathcal M_{\mathcal  B}(q)P$
 \end{prop}
+
+\begin{proof}
+Changement de base pour la matrice d'une forme bilinéaire
+\end{proof}
+
+\begin{dfn}
+    Soit $q \in  Q(E)$ et $\mathcal  B$ une base de $E$. Le discriminant de  $q$ dans la base  $\mathcal  B$ est $\disc_{\mathcal  B}(q)=\det(\mathcal  M_{\mathcal  B}(q)) \in  k$.
+\end{dfn}
+
+\begin{rem}
+    $q$ est dégénérée  si et seulement si $\disc_{\mathcal  B}(q)=0$
+\end{rem}
+
+\begin{dfn}
+    On note $k /(k^\times)^2$ le quotient de $k$ par  $\sim$ définie par  \[
+    x\sim y \iff  \exists  a \in  k^\times, \quad  x=a^2y
+    \]
+\end{dfn}
+
+\begin{prop}
+    L'image de $\disc_{\mathcal  B}(q)$ dans $k / (k^\times)^2 $ ne dépend pas de la base $ \mathcal B$
+\end{prop}
+
+\begin{proof}
+ \[
+     \det(\mathcal  M_{\mathcal  B'}(q))=\det(P)^2 \det (\mathcal  M_{\mathcal  B}(q))
+\] 
+\end{proof}
+
+\begin{dfn}
+    On note $\disc(q) \in  k / (k^\times)^2 $ l'image de $\disc_{\mathcal  B}(q)$ dans $k / (k^\times )^2 $.
+\end{dfn}
+
+\section{Isomorphisme de formes quadratiques}
+
+\begin{dfn}
+    Soient $E, E'$ des  ev et $q \in  Q(E), q' \in  Q(E')$. On dit que $q$ et  $q'$ sont isomorphes s'il existe un isomorphisme  $u:E\longrightarrow E'$ tel que $q=q'\circ u$
+\end{dfn}
+
+\begin{rem}
+    Soient $\mathcal  B, \mathcal  B'$ des bases respectives de $E, E'$. Alors  $q$ et  $q'$ sont isomorphes  si et seulement si $\mathcal  M_{\mathcal  B} (q)$ et $\mathcal  M_{\mathcal  B'}(q')$ sont congruentes (i.e. $ \exists  P \in  \GL_n(k)$ tq $\mathcal M_{\mathcal  B'}(q')=\transpose P\mathcal  M_{\mathcal  B}(q)P$)
+\end{rem}
+
+\begin{prop}
+    Si $q$ et  $q'$ sont isomorphes, alors elles ont même rang et même discriminant dans $k / (k^\times )^2 $.
+\end{prop}
+
+\begin{rem}
+Ces invariants ne sont pas suffisant pour classifier les formes quadratiques à isomorphisme près
+\end{rem}
+
+\begin{ex}
+$E=E'=\R^2 $, $k=\R$ et  \[
+\begin{dcases}
+    q(x, y)=x^2 +y^2 \\
+    q'(x, y)=x^2 -y^2
+\end{dcases}
+\] 
+Dans la base canonique, ces formes ont les matrices respectives $I_2$ et  $-I_2$, donc  $q$ et  $q'$ sont de rang  $2$. De plus,  $\disc(q)=1=\disc(q')$ dans  $ \R / (\R^\times )^2 $. Pourtant, $q$ et  $q'$ n'ont pas la même image (l'une est positive, l'autre non).
+\end{ex}
+
+\section{Orthogonalité et noyau}
+
+On considère $q \in  Q(E)$, de forme polaire $\phi$.
+
+ \begin{dfn}
+Si $A\subseteq E$, on définit  \[
+    A^{\bot,q}=A^{\bot,\phi}=L_\phi(A)^\bot=R_\phi(A)^\bot
+\]
+\end{dfn}
+
+\begin{dfn}
+    Le noyau de $q$ est  $\ker q=E^{\bot,q}= \left\{ x \in  E, \quad  \forall  y \in  E, \phi(x, y)=0 \right\} $. C'est un sev de $E$. On remarque que  $\phi$ est dégénérée  si et seulement si $\ker q\neq \left\{ 0 \right\} $
+\end{dfn}
+
+\begin{rem}
+Si $F$ est un sev de $E$ alors $\ker (q)\cap F\subset \ker (q\left|_{F}\right.)$, mais il n'y a en général pas égalité en général.
+\end{rem}
+
+\begin{prop}
+    Soit $V$ un sev de  $E$. Alors  $\dim V+\dim V^\bot \geq \dim E$, avec égalité si $q$ est non-dégénérée
+\end{prop}
+
+\begin{proof}
+Vu pour les formes bilinéaires
+\end{proof}
+
+\begin{rem}
+    Si $q$ est non-dégénérée, on n'a pas forcément  $V\oplus V^\bot=E$. Par exemple, pour  $q(x, y)=xy$ dans $k^2$,  $(ke_1)^\bot=ke_1$.
+\end{rem}
+
+\begin{prop}
+On a $V\oplus V^\bot =E \iff  \disc(q\left|_{V}\right.)\neq 0$
+\end{prop}
+
+\begin{proof}
+$\impliedby )$ Soit $x \in  V\cap V^\bot$. Alors, $\forall  y \in  V, \phi(x, y)=0$. Puisque $\phi\left|_{V^2}\right.$ est non-dégénérée, cela entraine $x=0$. Puis, la somme des dimensions est bonne.
+
+$\implies )$ Soit $x \in  V$ tel que $\forall  y \in  V, \phi(x, y)=0$. Alors $x \in  V\cap V^\bot$ d'où $x=0$. Donc finalement  $\ker (q\left|_{V}\right.)= \left\{ 0 \right\} $
+\end{proof}
+
+\section{Cône isotrope d'une forme quadratique}
+
+\begin{dfn}
+    Le cône isotrope\index{cone isotrope@cône isotrope} de $q \in  Q(E)$ est l'ensemble \[
+        C(q)= q^{-1}(\left\{ 0 \right\} )
+    \]
+\end{dfn}
+
+\begin{rem}
+\begin{itemize}
+    \item $\ker q\subseteq C(q)$ mais il n'y a pas toujours égalité
+    \item  $C(q)$ n'est pas un espace vectoriel
+    \item  $C(q)$ est stable par multiplication par un scalaire (d'où le nom de cône).
+\end{itemize}
+\end{rem}
 
 %TODO: rattrapage ici
 

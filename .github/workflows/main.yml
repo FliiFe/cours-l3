@@ -66,14 +66,14 @@ jobs:
         asset_path: ./target/integration.pdf
         asset_name: integration.pdf
         asset_content_type: application/pdf
-    - name: Release analyse
+    - name: Release premaster
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/analyse.pdf
-        asset_name: analyse-complexe.pdf
+        asset_path: ./target/premaster.pdf
+        asset_name: premaster.pdf
         asset_content_type: application/pdf
     - name: Release topologie
       uses: actions/upload-release-asset@v1
@@ -93,7 +93,7 @@ jobs:
         asset_path: ./target/algebre.pdf
         asset_name: algebre.pdf
         asset_content_type: application/pdf
-    - name: Release courss
+    - name: Release cours
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

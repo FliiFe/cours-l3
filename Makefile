@@ -1,7 +1,6 @@
 INTEGRATION_FN := integration
 ALGEBRE_FN := algebre
 TOPOLOGIE_FN := topologie
-ANALYSE_FN := analyse
 PREMASTER_FN := premaster
 
 .PHONY: clean all figures help integration newchapter init
@@ -27,7 +26,6 @@ LATEXMK := latexmk $(SILENT)
 INTEGRATION_TARGET := target/$(INTEGRATION_FN).pdf
 ALGEBRE_TARGET     := target/$(ALGEBRE_FN).pdf
 TOPOLOGIE_TARGET   := target/$(TOPOLOGIE_FN).pdf
-ANALYSE_TARGET     := target/$(ANALYSE_FN).pdf
 PREMASTER_TARGET     := target/$(PREMASTER_FN).pdf
 
 help: ## Print available targets
@@ -38,7 +36,6 @@ help: ## Print available targets
 	@echo "  | make integration  ${YELLOW}# Cours d'intégration, théorie de la mesure et de probabilités${RESET}"
 	@echo "  | make algebre  ${YELLOW}# Cours d'algèbre ${RESET}"
 	@echo "  | make topologie  ${YELLOW}# Cours de topologie et de calcul différentiel${RESET}"
-	@echo "  | make analyse  ${YELLOW}# Cours d'analyse complexe${RESET}"
 	@echo ""
 	@echo "$(YELLOW)List of PHONY targets:$(RESET)"
 	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  ${GREEN}${BOLD}%-22s${RESET} %s\n", $$1, $$2}'
@@ -74,7 +71,6 @@ newchapter: ## Make a new chapter
 
 integration: $(INTEGRATION_TARGET) ## Cours d'intégration, théorie de la mesure et de probabilités
 algebre: $(ALGEBRE_TARGET) ## Cours d'algèbre
-analyse: $(ANALYSE_TARGET) ## Cours d'analyse complexe
 topologie: $(TOPOLOGIE_TARGET) ## Cours de topologie et de calcul différentiel
 premaster: $(PREMASTER_TARGET) ## Cours de prémaster
 
@@ -85,11 +81,6 @@ src/figures/%.pdf: src/figures/%.tex
 	cd src/figures/ && $(LATEXMK) $(<F) && latexmk -silent -c $(<F)
 
 $(INTEGRATION_TARGET): $(INTEGRATION_FN).tex src/$(INTEGRATION_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
-	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
-	$(LATEXMK) $<
-	cp build/$(@F) $@
-
-$(ANALYSE_TARGET): $(ANALYSE_FN).tex src/$(ANALYSE_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
 	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
 	$(LATEXMK) $<
 	cp build/$(@F) $@

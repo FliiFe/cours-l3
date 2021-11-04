@@ -70,7 +70,7 @@ newchapter: ## Make a new chapter
 	fi;
 
 release: all ## Create a new release
-	gh release create --target main target/* -t "$(date +"%d-%m-%Y %H:%M")" -n ''
+	gh release create "$$(date +"%Y-%m-%d-%H:%M")" target/* -t "$$(date +"%d-%m-%Y %H:%M")" -n ''
 
 integration: $(INTEGRATION_TARGET) ## Cours d'intégration, théorie de la mesure et de probabilités
 algebre: $(ALGEBRE_TARGET) ## Cours d'algèbre

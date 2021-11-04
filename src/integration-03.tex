@@ -190,3 +190,63 @@ Fixons $d\geq 1$. On a vu que la mesure de Lebesgue est unique, si elle existe. 
 \begin{prop}
     Pour tout pavé $P$,  $\lambda^\star(P)=\mathrm{Vol}(P)$
 \end{prop}
+
+\section{Ensembles Lebesgue-mesurables et complétion des mesures}
+
+\begin{dfn}
+    Soit $(X, \mathcal Q, \mu)$ un espace mesuré. Une partie  $A\subset X$ est  $\mu$-négligeable s'il existe  $B \in  \mathcal  Q$ tel que $A\subseteq B$ et  $\mu(B)=0$. On note  $\mathcal  N$ ou $\mathcal N_{\mu}$ l'ensemble des parties $\mu$-négligeables\index{partie négligeable}. On note  $\bar{\mathcal  Q} =\sigma(\mathcal  Q\cup \mathcal  N)$.
+\end{dfn}
+
+\begin{prop}
+    Soit $(X, \mathcal  Q, \mu)$ un espace mesuré. Alors, \[
+        \bar{\mathcal  Q} = \left\{ A\subset X, \quad  \exists B,B' \in  \mathcal  Q, B\subseteq A\subseteq B'\text{ et } \mu(B'\setminus  B)=0 \right\} 
+    \] 
+    De plus, $\mu$ se prolonge de façon unique en une mesure sur  $(X, \bar{\mathcal  Q})$. On appelle $(X, \bar{\mathcal  Q}, \mu)$ l'espace complété de $(X, \mathcal  Q, \mu)$
+\end{prop}
+
+\begin{proof}
+    Soit $\mathcal  Q'$ l'ensemble de l'énoncé. Il est clair que $\mathcal  Q\subset \mathcal  Q'$. Puis, $\mathcal  Q'$ est bien une $\sigma$-algèbre (exercice). Puis,  $B=\emptyset$ donne  $\mathcal  N\subset  \mathcal  Q'$ donc $\bar{\mathcal  Q}\subset \mathcal  Q'$.
+
+    Soit $A \in  \mathcal Q'$, $B$ et  $B'$ un encadrement de  $A$ de différence symétrique négligeable. Alors, en notant  $A=A \setminus  B\cup B$ on a $A \in  \left\{ Q\cup N, Q \in  \mathcal  Q, N \in  \mathcal  N \right\}\subset \bar{\mathcal  Q} $ car $A \setminus  B\subset B'\setminus  B$ est négligeable et $B \in  \mathcal  Q$. On en déduit finalement $\mathcal  Q'=\bar{\mathcal  Q}$.
+
+    En posant $\mu(A)=\mu(B)=\mu(B')$, on étend la mesure à la tribu prévue, et cette définition ne dépend pas du choix de  $B, B'$ car pour un autre choix  $\hat{B},\hat{B'}$, on a toujours $\mu(B)=\mu(B')=\mu(\hat{B})=\mu(\hat{B'})$. C'est aussi le seul choix possible de valeur pour $\mu(A)$ par croissance de la mesure. On forme ainsi bien une mesure (exercice)
+\end{proof}
+
+\begin{thm}
+    L'ensemble des mesurables de  $\lambda^\star$, noté  $\mathcal  M(\lambda^\star)$ est la tribu complétée de $\mathcal B(\R^d)$ par la mesure $\lambda$. On l'appelle tribu de Lebesgue.
+\end{thm}
+
+\begin{rem}
+\[
+    \mathcal  B(\R^d)\subsetneq \mathcal  M(\lambda^\star) \subsetneq \mathcal  P(\R^d)
+\] 
+La première inclusion stricte se montre par un argument de cardinalité, la seconde exploite l'axiome du choix.
+\end{rem}
+
+\begin{proof}[Démonstration du théorème]
+    Si $A \in  \mathcal N$, alors il existe $B\supseteq A$ borélien de mesure nulle, donc  $\lambda^\star(A)\leq \lambda^\star (B)=0$ et on a vu dans un lemme que cela entraine que $A$ est mesurable. Donc,  $\bar{\mathcal  B(\R^d)}\subset \mathcal  M(\lambda^\star)$.
+
+    Soit $A \in  \mathcal  M(\lambda^\star)$. Supposons que $\lambda^\star(A)<+\infty$ (sinon on s'y ramène en intersectant avec $]-N,N[$ et en faisant  $N\to +\infty$). Dans ce cas, pour tout $n\geq 1$, on peut trouver $(P_i^{(n)})_{i\geq 1}$ pavés ouverts qui recouvrent  $A$ avec  \[
+        \sum_{i\geq 1}\mathrm{Vol}(P_i^{(n)})\leq \lambda^\star(A)+ \frac1{2^n}
+    \] 
+    Soit  \[
+        B=\bigcap_{n\geq 1}\bigcup _{i\geq 1}P_i^{(n)} \in  \mathcal  B(\R^d)
+    \] 
+    On a bien $A\subset B$ et  $\lambda^\star(A)\leq \lambda(B)$. Puis, \[
+        \forall  n\geq 1, \lambda(B) \leq  \lambda \left( \bigcup_{i\geq 1} P_i^{(n)} \right)\leq \sum_{i\geq 1} \mathrm{Vol}(P_i^{(n)})\leq \lambda^\star(A)+\frac1{2^n}
+    \] 
+    donc $\lambda(B)=\lambda^\star(A)$. De même, on trouve  $\hat{B} \subset A$ borélien de même mesure que $A$, ce qui montre que  $A \in  \bar{\mathcal  B(\R^d)}$
+\end{proof}
+
+\section{Propriétés de la mesure de Lebesgue}
+
+\subsection{Invariance par translation}
+
+On note $\lambda_d$ la mesure de Lebesgue en dimension  $d$.
+
+ \begin{thm}
+La mesure de Lebesgue est invariante par translation: \[
+    \forall  A \in  \mathcal  B(\R^d), \forall x \in  \R^d, \quad  \lambda(x+A)=\lambda(A)
+\]
+De plus, toute autre mesure invariante par translation et finie sur les compacts est proportionnelle à $\lambda$
+\end{thm}

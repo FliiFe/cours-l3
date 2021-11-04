@@ -3,7 +3,7 @@ ALGEBRE_FN := algebre
 TOPOLOGIE_FN := topologie
 PREMASTER_FN := premaster
 
-.PHONY: clean all figures help integration newchapter init
+.PHONY: clean all figures help integration newchapter init release
 
 BLACK        := $(shell tput -Txterm setaf 0)
 RED          := $(shell tput -Txterm setaf 1)
@@ -68,6 +68,9 @@ newchapter: ## Make a new chapter
 		echo "Filename does not match ^[a-zA-Z0-9-]+$$"; \
 		exit 1; \
 	fi;
+
+release: all ## Create a new release
+	gh release create --target main target/* -t "$(date +"%d-%m-%Y %H:%M")" -n ''
 
 integration: $(INTEGRATION_TARGET) ## Cours d'intégration, théorie de la mesure et de probabilités
 algebre: $(ALGEBRE_TARGET) ## Cours d'algèbre

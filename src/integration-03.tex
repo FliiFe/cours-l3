@@ -194,7 +194,7 @@ Fixons $d\geq 1$. On a vu que la mesure de Lebesgue est unique, si elle existe. 
 \section{Ensembles Lebesgue-mesurables et complétion des mesures}
 
 \begin{dfn}
-    Soit $(X, \mathcal Q, \mu)$ un espace mesuré. Une partie  $A\subset X$ est  $\mu$-négligeable s'il existe  $B \in  \mathcal  Q$ tel que $A\subseteq B$ et  $\mu(B)=0$. On note  $\mathcal  N$ ou $\mathcal N_{\mu}$ l'ensemble des parties $\mu$-négligeables\index{partie négligeable}. On note  $\bar{\mathcal  Q} =\sigma(\mathcal  Q\cup \mathcal  N)$.
+    Soit $(X, \mathcal A, \mu)$ un espace mesuré. Une partie  $A\subset X$ est  $\mu$-négligeable s'il existe  $B \in  \mathcal  Q$ tel que $A\subseteq B$ et  $\mu(B)=0$. On note  $\mathcal  N$ ou $\mathcal N_{\mu}$ l'ensemble des parties $\mu$-négligeables\index{partie négligeable}. On note  $\bar{\mathcal  Q} =\sigma(\mathcal  Q\cup \mathcal  N)$.
 \end{dfn}
 
 \begin{prop}
@@ -207,7 +207,7 @@ Fixons $d\geq 1$. On a vu que la mesure de Lebesgue est unique, si elle existe. 
 \begin{proof}
     Soit $\mathcal  Q'$ l'ensemble de l'énoncé. Il est clair que $\mathcal  Q\subset \mathcal  Q'$. Puis, $\mathcal  Q'$ est bien une $\sigma$-algèbre (exercice). Puis,  $B=\emptyset$ donne  $\mathcal  N\subset  \mathcal  Q'$ donc $\bar{\mathcal  Q}\subset \mathcal  Q'$.
 
-    Soit $A \in  \mathcal Q'$, $B$ et  $B'$ un encadrement de  $A$ de différence symétrique négligeable. Alors, en notant  $A=A \setminus  B\cup B$ on a $A \in  \left\{ Q\cup N, Q \in  \mathcal  Q, N \in  \mathcal  N \right\}\subset \bar{\mathcal  Q} $ car $A \setminus  B\subset B'\setminus  B$ est négligeable et $B \in  \mathcal  Q$. On en déduit finalement $\mathcal  Q'=\bar{\mathcal  Q}$.
+    Soit $A \in  \mathcal A'$, $B$ et  $B'$ un encadrement de  $A$ de différence symétrique négligeable. Alors, en notant  $A=A \setminus  B\cup B$ on a $A \in  \left\{ Q\cup N, Q \in  \mathcal  Q, N \in  \mathcal  N \right\}\subset \bar{\mathcal  Q} $ car $A \setminus  B\subset B'\setminus  B$ est négligeable et $B \in  \mathcal  Q$. On en déduit finalement $\mathcal  Q'=\bar{\mathcal  Q}$.
 
     En posant $\mu(A)=\mu(B)=\mu(B')$, on étend la mesure à la tribu prévue, et cette définition ne dépend pas du choix de  $B, B'$ car pour un autre choix  $\hat{B},\hat{B'}$, on a toujours $\mu(B)=\mu(B')=\mu(\hat{B})=\mu(\hat{B'})$. C'est aussi le seul choix possible de valeur pour $\mu(A)$ par croissance de la mesure. On forme ainsi bien une mesure (exercice)
 \end{proof}
@@ -250,3 +250,51 @@ La mesure de Lebesgue est invariante par translation: \[
 \]
 De plus, toute autre mesure invariante par translation et finie sur les compacts est proportionnelle à $\lambda$
 \end{thm}
+
+\begin{proof}
+    Le volume des pavés est invariant par translation, donc $\lambda^\star$ est invariante par translation et $\lambda$ aussi.
+
+    Soit $\mu$ une mesure finie sur les compacts et invariante par translation. Alors, on pose  $c=\mu([0,1[^d)<+\infty$. Le pavé  $[0,1]^d$ s'écrit comme union disjointe de  $n^d$ translatés de  $[0,\sfrac1n[^d$, qui sont donc tous de mesure $\mu([0,\sfrac1n[^d)=\sfrac c{n^d}$, pour tous  $n\geq 1$.
+
+    Tous les pavés de la forme $P=\prod [a_i, b_i[$ avec des  $a_i,b_i$ rationnels s'écrit comme union disjointe de translatés de  $[0,\sfrac1n[^d$ avec  $n$ un multiple des dénominateurs des  $a_i,b_i$. Ainsi,  $\mu$ et  $c \lambda$ coïncident sur les pavés à bornes rationnelles, qui engendrent les boréliens.
+\end{proof}
+
+\subsection{Régularité de la mesure de Lebesgue}
+
+\begin{thm}
+    Soit $A \in  \mathcal  B(\R^d)$. Alors \[
+        \lambda(A)=\inf \left\{ \lambda(U), \quad  A\subset U, U \text{ouvert} \right\} 
+    \]
+    et \[
+        \lambda(A)= \sup \left\{ \lambda(K), \quad  K\subset A, K\text{compact} \right\}.
+    \]
+    On parle de régularité respectivement extérieure et intérieure
+\end{thm}
+
+\begin{dfn}
+    Si $f:(X, \mathcal  A)\longrightarrow (Y, \mathcal  B)$ est mesurable et $\mu$ est une mesure sur  $(X, \mathcal  A)$ alors on pose pour tous $B \in  \mathcal  B$ \[
+        f_\star \mu(B)=\mu(f^{-1} (B))
+    \]
+    C'est la mesure image de $\mu$ par  $f$.
+\end{dfn}
+
+\begin{rem}
+L'existence d'une mesure sur l'espace de départ donne l'existence d'une mesure sur l'espace d'arrivée. La réciproque est fausse en général.
+\end{rem}
+
+\begin{proof}[Démonstration du théorème]
+~
+\begin{itemize}
+    \item \emph{Régularité extérieure}. Il est clair que $\lambda(A)\leq \lambda(U)$ si $U$ est un ouvert qui contient  $A$. Si $\lambda(A)=+\infty$, il n'y a rien à montrer. Sinon, on se donne  $ \epsilon>0$ et $(P_i)_{i\geq 1}$ une famille de pavés ouverts qui recouvrent $A$ et tels que  \[
+            \sum_{i\geq 1} \mathrm{Vol}(P_i) \leq \lambda(A)+\epsilon
+    \] 
+    Alors, l'union de ces pavés, notée $\mathcal  U$, est un ouvert contenant $A$ et tel que  \[
+        \lamnda(\mathcal  U)\leq \sum_{i\geq 1}\lambda(P_i)\leq \lambda(A)+\epsilon
+    \] 
+    et c'est vrai pour tout $ \epsilon>0$.
+\item Comme $\lambda(A\cap ]-N, N[^d) \xrightarrow[n\to+\infty]{}\lambda(A)$, on peut supposer $A\subset ]-N, N[^d$. On note  $B=[-N, N]^d \setminus  A$. Vu la régularité extérieure, il existe un ouvert $\mathcal  U$ qui contient $B$ tel que  $\lambda(\mathcal  U)\leq \lambda(A)+\epsilon$ pour $\epsilon>0$ fixé. Alors, $K=[-N, N]^d \setminus  \mathcal  U$ est un compact contenu dans $A$ et  $A \setminus  K\subset \mathcal U \setminus  B$ donc $\lambda (A \setminus  K)\leq  \lambda (\mathcal  U \setminus  B)\leq  \epsilon$ donc $\lambda(K)\geq \lambda(A)-\epsilon$
+\end{itemize}
+\end{proof}
+
+\section{Lien avec l'intégrale de Riemann}
+

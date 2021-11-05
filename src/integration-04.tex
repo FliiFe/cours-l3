@@ -1,0 +1,56 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Espace \texorpdfstring{$\L^p$}{L^p}} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Espace \texorpdfstring{$\L^p$}{L^p}}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\begin{dfn}
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré. On note, pour $f:X\longrightarrow \R$ mesurable et pour $p>1$, \[
+        \|f\|_p= \left( \int_X |f|^p\diff \mu\right)^{\sfrac1p}
+    \]
+    et \[
+        \|f\|_{\infty}=\inf \left\{ M\geq 0, \quad  |f|\leq M \;\mu-\text{pp} \right\} 
+    \]
+    On note pour $p \in  [1, +\infty]$, $\mathcal  L^p(X, \mathcal A, \mu)$ l'ensemble des fonctions mesurables $f:X \longrightarrow \R$ telles que $\|f\|_p<+\infty$. Sur cet ensemble, on définit $\sim$ la relation d'équivalence d'égalité $\mu$-presque partout et on appelle $\L^p(X, \mathcal A, \mu)=\mathcal  L^p(X, \mathcal  A, \mu) / \sim$.
+\end{dfn}
+
+\begin{rem}
+On travaillera indifféremment avec des fonctions ou des classes d'équivalences avec la même notation.
+\end{rem}
+
+\section{Rappel sur les fonctions convexes}
+
+\begin{dfn}
+Si $I$ est un intervalle de  $ \R$, une application $\varphi : I \longrightarrow  \R$ est convexe si l'une des deux propriétés équivalentes suivantes est vérifiée: \[
+    \forall  x, y \in  I, \forall t \in  [0,1], \varphi((1-t)x+ty)\leq (1-t)\varphi(x)+t\varphi(y)
+\]
+\[
+    \forall  x,y,z \in  I, x<y<z \implies \frac{\varphi(y)-\varphi(x)}{y-x}\leq \frac{\varphi(z)-\varphi(x)}{z-x}\leq \frac{\varphi(z)-\varphi(y)}{z-y}
+\]
+\end{dfn}
+
+\begin{rem}
+Si $\varphi$ est  $\mathcal  C^1$, alors elle est convexe si et seulement si $\varphi'$ est croissante.
+\end{rem}
+
+\begin{prop}
+Si $\varphi$ est convexe alors  \[
+    \varphi(x)= \sup \left\{ ax+b, \quad  a,b \in  \R, ay+b\leq \varphi(x), \forall  y \in  I \right\} 
+\] 
+\end{prop}
+
+\begin{prop}[Inégalité de Jensen\index{Jensen (inégalité)}]
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré tel que $\mu(X)=1$, et $f:X\longrightarrow I$ intégrable avec $I$ un intervalle réel. Soit $\varphi$ convexe telle que  $\varphi\circ f$ est intégrable. Alors,  \[
+        \varphi \left( \int_X f\diff \mu \right) \leq  \int_X \phi\circ f\diff \mu
+    \] 
+\end{prop}

@@ -54,3 +54,183 @@ Si $\varphi$ est convexe alors  \[
         \varphi \left( \int_X f\diff \mu \right) \leq  \int_X \phi\circ f\diff \mu
     \] 
 \end{prop}
+
+\begin{proof}
+On pose \[
+y=\int_X f\diff \mu \leq \int_X \sup_Xf\diff\mu=\sup_X f\leq \sup I
+\] 
+car $f$ est à valeurs dans  $I$. On a aussi $\inf I\leq y$ donc $y \in  \bar{I} $. Si par exemple $y=\sup f$, alors  \[
+\int_X f\diff\mu =\int_X \sup f\diff \mu
+\] 
+donc \[
+    \int_X(\sup f-f)\diff \mu=0
+\] 
+et $f=\sup_X f$  $\mu$-pp et en particulier $y \in I$. De même, si $y=\inf_Xf$ alors $y \in  I$.
+
+On a alors  \[
+    \varphi(y)=\left\{ ay+b, \quad  a, b \in  \R, ax+b \leq \varphi(x), \forall  x \in  I \right\} 
+\]
+Soient $a, b \in  \R$ tels que $\forall  x \in  I, ax+b\leq \varphi(x)$. Alors \[
+    \forall  x \in  I, af(x)+b\leq \varphi\circ f(x)
+\] 
+donc \[
+    a\int_Xf\diff \mu+b\leq \int_X\varphi\circ f\diff \mu.
+\] 
+On passe au sup pour $a, b$ et cela conclut.
+\end{proof}
+
+\section{Inégalités de Hölder et Minkowski}
+
+\begin{dfn}
+    On dit que deux réels $p, q\in  [1, +\infty]$ sont des exposants conjugués si $\sfrac1p+\sfrac1q=1$.\index{exposants conjugués}
+\end{dfn}
+
+\begin{thm}[Inégalité de Hölder]
+    \index{Hölder (inégalité)} Soient $p, q$ des exposants conjugués, et  $f,g:X\longrightarrow \R$ mesurables. Alors \[
+    \|fg\|_1 \leq \|f\|_p \|g\|_q
+    \] 
+\end{thm}
+
+\begin{rem}
+\begin{itemize}
+    \item Toutes ces quantités sont définies, éventuellement infinies
+    \item On retrouve Cauchy-Schwarz avec $p=q=2$
+    \item Il existe une version analogue pour les fonctions à valeurs complexes: les résultats obtenus sont toujours valables en considérant que les valeurs absolues sont des modules.
+\end{itemize}
+\end{rem}
+
+\begin{proof}
+    On peut supposer que $f $ et  $g$ ne sont pas nulles  $\mu$-presque partout, et que  $\|f\|_p, \|g\|_q<+\infty$ (sinon, il n'y a rien à montrer). Par convexité de l'exponentielle, \[
+        \forall  x , y \in  \R, \forall  t \in  [0, 1], \qquad  \exp((1-t)y+tx)\leq (1-t)\exp(y)+t\exp(x)
+    \] 
+    En notant $u=\exp(tx)>0$ et $v=\exp((1-t)y)>0$ on obtient \[
+        \forall  u, v>0, \forall  t \in  ]0, 1[, \qquad  uv\leq tu^{\sfrac1t}+(1-t)v^{\sfrac1{1-t}}
+    \] 
+    ce qui reste vrai si $uv=0$. En posant, pour  $x \in X$, \[
+        u=\frac{|f(x)|}{\|f\|_p} \qquad  \text{ et  }\qquad  v= \frac{|g(x)|}{\|g\|_q}
+    \]
+    et $t=\sfrac1p$, on obtient  \[
+        \frac{|f(x)g(x)|}{\|f\|_p \|g\|_q}\leq \frac{1}{p}\left(\frac{|f(x)|}{\|f\|_{p}}\right)^{p}+\frac{1}{q}\left(\frac{|g(x)|}{\|g\|_{q}}\right)^q
+    \] 
+    En intégrant, on trouve \[
+    \frac{\|fg\|_1}{\|f\|_p \|g\|_q} \leq \frac1p+\frac1q=1
+    \]
+    d'où le résultat au moins si $p,q \in  ]1, +\infty[$. Sinon, on a simplement $|f(x)g(x)|\leq \|g\|_\infty |f(x)|$ $\mu$-presque partout donc en intégrant on retrouve le bon résultat.
+\end{proof}
+
+\begin{thm}[Inégalité de Minkowski\index{Minkowski (inégalité)}]
+    Soient $f, g:X \longrightarrow \R$ (ou $\C$) deux fonctions mesurables et $p \in  [1, +\infty]$. Alors \[
+    \|f+g\|_p\leq \|f\|_p+\|g\|_p
+    \] 
+\end{thm}
+
+\begin{proof}
+    Il n'y a rien à montrer si $\|f\|_p$ ou $\|g\|_p$ vaut $+\infty$, ou si  $\|f+g\|_p$=0. On suppose donc que ça n'est pas le cas. Dans le cas où $p=+\infty$, on a  $|f|\leq \|f\|_{\infty}$ $\mu$-presque partout donc  $|f+g|\leq \|f\|_\infty+\|g\|_{\infty}$ $\mu$-p.p. et donc  $\|f+g\|_\infty\leq \|f\|_\infty+\|g\|_\infty$. On suppose maintenant $1\leq p<+\infty$.  La convexité de $x \longmapsto |x|^p$ donne \[
+        |f+g|^p\leq 2^{p-1}(\|f\|^p+ \|g\|^p)
+    \] 
+    donc \[
+        \|f+g\|_p^p\leq 2^{p-1}(\|f\|_p^p+\|g\|_p^p)<+\infty
+    \] 
+    Puis, \[
+    |f+g|^p=|f+g||f+g|^{p-1} \leq |f||f+g|^{p-1}+|g||f+g|^{p-1}
+    \]
+    En intégrant, l'inégalité de Hölder permet d'écrire, avec $\sfrac1q=1-\sfrac1p$\[
+    \|f+g\|_p^p \leq \|f\|_p\|\,|f+g|^{p-1}\,\|_q + \|g\|_p\| \,|f+g|^{p-1}\,\|_q
+    \]
+    Or \[
+    \| |f+g|^{p-1}\|_q = \left( \int_X |f+g|^{q(p-1)} d\mu\right)^{\sfrac1q} =  \|f+g\|_p^{\sfrac{p}{q}} \in ]0,+\infty[
+    \] 
+    On peut diviser par cette quantité et on obtient l'inégalité souhaitée.
+\end{proof}
+
+\section{L'espace de Banach \texorpdfstring{$\mathcal  L^p(X, \mathcal  A, \mu)$}{L^p(X,A,mu)}}
+
+\begin{rem}
+Vu l'inégalité de Minkowski, $\|\;\|_p$ définit une norme.
+\end{rem}
+
+\begin{thm}[Riesz]
+    L'espace $(\mathcal L^p(X, \mathcal  A, \mu), \|\;\|_p)$ est un espace de Banach
+\end{thm}
+
+\begin{proof}
+    Soit $(f_n)_{n\geq 1}$ une suite de Cauchy dans cet espace. On peut choisir une extraction $(n_k)$ telle que  \[
+        \|f_{n_{k+1}}-f_{n_k}\|_p\leq \frac1{2^k}
+    \]
+    Si $p=+\infty$ alors  $A_k= \left\{ x \in  X, \quad  |f_{n_{k+1}}(x)-f_{n_k}(x)|>\sfrac1{2^k} \right\} $ est de mesure nulle. Puis, sur $(\bigcup_{k\geq 1}A_k)^c$, $(f_{n_k})$ converge uniformément vers \[f\defeq f_{n_1}+\sum_{k\geq 1}(f_{n_{k+1}}-f_{n_k})\] et on a bien  $f \in  \mathcal  L^\infty(X, \mathcal A, \mu)$.
+
+    Si $p<+\infty$, on note $g_k=f_{n_{k+1}}-f_{n_k}$, et considérons:
+    \begin{align*} \int_X\left( \sum_{k\geq1}|g_k|\right)^p\diff\mu &=\lim_{n\to +\infty}\int_X\left( \sum_{k=1}^n|g_k|\right)^p\diff\mu \\&= \lim_{n\to +\infty}\||g_1|+\dots +|g_n|\|_p^p \\&\leq \lim_{n\to +\infty}\left( \sum_{k=1}^n \|g_k\|_p\right)^p<+\infty \end{align*}
+donc $\mu$-presque partout, $\sum_{k\geq 1}|g_k|<+\infty$.
+En dehors d'un mesurable $A$ de mesure nulle, \[ f\defeq f_{n_1}+\sum_{k\geq 1}(f_{n_{k+1}}-f_{n_k})\]
+est absolument convergente. Donc $\forall x\notin A, f_{n_k}(x) \xrightarrow[k\to+\infty ]{} f(x)$. Il reste à montrer que $(f_{n_{k}})$ converge vers $f$ dans  $ \mathcal  L^p$. Le lemme de Fatou donne \[
+\int_X|f|^p\diff\mu =\int_X \liminf_{k\to \infty}|f_{n_k}|^p\diff\mu \leq \liminf_{k\to \infty}\int_X|f_{n_k}|^p\diff\mu <+\infty
+\] 
+donc $f \in  \mathcal  L^p$. Pour les mêmes raisons, \begin{align*}
+\int_X|f_n-f|^p\diff\mu &= \int \liminf_{k\to\infty}|f_n-f_{n_k}|^p\diff\mu \\
+&\leq \liminf_{k\to \infty}\int_X |f_n-f_{n_k}|^p\diff\mu \\
+&= \liminf_{k\to\infty}\|f_n-f_{n_k}\|_p^p
+\end{align*}
+Si $\epsilon>0$, il existe $n_0$ tel que cette dernière limite est majorée par  $\epsilon$ pour tous $n\geq n_0$. Finalement, \[
+\|f_n-f\|_p \xrightarrow[n\to+\infty]{}0
+\] 
+\end{proof}
+
+\begin{rem}
+Dans la démonstration, on a vu les deux résultats suivants
+\end{rem}
+
+\begin{thm}
+    Si $(f_n)_n$ est une suite de $\mathcal  L^p$ qui converge vers $f \in  \mathcal  L^p$, alors il existe une sous-suite $(f_{n_{k}})$ qui converge presque partout vers $f$
+\end{thm}
+
+\begin{prop}
+    Si $(f_n)$ est bornée dans  $\mathcal  L^p$ et converge presque partout vers une limite $f$, alors  $f \in \mathcal  L^p$
+\end{prop}
+
+\begin{rem}
+Il n'est pas vrai en général que $f_n \longrightarrow f$ dans $\mathcal  L^p$.
+\end{rem}
+
+\begin{exo}
+    Si $\mu$ est finie,  $(f_n)$ converge  $\mu$-presque partout vers une limite  $f$ et  $(f_n)$ est bornée dans  $ \mathcal  L^r$, alors $f_n$ converge vers  $f$ dans  $\mathcal  L^p$ pour tous $p \in  [1, r[$\footnotemark
+\end{exo}
+
+\footnotetext{Penser à l'inégalité de Hölder}
+
+\section{Théorèmes de densité dans les espaces \texorpdfstring{$\mathcal L^p$}{L^p}}
+
+\begin{dfn}
+    On dit d'une mesure $\mu$ sur un espace  $(X, \mathcal  B(X))$ où $X$ est un espace topologique muni de sa tribu borélienne qu'elle est  \emph{extérieurement régulière}\index{régularité extérieure} si \[
+        \forall  A \in  \mathcal  B(X), \quad  \mu(A)= \inf \left\{ \mu(\mathcal  U), \quad  A\subset \mathcal  U, \;\mathcal  U\text{ ouvert } \right\} 
+    \] 
+\end{dfn}
+
+\begin{thm}
+\begin{enumerate}
+    \item Soit $(X, \mathcal  A, \mu)$ un espace mesuré et $p \in  [1, +\infty]$, alors les fonctions simples qui sont intégrables sont denses dans $\mathcal  L^p(X, \mathcal  A, \mu)$.
+    \item Soit $(X,d)$ un espace métrique, et  $\mu$ une mesure extérieurement régulière sur  $(X, \mathcal B(X))$, et $p \in  [1, +\infty[$ alors l'espace des fonctions lipschitziennes bornées qui sont dans $\mathcal  L^p$ est dense dans $\mathcal  L^p$
+    \item Soit $(X, d)$ un espace métrique séparable, localement compact\footnotemark et  $\mu$ une mesure de Radon sur  $(X, \mathcal  B(X))$. Alors l'espace des fonctions lipschitziennes à support compact est dense dans $\mathcal  L^p$, pour tous $p \in  [1, +\infty[$
+\end{enumerate}
+\end{thm}
+
+\footnotetext{$\forall  x \in  X, \forall  V \in  \mathcal  V(x), \exists U \in  \mathcal  V(x), V\subseteq \bar{U} \text{ compact}$}
+
+\begin{cor}
+    Toute fonction de $\mathcal  L^p(\R^d, \mathcal  B(\R^d), \mu)$ avec $\mu$ une mesure de Radon est limite dans  $ \mathcal  L^p$ de: \begin{itemize}
+        \item Des fonctions continues à support compact
+        \item Des fonctions en escalier à support compact
+    \end{itemize}
+\end{cor}
+
+\begin{proof}
+\begin{enumerate}
+    \item En écrivant $f\in \mathcal L^p$ sous la forme $f=f^+-f^-$, on a $f^+,f^-\in \mathcal L^p$. et donc il suffit de traiter le cas $f\geq 0$.
+        Or on sait que dans ce cas, $f$ est limite croissante des fonctions simples \[\varphi_n\defeq 2^{-n}\lfloor 2^nf\rfloor  \leq f\]
+        La croissance est même uniforme, puisque \[0\leq \|f-\varphi_n\|_{\infty}\leq  \sfrac{1}{2^n} \xrightarrow[n\to+\infty]{} 0\]
+et pour $p\in [1;\infty[$, on a $|\varphi_n-f|^p \xrightarrow[n\to+\infty]{} 0$ et $\leq |f|^p$ qui est intégrable
+donc par convergence dominée $\|\varphi_n-f\|_p \xrightarrow[n\to\infty]{} 0$
+\end{enumerate}
+\end{proof}
+
+

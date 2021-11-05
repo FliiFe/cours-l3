@@ -347,7 +347,6 @@ donc toutes les fonctions sont bornées (par $h_0, \hat{h}_0$), et par convergen
     \int_{[a, b]}h_n\diff \lambda \xrightarrow[n\to+\infty]{}\int_{[a, b]}h\diff \lambda
 \]
 \[
-
     \int_{[a, b]}\hat{h}_n\diff \lambda \xrightarrow[n\to+\infty]{}\int_{[a, b]}\hat{h}\diff \lambda
 \] 
 or les deux quantités de gauche sont respectivement égales à  $I(h_n)$ et  $I(\hat{h}_n)$ qui convergent vers $I(f)$ donc  \[
@@ -369,7 +368,7 @@ D'après le théorème, on peut intégrer plus de fonctions avec l'intégrale de
 \end{prop}
 
 \begin{ex}
-Si $F=\id$, alors  $\dF=\lambda$
+Si $F=\id$, alors  $\diff F=\lambda$
 \end{ex}
 
 \begin{proof}[Idée de démonstration]
@@ -381,7 +380,7 @@ On utilise le lemme de Dynkin pour l'unicité, et on construit une mesure extér
 \begin{defprop}
     On appelle mesure de Radon une mesure finie sur les compacts\index{mesure de Radon}\index{Radon (mesure)}. On a alors une bijection entre l'ensemble des mesures de Radon et l'ensemble des fonctions croissantes continues à droite qui s'annulent en $0$ donnée par  \[
         \mu \longmapsto \left( x \longmapsto \begin{cases}
-                \mu(]0,x]) & \text{ si } x\geq 0,
+                \mu(]0,x]) & \text{ si } x\geq 0\\
                 -\mu(]x, 0])&\text{ sinon }
         \end{cases}
          \right)

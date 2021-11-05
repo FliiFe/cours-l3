@@ -298,3 +298,93 @@ L'existence d'une mesure sur l'espace de départ donne l'existence d'une mesure 
 
 \section{Lien avec l'intégrale de Riemann}
 
+
+\begin{rem}
+    En construisant l'intégrale de Riemann, on a découpé l'espace de départ (fonctions en escalier). Pour construire l'intégrale de Lebesgue, c'est l'espace d'arrivée qu'on a découpé (fonctions simples)
+\end{rem}
+
+\begin{dfn}
+    Soient $a<b$ des réels. Une fonction $f:[a,b] \longrightarrow  \R$ est une fonction en escalier s'il existe une subdivision $a=x_0<\cdots <x_N=b$ telle que $f_{]x_i, x_{i+1}[}$ est constante égale à $y_{i+1}$ pour tout $i$. \index{fonction en escalier}
+\end{dfn}
+
+\begin{dfn}
+    L'intégrale d'une fonction en escalier, notée $I(f)$ est définie par \[
+        I(f)=\sum_{i=1}^N y_i(x_{i}-x_{i-1})
+    \] 
+\end{dfn}
+
+\begin{dfn}
+    Si $f:[a, b] \longrightarrow  \R$ est bornée on dit que $f$ est Riemann-intégrable lorsque  \[
+        \sup_{\substack{h\leq f\\h\text{ en escalier }}} I(h)=\inf_{\substack{h\geq f\\h\text{ en escalier }}} I(h)
+    \]
+    et on note $I(f)$ cette valeur commune
+\end{dfn}
+
+\begin{rem}
+On a déjà vu que les fonctions continues par morceaux Riemann-intégrables sont Lebesgue-intégrables là où les intégrales coïncident. On veut caractériser les fonctions Riemann-intégrables
+\end{rem}
+
+\begin{prop}
+    Si $f:[a, b]\longrightarrow \R$ est Riemann-intégrable alors elle est mesurable par rapport à $(\R, \bar{\mathcal B(\R)})$ et \[
+        \int_{[a,b]}f\diff \lambda=I(f)
+    \] 
+\end{prop}
+
+On a en fait le résultat suivant, plus fort mais non démontré dans ce cours
+
+\begin{thm}
+    Une fonction bornée $f:[a,b] \longrightarrow \R$ est Riemann-intégrable si et seulement si l'ensemble de ses points de discontinuité est Lebesgue-négligeable.
+\end{thm}
+
+\begin{proof}[Démonstration de la propriété]
+Par définition, on peut trouver $h_n \leq f\leq \hat{h}_n$ des fonctions en escalier avec \[
+    \lim_{n\to +\infty} I(h_n)=\lim_{n\to +\infty} I(\hat{h}_n)=I(f)
+\] 
+Le max et le min de deux fonctions en escalier sont encore des fonctions en escalier, donc quitte à considérer $\max(h_1, \cdots , h_n)$ et $\min (\hat{h}_1, \cdots \hat{h}_n)$, on peut supposer que les suites de fonctions sont respectivement croissante et décroissante. Alors, ces deux suites ont des limites simples $h, \hat{h}$ boréliennes telles que $h\leq f\leq \hat{h}$. Puis, \[
+h_0\leq h_n\leq f\leq \hat{h}_n\leq \hat{h}_0
+\] 
+donc toutes les fonctions sont bornées (par $h_0, \hat{h}_0$), et par convergence dominée, \[
+    \int_{[a, b]}h_n\diff \lambda \xrightarrow[n\to+\infty]{}\int_{[a, b]}h\diff \lambda
+\]
+\[
+
+    \int_{[a, b]}\hat{h}_n\diff \lambda \xrightarrow[n\to+\infty]{}\int_{[a, b]}\hat{h}\diff \lambda
+\] 
+or les deux quantités de gauche sont respectivement égales à  $I(h_n)$ et  $I(\hat{h}_n)$ qui convergent vers $I(f)$ donc  \[
+    I(f)= \int_{[a,b]} h\diff \lambda=\int_{[a, b]}\hat{h}\diff \lambda
+\]
+Puis, on a $h\leq \hat{h}$ donc $\hat{h}-h\geq 0$ et $\int_{[a, b]}(\hat{h}-h)\diff \lambda=0$ donc $h=\hat{h}$ $\lambda$-presque partout sur $[a, b]$. Puis, \[ \left\{ x , \quad  f(x)\neq h(x) \right\} \subseteq \left\{ x, \quad  \hat{h}(x) \neq  h(x) \right\} \] et ce second ensemble est un borélien de mesure nulle donc le premier est un ensemble négligeable. On en déduit que $f=h$ en dehors d'un négligeable  $N$, donc  $f$ est mesurable dans la tribu de Lebesgue:  \[
+h^{-1}(B)\setminus  N \subseteq f^{-1} (B) \subseteq h^{-1}(B)\cup N
+\] 
+\end{proof}
+
+\begin{rem}
+D'après le théorème, on peut intégrer plus de fonctions avec l'intégrale de Lebesgue qu'avec l'intégrale de Riemann.
+\end{rem}
+
+\section{Mesure de Stieltjes}
+
+\begin{prop}
+    Soit $F: \R \longrightarrow \R$ croissante et continue à droite. Alors il existe une unique mesure sur $(\R, \mathcal  B(\R))$ notée $\diff F$ dite mesure de Stieltjes\index{mesure de Stieltjes}\index{Stieltjes (mesure)} associée à  $F$ telle que  $\diff F(]a, b[)=F(b)-F(a)$, pour tous  $a<b$.
+\end{prop}
+
+\begin{ex}
+Si $F=\id$, alors  $\dF=\lambda$
+\end{ex}
+
+\begin{proof}[Idée de démonstration]
+On utilise le lemme de Dynkin pour l'unicité, et on construit une mesure extérieure pour l'existence en posant \[
+    \diff F^\star(A)=\inf \left\{ \sum (F(b_i)-F(a_i)), \qquad  A\subset \bigcup_{i\geq 1}]a_i, b_i] \right\} 
+\] 
+\end{proof}
+
+\begin{defprop}
+    On appelle mesure de Radon une mesure finie sur les compacts\index{mesure de Radon}\index{Radon (mesure)}. On a alors une bijection entre l'ensemble des mesures de Radon et l'ensemble des fonctions croissantes continues à droite qui s'annulent en $0$ donnée par  \[
+        \mu \longmapsto \left( x \longmapsto \begin{cases}
+                \mu(]0,x]) & \text{ si } x\geq 0,
+                -\mu(]x, 0])&\text{ sinon }
+        \end{cases}
+         \right)
+    \] 
+    de réciproque $F \longmapsto \diff F$
+\end{defprop}

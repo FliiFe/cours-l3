@@ -102,7 +102,7 @@ L'ensemble des classes monotones sur $X$ est stable par intersection.
 \end{dfn}
 
 \begin{rem}
-    Notons que si $E, A\subseteq X$ et $\mu^\star$ est une mesure extérieure, alors  $\mu(E)\leq \mu(E\cap A)+\mu(E \setminus  A)$
+    Notons que si $E, A\subseteq X$ et $\mu^\star$ est une mesure extérieure, alors  $\mu^\star(E)\leq \mu^\star(E\cap A)+\mu^\star(E \setminus  A)$
 \end{rem}
 
 \begin{dfn}
@@ -122,7 +122,7 @@ On note $\mathcal  M(\mu^\star)$ l'ensemble des parties $\mu^\star$-mesurables.
 \end{lmm}
 
 \begin{proof}
-    Par monotonie, $\mu^\star(E\cap A)+\mu^\star(E\cap A^c)\leq \mu(E)$ (l'un des deux termes de la somme est toujours nul, l'autre est petit)
+    Par monotonie, $\mu^\star(E\cap A)+\mu^\star(E\cap A^c)\leq \mu^\star(E)$ (l'un des deux termes de la somme est toujours nul, l'autre est petit)
 \end{proof}
 
 \begin{lmm}
@@ -130,12 +130,12 @@ On note $\mathcal  M(\mu^\star)$ l'ensemble des parties $\mu^\star$-mesurables.
 \end{lmm}
 
 \begin{proof}
-    $\emptyset \in  \mathcal  M(\mu^\star)$ par le lemme précédent, la stabilité par complémentaire est évidente. Montrons que c'est stable par union finie. Soient $A_1, A_2 \in  \mathcal M(\mu^\star)$. Alors \[
-        \mu^\star(E\cap (A_1\cup A_2))=\mu^\star(E\cap (A_1\cup A_2)\cap A_1)+\mu^\star(E\cap (A_1\cup A_2)\cap A_1^c)=\mu^\star(E\cap A_1)+\mu^\star(E\cap A_2\cap A_1^c)
-    \] 
-    et \[
-        \mu^\star(E\cap (A_1\cup A_2))+\mu^\star(E\cap (A_1\cup A_2)^c) = \mu^\star(E\cap A_1)+\mu^\star(E\cap A_1^c\cap A_2)+\mu^\star(E\cap A_1^c\cap A_2^c)=\mu^\star(E\cap A_1)+\mu^\star(E\cap A_1^c)=\mu^\star(E)
-    \] 
+    $\emptyset \in  \mathcal  M(\mu^\star)$ par le lemme précédent, la stabilité par complémentaire est évidente. Montrons que c'est stable par union finie. Soient $A_1, A_2 \in  \mathcal M(\mu^\star)$. Alors \begin{align*}
+        \mu^\star(E\cap (A_1\cup A_2))&=\mu^\star(E\cap (A_1\cup A_2)\cap A_1)+\mu^\star(E\cap (A_1\cup A_2)\cap A_1^c)\\&=\mu^\star(E\cap A_1)+\mu^\star(E\cap A_2\cap A_1^c)
+    \end{align*}
+    et \begin{align*}
+        \mu^\star(E\cap (A_1\cup A_2))+\mu^\star(E\cap (A_1\cup A_2)^c) &= \mu^\star(E\cap A_1)+\mu^\star(E\cap A_1^c\cap A_2)+\mu^\star(E\cap A_1^c\cap A_2^c)\\&=\mu^\star(E\cap A_1)+\mu^\star(E\cap A_1^c)\\&=\mu^\star(E)
+    \end{align*}
 \end{proof}
 
 \begin{lmm}

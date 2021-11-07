@@ -51,7 +51,7 @@ Si $\varphi$ est convexe alors  \[
 
 \begin{prop}[Inégalité de Jensen\index{Jensen (inégalité)}]
     Soit $(X, \mathcal  A, \mu)$ un espace mesuré tel que $\mu(X)=1$, et $f:X\longrightarrow I$ intégrable avec $I$ un intervalle réel. Soit $\varphi$ convexe telle que  $\varphi\circ f$ est intégrable. Alors,  \[
-        \varphi \left( \int_X f\diff \mu \right) \leq  \int_X \phi\circ f\diff \mu
+        \varphi \left( \int_X f\diff \mu \right) \leq  \int_X \varphi\circ f\diff \mu
     \] 
 \end{prop}
 
@@ -228,9 +228,65 @@ Il n'est pas vrai en général que $f_n \longrightarrow f$ dans $\mathcal  L^p$.
     \item En écrivant $f\in \mathcal L^p$ sous la forme $f=f^+-f^-$, on a $f^+,f^-\in \mathcal L^p$. et donc il suffit de traiter le cas $f\geq 0$.
         Or on sait que dans ce cas, $f$ est limite croissante des fonctions simples \[\varphi_n\defeq 2^{-n}\lfloor 2^nf\rfloor  \leq f\]
         La croissance est même uniforme, puisque \[0\leq \|f-\varphi_n\|_{\infty}\leq  \sfrac{1}{2^n} \xrightarrow[n\to+\infty]{} 0\]
-et pour $p\in [1;\infty[$, on a $|\varphi_n-f|^p \xrightarrow[n\to+\infty]{} 0$ et $\leq |f|^p$ qui est intégrable
-donc par convergence dominée $\|\varphi_n-f\|_p \xrightarrow[n\to\infty]{} 0$
+et pour $p\in [1,\infty[$, on a $|\varphi_n-f|^p \xrightarrow[n\to+\infty]{} 0$ et $\leq |f|^p$ qui est intégrable donc par convergence dominée $\|\varphi_n-f\|_p \xrightarrow[n\to\infty]{} 0$
+
+\item Montrons que toute fonction simple $f$ est limite dans  $\mathcal  L^p$ de fonctions lipschitziennes bornées qui sont dans $ \mathcal  L^p$. Il suffit de traiter le cas $f=\1_A, A \in  \mathcal  B(X)$. Par régularité, pour tout $\epsilon>0$ on peut trouver un ouvert $\mathcal  U$ contenant $A$ avec  \[
+        \mu(\mathcal  U \setminus  A)\leq \left( \frac\epsilon2 \right)^p.
+\] 
+On a alors \[ \|\1_{\mathcal  U}-\1_A\|_p= \left( \int_X \1_{\mathcal  U\setminus  A}^p\diff\mu \right)^{\sfrac1p}\leq \frac\epsilon2\]
+La fonction définie par \[
+    \varphi_k(x)\defeq \min(k\cdot \mathrm d(x, \mathcal  U^c), 1)
+\] 
+est lipschitzienne positive et converge simplement vers $\1_{\mathcal  U}$ qui domine tous les $\varphi_k$. Par convergence dominée, \[
+    \|\varphi_k-\1_{\mathcal  U}\|_p \xrightarrow[n\to+\infty]{}0
+\]
+donc pour $k$ assez grand,  $\|\varphi_k-\1_A\|_p\leq \|\varphi_k-\1_{\mathcal  U}\|_p+ \|\1_{\mathcal  U}-\1_A\|_p\leq \epsilon$
+
+\item Il faut deux lemmes.
 \end{enumerate}
 \end{proof}
 
 
+\begin{lmm}
+    Toutes mesure finie sur un espace métrique est extérieurement régulière (et intérieurement régulière).
+\end{lmm}
+
+\begin{lmm}
+    Si $(X, d)$ est un espace métrique séparable localement compact alors il existe une suite  $L_n$ de compacts tels que  $L_n\subset \mathring L_{n+1}$ et \[
+    X=\ubigcup_{n\geq 1}L_n
+    \]
+\end{lmm}
+
+On admet ces deux lemmes.
+
+\begin{proof}[Preuve du 3]
+Soit $f$ lipschitzienne bornée, qui est dans  $\mathcal  L^p$. On montre qu'on peut l'approcher par une suite de fonctions lipschitziennes à support compact. Remarque: le produit de deux fonctions lipschitziennes est une fonction lipschitzienne.
+
+Soit $(L_n)$ donnée par le second lemme. Comme  $\mu$ est de Radon,  $\mu(\mathring L_n)<+\infty$ donc la mesure trace $A\longmapsto \mu\left(A\cap \mathring L_n\right)$ est finie sur $(X, \mathcal  B(X))$ donc extérieurement régulière. Montrons que c'est le cas de $\mu$ elle-même. Soit  $A \in  \mathcal  B(X)$ de mesure finie, $ \epsilon>0$ et $\forall  n \geq 1, \mathcal  U_n$ un ouvert tel que $A\cap L_n\subset \mathcal  U_n$ et $\mu(\mathcal  U_n\setminus  (A\cap \mathring L_n))\leq \sfrac{\epsilon}{2^n}$. Alors, \[
+\mathcal  U=\bigcup_{n\geq 1}\mathcal  U_n
+\] 
+est un ouvert contenant \[
+    \ubigcup_{n\geq 1}(A\cap \mathring L_{n})=A\cap\left(\ubigcup \mathring L_n\right)=A\cap X=A
+\]
+et on a \[
+    \mu(\mathcal  U \setminus  A)\leq \sum_{n\geq 1} \mu(\mathcal  U_n \setminus  (A \cap \mathring L_n))\leq \epsilon.
+\]
+Soient $n, k\geq 1$ et \[
+    \varphi_{n, k}(x)=\min(k\mathrm d(x, \mathring {L_n^c}), 1)
+\] 
+qui est lipschitzienne bornée à support compact $\subset L_n$ et \[
+    \forall  n \in  \N, 0\leq \varphi_{n, k}\leq \1_{\mathring L_n}
+\] 
+et \[
+    \varphi_{n, k} \xrightarrow[n\to+\infty]{}\1_{\mathring L_n}
+\] 
+donc \[
+\|{\varphi_{n,k}f}-f\|_p \leq \| \varphi_{n,k}f- \1_{\mathring L_n}f\|_q+ \| f\1_{\mathring L_n}-f\|_p\leq \|f\|_{\infty}\|\varphi_{n,k}-\1_{\mathring L_n}\|_{p} + \|f\1_{\mathring L_n}-f\|_p
+\]
+or \[
+    \int_X |f\1_{\mathring L_n}-f|^p\diff\mu = \int_X |f\1_{\mathring {L_n^c}}|^p\diff\mu \xrightarrow[n\to\infty]{} 0
+\]
+par convergence dominée. Pour $ \epsilon>0$ fixé, on choisit $n$ tel que  $\|f\1_{\mathring L_n}-f\|_p\leq \sfrac\epsilon2$. Pour ce choix de $n$, on prend  $k$ assez grand tel que  \[
+\|\phi_{n,k}-\1_{\mathring L_n}\|_p \leq \frac{\epsilon}{2\|f\|_{\infty}}
+\] 
+\end{proof}

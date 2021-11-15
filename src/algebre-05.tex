@@ -207,6 +207,198 @@ $\implies )$ Soit $x \in  V$ tel que $\forall  y \in  V, \phi(x, y)=0$. Alors $x
 \end{itemize}
 \end{rem}
 
+\begin{ex}
+    Si $q(x, y)=xy$ alors  $C(q)=(ke_1)\cup (ke_2)$
+\end{ex}
+
+\section{Endomorphisme adjoint}
+
+Soit $E$ un  $k$-e.v. de dimension finie et  $q \in  Q(E)$ non-dégénérée de forme polaire $\phi$
+
+ \begin{defprop}
+     Soit $u \in  \mathcal L(E)$. Il existe un unique $u^\star \in \mathcal  L(E)$ tel que \[
+         \forall  x, y \in  E, \quad  \phi(u(x), y)=\phi(x, u^\star(y))
+     \] 
+     On appelle $u^\star$ l'adjoint de  $u$
+\end{defprop}
+
+\begin{proof}
+L'unicité provient de la non-dégénrescence de $\phi$.
+
+Posons  $u^\star = R_\phi ^{-1} \circ \transpose u\circ R_\phi$. Soient $x, y \in  E$. On a \[
+    \phi(x, u^\star(y))=R_\phi(u^\star(y))(x)=\transpose u(R_\phi(y))(x)=(R_\phi(y)\circ u)(x)=\phi(u(x), y)
+\] 
+\end{proof}
+
+\begin{prop}
+    Soit $u \in \mathcal  L(E)$. Alors \[
+    \begin{dcases}
+        \ker(u)^\bot=\im(u^\star)\\
+        \im(u)^\bot=\ker(u^\star)
+    \end{dcases}
+    \] 
+\end{prop}
+
+\begin{proof}
+Voir le chapitre sur les formes linéaires
+\end{proof}
+
+\begin{prop}
+L'application $u\longmapsto u^\star$ est linéaire, bijective et involutive.
+\end{prop}
+
+\section{Réduction des formes quadratiques}
+
+\begin{dfn}
+    Soit $q \in  Q(E)$ et $(e_1, \cdots , e_n)$ une famille de vecteurs de $E$. Cette famille est dite orthogonale pour  $q$  si et seulement si \[
+        \forall  i,j \in  \llbracket 1, n \rrbracket , \qquad  i\neq j \implies \phi(e_i, e_j)=0
+    \] 
+\end{dfn}
+
+\begin{thm}
+    Soit $q \in  Q(E)$. Il existe une base orthogonale de $E$ pour  $q$.
+\end{thm}
+
+\begin{proof}
+On procède par récurrence $n=\dim E$
+\begin{itemize}
+    \item Si $n=1$, il n'y a rien à faire
+\item Supposons $n\geq 2$. Si $q=0$ alors toutes les bases conviennent. Sinon, il existe  $x \in  E$ tel que $q(x)=0$. Posons $H=(kx)^\bot$. Puisque  $q\left|_{kx}\right.$ est non dégénérée, on a (déjà vu) $kx\oplus H=E$. Il suffit d'appliquer l'hypothèse de récurrence pour conclure. 
+\end{itemize}
+\end{proof}
+
+\begin{thm}
+    Soit $q \in  Q(E)$, il existe $(\lambda_1, \cdots , \lambda_m)$ une famille de formes linéaires indépendantes sur $E$ et  $(a_1, \cdots , a_m)$ une famille de scalaires tels que \[
+        \forall  x \in  E, q(x)=\sum_{i=1}^m a_i (\lambda_i(x))^2 
+    \] 
+    On a alors $\rg(q)=m$ et  \[
+        \disc(q)=\prod_{i=1}^m a_i \in  k / (k^\times )^2 
+    \]
+    La forme quadratique $q$ est non-dégénérée  si et seulement si $n=m$.
+\end{thm}
+
+\begin{proof}
+    Soit $(e_1, \cdots , e_n)$ une base orthogonale de $E$ pour  $q$. Soit  $(\lambda_1, \cdots , \lambda_n)$ la base duale de $(e_1, \cdots , e_n)$. Puis, on note $a_i=q(e_i)$. Si  \[
+    x= \sum_{i=1}^n x_ie_i
+    \] 
+    alors \[
+        q(x)= \sum_{1\leq i,j\leq n} \phi(e_i, e_j)x_ix_j=\sum_{i=1}^m a_i (\lambda_i(x))^2 
+    \] 
+    Considérons \[
+        M=\mathcal  M_{(e_1, \cdots , e_n)}(q)=
+        \begin{pmatrix}
+            a_1 & \cdots  & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \cdots  & a_n
+        \end{pmatrix}
+    \] 
+    Les considérations sur le rang, le discriminant et la non-dégenerescence sont claires.
+\end{proof}
+
+\begin{rem}
+L'écriture n'est pas unique
+\end{rem}
+
+\section{Algorithme de Gauss}
+
+On se donne un polynôme $P(X_1, \cdots , X_n) \in  k[X_1, \cdots , X_n]$ homogène de degré 2. On veut écrire $P$ comme combinaison linéaire de carrés de polynômes homogènes de degré  $1$ de sorte que les formes linéaires associées soient linéairement indépendantes.
+
+On raisonne par récurrence sur le nombre de variables. Si $n=1$ alors il n'y a rien à faire. Pour $n$ quelconque, il y a deux cas
+ \begin{itemize}
+    \item Premier cas: il existe $i$ tel que  $a_{i,i}\neq 0$. Sans perdre de généralité, on suppose $i=1$. Dans ce cas,  \[
+            P(X_1, \cdots , X_n)=a_{1,1} X_1 ^2 + X_1 L(X_2, \cdots , X_n) + Q(X_2, \cdots , X_n)
+    \] 
+    avec $L$ une forme linéaire et  $Q$ homogène de degré  $2$. On écrit  \[
+        P = a_{1, 1} \left( X_1 + \frac{L}{2a_{1,1}} \right)^2 +Q - \frac{L^2 }{4a_{1,1}}
+    \]
+    Et par hypothèse de récurrence, on peut continuer pour $Q$.
+\item Second cas: $\forall  i \in \llbracket 1, n \rrbracket , a_{i, i}=0$. Alors il existe (on suppose que $q\neq 0$) $i,j$ tels que  $i\neq j$ et  $a_{i,j}\neq 0$. Sans perdre de généralité, on suppose $i=1, j=2$. On écrit \[
+        P=a_{1,2}X_1X_2+X_1 L_1(X_2, \cdots , X_n)+X_2 L_2(X_3, \cdots , X_n)+Q(X_3, \cdots , X_n)
+\] 
+de sorte que \[
+    P= \frac{a_{1,2}}{4} \left( \left( X_1+X_2+\frac{L_1+L_2}{a_{1,2}} \right)^2 - \left( X_1-X_2 + \frac{L_2-L_1}{a_{1,2}} \right) ^2 \right)  - \frac{L_1L_2}{a_{1, 2}}+Q
+\] 
+et par récurrence, on conclut. L'indépendance des formes linéaires qui apparaissent est claire (combinaisons linéaires d'une base triangulaire)
+\end{itemize}
+
+\begin{rem}
+Si \[
+q=\sum_{i=1}^n a_i \lambda_i^2 
+\] 
+alors la base antéduale des $(\lambda_i)$ est une base orthogonale de $E$ pour  $q$.
+\end{rem}
+
+\section{Formes quadratiques sur \texorpdfstring{$ \C$}{C}}
+
+\begin{thm}
+    On suppose $k=\C$ (ou plus généralement, $k$ tel que tout élément est un carré). Dans ce cas, si  $q \in  Q(E)$ alors il existe une base $\mathcal  B$ orthogonale pour  $q$ telle que  \[
+        \mathcal  M_{\mathcal  B}(q)=\Jr{m}
+    \] 
+    pour un certain $m\leq n$
+\end{thm}
+
+\begin{proof}
+    Soit $(e_1, \cdots , e_n)$ une base orthogonale de $E$ pour  $q$. Alors il existe des scalaires  $ \lambda_i$ tels que \[
+        \mathcal  M_{(e_1, \cdots , e_n)}(q)=
+        \begin{pmatrix}
+            \lambda_1 & \cdots  & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \cdots  & \lambda_n
+        \end{pmatrix}
+    \] 
+    Quitte à permuter les vecteurs de la base, on peut supposer que les $m$ premiers sont non nuls et les  $n-m$ suivants le sont. On écrit  $ \lambda_i=\alpha_i^2 $ avec $\alpha_i \in  k^\times$ pour $i\leq m$ et on pose \[
+        \mathcal  B= \left( \frac{e_1}{\alpha_1}, \cdots , \frac{e_m}{\alpha_m}, e_{m+1}, \cdots , e_n\right)
+    \] 
+    et cela convient.
+\end{proof}
+
+\begin{cor}
+Soit $E$ un  $\C$-espace vectoriel. Alors, deux formes quadratiques sur $E$ sont isomorphes  si et seulement si elles ont le même rang.
+\end{cor}
+
+\section{Formes quadratiques sur \texorpdfstring{$\R$}{R}}
+
+\begin{prop}
+    Soit $E$ un  $ \R$-ev, et $q \in  Q(E)$. Alors il existe une base $\mathcal  B$ de $E$ orthogonale pour  $q$ telle que 
+     \[
+         \mathcal  M_{\mathcal  B}(q)=\diag(\underbrace{1, \cdots , 1}_r, \underbrace{-1, \cdots , -1}_s, 0, \cdots , 0)
+    \] 
+\end{prop}
+
+\begin{proof}
+C'est la même chose que dans le cas complexe, avec un signe pour les négatifs.
+\end{proof}
+
+\begin{dfn}
+    Soit $q \in  Q(E)$. On dit que $q$ est positive si \[
+        \forall  x \in  E, q(x)\geq 0
+    \] 
+    On dit qu'elle est définie positive si cette inégalité est stricte dès que $x\neq 0$.
+
+    On dit que $q$ est définie si elle est définie positive ou définie négative
+\end{dfn}
+
+\begin{rem}
+    Avec les notations de la proposition ci-dessus, on a $q$ positive  si et seulement si $s=0$ et  $q$ définie positive  si et seulement si $(r, s)=(n, 0)$
+\end{rem}
+
+\begin{thm}
+Supposons que \[
+    q=\sum_{i=1}^r a_i \lambda_i^2 -\sum_{i=r+1}^{r+s}a_i \lambda_i^2 
+\] 
+avec $ \lambda_1, \cdots , \lambda_{r+s}$ linéairement indépendantes. Alors \[
+    \begin{dcases}
+r=\max \left\{ \dim F, \quad  F \text{ sev  de }  E \text{ et } q\left|_{F}\right. \text{ définie positive }\right\} \\
+s=\max \left\{ \dim F, \quad  F \text{ sev  de }  E \text{ et } q\left|_{F}\right. \text{ définie négative }\right\} 
+    \end{dcases}
+\] 
+\end{thm}
+
+\begin{proof}
+    On complète $(\lambda_i)$ en une base $(\lambda_1, \cdots , \lambda_n)$ de $E$. Soit  $\mathcal  B=(e_1, \cdots , e_n)$ la base antéduale dans $E$.
+    % TODO: finir ça
+\end{proof}
+
 \section{Endomorphismes symétriques dans un espace euclidien}
 
 % TODO: potentiellement titre ici
@@ -226,7 +418,7 @@ On se place dans un $ \R$-ev E muni d'un produit scalaire
 \end{lmm}
 
 \begin{proof}[Preuve du second lemme]
-    Si $x \in  F^bot, y \in  F$ alo s $ \scalar{u(x)}{y}= \scalar{x}{u(y)}=0  $ donc $u(x)\in F^\bot$
+    Si $x \in  F^bot, y \in  F$ alors $ \scalar{u(x)}{y}= \scalar{x}{u(y)}=0  $ donc $u(x)\in F^\bot$
 \end{proof}
 
 \begin{proof}[Preuve du théorème]

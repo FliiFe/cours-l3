@@ -201,7 +201,7 @@
     \begin{matrix}#2\end{matrix}}}_{\text{$#1$}}}$}#2}
 
 % Matrice Jr = diag(Ir, 0)
-\newcommand{\Jr}{\underbrace{%
+    \newcommand{\Jr}[1]{\underbrace{%
 \addstackgap[16pt]{%
 \left(\begin{array}{ccc|ccc}%
         1        &    0   &  \cdots  & \cdots & \cdots &    0   \\
@@ -209,7 +209,7 @@
      \vdots      & \ddots &     1    & \ddots &        & \vdots \\
   \hline \vdots  &        &  \ddots  &  0     & \ddots & \vdots \\
      \vdots      &        &          & \ddots & \ddots &    0   \\
-\undermat{r}{0   & \cdots & \cdots } & \cdots &    0   &    0   \\
+\undermat{#1}{0   & \cdots & \cdots } & \cdots &    0   &    0   \\
 \end{array}
 \right)}
-}_{J_r}}
+}_{J_{#1}}}

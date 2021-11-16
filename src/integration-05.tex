@@ -1,0 +1,176 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Mesures produit et théorème de Fubini} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Mesures produit et théorème de Fubini}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+L'objectif de ce chapitre est de considérer des mesures et des intégrales sur des espaces produit. Par exemple, si $(X, \mathcal  A, \mu)$ et $(Y, \mathcal  B, \nu)$ sont des espaces mesurés, on veut donner un sens à \[
+    \int_{X\times Y}f(x, y)\mu(\diff x)\nu(\diff y)
+\] 
+
+\section{Tribus produit}
+
+\begin{dfn}
+    Soit $(X, \mathcal  A)$ et $(Y, \mathcal  B)$ des espaces mesurables. On note $\mathcal  A\otimes \mathcal  B$ la plus petite $\sigma$-algèbre sur  $X\times Y$ contenant les ensembles de la forme  $A\times B$ avec  $A \in  \mathcal  A, B \in  \mathcal  B$. On l'appelle $\sigma$-algèbre produit\index{tribu produit}\index{sigma-algebre produit@$\sigma$-algèbre produit} de  $\mathcal  A$ et $\mathcal  B$
+\end{dfn}
+
+\begin{prop}
+La  $\sigma$-algèbre  $\mathcal  A\otimes \mathcal  B$ est la plus petite $\sigma$-algèbre  $ \mathcal  C$ telle que les applications \[
+\begin{array}{rrcl}
+    \pi_X:& X\times Y & \longrightarrow & X \\
+          & (x, y) & \longmapsto & \displaystyle x
+\end{array}
+\] 
+\[
+\begin{array}{rrcl}
+    \pi_Y:& X\times Y & \longrightarrow & Y \\
+          & (x, y) & \longmapsto & \displaystyle y
+\end{array}
+\] 
+sont mesurables.
+\end{prop}
+
+\begin{proof}
+Si ces deux applications sont mesurables, pour  $A \in \mathcal  A$, $B \in  \mathcal  B$, alors \[
+    A\times B = \pi_X^{-1}(A)\cap \pi_Y^{-1}(B) \in  \mathcal  C
+\] 
+donc $\mathcal  A\otimes \mathcal  B\subseteq \mathcal  C$
+
+La réciproque est facile (mêmes arguments).
+\end{proof}
+
+\begin{rem}
+Le produit de $\sigma$-algèbre est associatif. On étend donc à un produit quelconque.
+\end{rem}
+
+\begin{ex}
+    Sur $\R^2$, on a deux $\sigma$-algèbres naturelles:  $\mathcal  B(\R^2)$ et $\mathcal  B(\R)\otimes \mathcal  B(\R)$.
+\end{ex}
+
+\begin{prop}
+Soient $X$,  $Y$ deux espaces topologiques à base dénombrable d'ouverts. Alors, si  $X\times Y$ est muni de la topologie produit, on a  \[
+    \mathcal  B(X\times Y)=\mathcal  B(X)\otimes \mathcal  B(Y)
+\] 
+\end{prop}
+
+\begin{proof}
+    On a que $\pi_X$ et $\pi_Y$ sont des applications continues pour les topologies correspondantes. Elles sont donc mesurables de $\mathcal  B(X\times Y)$ vers $\mathcal  B(X)$ et $\mathcal  B(Y)$ respectivement. Donc, vu la propriété précédente, \[
+        \mathcal  B(X)\otimes \mathcal  B(Y)\subseteq\mathcal B(X\times Y)
+    \] 
+    Pour la réciproque, on utilise le fait que $X\times Y$ est lui-même à base dénombrable d'ouverts  $(O_i\times O_j')$ donc tout ouvert de  $X\times Y$ est dans  $\mathcal  B(X)\otimes \mathcal  B(Y)$ comme union dénombrable de produits d'ouverts.
+\end{proof}
+
+\begin{dfn}
+Soit $C\subset X\times Y$ et  $x \in  X, y \in  Y$, alors on considère \[
+    C_x=\pi_Y(C\cap (\left\{ x \right\}\times Y ))= \left\{ y' \in Y, \quad  (x, y') \in C \right\} 
+\] 
+et de même pour $C^y$. On appelle ces ensembles les sections de  $C$\index{sections}. Si $f: X\times Y \longrightarrow  Z$ et $(x, y) \in  X\times Y$, on note \[
+    f_x(y)=f(x, y)
+\] 
+et \[
+    f^y(x)=f(x, y)
+\] 
+\end{dfn}
+
+\begin{prop}
+    Si $C \in  \mathcal  A\otimes \mathcal  B$ et $f:X\times Y \longrightarrow (Z, \mathcal  C)$ est mesurable, alors $C_x \in  \mathcal  B, C^y \in  \mathcal  A$ et $f_x, f^y$ sont mesurables.
+\end{prop}
+
+\begin{proof}
+Les ensembles $C=A\times B$ vérifient la proposition puisque  $C_x=\emptyset$ si  $x \not \in  A$, et $C_x=B$ sinon, idem pour  $C^y$.
+
+De plus,  \[
+\left\{ C \in  \mathcal  A\otimes \mathcal  B, \qquad  \forall x \in  X, \forall  y \in  Y, C_x \in  \mathcal  B, C^y \in  \mathcal  A \right\} 
+\] 
+est une $\sigma$-algèbre. Donc, c'est  $\mathcal  A\otimes \mathcal  B$. Si maintenant $C \in  \mathcal C$, \[
+    f_x^{-1}(C)= \left\{ y \in  Y, \qquad  f_x(y)\in C \right\} = (f^{-1}(C))_x \in \mathcal  B
+\] 
+\end{proof}
+
+\section{Mesure produit}
+
+\begin{thm}
+    Soient $(X, \mathcal  A, \mu)$ et $(Y, \mathcal  B, \nu)$ deux espaces mesurés $\sigma$-finis. Alors, il existe une unique mesure $\mu\otimes \nu$ sur $(X\times Y, \mathcal  A\otimes \mathcal  B)$, appelée mesure produit\index{mesure produit} telle que \[
+        \forall  A \in  \mathcal  A, \forall  B \in  \mathcal  B, \qquad  \mu\otimes \nu(A\times B)=\mu(A)\nu(B)
+    \] 
+\end{thm}
+
+\begin{proof}[Preuve d'unicité de la mesure produit]
+L'unicité provient d'un théorème d'unicité des mesures puisque $\left\{ A\times B, \quad  A \in  \mathcal  A, B \in  \mathcal  B \right\} $ est un $\pi$-système.
+\end{proof}
+
+\begin{lmm}
+Si $C \in  \mathcal  A\otimes \mathcal  B$ alors les applications \[
+    x \in  X \longmapsto \nu(C_x) \in  \bar{\R_+}
+\] 
+et \[
+    y \in  Y \longmapsto \mu(C^y) \in  \bar{\R_+}
+\] 
+sont mesurables
+\end{lmm}
+
+\begin{proof}[Preuve du lemme]
+Si $C =  A\times B$ avec $A \in  \mathcal  A, B \in  \mathcal  B$, alors \[
+    \nu(C_x)=\nu(B)\1_A(x)
+\] 
+est mesurable. Par ailleurs, supposons d'abord $\nu$ finie. Notons  $\mathcal  M$ la famille des $C \in  \mathcal  A\otimes \mathcal  B$ vérifiant la conclusion du lemme. Si $C\subseteq C'$ sont dans  $\mathcal  M$ alors \[\nu((C'\ \setminus  C)_x)=\nu(C'_X\setminus  C_x)=\nu(C'_x)-\nu(C_x)\] est mesurable en $x$
+
+Si  $(C_n)$ est une suite croissante d'éléments de  $\mathcal  M$ alors \[
+    \nu \left( \left( \ubigcup C_n \right)_n \right)=\nu\left(\ubigcup(C_n)_x\right)=\lim_{n\to +\infty}\nu((C_n)_x)
+\] 
+est mesurable comme limite simple de mesurables. $\mathcal  M$ est donc une classe monotone et (lemme de Dynkin) $\mathcal  M=\mathcal  A\otimes \mathcal  B$
+
+Si $\nu$ est infinie, on raisonne sur chaque ensemble d'un recouvrement par mesurables de mesure finie.
+\end{proof}
+
+\begin{proof}[Preuve d'existence de la mesure produit]
+Posons, pour $C \in  \mathcal  A\otimes \mathcal  B$, \[
+    \xi(C)=\int_X \nu(C_x)\diff \mu(x)
+\] 
+Alors, $\xi$ est une mesure:  \begin{itemize}
+    \item $\xi(\emptyset ) = 0$
+    \item Si les  $C_n$ sont deux à deux disjoints,  \[
+            \xi \left(  \bigcup C_n\right)=\int_X \nu \left(  \left(\bigcup C_n\right)_x\right)\diff\mu(x)=\int_X \sum_{n\geq 0} \nu((C_n)_x)\diff\mu(x)\overset{\text{Beppo-Levi}}=\sum_{n\geq 0}\xi(C_n)
+    \] 
+\end{itemize}
+    De plus, si $A \in  \mathcal A, B \in  \mathcal  B$ alors \[
+        \xi(A\times B)=\int_X\nu(B)\1_A\diff\mu=\mu(A)\nu(B)
+    \] 
+\end{proof}
+
+\begin{cor}
+On a \[
+    \mu\otimes \nu(C)=\int_X \nu(C_x)\mu(\diff x)=\int_Y\mu(C^y)\nu(\diff y)
+\] 
+\end{cor}
+
+\section{Théorème de Fubini}
+
+\begin{thm}[Fubini-Tonelli\index{Fubini-Tonelli (théorème)}]
+    Soit $(X, \mathcal  A, \mu)$ et $(Y, \mathcal  B, \nu)$ des espaces mesurés $\sigma$-finis et $f:X\times Y\longrightarrow \bar{\R_+}$ mesurable. Alors \begin{enumerate}
+        \item Les fonctions $x \longmapsto \int_y f_x\diff \nu$ et $x \longmapsto \int_X f^y\diff \mu$ sont mesurables
+        \item On a que \[
+                \int_X \diff\mu \left( \int_Y f_x\diff \nu \right)=\int_Y \diff\nu \left( \int_X f^y\diff \mu \right)
+        \] 
+    \end{enumerate}
+\end{thm}
+
+\begin{rem}
+On note \[
+    \int_X\diff \mu \left(  \int_Y f_x\diff \nu\right) = \int_X \diff\mu(x) \int _Y \diff\nu(y) f(x, y)
+\] 
+\end{rem}
+
+\begin{proof}
+C'est vrai pour les $\1_C$ avec  $C \in  \mathcal  A\otimes \mathcal  B$ par construction de $\mu\otimes \nu$. On étend aux fonctions simples puis aux fonctions quelconques par convergence monotone.
+\end{proof}

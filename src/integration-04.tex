@@ -290,3 +290,104 @@ par convergence dominée. Pour $ \epsilon>0$ fixé, on choisit $n$ tel que  $\|f
 \|\phi_{n,k}-\1_{\mathring L_n}\|_p \leq \frac{\epsilon}{2\|f\|_{\infty}}
 \] 
 \end{proof}
+
+\section{Espace de Hilbert \texorpdfstring{$\mathcal  L^2(X, \mathcal  A, \mu)$}{L2(X, A, mu)}}
+
+\begin{thm}
+    L'espace $\mathcal  L^2(X, \mathcal  A, \mu)$ est un espace de Hilbert pour le produit scalaire \[
+        (f, g)_{\mathcal  L^2(X, \mathcal  A, \mu)}=\int_Xf\bar g\diff\mu
+    \] 
+\end{thm}
+
+\begin{proof}
+Conséquence du théorème de Riesz. \[
+(f,g) =\frac{\|f+g\|_2^2 -\|f-g\|_2^2}{4}
+\] 
+\end{proof}
+
+
+\begin{dfn}
+    On note $\ell^p(X)=\mathcal  L^p(X, \mathcal  P(X), \#_X)$
+\end{dfn}
+
+Si $A$ est un ensemble, alors  $\ell^2(A)$ est un espace de Hilbert. On va montrer que tous les espaces de Hilbert sont de cette forme. Soit $H$ un espace de Hilbert et  $(x_{\alpha})_{\alpha \in  A^2 }$ une famille orthonormale de $H$. Pour  $x \in  H$, on note \[
+    \hat{x} (\alpha) = (x, x_\alpha)
+\] 
+Observons que si $I \subseteq A$ est finie, alors  \[
+    x=\sum_{\alpha \in  I} \hat{x} (\alpha)x_\alpha + \left( x-\sum_{\alpha \in  I} \hat{x} (\alpha)x_\alpha \right)
+\] 
+est cette somme est orthogonale donc \[
+    \|x\|^2 = \sum_{\alpha \in  I} |\hat{x}(\alpha)|^2 + \left\|x-\sum_{\alpha \in  I} \hat{x}(\alpha)x_\alpha\right\|
+\] 
+donc \[
+    \forall I\subseteq A, I \text{ finie }, \qquad  \sum_{\alpha \in  I} |\hat{x}(\alpha)|^2 \leq  \|x\|^2 
+\] 
+donc $(\hat{x}(\alpha))_{\alpha\in A} \in  \ell^2(A)$ et de plus \[
+    \|\hat{x}\|^2_{\ell^2(A)}=\sum_{\alpha \in  A} |\hat{x}(\alpha)|^2 \leq \|x\|^2 
+\] 
+On dispose donc d'une application \[
+\begin{array}{rrcl}
+    I:& H & \longrightarrow & \ell^2(A) \\
+      & x & \longmapsto & \displaystyle (\hat{x}(\alpha))_{\alpha \in  A}
+\end{array}
+\] 
+linéaire est continue (norme d'opérateur $\leq 1$)
+Si $D\subseteq \ell^2(A)$ est l'ensemble des suites à support fini, alors \[
+\begin{array}{rrcl}
+    J:& D & \longrightarrow & H \\
+      & (\lambda_x)_{x \in  A} & \longmapsto & \displaystyle \sum_{\alpha \in A} \lambda_\alpha x_\alpha
+\end{array}
+\] 
+et on a (Pythagore) \[
+    \|(\lambda_\alpha)_{\alpha \in A}\|_{\ell^2(A)}=\sum_{\alpha \in  A}|\lambda_\alpha|^2 = \|J((\lambda_\alpha)_{\alpha \in  A})\|^2 
+\] 
+donc $J$ est une isométrie linéaire qui se prolonge de façon unique en isométrie  $J:\bar{D}=\ell^2(A) \longrightarrow H$ 
+
+On note (improprement) \[
+    J((\lambda_\alpha)_{\alpha \in A})=\sum_{\alpha \in A}\lambda_\alpha x_\alpha
+\]
+pour $(\lambda_\alpha)_{\alpha \in  A} \in  \ell^2(A)$
+
+\begin{thm}
+    On a $I\circ J=\id_{\ell^2(A)}$ et $J\circ I$ est la projection orthogonale sur  $F=\bar{\Vect(x_\alpha, \alpha \in  A)}$. En particulier, $I$ et  $J$ sont deux isomorphismes inverses d'espaces de Hilbert  si et seulement si $F=H$. On dit alors que $(x_\alpha)_{\alpha \in  A}$ est une base hilbertienne\index{base hilbertienne}.
+\end{thm}
+
+\begin{proof}
+    $I\circ J$ vaut clairement l'identité sur  $D$, et  $D$ est dense et  $I\circ J$ est continue donc  $I\circ J=\id_{\ell^2(A)}$. 
+
+    Par ailleurs, si $x \in  H$, on note $x_F$ la projection orthogonale sur  $F$ de  $x$. Si $x \in  \Vect(x_\alpha, \alpha \in  A)$, alors \[
+        x = \sum_{\alpha \in  A}\hat{x}(\alpha)x_\alpha
+    \] 
+    et cette somme est finie. Puis, \[
+        J\circ J(x)=J((\hat{x} (\alpha))_{\alpha \in  A})=\sum_{\alpha \in  A}\hat{x} (\alpha)x_\alpha=x
+    \] 
+    Par densité, $J\circ I(x)=x$ pour  $x \in  F$. On conclut en prenant $x$ quelconque et en observant que  $J\circ I(x-x_F)=0$ car  $\forall  \alpha \in A, \hat{x-x_F}(\alpha)=0$ puisque $x-x_F \in  \Vect(x_\alpha, \alpha \in  A)^\bot$
+\end{proof}
+
+\begin{cor}
+    La famille $(x_\alpha, \alpha \in A)$ est une base hilbertienne si et seulement si \[
+        \forall  x \in  H, \qquad  \|x\|= \|\hat{x}\|_{\ell^2(A)}
+    \]
+\end{cor}
+
+\begin{rem}[Conséquence]
+    On considère $\L^2_\C([0, 2\pi[, \mathcal  B([0, 2\pi[), \sfrac{\diff x}{2\pi})$ vu comme l'espace des fonctions $2\pi$-périodiques restreintes à une période de carré intégrable.
+
+    Si $e_n(x)=e^{inx}, x \in  [0, 2\pi[$ alors $(e_n)$ est une famille orthonormale de  $\L^2([0, 2\pi[)$.
+
+    Vu ce qui précède, on dispose d'une application \[
+    \begin{array}{rrcl}
+        &  \L^2([0, 2\pi[)& \longrightarrow & \ell^2(\Z) \\
+        & f & \longmapsto & \displaystyle (\hat{f}(n))_{n \in  \Z}= \left( \frac{1}{2\pi}\int_0^{2\pi} f(x)e^{-inx}\diff x \right)_{n \in  \Z}
+    \end{array}
+    \] 
+
+    On verra un peu plus tard le théorème suivant, qui permet d'affirmer que $(e_n)$ est une base hilbertienne.
+\end{rem}
+
+\begin{thm}[Féjer]
+Pour toute fonction $f$ continue  $2\pi$-périodique, on a \[
+    \frac{1}{N+1} \sum_{n=0}^N\sum_{k=-n}^n \hat f(k)e_k \xrightarrow[N\to+\infty]{\text{CVU}} f
+\] 
+où $(u_k)_{k \in \Z}=(x \longmapsto e^{ikx})_{k \in  \Z}$
+\end{thm}

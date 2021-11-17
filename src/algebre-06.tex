@@ -116,7 +116,7 @@ De même, on peut définir les classes à droite.
 Si $G / H$ est fini, on dit que  $H$ est d'indice fini dans  $G$ et on note  \[
     [G:H]=\# \sfrac GH
 \] 
-l'indice de $H$ dans  $G$. Sinon, on dit que  $H$ est d'indice infini.
+l'indice\index{indice} de $H$ dans  $G$. Sinon, on dit que  $H$ est d'indice infini.
 \end{dfn}
 
 \begin{prop}
@@ -142,9 +142,201 @@ Si $x \in  G$ et $G$ est fini alors l'ordre de  $x$ divise $\#G$
 \section{Sous-groupe distingué}
 
 \begin{dfn}
-$H$ est un sous-groupe distingué de  $G$  si et seulement si c'est un sous-groupe et $\forall  a \in G, aH=Ha$
+    $H$ est un sous-groupe distingué\index{sous-groupe distingué}\index{distingué (sous-groupe)} de  $G$  si et seulement si c'est un sous-groupe et $\forall  a \in G, aH=Ha$. On note dans ce cas $H\dist G$
 \end{dfn}
+
+\section{Exemples de sous-groupes distingués}
 
 \begin{prop}
 Si $f$ est un morphisme de groupes, alors  $\ker f$ est distingué
 \end{prop}
+
+\begin{dfn}[Centre]
+    Le centre d'un groupe\index{centre (groupe)} $G$ est le sous-groupe  \[
+            Z(G)= \left\{ x \in  G, \qquad  \forall  y \in  G, xy=yx \right\} 
+    \]
+\end{dfn}
+\begin{prop}
+    Le centre d'un groupe est un sous-groupe distingué
+\end{prop}
+
+\begin{dfn}[Commutateur]
+    Soit $G$ un groupe. On définit le commutateur\index{commutateur} de  $x, y \in  G$ par \[
+        [x, y]=xyx^{-1}y^{-1} \in  G
+    \] 
+\end{dfn}
+
+\begin{rem}
+    Dans un groupe $G$,  $x, y \in G$ commutent si et seulement si $[x, y]=e$
+\end{rem}
+
+\begin{dfn}[Groupe dérivé]
+    Soit $G$ un groupe. On appelle groupe dérivé de  $G$ le sous-groupe $D(G)$ engendré par tous les commutateurs:  \[
+        D(G) = \langle [x, y], \quad x,y \in  G\rangle
+    \] 
+\end{dfn}
+
+\begin{defprop}
+Pour $z \in  G$, l'application \[
+\begin{array}{rrcl}
+    f_z:& G & \longrightarrow & G \\
+    & x & \longmapsto & \displaystyle zxz^{-1}
+\end{array}
+\] 
+est un automorphisme, qu'on appellera automorphisme intérieur\index{automorphisme intérieur}
+\end{defprop}
+
+\begin{prop}
+   Le groupe dérivé $D(G)$ est un sous-groupe distingué de  $G$
+\end{prop}
+
+\begin{proof}
+    Soient $x, y, z\in  G$. Alors $f_z([x, y])=f_z(x)f_z(y)f_z(x)^{-1}f_z(y)^{-1}=[f_z(x), f_z(y)]$. Si $X$ est l'ensemble des commutateurs de  $G$, alors pour tout  $z \in  G$, $f_z(X)\subseteq D(G)$. Puis,  $D(G) = \langle X\rangle$ donc  $f_z(\langle X\rangle)=\langle f_z(X)\rangle\subset D(G)$.
+\end{proof}
+
+\begin{rem}
+    $D(G) = \left\{ e \right\} $ si et seulement si $G$ est abélien
+\end{rem}
+
+\begin{dfn}[Normalisateur]
+    Soit $G$ un groupe et  $H$ un sous-groupe de  $G$. On dit qu'un élément  $a \in  G$ normalise $H$ si  $aHa^{-1}=H$. On appelle normalisateur\index{normalisateur} de $H$ le groupe des éléments qui normalisent  $H$, qu'on note  $N_G(H)$
+\end{dfn}
+
+\begin{prop}
+\begin{enumerate}
+    \item $N_G(H)$ est un sous-groupe de  $G$ qui contient  $H$
+    \item  $H\dist N_G(H)$
+    \item Si  $N$ est un sous-groupe de  $G$ tel que  $N\dist H\subset G$ alors  $N\subset N_G(H)$
+\end{enumerate}
+\end{prop}
+
+\begin{proof} ~
+\begin{enumerate}
+    \item Si $x, y \in  N_G(H)$ alors $xyH(xy)^{-1}=f_x\circ f_y(H)=H$ et $x^{-1} H x=x^{-1} (xHx^{-1} )x=H$. Puis si $h \in  H, hHh^{-1}=H$.
+    \item Résulte de la définition.
+    \item Tous les éléments de $N$ normalisent  $H$.
+\end{enumerate}
+\end{proof}
+
+\section{Groupes simples}
+\begin{dfn}
+    Un groupe $G$ est dit simple\index{groupe simple}\index{simple (groupe)} si  $G\neq \left\{ e \right\} $ et les seuls sous-groupes distingués de $G$ sont  $\left\{ e \right\} $ et $G$.
+\end{dfn}
+
+\begin{ex}
+\begin{itemize}
+    \item Si $p$ est premier, alors  $G = \Z / p\Z$ est un groupe simple (Lagrange). En fait, $\Z / n\Z$ est simple si et seulement si $n$ est premier.
+    \item  $\Z$ n'est pas simple car ses sous-groupes sont distingués (et il en existe un strict, $2\Z$)
+    \item On verra plus tard des exemples de groupes simples non abéliens, finis et infinis.
+\end{itemize}
+\end{ex}
+
+\section{Groupes quotient}
+
+Soit $G$ un groupe, et  $H\dist G$.
+
+ \begin{thmdef}
+Il existe une unique structure de groupe sur $G / H$ telle que l'application canonique  $\pi : G \longrightarrow G / H$ est un morphisme de groupes. De plus, $\ker \pi=H$
+\end{thmdef}
+
+\begin{proof}
+\begin{itemize}
+    \item Existence. Soient $\alpha, \beta \in  G / H$ et $a, b \in G$ des représentants respectifs. Posons $ \alpha \beta = abH \in  G / H$. Vérifions que cela ne dépend pas du choix de $a$ et  $b$. Pour cela, on remarque que  $aH.bH=a(Hb).H=a(bH).H=abH.H=abH$ ($.$ désigne le produit ensembliste) donc $ \alpha \beta = \alpha . \beta$.
+
+        C'est bien une loi de groupe car $H$ est  neutre, la loi est associative car le produit ensembliste l'est,  $ \alpha \beta=abH$ est bien une classe et $ a^{-1}H$ est l'inverse de $ \alpha=aH$.
+
+        L'application $\pi$ est bien un morphisme de groupes car $\pi(ab)=abH=(aH)(bH)=\pi(a)\pi(b)$. Puis,  $\ker \pi = \pi^{-1}(H)=H$.
+    \item L'unicité de la structure de groupe découle formellement de la surjectivité de $\pi$: la structure de $G$ est transférée sur  $G / H$ tout entier. Si $\star$ est une autre loi de groupe sur  $G / H$ vérifiant l'énoncé du théorème alors  $\pi(ab)=(aH)\star(bH)=abH$
+\end{itemize}
+\end{proof}
+
+
+\begin{rem}
+Pour $G$ abélien, tout sous-groupe  $H$ est distingué, donc  $G / H$ existe et hérite de la commutativité de  $G$
+\end{rem}
+
+\begin{prop}
+Soit $G$ un groupe et  $H$ un sous-groupe de  $G$. Alors,  $H$ est distingué si et seulement si il existe  un groupe $G'$ et un morphisme de groupe  $f:G\longrightarrow G'$ tel que $H=\ker f$.
+\end{prop}
+
+\begin{proof}
+Si $H$ est distingué, alors  $\pi$ convient. Si $H$ n'est pas distingué, alors il n'est le noyau d'aucun morphisme puisque les noyaux des morphismes sont toujours distingués.
+\end{proof}
+
+\begin{thm}[Passage au quotient]
+Soit $f : G \longrightarrow  G'$ un morphisme de groupes. Soit $H$ un sous-groupe distingué de $G$ contenu dans $\ker f$. Alors il existe un unique morphisme de groupes $\bar{f} : G / H \longrightarrow G'$ tel que le diagramme suivant commute
+\begin{center}
+    \begin{tikzcd}[sep=large,every label/.append style={font=\normalsize}]
+    G \arrow[r, "f"] \arrow[rd, "\pi", two heads] & G' \\
+                                       & G/H \arrow[u, " \bar f", dashed]
+\end{tikzcd}
+\end{center}
+\end{thm}
+
+\begin{proof}
+    Si $\pi(a)=\pi(b)$, on a  $a=bh$ pour un  $h \in  H$ donc $f(a)=f(b)f(h)=f(b)$ donc  $f$ passe au quotient ensemblistement, et il existe bien  $\bar{f}$ telle que $f=\bar{f} \circ \pi$. C'est bien un morphisme car $f$ est un morphisme et  $\pi$ aussi:  $\bar{f}(\alpha \beta)=f(ab)=f(a)f(b)=\bar{f}(\alpha)\bar{f}(\beta)$. Finalement, l'unicité est donnée par le passage au quotient ensembliste.
+\end{proof}
+
+\begin{cor}[Premier théorème d'isomorphisme]
+Soit $f : G \longrightarrow G'$ un morphisme de groupe. Alors, $f$ induit un isomorphisme canonique  $\bar{f}:G/\ker f \longrightarrow \im f$
+\end{cor}
+
+\begin{cor}
+Si $G$ est un groupe fini, et  $f:G\longrightarrow G'$ est un morphisme, alors $\#G=\#\ker f \cdot \#\im f$
+\end{cor}
+
+\section{Sous-groupes d'un quotient}
+
+\begin{thm}
+Soit $G$ un groupe et  $H\dist G$. Alors, il y a une bijection canonique entre l'ensemble des sous-groupes de  $G / H$ et l'ensemble des sous-groupes de  $G$ contenant  $H$, donnée par \[
+    K \subset G / H \longmapsto \pi^{-1}(K)
+\] 
+d'inverse \[
+    K' \subset G \longmapsto \pi(K')
+\] 
+\end{thm}
+
+\begin{proof}
+Ces applications sont inverses l'une de l'autre: \[
+    \forall  K\subset G / H, \qquad  \pi(\pi^{-1}(K))=K
+\] 
+et si $K'$ est un sous-groupe contenant  $H$,  \[
+    \pi^{-1}(\pi(K'))=K'
+\] 
+car $x \in \pi^{-1}(\pi(K'))$ s'écrit $x=yh$ avec  $y \in  K', h \in  H\subset K'$ donc $x \in  K'$ et  l'autre inclusion est claire.
+\end{proof}
+
+\begin{rem}
+Cette bijection est croissante pour l'inclusion et elle préserve les sous-groupes distingués
+\end{rem}
+
+\section{Suite exacte de groupes}
+
+\begin{dfn}
+    Une suite exacte courte\index{suite exacte courte} est la donnée de trois groupes $G', G, G''$ et de deux morphismes de groupes  $\alpha:G'\longrightarrow G$ et $\beta:G \longrightarrow G''$ qui vérifient \begin{itemize}
+        \item $\alpha$ est injectif
+        \item $\im \alpha = \ker \beta$
+        \item $\beta$ est surjectif.
+    \end{itemize}
+    On note \[
+        1 \longrightarrow G' \overset{\alpha}\longrightarrow G\overset\beta\longrightarrow G''\longrightarrow 1
+    \] 
+\end{dfn}
+
+\begin{ex}~
+\begin{itemize}
+    \item Suite exacte triviale: $G = G'\times G''$ \[
+        1 \longrightarrow G' \overset{x\mapsto(x,1)}\longrightarrow G'\times G''\overset{(x,y)\mapsto y}\longrightarrow G''\longrightarrow 1
+    \]
+    \item \[
+            0 \longrightarrow \Z \overset{\times n}\longrightarrow \Z \overset\pi\longrightarrow \Z / n\Z \longrightarrow 0
+    \] 
+    \item Plus généralement, pour tout groupe $G$, et tout $H\dist G$, la suite suivante est une suite exacte courte \[
+            1 \longrightarrow H \overset{x\mapsto x}\longrightarrow G\overset\pi\longrightarrow G / H \longrightarrow 1
+    \] 
+\end{itemize}
+\end{ex}
+
+\begin{rem}
+Si $G$ est un groupe simple, il n'existe pas de suite exacte courte avec  $G'$ et  $G''$ non triviaux.
+\end{rem}

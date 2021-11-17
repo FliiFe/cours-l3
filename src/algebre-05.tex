@@ -396,14 +396,93 @@ s=\max \left\{ \dim F, \quad  F \text{ sev  de }  E \text{ et } q\left|_{F}\righ
 
 \begin{proof}
     On complète $(\lambda_i)$ en une base $(\lambda_1, \cdots , \lambda_n)$ de $E$. Soit  $\mathcal  B=(e_1, \cdots , e_n)$ la base antéduale dans $E$.
-    % TODO: finir ça
+    
+    On sait que $q_{|\Vect(e_1, \cdots , e_r)}$ est définie positive donc $r$ est inférieur au maximum de l'énoncé.
+
+Soit $F$ un sev de $E$ de dimension $r+1$ tel que $q \left|_{F}\right.$ est définie positive. On définit $F_+=\Vect(e_1, \cdots , e_r)$, $F_-=\Vect(e_{r+1}, \cdots , e_{r+s})$ et $F_0=\Vect(e_{r+s+1}, \cdots , e_n)$. On a $\dim(F_-\oplus F_0)=n-r$ donc $F\cap (F_-\oplus F_0)\neq \left\{ 0 \right\} $. Soit $x \in  F\cap (F_-\oplus F_0)$ non nul. Alors, $q(x)>0$. Mais, $q\left|_{F_-\oplus F_0}\right.$ est négative donc $q(x)\leq 0$, ce qui est absurde.
+
+La démonstration pour $s$ est similaire.
 \end{proof}
 
-\section{Endomorphismes symétriques dans un espace euclidien}
+\begin{thm}[Théorème d'inertie de Sylverster\index{Sylvester (théorème d'inertie)}\index{inertie (théorème de Sylvester)}]
+    Le couple $(r, s)$ ne dépend que de  $q$ et pas de sa décomposition. De plus,  $\rg(q)=r+s$ et  $\disc(q)=0$ si  $r+s<n$,  $(-1)^s$ sinon. On appelle signature\index{signature} de $q$ le couple  $(r, s)$
+\end{thm}
 
-% TODO: potentiellement titre ici
+\begin{rem}[Résumé]
+    Deux formes quadratiques sur $ \R$ sont isomorphes si et seulement si elles ont la même signature (qui peut être calculée par l'algorithme de Gauss)
+\end{rem}
 
-On se place dans un $ \R$-ev E muni d'un produit scalaire
+\begin{rem}[Cône isotrope]
+    Soit $q \in Q(\C^n)$ non dégénérée. Alors, $C(q)= \left\{ 0 \right\} \iff  n=1$. En effet, dans une certaine base, $q(x)= \sum_i x_i^2 $ et dans la bonne base, $(1, i, 0, \cdots , 0) \in  C(q)$ pour $n\geq 2$
+
+    Si on se donne cette fois $q \in  Q(\R^n)$ non dégénérée de signature $(r, s)$, on a $C(q)= \left\{ 0 \right\}  \iff  r=0 \text{ ou }s=0$
+\end{rem}
+
+\section{Quelques résultats sur \texorpdfstring{$ \R$}{R}}
+
+Soit $E$ un  $ \R$-espace vectoriel de dimension finie. Se donner un produit scalaire sur $E$ revient à se donner une forme quadratique définie positive sur  $E$. On note $\scalar{\;}{\;} $ la forme polaire de $q$, et  \[
+    \|x\|=\sqrt{\scalar{x}{x} }=\sqrt{q(x)}
+\] 
+
+\begin{dfn}
+    Soit $u \in  \mathcal  L(E)$. On dit que $u$ est orthogonal pour  $q$  si et seulement si $uu^\star=\id_E$. On note  $\O(q)$ l'ensemble des endomorphismes orthogonaux de  $E$ (le groupe orthogonal\index{groupe orthogonal})
+\end{dfn}
+
+\begin{rem}
+\[
+    u \in  O(q) \iff  \forall  x, y \in E, \qquad  \scalar{u(x)}{u(y)} =\scalar{x}{y} 
+\] 
+\end{rem}
+
+\begin{rem}
+    On peut définir le groupe orthogonal pour tout corps $k$, tout  $k$-espace vectoriel  $E$ et toute forme quadratique  $q \in  Q(E)$ non dégénérée.
+
+    Si $k=\R$ et $q$ est de signature  $(r, s)$, on note  $O(r, s)=O(q)$ pour  $E=\R^n$.
+\end{rem}
+
+\begin{dfn}
+    On dit que $u \in  \mathcal  L(E)$ est symétrique si et seulement si \[
+        \forall  x, y \in  E, \qquad  \scalar{u(x)}{y} = \scalar{x}{u(y)} 
+    \] 
+    Cela revient à dire $u=u^\star$
+    On note  $S(E)$ le sous-espace vectoriel formé  des endomorphismes symétriques.
+\end{dfn}
+
+\begin{prop}
+    Soit $\mathcal  B$ une base orthonormée de $(E, \scalar{\;}{\;} )$. Alors, $u \in  \mathcal  L(E)$ est symétrique si et seulement si $\mathcal M_{\mathcal  B}(u)$ est symétrique
+\end{prop}
+
+\begin{dfn}
+    Soit $u \in  \S(E)$. On dit que $u$ est positive si  $q_u: x \in  E \longrightarrow \scalar{u(x)}{x} $ l'est. On notera $\S^+(E)$ l'ensemble de ces endomorphismes. Puis, si  $q_u$ est définie, on dit que  $u$ aussi et on note  $\S^{++}(E)$ l'ensemble des endomorphismes définis positifs.
+\end{dfn}
+
+\begin{thm}
+    Si $u \in \S(E)$, alors $u$ est diagonalisable.% dans une base orthonormée.
+\end{thm}
+
+\begin{proof}
+    % Considérons la décomposition de $\chi_u$ en irréductibles de  $\R[X]$. Soit $P$ un facteur irréductible de degré  $2$, de racines  $ \lambda, \bar\lambda$. On note $M=\mathcal  M_{\text{canon}}(u)$. Il existe $Q \in  \GL_n(\C)$ tel que \[
+    % QMQ^{-1}=
+    % \left(
+    % \begin{array}{cc|c}
+    %     \lambda & 0 & \star \\
+    %      0 & \bar\lambda & \star \\
+    %     \hline 0 & 0 &  \\
+    %     \vdots & \vdots & \star \\
+    %     0 & 0 & 
+    % \end{array}
+    % \right)
+    % \] 
+    % et alors $P(QMQ^{-1})=QP(M)Q^{-1}$ a ses deux premières colonnes nulles donc $P(u)$ n'est pas inversible dans  $E$. Soit  $x \in  E\setminus \left\{ 0 \right\}   $ tel que $P(u)(x)=0$. Soit  $F=\Vect(x, u(x))$, qui est stable par  $u$. Soit  $\mathcal  B$ une base orthonormale de $F$. Le discriminant du polynôme caractéristique de   $\mathcal  M_{\mathcal  B}(u)$ est positif, ce qui est absurde.
+    On note $\mathcal  B$ une base orthonormée de $E$,  $A=\mathcal  M_{\mathcal  B}(u) \in \S_n(\R)$. Soit $ \lambda \in  \Sp_{\C}(A)$ et $X \in \C^n$ un vecteur propre associé. On a 
+\begin{align*}
+    \transpose \bar X AX &= \lambda \transpose \bar XX \\
+                         &= \transpose \bar X\transpose \bar AX\\
+                         &= \transpose (\bar{A X})X \\
+                         &= \bar\lambda \transpose \bar XX
+\end{align*}
+    donc $ \lambda=\bar\lambda$ et $\lambda \in  \R$. On a donc $\Sp_{\C}(A)\subset \R$. Puis, $\chi_A$ est scindé en tant que polynôme complexe, et a ses racines dans $\R$ et est donc scindé dans $\R[X]$.
+\end{proof}
 
 \begin{thm}
     Soit $u \in  \S(E)$. Alors il existe une base orthonormée de $E$ qui diagonalise  $u$. Réciproquement, si  $u \in  L(E)$ peut être diagonalisée dans une base orthonormée, alors  $u$ est symétrique.

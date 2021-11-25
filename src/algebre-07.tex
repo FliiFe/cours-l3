@@ -1,0 +1,230 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Actions de groupes} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Actions de groupes}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Actions à gauche}
+
+\begin{dfn}
+    Si $X$ est un ensemble, on note  $\Bij(X)$ le groupe des bijections de  $X$. Si $X = \llbracket 1, n \rrbracket $, on appelle $\Bij(X)=\gS_n$ le $n$-ième groupe symétrique
+\end{dfn}
+
+\begin{dfn}
+    Soit $G$ un groupe, et  $X$ un ensemble. Une action\index{action} à gauche de  $G$ sur  $X$ est la donnée d'une application  \[
+    \begin{array}{rrcl}
+        & G\times X & \longrightarrow & X \\
+        & (g, x) & \longmapsto & \displaystyle g.x
+    \end{array}
+    \] 
+    vérifiant les propriétés suivante: \begin{enumerate}
+        \item $\forall  g, h \in  G, \forall  x \in  X, g.(h.x)=(gh).x$
+        \item $\forall  x \in  X, e.x=x$
+    \end{enumerate}
+\end{dfn}
+
+\begin{rem}
+Soit $g \in  G$. L'application \[
+\begin{array}{rrcl}
+    \phi_g:& X & \longrightarrow & X \\
+    & x & \longmapsto & \displaystyle g.x
+\end{array}
+\] 
+est une bijection d'inverse $\phi_{g^{-1}}$. Plus généralement, la condition 1 signifie que $\phi_g\circ \phi_h=\phi_{gh}$. Considérons maintenant  \[
+\begin{array}{rrcl}
+    \phi:& G & \longrightarrow & \Bij(X) \\
+    & g & \longmapsto & \displaystyle \phi_g
+\end{array}
+\] 
+Cette application est un morphisme de groupes. En fait, se donner une action de $G$ sur  $X$ revient à se donner un morphisme  $\phi:G \longrightarrow \Bij(X)$ (l'action associée est $g.x=\phi(g)(x)$).
+\end{rem}
+
+\begin{dfn}[Notation]
+On note $G\actg X$ pour l'action à gauche de  $G$ sur  $X$.
+\end{dfn}
+
+\begin{ex}~
+\begin{itemize}
+    \item $\Bij(X)\actg X$ avec $\phi\equiv \id_{\Bij(X)}$, en particulier  $\gS_n\actg \llbracket 1,n \rrbracket $
+    \item Si $E$ est un espace vectoriel,  $\GL(E)\actg E$
+    \item Si  $X$ est un espace métrique,  $\mathrm{Homeo}(X)\actg X$
+    \item Si $f:X \longrightarrow X$ est une bijection, $f^n$ désigne la puissance $n$-ième dans le groupe  $\Bij(X)$, alors  $\Z\actg X$ avec $n.x=f^n(x)$. Si  $f^n=\id_X$ alors cette action donne lieu à une action  $\Z / n\Z \actg X$ (exercice)
+    \item Si $E$ est un espace vectoriel alors  $E\actg E$ par translation:  $v.x=x+v$. Plus généralement, si  $G$ est un groupe, alors  $G\actg G$ par translation à gauche:  $g.x=gx$. Pour la translation à droite, on prend $g.x=xg^{-1}$
+    \item $\left\{ \text{ isométries de } \R^n\right\} \actg \R^n$
+    \item $\GL_n(k)\cap \mathcal  M_n(k)$ avec $P.M=PMP^{-1}$ (similitude). De même, si $G$ est un groupe,  $G\actg G$ avec $g.x=gxg^{-1}$
+    \item $\GL_n(k)\times \GL_n(k)\actg \mathcal M_n(k)$ avec $(P,Q).M=PMQ^{-1}$ (équivalence)
+\end{itemize}
+\end{ex}
+
+\begin{prop}
+Soit $G$ un groupe agissant sur  un ensemble $X$.  \begin{enumerate}
+    \item Tout sous-groupe $H$ de $G$ agit par restriction sur $X$
+    \item $G\actg \mathcal  P(X)$ avec $g.P=\phi(g)(P)$.
+    \item Si  $Y$ est une partie de  $X$ telle que  $\forall g \in  G, \forall  y \in  Y, g.y \in Y$ (Y est stable par $G$) alors $G\actg Y$
+\end{enumerate}
+\end{prop}
+
+\begin{ex}
+    $\GL_n(k)\actg k^n$ induit une action  $\GL_n(k)\actg \left\{ \text{ droites de } k^n\right\} $
+\end{ex}
+
+\begin{ex}
+    Si $G\actg G$ par conjugaison, alors  $G$ induit une action  $G\actg \left\{ H \text{ sous-groupe de  }G \right\} $.
+\end{ex}
+
+\begin{dfn}
+Soit $G$ un groupe agissant sur un ensemble  $X$.  \begin{itemize}
+    \item On dit que l'action de $G$ est fidèle\index{fidèle (action)} \index{action!fidèle} si le morphisme $\phi$ est injectif. 
+    \item Soit $x \in  X$. Le stabilisateur\index{stabilisateur} de $x$, noté  $\Stab(x)=\Stab_G(x)$ est  $\left\{ g \in  G, \;\; g.x=x \right\} $
+    \item Soit $x \in  X$. L'orbite\index{orbite} de $x$ sous  $G$, notée  $G.x$ est $\left\{ g.x, \;g \in  G \right\} $ 
+    \item Soit $g \in  G$. On note $\Fix(g) = \left\{ x \in  X, \;\;g.x=x \right\} $
+    \item L'ensemble des points fixes de de l'action, notée $X^G$ est  $\left\{ x \in  X, \;\; \forall  g \in  G, g.x=x \right\} $
+\end{itemize}
+\end{dfn}
+
+\section{Formule des classes}
+
+\begin{thm}[Cayley\index{Cayley (théorème)}]
+Soit $G$ un groupe d'ordre  $n$. Alors,  $G$ est isomorphe à un sous-groupe du groupe symétrique  $\gS_n$.
+\end{thm}
+
+\begin{proof}
+On fait agir $G$ sur lui-même par translation à gauche. On obtient un morphisme de groupes  \[
+\begin{array}{rrcl}
+    \phi:& G & \longrightarrow & \Bij(G) \\
+         & g & \longmapsto & \displaystyle (x \mapsto gx)
+\end{array}
+\] 
+Cette action est fidèle (d'inverse $\phi(g)\mapsto \phi(g)(e)$). Donc, $G$ est isomorphe à $\im \phi \subset \Bij(G)\simeq S_n$.
+\end{proof}
+
+\begin{prop}
+Soit $G\actg X$, et  $x \in  X$. Alors il existe une bijection canonique \[
+\begin{array}{rrcl}
+    & G / \Stab(x) & \overset\simeq\longrightarrow & G.x \\
+    & [g] & \longmapsto & \displaystyle g.x
+\end{array}
+\] 
+\end{prop}
+
+\begin{proof}
+Posons \[
+\begin{array}{rrcl}
+    f:&G  & \longrightarrow &G.x  \\
+    & g & \longmapsto & \displaystyle g.x 
+\end{array}
+\] 
+Cette fonction est surjective par définition. Soient $g, h \in  G$ tels que $f(g)=f(h)$. Alors,  $h^{-1}g.x=x$ donc $h^{-1}g \in  \Stab(x)$ donc $[g]=[h]$ dans  $G / \Stab(x)$ donc  $\bar{f}$ induite est bijective.
+\end{proof}
+
+\begin{thm}[Formule des classes\index{formule des classes}]
+    Soit $X$ un ensemble fini et  $G$ un groupe agissant sur $X$. Alors,  \[
+        \# X = \sum_{i=1}^n \#\Omega_i = \sum_{i=1}^n [G : \Stab(x_i)]
+    \] 
+    où $x_1, \cdots , x_n$ est un système de représentants de $X$ pour la relation  $x\sim y \iff  \exists  g \in  G, y=g.x$ et $\Omega_i=G.x_i$
+\end{thm}
+
+\begin{proof}
+    La relation $\sim$ est bien une relation d'équivalence (facile). Les classes d'équivalence sont les $\Omega_i=G.x_i$, ce qui conclut.
+\end{proof}
+
+Le théorème suivant est une application de la formule des classes
+
+\begin{thm}[Cauchy\index{Cauchy (théorème)}]
+Soit $G$ un groupe fini d'ordre  $n$, et  $p$ un diviseur premier de  $n$. Il existe  $g \in  G$ d'ordre $p$.
+\end{thm}
+
+\begin{proof}
+    On pose $X = \left\{ (x_0, \cdots , x_{p-1}) \in  G^p, \;\; x_0\cdots x_{p-1}=e \right\} $. On fait agir $\frac{\Z}{p\Z}$ sur $X$ par permutation circulaire des coordonnées (c'est bien défini car si on permute cycliquement, le produit reste égal à $e$). $X$ est de cardinal  $n^{p-1}$ (la dernière coordonnée est fixée par les autres) divisible par  $p$. Les orbites sont de taille  $1$ ou  $p$ (elles ont pour cardinal l'indice des stabilisateurs).  \[
+        0\equiv \#X \equiv \#\underbrace{X^{\Z / p\Z}}_{\mathclap{\text{orbites de cardinal } 1}}\pmod p
+    \] 
+    Les éléments de $X^{\Z / p\Z}$ sont ceux de la forme $(x, \cdots , x)$ tels que $x^p=e$ donc sont en bijection avec  $\left\{ e \right\} \cup \left\{ x \in  G, x\text{ d'ordre  } p\right\} $. Cet ensemble est non vide donc de cardinal au moins $p$, donc il y a un élément dans l'ensemble de droite.
+\end{proof}
+
+\section{Le groupe symétrique}
+
+\subsection{Générateurs}
+
+\begin{dfn}
+    Soit $r \in \llbracket 2, n \rrbracket  $ et $a_1, \cdots , a_r \in \llbracket 1, n \rrbracket $ deux à deux distincts. On note $(a_1\;a_2\;\cdots \; a_n)$ la permutation de $\llbracket 1, n \rrbracket $ définie par \[
+    a \longmapsto \begin{dcases}
+        a_{i+1} & \text{ si } a=a_i \text{ avec } 1\leq i< r\\
+        a_1 & \text{ si } a=a_r \\
+        a & \text{ sinon }
+    \end{dcases}
+    \] 
+    On dit que c'est un cycle de longueur $n$\index{cycle (permutation)} \index{permutation circulaire}. Son support \index{support (permutation)} est l'ensemble des points qui ne sont pas fixés par cette permutation. Dans le cas particulier  $r=2$, on parle de transposition\index{transposition}.
+\end{dfn}
+
+\begin{thm}
+    Toute permutation $\sigma \in  \gS$ s'écrit de manière unique comme un produit de cycles à supports deux à deux disjoints (à l'ordre des facteurs près)
+\end{thm}
+
+\begin{proof}
+Soit $\sigma \in  \gS$. On regarde les orbites de $\llbracket 1, n \rrbracket $ sous l'action de $H=\langle \sigma\rangle$. Soit  $\Omega$ une orbite de cette action, et  $a \in  \Omega$. Alors \[
+    \Omega = \left\{ \sigma^k(a), k \in  \Z \right\} 
+\] 
+Soit $m\geq 1$ le plus petit entier tel que $\sigma^m(a)=a$. Alors  \[\Omega = \left\{ \sigma^k, k \in  \llbracket 0,m-1 \rrbracket  \right\} \] et $|\Omega|=n$. Alors, \[\sigma_{|\Omega}=(a\;\sigma(a)\;\cdots \; \sigma^{m-1}(a)).\] On écrit $\llbracket 1, n \rrbracket =\bigsqcup_{1\leq i\leq r}\Omega_i$ et $\sigma_{|\Omega_i}$ est un cycle $c_i$ d'où \[\sigma=c_1\cdots c_r\] où les supports des $c_i$ sont deux à deux disjoints.
+
+L'unicité est laissée en exercice (facile)
+\end{proof}
+
+\begin{thm}
+Le groupe symétrique est engendré par les transpositions
+\end{thm}
+
+\begin{proof}
+    Il suffit de montrer qu'un cycle est un produit de transpositions. On vérifie \[(a_1\;a_2\;\cdots \;a_r)=(a_1\;a_2)(a_2\;a_3)\cdots (a_{r-1}\;a_r)\]
+\end{proof}
+
+\begin{rem}
+La démonstration ci-dessus permet de montrer qu'une permutation est produit d'au plus $n-1$ transpositions
+\end{rem}
+
+\subsection{Conjuguaison}
+
+\begin{prop}
+    Le conjugué d'un $r$-cycle est un $r$-cycle. Plus précisément, si $\sigma \in \gS_n$, \[\sigma (a_1\;\cdots \;a_r)\sigma ^{-1} = (\sigma(a_1)\; \cdots \;\sigma(a_r))\]
+\end{prop}
+
+\begin{proof}
+Exercice
+\end{proof}
+
+\begin{thm}
+    Soient $\sigma, \tau \in  \gS_n$. On note $k_1, \cdots , k_r\geq 2$ les longueurs des cycles apparaissant dans $\sigma$ et $l_1, \cdots , l_s\geq 2$ les longueurs des cycles apparaissant dans $\tau$. Alors, $\sigma$ et $\tau$ sont conjugués dans $\gS_n$ si et seulement si $(k_1, \cdots , k_r)$ et $(l_1, \cdots , l_s)$ sont les mêmes à l'ordre près.
+\end{thm}
+
+\begin{ex}
+$n=5$,  \[
+    \sigma=(1\;2\;3)(4\;5) \qquad  \text{ et }\qquad  \tau = (2\;4\;5)(1\;3)
+\] 
+Ces deux permutation sont conjuguées avec par exemple \[g = \begin{pmatrix}1&2&3&4&5\\2&4&5&1&3\end{pmatrix} = (1 2 4)(3 5)\]
+\end{ex}
+
+\subsection{Le groupe alterné \texorpdfstring{$A_n$}{An}}
+
+On note $\left\{ \pm1 \right\} $ le sous-groupe de $\C^\times$ d'ordre $2$ engendré par  $-1$, isomorphe à  $\Z / 2\Z$.
+
+\begin{thmdef}
+    Il existe un unique morphisme de groupes non trivial $\epsilon:\gS_n \longrightarrow \left\{ \pm1 \right\} $, appelé signature\index{signature} tel que pour tout transposition $\tau$, on a  $\epsilon(\tau)=-1$
+\end{thmdef}
+
+\begin{proof}
+    Les transpositions engendrent le groupe symétrique donc l'unicité est claire. Pour l'existence, on considère $P = \mathcal  P_2(\llbracket 1, n \rrbracket )$. Pour $\sigma \in  \gS_n$, on pose \[
+        \epsilon(\sigma)=\prod_{\left\{ i, j \right\}\in P } \frac{\sigma(i)-\sigma(j)}{i-j}
+    \] 
+    Pour une transposition $\sigma = (a\;b)$, on trouve  $\epsilon(\sigma)=-1$. Puis, si  $\sigma, \tau \in  \gS_n$ alors \[
+        \epsilon(\sigma\tau)=\prod_{\left\{ i, j \right\} \in  P } \frac{\sigma\tau(i)-\sigma\tau(j)}{i-j}=\prod_{\left\{ i, j \right\} \in  P } \frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\prod_{\left\{ i, j \right\}  \in P}\frac{\tau(i)-\tau(j)}{i-j} = \epsilon(\sigma)\epsilon(\tau)
+    \] 
+\end{proof}

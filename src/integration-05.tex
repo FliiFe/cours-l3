@@ -174,3 +174,122 @@ On note \[
 \begin{proof}
 C'est vrai pour les $\1_C$ avec  $C \in  \mathcal  A\otimes \mathcal  B$ par construction de $\mu\otimes \nu$. On étend aux fonctions simples puis aux fonctions quelconques par convergence monotone.
 \end{proof}
+
+\begin{thm}[Fubini-Lebesgue\index{Fubini-Lebesgue (théorème)}]
+    Soient $(X, \mathcal  A, \mu)$ et $(Y, \mathcal  B, \nu)$ des espaces mesurés $\sigma$-finis et  $f: X\times Y \longrightarrow  \C$ intégrable. Alors \begin{itemize}
+        \item Pour $\mu$-presque tout  $x$,  $f_x$ est intégrable
+        \item Pour $\mu$-presque tout  $y$,  $f^y$ est intégrable
+    \end{itemize}
+    Les fonctions définies par  \[I(x)=\int_Yf(x, y)\nu(\diff y)\] et \[J(y)=\int_Xf(x, y)\mu(\diff x)\] sont intégrables et leurs intégrales sont égales.
+\end{thm}
+
+\begin{proof}
+    Appliquons Fubini-Tonelli à $|f|$. On a \[\int_{X\times Y}|f|\diff \mu\otimes \nu=\int_X\diff \mu(x)\int_Y\diff \nu(y)|f(x,y)|=\int_Y\diff\nu(y)\int_X\diff\mu(x)|f(x,y)|\] donc $\mu$-presque partout, \[\int_Y\diff\nu(y)|f(x,y)|<+\infty.\] Ainsi,  $f_x\in \mathcal L^1(\nu)$ et on conclut en appliquant le théorème de Fubini-Tonelli à $(\Re f)^+, (\Re f)^-, (\Im f)^+, (\Im f)^-$
+\end{proof}
+
+\section{Intégration par parties}
+
+Si $F : \R \longrightarrow  \R$ est croissante continue à droite, on note \[F(x-)=\lim_{\substack{y\to x\\y<x}} F(y)\leq F(x)\] et \[\Delta f=F(x)-F(x-).\]
+
+Rappelons qu'il existe une unique mesure $\diff F$ sur  $ \R$ telle que $\diff F(]a, b])=F(b)-F(a)$ (mesure de Stieltjes). Par exemple, si  $F$ est  $\mathcal  C^1$, $\diff F(x)=f(x)\diff x$, c'est-à-dire \[\diff F(A)=\int_Af(x)\diff x\]
+
+\begin{thm}[Intégration par parties\index{intégration par parties}]
+    Soient $F, G : \R \longrightarrow  \R$ croissantes continues à droite et $a<b$. Alors, \[F(b)G(b)=F(a)G(a)+\int_a^bF(x-)\diff G(x)+\int_a^bG(x-)\diff F(x)+\sum_{a<x\leq b}\Delta F(x)\Delta G(x)\]
+    Lorsque  $F, G$ sont  $\mathcal  C^1$, on retrouve la formule usuelle d'intégration par parties.
+\end{thm}
+
+\begin{rem}
+    L'ensemble des discontinuités de $\Delta F$ ou  $\Delta G$ est au plus dénombrable (classique)
+\end{rem}
+
+\begin{proof}
+    \begin{align*}\int_{]a, b]}\diff F\otimes \diff G&=\diff F(]a, b])\diff G(]a, b])\\&=(F(b)-F(a))(G(b)-G(a))\\&=\int_{]a, b]^2}\diff F\otimes \diff G\1_{x=y}+\int_{]a, b]^2}\diff F\otimes \diff G\1_{x<y}+\int_{]a, b]^2}\diff F\otimes \diff G\1_{x>y} \\ &\overset{\mathclap{\text{F-T}}}=\int_{]a, b]}\diff F(x)\underbrace{\int_{]a, b]}\diff G(y)\1_{x=y}}_{\diff G( \left\{ x \right\} )=\Delta G(x)}+ \int_{]a, b]}\diff G(y)\underbrace{\int_{]a, b]}\diff F(x)\1_{x<y}}_{\diff F(]a, b])=F(y-)-F(a)}\\&\hspace{3cm} +\int_{]a, b]}\diff F(x)\underbrace{\int_{]a, b]}\diff G(y)\1_{y<x}}_{G(x-)-G(a)} \\ &= \sum_{x \text{ tq }\Delta G(x)>0}\underbrace{\diff F( \left\{ x \right\}  )}_{\Delta F(x)} \Delta G(x) + \left(\int_{]a,b]}\diff G(y)F(y-)-F(a)(G(b)-G(a))\right) \\ &\hspace{3cm}+\left(\int_{]a,b]}\diff F(x)G(x-)-G(a)(F(b)-F(a))\right)
+    \end{align*}
+    d'où la formule recherchée.
+\end{proof}
+
+\begin{rem}
+Le terme de discontinuité est nul dès que $F$ et  $G$ n'ont pas de discontinuité commune
+\end{rem}
+
+\section{Convolution}
+
+\index{convolution}
+
+Soient $f, g : \R^d \longrightarrow  \R$ mesurables et $x \in  \R$. L'intégrale \[\int_{\R^d}f(y)g(x-y)\diff y\] a un sens dès lors que l'on a \[\int_{\R^d}|f(y) g(x-y)|\diff y<+\infty.\] On note alors cette intégrale \[f\star g(x)\]
+
+\begin{lmm}
+    Si $f$ est positive intégrable et  $y \in  \R^d$ alors \[\int_{\R^d} f(-x)\diff x=\int_{\R^d}f(x+y)\diff x=\int_{\R^d}f(x)\diff x\]
+\end{lmm}
+
+\begin{lmm}
+    Si $a>0$,  et $f$ est mesurable positive ou bien intégrable, \[\int_{\R^d}f(ax)\diff x=\frac1{a^d}\int_{\R^d}f(x)\diff x\]
+\end{lmm}
+
+\begin{rem}
+    Par le premier lemme, si $f\star g(x)$ est bien définie, $g\star f(x)$ aussi et ces deux intégrales sont égales.
+\end{rem}
+
+\begin{thm}
+Soient $f, g$ deux fonctions intégrables. Alors  $f\star g$ est définie  $\lambda$-presque partout et on a  \[
+\|f\star g\|_1\leq \|f\|_1 \|g\|_1
+\] 
+Autrement dit, $\star : \L^1\times \L^1 \longrightarrow \L^1$ est bilinéaire de norme $\leq 1$.
+\end{thm}
+
+\begin{proof}
+    Pour la tribu produit, $(x, y)\mapsto(y, x-y)$ et $(u, v)\mapsto (f(x), g(y))$ sont mesurables. Le théorème de Fubini-Tonelli donne \[x \longmapsto \int_{\R^d}|f(y)g(x-y)|\diff y\] est mesurable et \begin{align*}
+    \int_{\R^d}\diff x\int_{\R^d}|f(y)g(x-y)|\diff y&=\int_{\R^d} \diff y|f(y)|\int_{\R^d} \diff x |g(x-y)| \\ &=\int_{\R^d}\diff y |f(y)| \|g\|_1= \|f\|_1 \|g\|_1
+\end{align*}
+Comme $f$ et  $g$ sont intégrables,  $f\star g$ est bien définie  $\mu$-presque partout. Puis, \[\int_{\R^d}|f\star g(x)|\diff x=\int_{\R^d}\left|\int_{\R^d}f(y)g(x-y)\diff y\right|\diff x\leq \|f\|_1 \|g\|_1\]
+\end{proof}
+
+\begin{thm}
+    Soient $p \in  [1, +\infty[$ et $q \in  ]1, +\infty]$ conjugués, et $f \in  \L^p, g \in  \L^q$. Alors $f\star g(x)$ est bien définie pour tout  $x \in  \R^d$ et uniformément continue, et \[|f\star g(x)|\leq \|f\|_p \|g\|_q\]
+    Enfin, si $p, q \in  ]a, +\infty[$, alors $f\star g$ est de limite nulle à l'infini.
+\end{thm}
+
+\begin{lmm}
+    Pour $f $ mesurable et  $x, h \in  \R^d$, on note $\tau_hf(x)=f(x+h)$. Soit  $p \in  [1, +\infty[$. Alors, \[
+    h \in  \R^d \longmapsto \tau_h f \in  \L^p
+    \] 
+    est uniformément continue pour tout $f \in  \L^p$.
+\end{lmm}
+
+\begin{proof}
+    On a \[\|\tau_h f-\tau h'f\|_p= \|\tau_{h-h'}f-f\|_p.\] Il suffit de montrer que \[\|\tau_hf-f\|_p \xrightarrow[h\to 0]{}0\]
+    Soit $\epsilon>0$ et $g: \R^d\longrightarrow \C$ continue à support compact telle que $ \|f-g\|_p\leq \frac\epsilon2$ (existe par densité). Alors, 
+    \begin{align*}
+        \|\tau _h f-f\|_p&\leq \|\tau_hf-\tau_hg\|_p+\|\tau _h g-g\|_p + \|g-f\|_p \\ &= 2\|g-f\|_p + \|\tau_h g-g\|_p \\ &\leq \frac\epsilon2+\|\tau_hg-g\|_p
+    \end{align*}
+    or $g$ est uniformément continue (Heine) donc il existe $\delta>0$ tel que \[|h|\leq  \delta \implies |\tau_h g(x)-g(x)|\leq\frac\epsilon{\lambda(B)^{1 / \alpha}} \]
+
+    Supposons que $|h|\leq 1$. Alors \[\int_{\R^d}|\tau_h g(x)-g(x)|^p\diff x=\int_B|\tau_h g(x)-g(x)|^p\diff x\] où $B$ est une boule fermée qui contient le $1$-voisinage du support de  $g$, de sorte que pour tout  $|h|\leq \min(1, \delta)$, $\|\tau_hg-g\|_p^p\leq \epsilon^p\lambda(B)$. Alors on a $\|\tau_h (f)-f\|_p\leq \epsilon$ pour le bon choix de $\delta$
+\end{proof}
+
+\begin{proof}[Preuve du théorème]
+    L'inégalité de Hölder donne \[|f\star g(x)|\leq \|f\|_p \|g\|_q<+\infty\] donc cette quantité a un sens. Alors,
+    \begin{align*}
+        |f\star g(x+h)-f\star g(x)|&\leq \int_{\R^d}|f(x+h-y)-f(x-y)|\,|g(y)|\diff y\\&\leq \|\tau_h f-f\|_p \|g\|_q \xrightarrow[h\to 0]{}0
+    \end{align*}
+    Enfin, l'inégalité triangulaire donne \[
+        |f\star g(x)|\leq \|f\|_p \|g\|_q
+    \] 
+    donc $f\star g$ est bornée. Si enfin  $p, q \in  ]1, +\infty[$, alors on peut choisir $\varphi, \psi$ continues à supports compacts telles que $\|f-\varphi\|_p$ et $\|g-\psi\|_q$ sont petits. Alors,
+    \begin{align*}
+        |f\star g(x)-\varphi\star \psi(x)|\leq |(f-\varphi)\star g(x)|+|\varphi\star (g-\psi)(x)| \\ &\leq \|f-\varphi\|_p\|g\|_q + \|\varphi\|_p\|g-\psi\|_q
+    \end{align*}
+    donc en choisissant bien $\varphi, \psi$, on a \[|f\star g(x)|\leq |\varphi\star \psi(x)|+\epsilon=\epsilon\] pour $|x|$ assez grand
+\end{proof}
+
+\section{Approximation de l'unité}
+
+Il n'y a pas d'élément neutre pour la convolution, mais on peut s'en approcher.
+
+\begin{dfn}
+    Une approximation de $\delta_0$ est une suite  $(\varphi_n)_n$ de fonctions positives mesurables telles que \[ \forall  n \in  \N, \qquad  \int_{\R^d}\varphi_n(x)\diff x=1\] et \[\forall \delta>0, \qquad  \int_{|x|>\delta }\varphi_n(x)\diff x \xrightarrow[n\to+\infty]{}0\]
+\end{dfn}
+
+\begin{thm}
+    Si $(\varphi_n)$ est une approximation de $\delta_0$ et $f$ est bornée, alors % TODO: finir ça
+\end{thm}

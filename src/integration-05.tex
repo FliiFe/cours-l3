@@ -291,5 +291,43 @@ Il n'y a pas d'élément neutre pour la convolution, mais on peut s'en approcher
 \end{dfn}
 
 \begin{thm}
-    Si $(\varphi_n)$ est une approximation de $\delta_0$ et $f$ est bornée, alors % TODO: finir ça
+    Si $(\varphi_n)$ est une approximation de $\delta_0$ et $f$ est bornée, alors \begin{itemize}
+        \item Si $f$ est uniformément continue,  $\varphi_n\star f$ converge uniformément vers  $f$ sur  $\R^d$
+            \item Si $f$ est continue partout sur  $K$ compact, alors  $\varphi_n\star f$ converge uniformément sur  $K $ vers $f$.
+    \end{itemize}
 \end{thm}
+
+\begin{proof}
+La quantité $\varphi_n\star f$ est bien définie car $f \in  \mathcal L^\infty, \varphi_n \in  \mathcal L^1$, puis \begin{align*}
+\varphi_n\star f(x)-f(x)&= \int_{\mathbb{R}^d}\varphi_n(y)(f(x-y)-f(x))\diff y\\
+& = \int_{|y|\leq \delta} \varphi_n(y) (f(x-y)-f(x))\diff y + \int_{|y|>\delta}\varphi_n(y)(f(x-y)-f(x))\diff y\\
+\end{align*}
+\begin{itemize}
+    \item Si $f$ est uniformément continue, alors pour  $ \epsilon>0$ il existe $\delta>0$ tel que  $|y|\leq \delta \to \forall x \in  \R^d, |f(x-y)-f(x)|\leq \frac\epsilon2$. Pour ce choix de $\epsilon, \delta$, on a \[|\varphi_n\star f(x)-f(x)|\leq \frac\epsilon2\int_{\R^d}\varphi_n+2\|f\|_\infty\int_{|y|>\delta}\varphi_n(y)\leq \epsilon\] pour $n$ assez grand. 
+        \item $f$ est uniformément continue sur  $K$, c'est pareil.
+\end{itemize}
+\end{proof}
+
+\begin{thm}
+    Soit $(\varphi_n)$ une approximation de l'unité et  $f \in  \mathcal  L^p(\R^d, \mathcal  B(\R^d), \lambda), p \in  [1, +\infty[$. Alors, $\varphi_n\star f$ converge vers $f$ dans  $\mathcal  L^p$.
+\end{thm}
+
+\begin{proof}
+    \[\left(\int_{\R^d} \varphi_n(y)|f(x-y)|\diff y\right)^p \leq \int_{\R^d}|f(x-y)|^p\varphi_n(y)\diff y\] par l'inégalité de Jensen car $ \varphi_n(y)\diff y $ est une mesure de probabilité. Donc, le théorème de Fubini-Tonelli donne \[
+    \int_{\R^d} \diff x \left(\int_{\R^d}\varphi_n(y)|f(x-y)|\diff y\right)^p\leq \int_{\R^d}\varphi_n(y)\diff y\int_{\R^d}|f(x-y)|^p\diff x=\|f\|_p^p.
+\]
+Donc $\varphi_n\star f(x)$ est définie pour presque tout  $x$ et est dans  $\mathcal  L^p$. On a alors pour presque tout $x$
+ \begin{align*}
+|\varphi_n\star f(x)-f(x)|^p &= \left| \int_{\R^d}\varphi_n(y)(f(x-y)-f(x))\diff y \right|^p\\ &\leq \int_{\R^d} \varphi_n(y)|f(x-y)-f(x)|^p\diff y.
+\end{align*}
+Alors, \[\|\varphi_n\star f-f\|_p\leq \int_{\R^d}\varphi_n(y)\diff y\|\tau_yf-f\|_p^p\] par fubini-Tonelli. Par uniforme continuité de $h\mapsto \tau_hf$, pour $\epsilon>0$ fixé, il existe $\delta>0$ tel que  \[
+|h|\leq \delta \implies \|\tau_hf-f\|_p^p\leq \frac{\epsilon^p}2
+\] 
+de sorte que \[\|\varphi_n\star f-f\|_p^p\leq \frac{\epsilon^p}2+\int_{|y|>\delta}\varphi_n(y)\diff y (2\|f\|_p)^p\leq \epsilon^p\] pour $n$ assez grand.
+\end{proof}
+
+\begin{cor}
+    Si $f:[a, b]\longrightarrow \C$ est continue, elle est limite uniforme de polynômes.
+\end{cor}
+
+% TODO: preuve du corrolaire

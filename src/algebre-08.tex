@@ -163,4 +163,9 @@ $ \C^n=D\oplus M$ est un isomorphisme de représentations
 Soit $W$ un sous-espace stable de $V$. Soit $p : V \longrightarrow  V$ un projecteur d'image $W$. Posons \[
     \pi=\frac1{|G|}\sum_{g \in  G}g^{-1}\circ p \circ g \in  \mathcal  L(V)
 \] 
+de sorte que $\pi\circ g(V)\subset W$ et  $g^{-1}(W)\subset W$ donc $\im \pi\subset W$. De plus, pour  $x \in  W$, \[
+    \pi(x)=\frac1{|G|}\sum_{g \in  G}g^{-1} \circ \underbrace{p\circ g(x)}_{g(x)}=x.
+\]
+On en déduit que $\pi$ est un projecteur ($\pi^2=\pi$) et $\im(\pi)=W$.
+Les translations étant bijectives, il est clair que  $\forall  h \in  G, h^{-1}\circ \pi\circ h=\pi$. Posons $S=\ker \pi $. Si  $g \in  G, x \in  S, \pi(g.x)=g.\pi(x)=0$ donc $g.x \in  S$.
 \end{proof}

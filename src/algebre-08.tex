@@ -169,3 +169,38 @@ de sorte que $\pi\circ g(V)\subset W$ et  $g^{-1}(W)\subset W$ donc $\im \pi\sub
 On en déduit que $\pi$ est un projecteur ($\pi^2=\pi$) et $\im(\pi)=W$.
 Les translations étant bijectives, il est clair que  $\forall  h \in  G, h^{-1}\circ \pi\circ h=\pi$. Posons $S=\ker \pi $. Si  $g \in  G, x \in  S, \pi(g.x)=g.\pi(x)=0$ donc $g.x \in  S$.
 \end{proof}
+
+\begin{thm}[Maschke\index{Maschke (théorème)}]
+    Soit $(V, \rho)$ une représentation linéaire de  $G$. Alors il existe une décomposition en somme directe  \[
+    V = W_1\oplus \cdots \oplus W_m
+    \] 
+    où les $W_i$ sont des sous-représentations irréductibles de  $V$.
+\end{thm}
+
+\begin{proof}
+Par récurrence sur $\dim V$:  \begin{itemize}
+    \item Si $V = \left\{ 0 \right\} $, il n'y a rien à faire
+    \item Sinon $V\neq \left\{ 0 \right\} $. Si $V$ est irréductible, il n'y a rien à faire. Sinon, il existe  $W$ un sous-espace vectoriel strict stable de  $V$, qui possède un supplémentaire stable. On peut donc appliquer l'hypothèse de récurrence.
+\end{itemize}
+\end{proof}
+
+\begin{rem}
+Il n'y a pas unicité. Par exemple, $V=\C^2$ avec l'action triviale de $G$ s'écrit  $V=D\oplus D'$ pour toutes droites  $D,D'$ et les droites sont irréductibles. 
+
+On verra plus tard que les classes d'isomorphismes des $W_i$ sont déterminées uniquement par  $V$
+\end{rem}
+
+\begin{ex}
+    $\gS_n\actg \C^n$, $\C^n=D\oplus H$ est une décomposition en sous-représentations irréductibles par la propriété suivante, avec $D=\C (1,\cdots ,1)$
+\end{ex}
+
+\begin{prop}
+    Pour la représentation de permutation de $\gS_n$, les supplémentaires stables de  $D=\C(1,\cdots ,1)$ sont irréductibles.
+\end{prop}
+
+\begin{proof}
+    Soit $W$ un sous-espace stable de  $H$,  $W\neq \left\{ 0 \right\} $. On va montrer que $W =H$.  $W$ n'est pas inclus dans  $D$ donc il existe  $v=(x_1,\cdots ,x_n) \in  W$ et $i<j$ tels que  $x_i\neq x_j$. Soit $\tau = (i\;j)$. \[v-\tau.v=(x_i-x_j)(e_i-e_j) \in  W.\] Si $k\neq l$ alors il existe  $\sigma$ tel que  $\sigma(i)=k, \sigma(j)=l$ de sorte que  $e_k-e_l \in  W$, donc $W=H$.
+\end{proof}
+
+\section{Morphismes de représentations}
+

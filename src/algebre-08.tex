@@ -1,0 +1,166 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Représentations linéaires des groupes finis} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Représentations linéaires des groupes finis}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions}
+
+\begin{dfn}
+    Soit $G $ un groupe fini. Une représentation linéaire\index{représentation!linéaire} de  $G$ est la donnée d'un  $\C$-espace vectoriel $V$ de dimension finie et d'une action de $G$ sur $V$ qui est linéaire, c'est à dire que pour tout $g  \in  G$, \[\phi_g : v \in  V \longmapsto g.v\] est linéaire.
+
+    Comme $\phi_g$ est bijective, on a en fait  $\phi_g \in  \GL(V)$. De plus, l'application \[
+    \begin{array}{rrcl}
+        \rho:& G & \longrightarrow & \GL(V) \\
+        & g & \longmapsto & \displaystyle \phi_g
+    \end{array}
+    \] 
+    est un morphisme de groupes.
+\end{dfn}
+
+\begin{rem}
+    Se donner une représentation linéaire de $G$ dans $V$ revient à se donner un morphisme de groupes $\rho : G \longrightarrow  \GL(V)$ (l'action est alors donnée par $g.v=\rho(g)(v)$).
+\end{rem}
+
+\begin{rem}[Notation]
+    On peut écrire $(V, \rho)$ ou plus simplement  $V$ pour désigner une représentation linéaire de  $G$.
+\end{rem}
+
+\begin{dfn}
+\begin{enumerate}
+    \item Le degré\index{degré (représentation)}\index{représentation!degré} de $(V, \rho)$ est la dimension de  $V$ comme  $\C$-espace vectoriel
+    \item On dit que $(V, \rho)$ est fidèle\index{fidèle!représentation}\index{représentation!fidèle} si  $\rho$ est injectif.
+\end{enumerate}
+\end{dfn}
+
+\begin{rem}[Représentations de degré 1]
+    Si $V$ est une droite, on a canoniquement  $\GL(V)\simeq \C^\star$ donc une représentation de degré $1$ de $G$ n'est rien d'autre (à isomorphisme près) qu'un morphisme de groupe  $\chi : G \longrightarrow  \C^\star$
+\end{rem}
+
+\begin{ex}
+    Les représentations de degré $1$ de $\gS_n$ sont  $1$ et  $\epsilon$. Pour un groupe  $G$ quelconque, on note $\1$ la représentation associée à  $\chi=1$ (représentation triviale de $G$)
+\end{ex}
+
+\section{Représentations de permutations}
+
+%1)
+On fait agir $\gS_n$ sur  $\C^n$ en permutant les coordonnées. Plus précisément, soit $\sigma \in  \gS_n$. On pose \[
+\begin{array}{rrcl}
+    f_\sigma:& \C^n & \longrightarrow & \C^n \\
+             & e_i & \longmapsto & \displaystyle e_{\sigma(i)}
+\end{array}
+\] 
+où $(e_1, \cdots , e_n)$ est une base canonique de $ \C^n$. On vérifie que $f_\sigma\circ f_\tau=f_{\sigma \tau}$ donc $\gS_n\actg \C^n$ est une représentation de groupe linéaire de $\gS_n$ appelée représentation de permutation\index{représentation!permutations}
+
+
+%2)
+
+Plus généralement, si l'on se donne une action  $G\actg X$ avec  $X$ un ensemble fini, et si l'on note  $V_X=\C^X$ l'espace de base $(e_x)_{x \in  X}$ avec \[
+\begin{array}{rrcl}
+    e_x:& X & \longrightarrow & \C \\
+    & y & \longmapsto & \displaystyle \delta_{x,y}.
+\end{array}
+\] 
+Pour $g \in n G$, on définit  \[
+\begin{array}{rrcl}
+    \rho_X(g):& V_X & \longrightarrow & V_X \\
+    & e_x & \longmapsto & \displaystyle e_{g.x}
+\end{array}
+\] 
+Cela définit une action linéaire de $G$ sur  $V_X$.
+
+\begin{rem}
+    On peut faire agir $G$ sur  $V_X$ de la manière suivante: pour  $f \in  V_X$, $(g.f)(x)=f(g^{-1}.x)$. Alors, l'application $\rho_X:g\longmapsto \rho_X(g)$ est un morphisme de groupes et $(V_X, \rho_X)$ est la représentation de permutation associée à l'action de  $G$ sur  $X$.
+\end{rem}
+
+\begin{ex}
+    Pour $\gS_n\actg \llbracket 1, n \rrbracket $, on retrouve la représentation précédente.
+\end{ex}
+
+\begin{ex}
+    On considère l'action de $G$ sur  lui-même par translation à gauche:  $g.x=gx$ pour  $g,x \in  G$. La représentation de permutation associée est la représentation régulière\index{représentation!régulière} de  $G$ (parfois notée $ \C^G$). Elle est fidèle et son degré est $\#G$.
+\end{ex}
+
+\section{Construction des représentations}
+
+\subsection{Somme directe}
+
+Soient $(V, \rho)$ et $(V, \rho)$ des représentations de  $G$. On fait agir  $G$ sur  $V\oplus V'$ par  $g.(v, v')=(g.v, g.v')$. C'est une représentation linéaire de  $G$, pour le morphisme suivant  \[
+\begin{array}{rrcccl}
+    \rho_{V\oplus V'}:& G & \longrightarrow & \GL(V)\times \GL(V) & \longrightarrow & \GL(V\oplus V') \\
+                      & g & \longmapsto & (\rho(g), \rho'(g)) &\longmapsto&\displaystyle \begin{pmatrix}
+                          \rho(g) & 0 \\ 0 & \rho'(g)
+                      \end{pmatrix}
+\end{array}
+\] 
+
+\subsection{Applications linéaires}
+
+On fait agir $G$ sur  $\Hom(V, V')$ par $(g.f)(v)=g.(f(g^{-1}.v))$. On vérifie que c'est une représentation linéaire de $G$. Lorsque  $V'=\C$, on trouve la représentation triviale. Lorsque $V^\star =\Hom(V, \C)$, on parle de représentation duale\index{représentation!duale} de $V$.
+
+\subsection{Torsion par un caractère}
+
+Soit  $(V, \rho)$ une représentation de  $G$ et  $\chi : G \longrightarrow  \C^\star$ un morphisme de groupe (on dit que c'est un caractère\index{caractère}). On définit l'action de $G$ sur  $V$ tordue par  $\chi$ par  $g.v=\chi(g)\rho(g)(v)$. C'est une représentation linéaire de  $G$ notée  $V(\chi)$.
+
+\subsection{Produit tensoriel}
+
+Soient $(V, \rho)$ et  $(V, \rho')$ des représentations linéaires de  $G$. Il existe une unique action linéaire de  $G$ sur  $V\otimes V'$ telle que  $\forall  g \in  G, \forall  v \in  V, \forall  v' \in  V', g.(v\otimes v')=(g.v)\otimes (g.v')$. C'est une représentation linéaire de $G$ notée  $(V\otimes V', \rho\otimes \rho')$.
+
+\begin{rem}
+    La torsion par un caractère est un cas particulier: $V(\chi) \simeq (V, \rho)\otimes (\C, \chi)$
+\end{rem}
+
+\begin{rem}
+    La représentation $\Hom(V, V')$ est isomorphe à  $V\otimes V'$ (l'isomorphisme respecte les actions)
+\end{rem}
+
+\subsection{Sous-représentations}
+
+\begin{dfn}
+    Soit $(V, \rho)$ une représentation linéaire de  $G$. Un sous-espace  $W$ de  $V$ est dit stable si  \[
+    \forall  g \in  G, \forall  w \in  W, g.w \in  W
+    \] 
+    Dans ce cas, $W$ muni de l'action de  $G$ est une représentation. On dit que  $W$ est une sous-représentation de  $V$.
+\end{dfn}
+
+\section{Décomposition des représentations}
+
+L'objectif est de décomposer une représentation en somme directe de représentations plus simples
+
+\begin{dfn}
+    Soient $(V_1, \rho_1)$ et  $(V_2, \rho_2)$ des représentations de  $G$. Un isomorphisme\index{isomorphisme!représentations}\index{représentations!isomorphisme} de  $(V_1, \rho_1)$ vers $(V_2, \rho_2)$ est une application linéaire bijective $u : V_1 \longrightarrow  V_2$ qui vérifie \[
+        \forall  g \in  G, \forall  v \in  V_1, u(g.v)=g.u(v)
+    \] 
+\end{dfn}
+
+\begin{rem}
+Dans ce cas, $u^{-1}$ est aussi un isomorphisme de représentations.
+\end{rem}
+
+\begin{ex}
+$ \C^n=D\oplus M$ est un isomorphisme de représentations
+\end{ex}
+
+\begin{dfn}
+    On dit qu'une représentation $(V, \rho)$ est irréductible si $V\neq \left\{ 0 \right\} $ et si les seules sous-représentations de $V$ sont  $\left\{ 0 \right\} $ et $V$.
+\end{dfn}
+
+\begin{thm}
+    Soit $(V, \rho)$ une représentation de  $G$. Tout sous-espace stable de  $V$ possède un supplémentaire stable.
+\end{thm}
+
+\begin{proof}
+Soit $W$ un sous-espace stable de $V$. Soit $p : V \longrightarrow  V$ un projecteur d'image $W$. Posons \[
+    \pi=\frac1{|G|}\sum_{g \in  G}g^{-1}\circ p \circ g \in  \mathcal  L(V)
+\] 
+\end{proof}

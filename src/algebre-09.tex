@@ -14,7 +14,7 @@
 \fi
 \thispagestyle{empty}
 
-\section{Définitions}
+\section{Définitions et premières propriétés}
 
 \begin{dfn}[Caractère d'une représentation]
     Soit $G$ un groupe fini et  $(V, \rho)$ une représentation linéaire de  $G$. Le caractère\index{caractère} de  $V$ est la fonction  $\chi_V: G \longrightarrow  \C$ défini par \[
@@ -126,5 +126,27 @@ La dimension recherchée est la trace de $\pi_G$
 \end{proof}
 
 \begin{ex}
-$G\actg X$ fini.  $V_X=\C^X=\bigoplus_{x \in  X}\C e_x$. %TODO: ça
+$G\actg X$ fini.  $V_X=\C^X=\bigoplus_{x \in  X}\C e_x$. On note $\chi_X=\chi_{V_X}$. Pour $g \in  G$, \[
+    \chi_X(g)=\tr(e_x\mapsto e_{g.x})=\# \Fix(g)
+\] 
+De plus \[
+    \dim (V_X^G)=\frac1{\#G}\sum_{g \in  G}\chi_X(g)=\frac1{\#G}\sum_{g \in  G}\#\Fix(g)
+\] 
+La dimension de $V_X^G$ est en fait le nombre d'orbite de  $G\actg X$, donc on (re)trouve la formule de Burnside.
 \end{ex}
+
+\section{Notion d'espace hermitien}
+
+\begin{dfn}
+Un espace hermitien est un $ \C$-espace vectoriel $E$ de dimension finie muni d'une application  $\scalar{\;}{\;} : E^2 \longrightarrow \C$ \begin{itemize}
+    \item Sesquilinéaire: \[
+            \forall  x \in  E, \qquad  y \in  E \longmapsto \scalar{x}{y} \in  \C \quad \text{ est  }\C-\text{linéaire}
+    \] 
+    \[
+            \forall  y \in  E, \qquad  x \in  E \longmapsto \scalar{x}{y} \in  \C \quad \text{ est  }\R-\text{linéaire}
+    \] 
+    et $\forall  a \in  \C, \scalar{ax}{y} = \bar{a} \scalar{x}{y} $ 
+    \item Hermitienne: $\forall  x, y \in E, \quad  \bar{\scalar{x}{y} }= \scalar{y}{x} $. En particulier, $\scalar{x}{x} \in  \R$
+    \item Définie positive: $\forall  x \in  E, \scalar{x}{x} \geq 0$ avec égalité si et seulement si $x=0$
+\end{itemize}
+\end{dfn}

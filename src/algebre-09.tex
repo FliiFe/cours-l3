@@ -150,3 +150,48 @@ Un espace hermitien est un $ \C$-espace vectoriel $E$ de dimension finie muni d'
     \item Définie positive: $\forall  x \in  E, \scalar{x}{x} \geq 0$ avec égalité si et seulement si $x=0$
 \end{itemize}
 \end{dfn}
+
+\begin{ex}
+    $(\C^n, \scalar{\;}{\;} )$ avec $\scalar{x}{y} =\sum_i\bar{x_i}y_i$
+\end{ex}
+
+\begin{prop}
+    Soit $(E, \scalar{\;}{\;} )$ un espace hermitien de dimension finie et $V$ un sous-espace de  $E$. On pose \[V^\bot = \left\{ x \in  E, \quad  \forall  y \in  V, \scalar{x}{y} =0 \right\}. \] Alors, $V=E \iff  V^\bot = \left\{ 0 \right\} $
+\end{prop}
+
+\begin{proof}
+    $(\implies )$ Le produit hermitien est défini positif
+
+    $(\impliedby)$ Si $V\neq E$, on choisit  $ \lambda \in  E^\star$ tel que $ \lambda\left|_{V}\right.=0$ et $\lambda\neq 0 $. L'application \[
+    \begin{array}{rrcl}
+        L:& E & \longrightarrow & E^\star \\
+          & x & \longmapsto & \displaystyle (y \longmapsto \scalar{x}{y} )
+    \end{array}
+    \] 
+    est un isomorphisme d'espaces vectoriels. Soit $x_0 \in  E$ tel que $L(x_0)=\lambda$. Donc  $\lambda(y)= \scalar{x_0}{y} , \forall  y \in  E$ et comme $\forall  y \in  V, \lambda(y)=0$ donc $\forall y \in  V, \scalar{x_0}{y} =0$ donc $x_0 \in  V^\bot = \left\{ 0 \right\} $ donc $x_0=0$ et  $ \lambda=0$, c'est absurde.
+\end{proof}
+
+\section{Fonctions centrales}
+
+\begin{dfn}
+    Une fonction $f : G \longrightarrow  \C$ est dite centrale si $\forall  g , x \in  G, f(gxg^{-1})=f(x)$.
+\end{dfn}
+
+\begin{rem}[Notation]
+    On note $\mathcal  R(G)$ le  $ \C$-espace vectoriel des fonctions centrales sur $G$.
+\end{rem}
+
+
+\begin{ex}
+    $(V, \rho)$ représentation de  $G$,  $\chi_V \in  \mathcal  R(G)$ car \[
+        \chi_V(gxg^{-1})=\tr(\rho(gxg^{-1}))=\tr(\rho(x))=\chi_V(x)
+    \]
+\end{ex}
+
+\begin{rem}
+    La dimension de $\mathcal  R(G)$ est le nombre de classes de conjugaison de $G$.  $\mathcal  R(G)$ est une $ \C$-algèbre pour la multiplication de fonctions
+\end{rem}
+
+On munit $\mathcal  R(G)$ du produit scalaire hermitien \[
+    \scalar{f_1}{f_2}(g) =\frac1{\#G}\sum_{g \in  G} \bar{f_1(g)}f_2(g)
+\] 

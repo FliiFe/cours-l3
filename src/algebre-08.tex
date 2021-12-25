@@ -204,3 +204,27 @@ On verra plus tard que les classes d'isomorphismes des $W_i$ sont déterminées 
 
 \section{Morphismes de représentations}
 
+\begin{dfn}
+    Soient $(V, \rho)$ et  $(V', \rho')$ des représentations de  $G$. Un morphisme\index{morphisme (représentation)}\index{représentation!morphisme} de  $(V, \rho)$ dans  $(V', \rho')$ est une application linéaire  $u:V\longrightarrow V'$ qui est $G$-équivalente, c'est à dire  \[
+        \forall  g \in  G, \forall  v \in  V, y(g.x)=g.u(x)
+    \] 
+\end{dfn}
+
+\begin{rem}[Notation]
+    On note $\Hom_G(V, V')$ l'ensemble des morphismes de $(V, \rho)$ dans $(V', \rho')$
+\end{rem}
+
+\begin{lmm}[Schur\index{Schur (lemme)}\index{représentation!Schur}]
+Soient $V, V'$ des représentations irréductibles de  $G$.
+ \begin{enumerate}
+     \item Si $V$ et  $V'$ ne sont pas isomorphes, alors  $\Hom_G(V, V')= \left\{ 0 \right\} $ 
+     \item Sinon, $\Hom_G(V, V')$ est une droite vectorielle dont les éléments non nuls sont les isomorphismes de  $V$ dans  $V'$.
+\end{enumerate}
+\end{lmm}
+
+\begin{proof}
+\begin{enumerate}
+    \item Par contraposée, si $f \in  \Hom_G(V, V')\setminus  \left\{ 0 \right\} $, alors $f$ est  $G$-équivalente et  $\ker f, \im f$ sont stables par  $G$ ce qui conclut.
+    \item Soit  $u:V\longrightarrow V'$ un isomorphisme de représentations. Alors, si $f \in  \Hom_G(V, V')$, on note $v=u^{-1}\circ f \in  \Hom_G(V,V)$. Pour $\lambda \in  \C$ valeur propre de $v$,  $\ker (v-\lambda \id)$ est un sous-espace stable de  $v$ donc  $v=\lambda\id_V$, d'où  $\Hom_G(V, V')=\C u$
+\end{enumerate}
+\end{proof}

@@ -78,7 +78,7 @@ Fixons $g \in  G$. \begin{enumerate}
 \begin{proof}
 \begin{enumerate}
     \setcounter{enumi}{2}
-\item Soit $g \in  G$, soit $(e_1, \cdots , e_m)$ base de $V$ et  $(f_1, \cdots , f_n)$ base de $W$, tel que  \[
+\item Soit $g \in  G$, soit $(e_1, \cdots , e_m)$ base de $V$ et  $(f_1, \cdots , f_n)$ base de $W$, telles que  \[
 \begin{dcases}
     \rho_V(g)e_i=\lambda_i e_i & \forall  i \in  \llbracket 1, m \rrbracket \\
     \rho_W(g)f_j=\mu_jf_j & \forall  j \in  \llbracket 1, n \rrbracket 
@@ -90,6 +90,41 @@ u_{i,j}: \begin{dcases}
     e_k \longmapsto 0 & \text{ lorsque }k\neq i
 \end{dcases}
 \]
-% TODO: fin de cette preuve
+Alors, comme $(g.u_{i,j})(v)=g.(u_{i,j}(g^{-1}.v))$ (cf. action de groupe de la représentation $\Hom(V, W)$) \[
+    \rho_{\Hom(V, W)}(g)(u_{i,j})(e_i)=g.u_{i,j}(g^{-1}e_i)=\bar{\lambda} g.u_{i,j}(e_i)=\bar{\lambda_i}\mu_j f_j
+\]
+De même, si $k\neq i$,  $\rho_{\Hom(V, W)}(g)(u_{i,j})(e_k)=0$ donc \[\rho_{\Hom(V, W)}(g)(u_{i,j})=\bar{\lambda_i}\mu_ju_{i,j}\] et \[
+\chi_{\Hom(V, W)}(g)=\sum_{i,j}\bar{\lambda_i}\mu_j=\bar{\chi_V(g)}\chi_W(g)
+\] 
 \end{enumerate}
 \end{proof}
+
+\begin{prop}
+    Soit $(V, \rho)$ une représentation de  $G$. Alors  \[
+        \pi_G=\frac1{\#G} \sum_{g \in  G}\rho(G) \in  \mathcal  L(V)
+    \] 
+    est un projecteur $G$-équivalent d'image  $V^G$
+\end{prop}
+
+\begin{proof}
+    Soit  $h \in  G, x \in  V$. On a \[
+        h.\pi_G(x)=\frac1{\#G}\sum_{g \in  G}hg.x=\frac1{\#G}\sum_{g \in  G}g.x=\pi_G(x) \in V^G
+    \] 
+    Si $x \in  V^G$, alors $\pi_G(x)=\frac{\#G}{\#G}x=x$. Puis, pour la  $G$-équivalence, on se donne  $h \in  H$ et $x \in  V$, et \[
+        \pi_G(h.x)=\frac1{\#G}\sum_{g \in  G}g.(h.x)=\pi_G(x)=h.\pi_G(x)
+    \] 
+\end{proof}
+
+\begin{cor}
+    Pour toute représentation $(V, \rho)$ de $G$, on a \[
+        \dim(V^G)=\frac1{\#G}\sum_{g \in  G}\chi_V(g)
+    \] 
+\end{cor}
+
+\begin{proof}
+La dimension recherchée est la trace de $\pi_G$
+\end{proof}
+
+\begin{ex}
+$G\actg X$ fini.  $V_X=\C^X=\bigoplus_{x \in  X}\C e_x$. %TODO: ça
+\end{ex}

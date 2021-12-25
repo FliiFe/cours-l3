@@ -1,0 +1,80 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Théorie des caractères} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Théorie des caractères}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions}
+
+\begin{dfn}[Caractère d'une représentation]
+    Soit $G$ un groupe fini et  $(V, \rho)$ une représentation linéaire de  $G$. Le caractère\index{caractère} de  $V$ est la fonction  $\chi_V: G \longrightarrow  \C$ défini par \[
+        \forall  g \in  G, \qquad  \chi_V(g)=\tr(\rho(g))
+    \] 
+\end{dfn}
+
+\begin{prop}
+    Soient $(V, \rho)$ et  $(V', \rho')$ deux représentations isomorphes. Alors,  $\chi_V=\chi_{V'}$.
+\end{prop}
+
+\begin{proof}
+    Toute représentation $V$ est  isomorphe à une représentation $G \longrightarrow \GL_n(\C)$. On peut donc supposer $\rho, \rho': G \longrightarrow \GL_n(\C)$. 
+    \[
+        \rho, \rho' \text{ isomorphes } \iff \exists P \in  \GL_n(\C), \forall  g \in  G, \rho'(g)=P\rho(g)P^{-1}
+    \]
+    Alors, \[
+        \chi_{V'}(g)=\tr(\rho'(g))=\tr(\rho(g))=\chi_V(g)
+    \]
+\end{proof}
+
+\begin{ex}
+    Soit $V$ une représentation de degré  $1$. Elle est isomorphe à  $\chi : G \longrightarrow \C^\star$ (morphisme de groupes). Alors, $\chi_V(g)=\tr(\chi(g))=\chi(g)$ donc  $\chi_V=\chi$. On dit que  $\chi_V$ est un caractère linéaire de  $G$.
+\end{ex}
+
+\begin{prop}
+    Soit $(V, \rho)$ une représentation de  $G$. Alors pour tout  $g \in  G$, $\rho(g)$ est diagonalisable et  $\Sp(\rho(g))\subset \U_n$, avec $n=\#G$.
+\end{prop}
+
+\begin{proof}
+    $\rho^n(g)=\rho(g^n)=\rho(e)=\id$.
+\end{proof}
+
+\begin{prop}
+    Soit $(V, \rho)$ représentation de  $G$. Alors,  \begin{enumerate}
+        \item $\forall  g in G, |\chi_V(g)|\leq \dim V$ avec égalité si et seulement si $\rho(g)$ est une homothétie
+        \item $\chi_V(g)=\dim V \iff  \rho(g)=\id$
+        \item $\ker \rho = \left\{ g \in  G | \chi_V(g)=\dim V \right\} $
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+Fixons $g \in  G$. \begin{enumerate}
+    \item Soient $\lambda_1, \cdots , \lambda_n$ les valeurs propres de $\rho(g)$.  $\chi_V(g)=\tr(\rho(g))=\sum \lambda_i$ donc \[|\chi_V(g)|\leq \sum_{j=1}^n|\lambda_j|=n\]
+        Le cas d'égalité correspond à l'égalité dans l'inégalité triangulaire.
+    \item $\chi_V(g)=\dim V=n\lambda$ donc $ \lambda=1$ et $\chi_V(g)=\id$
+    \item Immédiat
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+\begin{enumerate}
+    \item $\chi_{V\oplus W}=\chi_V+\chi_W$ 
+    \item $\chi_{V\otimes W}=\chi_V\times \chi_W$
+    \item  $\chi_{\Hom(V, W)}=\bar{\chi_V}\chi_W$
+    \item $\chi_{V^\star}=\bar{\chi_V}$
+    \item Si $\varphi: G \longrightarrow  \C^\star$ est un caractère linéaire, alors $\chi_{V(\varphi)=\psi\chi_V}$
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+\end{proof}

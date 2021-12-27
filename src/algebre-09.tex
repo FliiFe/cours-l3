@@ -84,7 +84,7 @@ Fixons $g \in  G$. \begin{enumerate}
     \rho_W(g)f_j=\mu_jf_j & \forall  j \in  \llbracket 1, n \rrbracket 
 \end{dcases}
 \] 
-On va construire une base de diagonalisation de $\Hom_G(V, W)$. Pour $i \in  \llbracket 1,m \rrbracket , j \in  \llbracket 1,n \rrbracket $, on note \[
+On va construire une base de diagonalisation de $\Hom(V, W)$. Pour $i \in  \llbracket 1,m \rrbracket , j \in  \llbracket 1,n \rrbracket $, on note \[
 u_{i,j}: \begin{dcases}
     e_i\longmapsto f_j\\
     e_k \longmapsto 0 & \text{ lorsque }k\neq i
@@ -101,7 +101,7 @@ De même, si $k\neq i$,  $\rho_{\Hom(V, W)}(g)(u_{i,j})(e_k)=0$ donc \[\rho_{\Ho
 
 \begin{prop}
     Soit $(V, \rho)$ une représentation de  $G$. Alors  \[
-        \pi_G=\frac1{\#G} \sum_{g \in  G}\rho(G) \in  \mathcal  L(V)
+        \pi_G=\frac1{\#G} \sum_{g \in  G}\rho(g) \in  \mathcal  L(V)
     \] 
     est un projecteur $G$-équivalent d'image  $V^G$
 \end{prop}
@@ -195,3 +195,66 @@ Un espace hermitien est un $ \C$-espace vectoriel $E$ de dimension finie muni d'
 On munit $\mathcal  R(G)$ du produit scalaire hermitien \[
     \scalar{f_1}{f_2}(g) =\frac1{\#G}\sum_{g \in  G} \bar{f_1(g)}f_2(g)
 \] 
+
+\begin{prop}
+    Soit $(V, \rho)$ et  $(W, \rho')$ des représentations irréductibles de  $G$. Alors,  \[
+        \scalar{\chi_V}{\chi_W} = \delta_{V,W}
+    \] 
+\end{prop}
+
+\begin{proof}
+    \begin{align*}
+        \scalar{\chi_V}{\chi_W} &= \frac1{\#G}\sum_{g \in  G}\bar{\chi_V(g)}\chi_W(g) \\
+                                &= \frac1{\#G}\sum_{g \in G} \chi_{\Hom(V, W)}(g)\\&=\dim(\Hom(V, W)^G) \\&=\dim(\Hom_G(V, W))\\&=\delta_{V,W}
+    \end{align*}
+\end{proof}
+
+\begin{dfn}
+    On note $I(G)$ l'ensemble des classes d'isomorphismes de représentations irréductibles de  $G$
+\end{dfn}
+
+\begin{prop}
+    La famille $(\chi_i)_{i \in  I(G)}$ est libre dans $\mathcal  R(G)$.
+
+\end{prop}
+
+\begin{proof}
+Soient $V_1, \cdots , V_m$ des représentations irréductibles deux à deux non isomorphes. Supposons \[
+\sum_{i=1}^n\lambda_i\chi_{V_i}=0
+\] 
+et fixons $j \in  \llbracket 1,n \rrbracket $. Alors, \[
+    0= \scalar{\chi_{V_j}}{\sum_{i=1}^n\lambda_i\chi_{V_i}}=\lambda_j 
+\] 
+\end{proof}
+
+\begin{dfn}
+    Les $(\chi_V)_{V \in  I(G)}$ sont appelés caractères irréductibles\index{caractère!irréductible} de $G$.
+\end{dfn}
+
+\begin{rem}
+La proposition entraine qu'il y a un nombre fini de caractères irréductibles
+\end{rem}
+
+\section{Décomposition des représentations}
+
+\begin{thm}
+    Soit $(V, \rho)$ une représentation de  $G$ et  $V = V_1 \oplus \cdots  \oplus V_n$ une décomposition de $V$ en sous-représentations irréductibles. Soit  $W \in  I(G)$. Alors, $W$ apparait dans cette décomposition avec la multiplicité  $m_{W}= \scalar{\chi_W}{\chi_V} $. En particulier, $m_{W}$ ne dépend pas du choix de la décomposition de $V$.
+\end{thm}
+
+\begin{cor}
+    Si $V$ est une représentation de  $G$, alors  $V\simeq \bigoplus_{W \in  I(G)}W^{m_W}$ et il y a unicité de la décomposition de  $V$ en représentations irréductibles (à isomorphisme près)
+\end{cor}
+
+\begin{cor}
+    Si $V$ et  $V'$ sont deux représentations de  $G$ telles que  $\chi_V=\chi_{V'}$, alors $V\simeq V'$.
+\end{cor}
+
+\begin{cor}
+Soit $V$ une représentation de  $G$.  $V$ est irréductible  si et seulement si $\scalar{\chi_V}{\chi_V} =1$.
+\end{cor}
+
+\begin{proof}[Preuve du corolaire]
+\[
+    \scalar{\chi_V}{\chi_V} =\sum_i m_i^2=1 \iff  \exists  i, m_i=1\text{ et } \forall  j\neq i, m_j=0
+\] 
+\end{proof}

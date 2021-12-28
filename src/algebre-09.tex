@@ -258,3 +258,50 @@ Soit $V$ une représentation de  $G$.  $V$ est irréductible  si et seulement si
     \scalar{\chi_V}{\chi_V} =\sum_i m_i^2=1 \iff  \exists  i, m_i=1\text{ et } \forall  j\neq i, m_j=0
 \] 
 \end{proof}
+
+\begin{thm}
+    Les caractères irréductibles de $G$ forment une base de $ \mathcal  R(G)$
+\end{thm}
+
+\begin{proof}
+    Il reste à montrer le caractère générateur. Soit $E=\Vect_{\C} (\chi_V)_{V \in  I(G)}\subset \mathcal  R(G)$. Soit $\alpha \in  E^\bot$ et $V \in  I(G)$. Soit \[
+        f_{V, \alpha}(g)=\sum_{g \in  G} \bar{\alpha}(g)\rho_V(g) \in  \mathcal  L(V)
+    \] 
+    Montrons que $f_{V, \alpha}$ est $G$-équivalente. Soit  $h \in  G, x \in  V$. 
+    \begin{align*}
+        f_{V, \alpha}(hx)&= \sum_{g \in  G}\bar{\alpha}(g) ghx\\&=\sum_{g \in  G}\bar{\alpha}(gh^{-1})gx\\&= \sum_{g \in  G}\bar\alpha(h^{-1}g)gx&\text{($\alpha$ centrale)}\\&=\sum_{g \in  G} \bar\alpha(g)hgx\\&=hf_{V,\alpha}(x)
+    \end{align*}
+    Donc, \[
+        f_{V, \alpha} \in  \Hom_G(V,V) \underset{(\text{Schur})}\implies f_{V, \alpha}=\lambda \id_V
+    \]
+    De plus, \[
+        \tr(f_{V, \alpha})=\sum_{g \in  G} \bar\alpha(g)\chi_V(g)=\#G \cdot \underbrace{\scalar{\alpha}{\chi_V} }_{\mathclap{=0 \text{ car }\alpha \in  E^\bot}}=0 \implies f_{V,\alpha}=0
+    \]
+    Si $V$ est une représentation quelconque,  $V=V_1\oplus\cdots \oplus V_r$ une décomposition en sous-représentations irréductibles. On définit $f_{V, \alpha}$ de la même manière \[
+    f_{V, \alpha}=\sum_{i=1}^r f_{V_i,\alpha}=0
+    \] 
+    On applique ça à $V = \C^G$ la représentation régulière à gauche de $G$. On peut décomposer  $\C^G=\bigoplus_{g \in  G} \C e_g$ et \[
+        f_{V, \alpha}(e_1) = \sum_{g \in  G} \bar\alpha(g) ge_1=\sum_{g \in  G}\bar\alpha(g)e_g=0
+    \] 
+    Donc, \[
+        \forall  g \in  G, \bar\alpha(g)=0
+    \] 
+    et $E^\bot= \left\{ 0 \right\} $ donc $E = \mathcal  R(G)$
+\end{proof}
+
+\section{Table de caractères}
+
+Si  $C_1, \cdots , C_n$ sont les classes de conjugaison représentées par les $g_i \in  G$ (on fait toujours le choix $g_1=e_G$) et $\chi_1, \cdots , \chi_n$ (avec $\chi_1=1$) sont les caractères irréductibles. La table des caractères est donnée par $X=(\chi_i(g_j))_{1\leq i,j\leq n}$
+ 
+\begin{ex}
+    $G=\gS_3$ a les représentations irréductibles $\1, \epsilon, H_3$ (représentation standard), et les classes de conjugaison représentées par  $1, (1, 2), (1, 2, 3)$.
+
+    \begin{center}
+        \begin{tabular}{cccc}
+            \hline\hline & $ 1$ & $ (1, 2)$ & $ (1,2,3)$\\
+            \hline $\1$ & $1$ &$1$ &$1$\\
+            $ \epsilon$ & $1$ & $-1$ & $1$\\
+            $H_3$ & $2$ & $0$ & $-1$\\\hline
+    \end{tabular}
+    \end{center}
+\end{ex}

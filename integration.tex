@@ -4,7 +4,6 @@
 \solofalse
 
 \input{src/preamble.tex}
-\setcounter{chapter}{-1}
 
 \begin{document}
 
@@ -49,7 +48,7 @@
 
 \pagestyle{main}
 
-\foreach \i in {00, 01, 02, 03, 04, 05, 06} {%
+\foreach \i in {01, 02, 03, 04, 05, 06} {%
     \edef\FileName{integration-\i}%
     \IfFileExists{\FileName}{%
        \input{src/\FileName}%

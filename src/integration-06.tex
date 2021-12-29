@@ -1,0 +1,54 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Mesures complexes} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Mesures complexes}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\section{Définitions et propriétés de base}
+
+\begin{dfn}
+    Soit $(X, \mathcal  A)$ un espace mesurable. Une mesure complexe\index{mesure complexe} sur $(X, \mathcal  A)$ est une fonction $\nu: \mathcal  A \longrightarrow  \C$ telle que \begin{itemize}
+        \item $\nu(\emptyset)=0$
+        \item Si  $(A_i)_{i \in  I}$ est une famille dénombrable d'éléments de $\mathcal  A$ deux à deux disjoints, \[
+                \nu \left( \bigcup_{i \in  I} A_i\right) = \sum_{i \in  I}\nu(A_i)
+        \] 
+        où la convergence est supposée indépendante du choix d'ordre sur $I$
+    \end{itemize}
+\end{dfn}
+
+\begin{rem}
+On admet que l'indépendance par permutation de la convergence entraine la convergence absolue.
+\end{rem}
+
+\begin{ex}
+    Soit $(X, \mathcal  A, \mu)$ un espace mesuré avec $\mu$ une mesure usuelle positive, et soit  $f \in  \L^1_{\C}(X, \mathcal  A, \mu)$. Alors \[
+        \nu(\mathcal  A)=\int_A f\diff \mu
+    \] 
+    est une mesure complexe (notée $f\diff \mu$). Clairement, $\nu(\emptyset)=0$ et  \[
+        \nu \left(\bigcup_{n \in  \N}A_n)=\int_{X}f\diff \mu \1_{\bigcup A_i}=\int_{X}\sum_{n \in  \N}\underbrace{f\1_{A_n}}_{\mathclap{\text{dominée par }|f|\text{ intégrable }}}\diff \mu = \sum_{n \in  N}\int_{A_n} f\diff \mu=\sum_{n \in  \N}\nu(A_n)
+    \] 
+\end{ex}
+
+\begin{dfn}
+    Soit $\nu$ une mesure complexe. La mesure de variation totale de  $\nu$ \index{variation totale (mesure)} est la fonction  $|\nu|:\mathcal  A \longrightarrow \R_+\cup \left\{ \infty \right\} $ définie par \[
+        |\nu|(A) = \sup \left\{ \sum_{i \in  N}|\nu(A_i)|, \quad  (A_i)_{i \in  \N} \text{ deux à deux disjoints, d'union } A\right\} 
+    \] 
+\end{dfn}
+
+\begin{prop}
+Si $\nu$ est une mesure complexe, alors  $|\nu|$ est une mesure.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}

@@ -398,4 +398,8 @@ F_N(x) &= \frac{1}{(N+1)\sin(\sfrac{x}{2})}\Im \left( \frac{e^{i(N+1)x}-1}{2i\si
 &= \frac{1}{(N+1)\sin(\sfrac{x}{2})^2}\Im \left( e^{i \sfrac{N+1}{2}x}\frac{e^{i \sfrac{N+1}{2}x}-e^{i \sfrac{N+1}{2}x}}{2i}\right)\\
 &= \frac{\sin(\sfrac{N+1}{2})x}{(N+1)\sin(\sfrac{x}{2})^2}\geq 0
 \end{align*}
+donc par convergence dominée \[
+    \int_\delta^{2\pi-\delta} F_N(x)\diff x \xrightarrow[N\to +\infty]{}0
+\] 
+et en adaptant à ce contexte la preuve ci-dessus, $F_N\star f \longrightarrow f$ uniformément sur $[0,2\pi]$ donc sur $\R$..
 \end{proof}

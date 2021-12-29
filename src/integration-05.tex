@@ -326,8 +326,76 @@ Alors, \[\|\varphi_n\star f-f\|_p\leq \int_{\R^d}\varphi_n(y)\diff y\|\tau_yf-f\
 de sorte que \[\|\varphi_n\star f-f\|_p^p\leq \frac{\epsilon^p}2+\int_{|y|>\delta}\varphi_n(y)\diff y (2\|f\|_p)^p\leq \epsilon^p\] pour $n$ assez grand.
 \end{proof}
 
-\begin{cor}
+\begin{cor}[Weierstrass\index{Weierstrass (théorème)}]
     Si $f:[a, b]\longrightarrow \C$ est continue, elle est limite uniforme de polynômes.
 \end{cor}
 
 % TODO: preuve du corrolaire
+
+\begin{proof}
+Soit \[
+    \varphi_n(x)=c_n(1-x^2 )^n\1_{|x|\leq 1}\geq 0 \qquad \text{ où } \qquad \frac1{c_n}=\int_{[-1,1]}(1-x^2 )^n\diff x.
+\] 
+On a bien \[
+\int_{|x|>\delta}\varphi_n\diff\lambda \xrightarrow[n\to+\infty]{}0.
+\]
+Supposons maintenant que $[a, b]\subset ]0,1[$ et  $f:[a, b] \longrightarrow  \C$ est continue. On prolonge $f$ en une fonction continue à support dans  $[0,1]$. Par le théorème,  $\varphi_n\star f \longrightarrow f$ uniformément sur le compact $[a, b]$. Or
+ \begin{align*}
+     \varphi_n\star f(x)&=\int_{\R} \varphi_n(x-y)f(y)\diff y\\ &=\int_{[0,1]}\varphi_n(x-y)f(y)\diff y\\&= c_n\int_{[0,1]}(1-(x-y)^2 )^n f(y)\diff y \1_{|x-y|\leq 1}
+\end{align*}
+et c'est un polynôme en $x$.
+\end{proof}
+
+\begin{thm}
+    L'ensemble $\mathcal  C^\infty(\R^d, \C)$ est dense dans $\mathcal  L^p(\R^d, \mathcal  B(\R^d), \lambda)$ pour tout $p \in  [1, \infty[$.
+\end{thm}
+
+\begin{proof}[Idée de preuve]
+Choisir $\varphi_n$ approximation de  $\delta_0$,  $\mathcal  C^\infty$ et utiliser le fait que \[
+    \forall  \alpha, \quad  \frac{\partial^\alpha}{\partial x^\alpha}(\varphi_n\star f)= \frac{\partial^\alpha \varphi_n}{\partial x^\alpha}\star f
+\] 
+\end{proof}
+
+\begin{thm}[Féjer\index{Féjer (théorème)}]
+Soit $f:\R\longrightarrow \C$ une fonction continue  $2\pi$-périodique. Soit \[
+    \hat{f}(n)=\frac{1}{2\pi}\int_0^{2\pi}f(x)e^{-inx}\diff x, \quad  n \in  \Z
+\]
+Alors \[
+    \frac{1}{N+1}\sum_{n=0}^N\sum_{k=-n}^n \hat{f}(k)e^{ikx} \xrightarrow[N\to +\infty]{}f(x)
+\] 
+uniformément sur $[0, 2\pi]$ ou sur $\R$.
+\end{thm}
+
+\begin{proof}
+    On va se placer sur l'espace $\mathcal  L^2([0,2\pi[, \frac\lambda{2\pi})$, qu'on voit comme contenant les fonctions continues $2\pi$-périodiques (en restreignant à une période). On adopte dans ce contexte la définition de la convolution suivante: \[
+        f\star g(x)= \frac{1}{2\pi}\int_0^{2\pi}f(y)g(x-y)\diff y
+    \] 
+    On a \[
+        \sum_{k=-n}^n \hat{f}(k)e^{ikx} = \frac{1}{2\pi}\int_0^{2\pi} \sum_{k=-n}^n f(y)e^{ik(x-y)}\diff y=D_n\star f(x)
+    \]
+    où $D_n$ est le noyau de Dirichlet \[
+        D_n(x)= \frac{e^{i(n+1)x}-e^{-inx}}{e^{ix}-1}= \frac{\sin((n+\sfrac12)x)}{\sin(\sfrac x2)}
+    \] 
+    Remarquons que \[
+        \frac{1}{2\pi}\int_0^{2\pi} D_n(x)\diff x=\sum_{k=-n}^n\frac{1}{2\pi}\int_0^{2\pi} e^{inx}\diff x=1
+    \]
+    On a alors \[
+        \frac{1}{N+1}\sum_{n=0}^N D_n\star f(x)=\frac{1}{2\pi}\int_0^{2\pi}\left(\frac{1}{N+1}\sum_{n=0}^ND_n(x-y)\right) f(y)\diff y=F_n\star f(x)
+    \] 
+    où $F_n$ est le noyau de Féjer \[
+        F_N(x)=\frac{1}{N+1}\sum_{n=0}^N D_n(x)
+    \]
+    qui est tel que \[
+        \frac{1}{2\pi}\int_0^{2\pi}F_n\diff \lambda=1.
+    \] 
+    Comme \begin{align*}
+    F_N(x) &= \frac{1}{(N+1)\sin(\sfrac{x}{2})} \sum_{n=0}^{N} \Im\left(e^{i(n+\sfrac12)x}\right)\\
+&= \frac{1}{(N+1)\sin(\sfrac{x}{2})}\Im \left( \frac{e^{i(N+\sfrac32)x}-e^{i\sfrac{x}{2}}}{e^{ix}-1}\right),
+    \end{align*}
+    on a 
+    \begin{align*}
+F_N(x) &= \frac{1}{(N+1)\sin(\sfrac{x}{2})}\Im \left( \frac{e^{i(N+1)x}-1}{2i\sin(\sfrac{x}{2})}\right)\\
+&= \frac{1}{(N+1)\sin(\sfrac{x}{2})^2}\Im \left( e^{i \sfrac{N+1}{2}x}\frac{e^{i \sfrac{N+1}{2}x}-e^{i \sfrac{N+1}{2}x}}{2i}\right)\\
+&= \frac{\sin(\sfrac{N+1}{2})x}{(N+1)\sin(\sfrac{x}{2})^2}\geq 0
+\end{align*}
+\end{proof}

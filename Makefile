@@ -1,9 +1,6 @@
-INTEGRATION_FN := integration
-ALGEBRE_FN := algebre
-TOPOLOGIE_FN := topologie
-PREMASTER_FN := premaster
+mats := integration algebre topologie premaster
 
-.PHONY: clean all figures help integration newchapter init release
+.PHONY: clean all figures help newchapter init release $(mats)
 
 BLACK        := $(shell tput -Txterm setaf 0)
 RED          := $(shell tput -Txterm setaf 1)
@@ -23,22 +20,18 @@ ifndef VERBOSE
 SILENT := -silent
 endif
 LATEXMK := latexmk $(SILENT)
-INTEGRATION_TARGET := target/$(INTEGRATION_FN).pdf
-ALGEBRE_TARGET     := target/$(ALGEBRE_FN).pdf
-TOPOLOGIE_TARGET   := target/$(TOPOLOGIE_FN).pdf
-PREMASTER_TARGET     := target/$(PREMASTER_FN).pdf
 
 help: ## Print available targets
 	@echo "${PURPLE}:: ${BOLD}${GREEN}$$(basename $$(pwd))${RESET} ${PURPLE}::${RESET}"
 	@echo ""
-	@echo "Example:"
+	@echo "Usage:"
 	@echo "  | make all -j8  ${YELLOW}# Tout compiler avec 8 threads${RESET}"
-	@echo "  | make integration  ${YELLOW}# Cours d'intégration, théorie de la mesure et de probabilités${RESET}"
-	@echo "  | make algebre  ${YELLOW}# Cours d'algèbre ${RESET}"
-	@echo "  | make topologie  ${YELLOW}# Cours de topologie et de calcul différentiel${RESET}"
+	@echo "  | make algebre  ${YELLOW}# Cours d'algèbre${RESET}"
 	@echo ""
 	@echo "$(YELLOW)List of PHONY targets:$(RESET)"
 	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  ${GREEN}${BOLD}%-22s${RESET} %s\n", $$1, $$2}'
+	@echo "$(YELLOW)List of courses:$(RESET)"
+	@echo "  $(GREEN)$(BOLD)$(mats)$(RESET)"
 	@if ! [[ -z "$(FIGURES)" ]]; then echo "$(YELLOW)List of figures:$(RESET)"; fi
 	@for f in $(FIGURES); do \
 		echo " " $${f}; \
@@ -72,54 +65,30 @@ newchapter: ## Make a new chapter
 release: all ## Create a new release
 	@gh release create "$$(date +"%Y-%m-%d-%H-%M")" target/* -t "$$(date +"%d-%m-%Y %H:%M")" -n ''
 
-integration: $(INTEGRATION_TARGET) ## Cours d'intégration, théorie de la mesure et de probabilités
-algebre: $(ALGEBRE_TARGET) ## Cours d'algèbre
-topologie: $(TOPOLOGIE_TARGET) ## Cours de topologie et de calcul différentiel
-premaster: $(PREMASTER_TARGET) ## Cours de prémaster
-
-all: $(PDFS) ## Build everything
-
-src/figures/%.pdf: src/figures/%.tex
-	@echo "$(GREEN)Compiling figure $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
-	cd src/figures/ && $(LATEXMK) $(<F) && latexmk -silent -c $(<F)
-
-$(INTEGRATION_TARGET): $(INTEGRATION_FN).tex src/$(INTEGRATION_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
-	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
-	$(LATEXMK) $<
-	cp build/$(@F) $@
-
-$(ALGEBRE_TARGET): $(ALGEBRE_FN).tex src/$(ALGEBRE_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
-	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
-	$(LATEXMK) $<
-	cp build/$(@F) $@
-
-$(TOPOLOGIE_TARGET): $(TOPOLOGIE_FN).tex src/$(TOPOLOGIE_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
-	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
-	$(LATEXMK) $<
-	cp build/$(@F) $@
-
-$(PREMASTER_TARGET): $(PREMASTER_FN).tex src/$(PREMASTER_FN)-*.tex src/preamble.tex src/preamble/*.tex $(FIGURES)
-	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
-	$(LATEXMK) $<
-	cp build/$(@F) $@
-
-$(PDFS): | target
-
-target:
-	mkdir target
-
 clean: ## Delete compiled documents and latex-generated files
 	rm -rf target build
 	cd src/figures && latexmk -C || true
 	mkdir build
 	ln -s ../indexstyle.ist build/
 
+all: $(PDFS) ## Build everything
+
 figures: $(FIGURES) ## Build every figure in src/figures/
+
+src/figures/%.pdf: src/figures/%.tex
+	@echo "$(GREEN)Compiling figure $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
+	cd src/figures/ && $(LATEXMK) $(<F) && latexmk -silent -c $(<F)
+
+$(PDFS): | target
+
+target:
+	mkdir target
 
 .SECONDEXPANSION:
 PER := %
-target/%.pdf: %.tex src/preamble.tex src/preamble/*.tex src/%.tex $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
-	@echo "$(GREEN)Compiling $(YELLOW)$(<)$(GREEN) into $(YELLOW)$@$(RESET)"
+target/%.pdf: %.tex src/preamble.tex src/preamble/*.tex $$(find src/%.tex,$$(wildcard src/*.tex)) $$(wildcard src/%-*.tex) $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
+	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
 	$(LATEXMK) $<
 	cp build/$(@F) $@
 
+$(mats): target/$$@.pdf

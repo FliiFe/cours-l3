@@ -50,5 +50,178 @@ Si $\nu$ est une mesure complexe, alors  $|\nu|$ est une mesure.
 \end{prop}
 
 \begin{proof}
+    On a clairement $|\nu|(\emptyset)=0$. Soit  $(B_j)_{j \in  \N}$ des éléments de $\mathcal  A$ deux à deux disjoints.
 
+    Si $|\nu|(B_j)=+\infty$ pour un  $j$ alors on peut repartitionner  $B_j$ en  $\bigcup_{i \in  \N} A_{j,i}$ avec $\sum_{i \in  \N}|\nu|(A_{j,i})$ arbitrairement grand, et \[
+        \sum_{k\neq j}|\nu(B_k)| + \sum_{i \in  I}|\nu(A_{j,i})|
+    \] 
+    est arbitrairement grand donc $|\nu|(\bigcup B_j)=+\infty$. Sinon,  pour tout $j \in  \N$, $|\nu|(B_j)<+\infty$ et pour  $\epsilon>0$, il existe des partitions $(A_{j,i}) _{i \in  \N}$ des $B_j$ avec  \[
+        \sum_{i \in  \N}|\nu(A_{j, i})| \geq |\nu|(B_j)-\frac\epsilon{2^{j+1}}
+    \] 
+    et $(A_{j,i})_{j,i \in  \N}$ est une partition dénombrable de $\bigcup_{j \in  \N}B_j$ avec \[
+        \sum_{j, i \in  \N}|\nu(A_{j,i})|\geq \sum_{j \in  \N}|\nu|(B_j)-\epsilon
+    \] 
+    donc \[
+        |\nu| \left(\bigcup_{j \in  \N}B_j\right)\geq \sum_{j \in  \N}|\nu|(B_j)
+    \] 
+    Puis si $(A_i)_{i \in  \N}$ est une partition de $\bigcup_{j \in  \N}B_j$ en éléments de $\mathcal  A$, alors \[
+        \sum_{i \in  \N}|\nu(A_i)|=\sum_{i \in  \N}\left|\sum_{j \in  \N}\nu(A_i\cap B_j)\right|\leq \sum_{j \in  \N}|\nu|(B_j)
+    \] 
+    d'où le résultat en passant au sup
+\end{proof}
+
+\begin{rem}
+    $\nu$ est la plus petite mesure positive vérifiant  $\forall  A \in  \mathcal  A, |\nu(A)|\leq |\nu|(A)$.
+\end{rem}
+
+\begin{thm}
+La variation totale $|\nu|$ d'une mesure complexe $\nu$ est une mesure finie
+\end{thm}
+
+\begin{lmm}
+Soit $z_0, \cdots , z_N \in  \C$ et $S=\sum_{i=0}^N|z_i|$. Alors, il existe $I\subset \llbracket 1,N \rrbracket  $ tel que \[
+\left|\sum_{i \in  I}z_i\right| \geq \frac S6
+\] 
+\end{lmm}
+
+\begin{proof}
+On partitionne $ \C$ en quadrants $Q_i$. Il existe  $i \in  \llbracket 1,4 \rrbracket $ tel que \[
+    \sum_{\substack{1\leq j\leq N\\ z_j \in  Q_i}}|z_j| \geq \frac S4
+\]
+Quitte à effectuer une rotation, on prend $i=1$. Alors, comme  $\forall  z \in  Q_1, \Re(z)\geq \frac1{\sqrt 2}|z|$, on a \[
+    \left|\sum_{\substack{1\leq j\leq N\\ z_j \in  Q_i}}z_j\right|\geq \sum_{\substack{1\leq j\leq N\\ z_j \in  Q_i}} \Re(z_j) \geq  \frac1{\sqrt 2}\sum_{\substack{1\leq j\leq N\\ z_j \in  Q_i}}|z_j| \geq \frac S{4\sqrt 2} \geq \frac S6
+\] 
+\end{proof}
+
+\begin{lmm}
+    Si $|\nu|(A)=+\infty$, il existe  $B, C \in  \mathcal  A$ disjoints, $A=B\cup C$,  $|\nu|(B)=+\infty,|\nu(C)|\geq 1$
+\end{lmm}
+
+\begin{proof}
+Comme $|\nu|(A)=\infty$, il existe une partition de $A$, $(A_i)_{i\in \N}$ avec $\sum_{i\in \N}|\nu(A_i)|> 6(1+|\nu(A)|)$.
+Alors il existe $N$ tel que \[ \sum_{i=0}^N|\nu(A_i)|\geq 6(1+|\nu(A)|)\]
+Par le lemme 1, il existe $I\subseteq \{0,\dots,N\}$ tel que \[ \Big| \sum_{i\in I}\nu(A_i)\Big| \geq 1+|\nu(A)| =\Big|\nu\Big(\underbrace{\bigcup_{i\in I}A_i}_{=G}\Big)\Big|\] notons $H=A\setminus G$.
+Alors $|\nu(G)|\geq 1$, $|\nu(H)|=|\nu(A)-\nu(G)|\geq \big| |\nu(A)|-|\nu(G)|\big|\geq 1+|\nu(A)|-|\nu(A)|\geq 1$.
+Donc $A=G\cup H$ disjoints.
+$|\nu(G)|\geq 1 ,|\nu(H)|\geq 1$
+mais aussi $\infty=|\nu|(A)=|\nu|(G)+|\nu|(H)$ donc $G$ ou $H$ est de variation totale infinie.
+\end{proof}
+
+\begin{proof}[Preuve du théorème]
+Si $|\nu|(X)=+\infty$
+En appliquant successivement le lemme 2, on construit une suite $(C_n)_{n\geq 0}$ d'ensembles deux à deux disjoints avec $|\nu(C_n)|\geq 1$
+Alors $\nu(\bigcup_{n\geq 0}C_n)=\sum_{n\in\N}\nu(C_n)$ contradiction.
+\end{proof}
+
+\begin{rem}
+    Une mesure complexe peut s'écrire $\Re(\nu)+i\Im(\nu)$ avec $\Re(\nu)$ et $\Im(\nu)$ des mesures complexes à valeurs dans $ \R$. On parle alors de mesures signées\index{mesure!signée}. Si $\xi$ est une telle mesure signée et $|\xi|$ est sa mesure de variation totale alors les mesures $\xi^+, \xi_-$ sont des mesures positives finies et $\xi=\xi^+-\xi^-$, $|\xi|=\xi^++\xi^-$. Cette décomposition s'appelle la décomposition de Jordan\index{Jordan (décomposition)} de $\xi$.
+\end{rem}
+
+\section{Théorème de Radon-Nikodyn}
+
+\begin{dfn}
+    Soit $\mu$ une mesure positive et  $\nu$ une mesure positive ou complexe. On dit que  $\nu$ est absolument continue par rapport à  $\mu$\index{absolue continuité (mesure)}\index{mesure!absolument continue} si  \[
+        \forall  A \in  \mathcal  A, \mu(A)=0 \implies \nu(A)=0
+    \] 
+    On note alors $\nu \ll \mu$
+\end{dfn}
+
+\begin{rem}
+Si $\nu \ll \mu$, alors  $|\nu|\ll\mu$
+\end{rem}
+
+\begin{dfn}
+    Une mesure positive ou complexe est concentrée sur $A \in  \mathcal  A$\index{mesure!concentrée} \[
+        \forall  B \in  \mathcal A, \quad  B\cap A=\emptyset \implies \nu(B)=0
+    \] 
+    Si $\mu$ est positive et  $\nu$ est positive ou complexe, on dit que  $\mu$ et  $\nu$ sont étrangères ou singulières \index{mesures étrangères} s'il existe  $A \in  \mathcal  A$ tel que $\mu$ est concentrée sur  $A$ et  $\nu$ est concentrée sur  $A^c$. On note  $\mu\bot\nu$
+\end{dfn}
+
+\begin{rem}
+    Si $\mu, \nu$ sont positives, on a $\mu\bot \nu$  si et seulement si $ \exists  A \in  \mathcal  A, \nu(A)=0, \mu(A^c)=0$
+\end{rem}
+
+\begin{ex}
+    Si $\mu$ est positive et  $f \in  \mathcal  L^1_{\C}(\mu)$, alors $\nu=f\diff \mu\ll\mu$
+\end{ex}
+
+\begin{thm}[Radon-Nikodyn\index{Radon-Nikodyn (théorème)}]
+Si $\mu$ est une mesure  $\sigma$-finie et  $\nu$ est une mesure  $\sigma$-finie ou complexe telle que  $\nu\ll\mu$, alors il existe  $g\geq 0$ mesurable, unique à égalité $\mu$-presque partout, telle que  $\mu=g\diff \mu$
+\end{thm}
+
+\begin{thm}[Décomposition de Lebesgue]
+    Soit $\mu$ une mesure $\sigma$-finie et  $\nu$ une mesure  $\sigma$-finie ou complexe, Alors, il existe un unique couple  $(\nu_a, \nu_s)$ de mesures  $\sigma$-finies ou complexes tel que  $\nu_a \ll \mu$,  $\nu_s\bot \mu$ et  $\nu=\nu_a+\nu_s$
+\end{thm}
+
+\begin{proof}[Preuve des théorèmes]
+    Il y a quatre cas \begin{enumerate}
+        \item 
+            On suppose que $\mu,\nu$ sont deux mesures positives, finies, et que $\nu\leq \mu$:  $\forall A\in \mathcal{A},\nu(A)\leq \mu(A)$.
+Pour $f\in \mathcal{L}^2(X,\mathcal{A},\mu)$, on note \[\varphi(f)= \int_Xf\diff\nu\] qui est bien défini car $f\in \mathcal{L}^2(X,\mathcal{A},\nu)$ car $\nu\leq \mu$.
+Alors,
+\begin{align*}
+|\varphi(f)|&\leq \int_X |f|\diff\nu \leq \int_X 1\cdot |f|\diff\mu\\
+&\underset{\text{C-S}}{\leq} \sqrt{\mu(X)} \left( \int_X |f|^2 \diff\mu\right)^{\sfrac12}\\
+&\leq \sqrt{\mu(X)}\|f\|_2,
+\end{align*}
+donc $\varphi: \mathcal  L^2(X, \mathcal A, \mu)\longrightarrow \R$ est continue.
+    Un théorème dû à Riesz montre que si $(H,\scalar{\;}{\;} )$ est un espace de Hilbert et si $\varphi:H\to \R$ est une application linéaire continue, il existe un unique $h\in H$
+    tel que \[\forall x\in H ,\varphi(x)=\scalar{h}{x} .\]
+Ainsi, il existe une unique application $g\in \mathcal{L}^2 (X,\mathcal{A},\mu)$ telle que $\forall f\in \mathcal{L}^2(X,\mathcal{A},\mu)$, \[\varphi(f)=\int_Xf\diff\nu=\int_Xfg\diff\mu = \scalar{y}{g}  _{\mathcal{L}^2(\mu)}\]
+Puis, comme $\forall A\in \mathcal{A},\1_A\in \mathcal{L}^2(\mu)$ puisque $\mu$ est finie, on obtient
+\[\forall A\in \mathcal A , \nu(A)=\int_Ag\diff\mu\]
+Donc $\nu=g\diff\mu$.
+Vérifions que $g\in [0,1]$ $\mu$ presque partout.
+Pour cela, on se donne $\varepsilon >0$, et
+\begin{align*}
+\mu(\{g\geq 1+\varepsilon\})& \geq \nu(\{g\geq 1+\varepsilon\})\\
+                            &= \int_{\{g\geq 1+\varepsilon\}}g\diff\mu \\&\geq (1+\varepsilon)\mu(\{g\geq 1+\varepsilon\})
+\end{align*}
+donc $g< 1+\varepsilon$ $\mu$-presque partout donc $g\leq 1$ $\mu$-presque partout.
+De façon similaire, on a $g\geq 0$ $\mu$-presque partout.
+Sans perdre de généralité, on peut supposer que $g\in [0,1]$ partout.
+\item 
+    Soient $\mu$ et $\nu$ des mesures positives finies.
+On remarque que $\nu\leq \mu+\nu$ donc le cas précédent donne l'existence d'une fonction mesurable $g:X\to [0,1]$ telle que $\nu= g\diff(\mu+\nu)$, c'est à dire que pour toute fonction $f$ positive mesurable ou bornée, 
+\[\int_X f\diff\nu= \int_X fg\diff(\mu+\nu)\]
+et donc  \[\int_X f(1-g)\diff\nu =\int_Xfg \diff\mu.\]
+Soit $g^{-1}(\left\{ 1 \right\} )$ et 
+$f= \1_N$. On a \[0=\int_X \1_N(1-g)\diff\nu = \int_X \1_N g\diff\mu = \mu(N)\]
+De même, quitte à remplacer $f$ par la fonction $f=\frac{\1_{N^c}}{1-g}$, 
+    \begin{align*}
+    \int_X \1_{N^c} \frac{{1-g}}{{1-g}}\diff\nu &= \int_Xf \frac{g}{1-g}\diff\mu \1_{N^c}\\
+&= \int_X f h\diff\mu
+    \end{align*} 
+où $h=\frac{g}{1-g}\1_{N^c}$, 
+donc $\1_{N^c}\diff\nu=h \diff\mu$. On peut donc écrire $\nu= \1_{N^c}\diff\nu +\1_N\diff\nu = h\diff\mu + \1_N \diff\nu = \nu_a + \nu_s$
+où $\nu_a \ll \mu$ et $\nu_s \bot \mu$.
+
+Cela donne le théorème de Radon-Nikodyn dans le cas $\mu,\nu$ positives fines. Montrons l'unicité. Supposons que $\nu= \nu_a+\nu_s = \nu_a' + \nu_s'$
+Alors $\nu_a- \nu_a'= \nu_s'-\nu_s$, et il existe $N,N'\in \mathcal{A}$, avec $\mu(N)=\mu(N')=0$ et $\nu_s'((N')^c)=\nu_s (N^c)=0$.
+Alors si $A\in \mathcal{A}$,
+\begin{align*}
+(\nu_s' -\nu_{s})(A) &= (\nu_s' -\nu_s)(A\cap (N\cup N' ))\\
+&= (\nu_a- \nu_a' )(A\cap (N\cup N' ))\\
+&=0 
+\end{align*}
+car $\mu(A\cap (N\cup N' ))\leq \mu(N\cup N' )=0$, donc $\nu_s=\nu_s'$ et $\nu_a=\nu_a'$.
+De même, si $h\diff\mu=h'\diff\mu=\nu$ avec $h,h'\geq 0$, alors
+\[ \int_{h' >h}h' \diff\mu = \nu(\{h' >h\})= \int_{h' >h}h\diff\mu\]
+donc \[ \int_{h'>h}(h'-h)\diff\mu =0,\] d'où $\mu(\{h'>h\})=0$
+et $h'\leq h$ $\mu$-presque partout, donc par symétrie des rôles $h=h'$
+\item 
+    Si $\mu$ et $\nu$ sont $\sigma$-finies,
+il existe une partition mesurable $(X_n)_{n\geq 0}$ de $X$ avec $\mu(X_n)<+\infty$ et $\nu(X_n)<+\infty$.
+On note \[
+    \begin{cases}
+    \mu_n=\1_{X_n}\diff\mu\\ \nu_n=\1_{X_n}\diff\nu
+    \end{cases}\]
+Par le cas précédent, $\nu_n = \nu_a^{(n)}+\nu_s^{(n)}=g_n \diff\mu_n +\nu_s^{(n)}$ avec $g_n\geq 0$ mesurable, $\nu_s^{(n)}\bot \mu_n$.
+Comme $\mu_n$ est concentrée sur $X_n$, on peut supposer que $g_n=0$ en dehors de $X_n$.
+On pose alors $g= \sum_{n\geq0} g_n$ et $\nu_s =\sum_{n\geq 0}\nu_s^{(n)}$
+et $\nu=g\diff\mu+\nu_s$, avec $\nu_s=\bot \mu$. L'unicité se montre comme ci-dessus.
+\item 
+    Si $\mu$ est $\sigma$ finie et $\nu$ est complexe,
+on écrit $\nu=\nu_1-\nu_2 +i(\nu_3-\nu_4)$ avec $\nu_1,\dots,\nu_4$ positives finies, et on applique la décomposition précédente à chaque terme.
+    \end{enumerate}
 \end{proof}

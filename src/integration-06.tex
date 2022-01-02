@@ -410,3 +410,27 @@ On ne peut pas écrire
 avec $(a_k)\in l^1(\N)$ car si $\underline{x}= (0,\dots,0,1,0,\dots) \in H$ (vaut 1 au $n$ ième rang)
 on a $\sum_{k\geq 0} a_k x_k = a_n$ et $\phi(\underline{x}) =0$ donc $a_n=0$, donc $\forall n, \phi=0$ absurde.
 \end{ex}
+
+\section{Théorème de représentation de Riesz}
+
+\begin{dfn}
+Soit $\nu$ est une mesure complexe sur  $(X, \mathcal  A)$, où $X$ est un espace métrique localement compact (tout point a un voisinage compact), séparable. On note \[
+    C_0(X) = \left\{ f : X \longrightarrow \C, \quad  \forall  \epsilon>0, \exists  K\text{ compact}, \forall  x \in  X\setminus K, |f(x)|\leq \epsilon \right\} 
+\]
+\end{dfn}
+
+\begin{prop}
+    Muni de la norme infinie, $C_0(X)$ est un espace de Banach,  \[
+    \begin{array}{rrcl}
+        \Phi:& C_0(X) & \longrightarrow & \C \\
+        & f & \longmapsto & \displaystyle \int_X f\diff\nu
+    \end{array}
+    \] 
+    est linéaire, de norme d'opérateur $\leq |\nu|(X)$, et donc continue.
+\end{prop}
+
+\begin{thm}[Riesz\index{Riesz (théorème)}]
+    Si $\phi$ est une forme linéaire continue sur  $C_0(X)$, il existe une unique mesure complexe  $\nu$ telle que  \[
+        \forall  f \in  C_0(X), \quad  \phi(f)=\int_X f\diff\nu
+    \] 
+\end{thm}

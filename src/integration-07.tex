@@ -1,0 +1,83 @@
+\ifsolo
+    ~
+
+    \vspace{1cm}
+
+    \begin{center}
+        \textbf{\LARGE Formule de changement de variables} \\[1em]
+    \end{center}
+    \tableofcontents
+\else
+    \chapter{Formule de changement de variables}
+
+    \minitoc
+\fi
+\thispagestyle{empty}
+
+\begin{thm}
+Soit $U, D$ deux ouverts de  $\R^d$ et $\varphi : U \longrightarrow D$ un $\mathcal  C^1$-difféomorphisme. Si $f : D \longrightarrow  \R_+$ est borélienne, \[
+    \int_D f(x)\diff x = \int_U f(\varphi(u))J_{\varphi}(u)\diff u
+\] 
+où \[
+    J_\varphi(u)=|\det \diff \varphi_u|\neq 0
+\] 
+On peut aussi l'écrire \[
+    \int_Df(x)\frac{\diff x}{J_\varphi(\varphi^{-1}(x))}=\int_U f(\varphi(u))\diff u
+\] 
+En dimension $1$, on reconnaît  \[
+    \int_a^b f(x)\diff x = \int_{\varphi^{-1}(a)}^{\varphi^{-1}(b)}f(\varphi(u))\varphi'(u)\diff u
+\] 
+avec $\varphi$ strictement monotone et  $\mathcal  C^1$
+\end{thm}
+
+\begin{lmm}
+    Soit $M \in  \GL_d(\R)$ et $b \in  \R^d$. Alors, si $\varphi(x)=Mx+b$, alors  $\forall  A \in  \mathcal  B(\R^d)$, \[
+        \lambda(\varphi(A))= |\det M|\lambda(A)
+    \] 
+\end{lmm}
+
+\begin{rem}
+    C'est vrai même si $M$ n'est pas inversible (l'image est dans un hyperplan affine de mesure nulle)
+\end{rem}
+
+\begin{proof}[Preuve du lemme]
+    On a que $\varphi(A)= (\varphi^{-1})^{-1}(A)$ or $\varphi^{-1}$ est mesurable donc $\varphi(A)$ est un borélien. Par ailleurs, $A \longmapsto \lambda(\varphi(A))$ est une mesure (la mesure image de $ \lambda$ par $\varphi^{-1}$), et de plus: \[
+        \lambda(\varphi(A+a))=\lambda(M(A+a)+b)=\lambda(MA+b)=\lambda(\varphi(A))
+    \] 
+    donc $ \lambda \circ \varphi=c\lambda$ pour un $c$ à déterminer. L'invariance par translation permet de supposer  $b=0$.
+     \begin{itemize}
+         \item Si $M$ est orthogonale, alors  $c\lambda(\B(0,1))=\lambda(M\B(0,1))=\lambda(\B(0,1))$ donc $c=1=|\det M|$ 
+         \item Si $ M \in  \S_n^{++}$, on peut l'écrire $M=P\Delta \transpose P$ avec  $P$ orthogonale et  $\Delta = \diag(a_1, \cdots , a_d)$ avec les $a_i>0$. Alors,
+             \begin{align*}
+             \lambda\left(MP[0,1]^d\right) &=\lambda\left(P\Delta[0,1]^d\right) \\&=\lambda\left(P\prod_{i=1}^d [0,a_i]\right) \\&= \lambda\left(\prod_{i=1}^d[0,a_i]\right) \\&= a_1\times \cdots \times a_d \\&= |\det\left(M\right)|\\&= |\det\left(M\right)| \lambda\left(P[0,1]^d\right)
+             \end{align*}
+             donc $c=|\det M|$
+         \item Si $ M \in  \GL_d(\R)$,  on peut l'écrire $M=PS$ avec  $P $ orthogonale et  $S$ symétrique définie positive.  \[
+         \lambda(\varphi(A)) =\lambda(PSA)= \lambda(SA) =|\det(S)| \lambda(A) = |\det(PS)| \lambda(A)
+         \] 
+         donc $c=|\det M|$
+    \end{itemize}
+\end{proof}
+
+\begin{proof}[Idée de preuve dans le cas général]
+On se ramène localement au cas affine. Pour cela, on exploite le résultat suivant: Si $K\subset U$ est compact, alors \[
+    \forall  \epsilon>0, \exists  \delta>0, \forall  \alpha<\delta, \forall  u_0 \in  K, \quad (1-\epsilon)J_{\varphi}(u_0) \lambda(C)\leq \lambda(\varphi(C))\leq (1+\epsilon)J_{\varphi}(u_0)\lambda(C)
+\] 
+où $C = u_0+]-\sfrac\alpha2,\sfrac\alpha2[^d$.
+
+Ensuite, on considère $C_n$ l'ensemble des cubes de la forme  \[
+\prod_{i=1}^d ]ki 2^{-n}, (k+1)i2^{-n}[
+\] 
+On se donne $C_0 \in  \mathcal  C_{n_0}$, et \[
+ \lambda(\varphi(C_0))=\sum_{C\in \mathcal{C}_n, C\subseteq C_0} \lambda(\varphi(C))
+\] 
+Par le lemme, il existe $n$ tel que  \[
+\lambda(\varphi(C_0)) \leq (1+\epsilon) \sum_{C\in \mathcal{C}_n, C\subseteq C_0} J_{\varphi}(u_c)\lambda(C) \leq (1+\epsilon)^2 \sum_{C\in \mathcal{C}_n,C\subseteq C_0} \int_C J_\varphi(u)\diff u = (1+\epsilon)^2 \int_{C_0} J_\varphi(u)\diff u
+\] 
+On minore de la même manière et $\epsilon>0$ étant arbitraire, on conclut que \[
+\lambda(\phi(C_0))= \int_{C_0} J_\varphi(u)\diff u
+\] 
+et donc par le lemme de Dynkin et en approchant par des fonctions simples, \[
+\lambda(\phi(A))= \int_AJ_{\varphi}(u)\diff u
+\] 
+\end{proof}

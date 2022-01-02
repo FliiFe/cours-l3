@@ -225,3 +225,188 @@ et $\nu=g\diff\mu+\nu_s$, avec $\nu_s=\bot \mu$. L'unicité se montre comme ci-d
 on écrit $\nu=\nu_1-\nu_2 +i(\nu_3-\nu_4)$ avec $\nu_1,\dots,\nu_4$ positives finies, et on applique la décomposition précédente à chaque terme.
     \end{enumerate}
 \end{proof}
+
+\begin{prop}
+Soient $\mu$ une mesure positive et $\nu$ une mesure complexe. Il y a équivalence entre  \begin{itemize}
+    \item $\nu\ll\mu$
+    \item  $\forall  \epsilon>0, \exists  \delta>0, \forall  A \in  \mathcal  A, \mu(A)\leq \delta \implies |\nu(A)|\leq \epsilon$
+\end{itemize}
+\end{prop}
+
+\begin{proof}~
+\begin{itemize}
+    \item $(\impliedby )$ Si $A \in  \mathcal  A$ est tel que $\mu(A)=0$, alors  $|\nu(A)|<\epsilon$ pour tout $ \epsilon>0$ donc $\nu(A)=0$
+    \item  $(\implies )$ Procédons par l'absurde: \[
+            \exists  \epsilon_0>0, \forall  n \in  \N, \exists  A_n \in  \mathcal  A, \mu(A_n)\leq \frac1{2^n}\text{ et } |\nu(A_n)| >\epsilon_0
+    \] 
+    On pose \[B_n=\bigcup_{k\geq n}A_k\] de sorte que $\mu(B_n)\leq \frac1{2^{n-1}}$ et \[
+    B = \bigcap_{n\geq 0}B_n
+    \] 
+    de sorte que $\mu(B)=\lim_{n\to +\infty} \mu\left( B_n \right) =0$. Or, \[
+        |\nu|(B)=\lim_{n\to +\infty}|\nu|(B_n)\geq \lim_{n\to +\infty} |\nu|(A_n)\geq \lim_{n\to +\infty} |\nu(A_n)|\geq \epsilon_0
+    \] 
+    donc $|\nu|(B)>0$, ce qui est absurde.
+\end{itemize}
+\end{proof}
+
+\begin{thm}
+    Soit $\nu$ une mesure complexe sur un ensemble mesurable $(X, \mathcal  A)$. Alors il existe une fonction mesurable $h : X \longrightarrow \C$, avec $|h|=1$, telle que $\nu=h\diff |\nu|$
+\end{thm}
+
+\begin{proof}
+    $\nu\ll|\nu|$ donc par le théorème de Radon-Nikodyn, il existe  $h \in  \mathcal  L^1_{\C}(|\nu|)$. Il reste à vérifier que $\nu$-presque partout,  $|h|=1$. 
+    Soit $A_r=\{x, \quad  |h(x)|<r\}= \{|h|<r\}$ où $r\in ]0,1[$. Soit $(B_n)_{n\geq 0}$ une partition mesurable de $A_r$.
+    \begin{align*}
+        \sum_{n\geq 0}|\nu(B_n)| &= \sum_{n\geq 0}\left| \int_{B_n}h\diff|\nu|\right|\\
+&\leq \sum_{n\geq0}\int_{B_n}|h|\diff|\nu|\leq r|\nu|(A_r)
+\end{align*}  
+Donc en passant au sup sur $B\cap B_n$, $|\nu|(A_r)\leq r|\nu|(A_r)$.
+Comme $r<1$, cela implique que $|\nu|(A_r)=0$ donc $|h|\geq 1$ $|\nu|$ presque partout.
+On remarque alors que si $|\nu|(A)>0$, alors \[ \left| \frac{1}{|\nu|(A)}\int_Ah\diff\nu\right| = \frac{|\nu(A)|}{|\nu|(A)}\leq 1.\]
+par propriété de moyenne,  $|h|\leq 1$ $|\nu|$-presque partout %(cf Rudin)
+\end{proof}
+
+\begin{cor}
+    Soit $\mu$ une mesure  $\sigma$-finie et  $f \in  \mathcal  L^1(\mu)$. Si $\nu=f\diff\mu$ alors  $|\nu|=|f|\diff \mu$
+\end{cor}
+
+\begin{proof}
+Par le théorème précédent, on a $f\diff \mu=\nu=h\diff |\nu|$ avec $|h|=1$ donc pour toute fonction $g$ mesurable bornée, \[
+\int_X gf\diff\mu = \int_X gh\diff |\nu|
+\] 
+et donc avec $g= \bar{h}$, \[
+\int_X \bar{h}f\diff\mu=\int_X |h|^2 \diff |\nu|=\int_X \diff \nu
+\]
+donc $|\nu|=\bar{h} f\diff\mu$, donc $\bar{h} f\geq 0$ $\mu$-presque partout et comme  $|h|=1$,  $\bar{h}f=|f|$ $\mu$-presque partout et donc  $|\nu|=|f|\diff \mu$.
+\end{proof}
+
+\begin{thm}[Hahn\index{Hahn (théorème)}]
+    Soit $\xi$ une mesure signée, alors il existe  $A, B \in  \mathcal  A, A\cup B=X$ et $A\cap B=\emptyset$ tels que  $\forall  C \in  \mathcal  A, \xi_+(C)=\xi(C\cap A), \xi^-(C)=-\xi(C\cap B)$
+\end{thm}
+
+\begin{rem}
+$\xi^+$ est concentrée sur  $A$,  $\xi^-$ est concentrée sur  $B$ donc  $\xi^+\bot \xi^-$.
+\end{rem}
+
+\begin{proof}
+    Comme $\xi$ est une mesure complexe,  $\xi=h\diff |\xi|$ avec  $|h|=1$.  Les valeurs de $\xi$ sont réelles donc  $h$ est aussi à valeurs réelles presque partout (spdg partout). Puis, $A = h^{-1}(\left\{ 1 \right\} ), B = h^{-1}(\left\{ -1 \right\} )$ conviennent.
+\end{proof}
+
+\begin{prop}
+La décomposition de Jordan est minimale au sens où si $\xi$ est une mesure signée de la forme  $\mu_1-\mu_2$ avec  $\mu_1, \mu_2$ des mesures positives, alors  $\xi_+\leq \mu_1, \xi^-\leq \mu_2$
+\end{prop}
+
+\begin{rem}
+    On a noté $\nu = g\diff \mu$. On note souvent  $g=\frac{\diff \nu}{\diff \mu}$, et l'on dit que  $g$ est la dérivée de Radon-nokodyn de  $\nu$ par rapport à  $\mu$
+\end{rem}
+
+\section{Dualité \texorpdfstring{$\L^p$ -- $\L^q$}{L^p - L^q}}
+
+Soit $\mu$ une mesure positive sur  $(X, \mathcal  A)$, $p \in  [1, +\infty]$, $q$ son exposant conjugué. Si  $g \in  \L^q_{\C}(X, \mathcal  A, \mu)$, on note \[
+    \Phi_g:f \in  \L^p_{\C}(X, \mathcal  A, \mu)\longmapsto \int_X gf\diff\mu
+\] 
+et cette quantité est bien définie par l'inégalité de Hölder. L'application $\Phi_g$ est une forme linéaire sur  $\L^p_{\C}(\mu)$, et \[
+    |\Phi_g(f)|\leq \|g\|_q \|f\|_p
+\] 
+donc $\Phi_g$ est continue de norme d'opérateur  $\nop\Phi_g\nop\leq \|g\|_q$
+
+\begin{dfn}[Notation]
+    On note $(\L^p(\mu))'$ le dual topologique de $\L^p(\mu)$, c'est à dire l'espace des formes linéaires continues sur $\L^p(\mu)$
+\end{dfn}
+
+\begin{thm}
+Soit $\mu$ une mesure $\sigma$-finie et  $p \in  [1, \infty[$. L'application \[
+\begin{array}{rrcl}
+    \Phi:& \L^q(\mu) & \longrightarrow & (\L^p(\mu))' \\
+    & g & \longmapsto & \displaystyle \Phi_g
+\end{array}
+\] 
+est une isométrie surjective.
+\end{thm}
+
+\begin{proof}[Preuve dans le cas d'une mesure finie]
+Supposons que $\mu$ est finie.  
+    Soit $\phi \in (\L^p(\mu))'$. Si $A\in \mathcal{A}$ alors $\1_A\in \L^p(\mu)$ car $\mu$ est finie
+    et $0\leq \1_A\leq 1$.
+    On définit $\nu(A)= \phi(\1_A)$ de sorte que  $\nu$ est une mesure complexe.
+    En effet, $\nu(\emptyset)=\phi(\1_\emptyset)= \phi(0)=0$ 
+    et si $(A_i)_{i \in  I}$, avec $I$ dénombrable, \[\forall i,j\in I,A_i\cap A_j=\emptyset\] et \[\forall i\in I,A_i\in \mathcal{A}\]
+    Alors,
+    \[ \forall x\in X, \quad  \1_{\bigcup_{i\in A_i}} (x)= \lim_{k\to \infty}\sum_{j=0}^k \1_{A_{i_j}}(x)\] où $I=\{i_0,i_1,\dots \}$.
+    La somme est dominée par  $1\in \L^p(\mu)$ donc par convergence dominée, \[\displaystyle\sum_{j=0}^k \1_{A_{i_j}}\xrightarrow[k\to +\infty]{\L^p(\mu)} \1_{\bigcup_{i\in I}A_i}.\]
+    Puis,
+        \[\sum_{j=0}^k\nu(A_{i_j}) = \phi\left(\sum_{j=0}^k \1_{A_{i_j}}\right)\xrightarrow[k\to \infty]{} \phi\left(\1_{\bigcup_{i\in I}A_i}\right)= \nu\left(\bigcup_{i\in I}A_i\right)\]
+        donc \[\nu\left(\bigcup_{i\in I}A_i\right)= \sum_{i\in I}\nu(A_i)\] et cela ne dépend pas de l'ordre de sommation.
+Si $A\in \mathcal{A},\mu(A)=0$, alors $\1_A=0$ dans $\L^p(\mu)$ donc $\nu(A) =\phi(\1_A) =\phi(0)=0$ donc $\nu\ll \mu$.
+Comme $\mu$ est $\sigma$-finie, le théorème de Radon-Nikodyn garantit l'existence de $g\in \L^1(\mu)$ telle que $\nu=g\diff\mu$.
+Ainsi, $\forall A\in \mathcal{A}, \phi(\1_A) =\nu(A)= \int_Ag\diff\mu$ donc pour toute fonction simple $f$, \[\phi(f)=\int_X fg\diff\mu\]
+donc c'est aussi vrai pour $f$ mesurable bornée, puisque toute telle fonction est limite uniforme (donc dans $\L^p(\mu)$ car $\mu$ est finie) de fonctions simples.
+
+Montrons que $g\in \L^q(\mu)$.
+Si $p=1$, on a \[\forall A\in \mathcal{A}, \quad  |\phi(\1_A)|\leq \|\phi\|\|\1_A \| =\left| \int_A g\diff\mu \right|.\]
+Par propriété de moyenne, $|g|\leq \|\phi\|$, $\mu$-presque partout 
+(on prend $A= \{x, \quad  |g|\geq \|g\|_{\infty}+\epsilon\}$)
+donc $g\in \L^{\infty}(\mu)$, et $\|g\|_\infty \leq \|\phi\|$.
+
+Si $1<p<\infty$, on pose \[f_n = \1_{\{|g|\leq n\}} |g|^{q-1} \frac{\bar{g}}{|g|}\] de sorte que  $f_n$ est bornée (donc dans $\L^p(\mu)$), et 
+\[ \phi(f_n) =\int_Xf_ng\diff\mu = \int_{\{|g|\leq n\}}|g|^{q-1}\frac{|g|^2}{|g|}\diff\mu =\int_{\{|g|\leq n\}}|g|^q\diff\mu\]
+et $|\phi(f_n)|\leq \|\phi\|\|f_n\|_p$ et \[ \int_X |f_n|^p \diff\mu = \int_{\{|g|\leq n\}} |g|^{pq-p} \diff\mu.\]
+Ainsi, \[ \int_{\{|g|\leq n\}} |g|^q \diff\mu \leq \|\phi\| \left( \int_{\{|g|\leq n\}} |g|^q \diff\mu \right)^{\frac1p},\]
+donc \[ \left( \int_{\{|g|\leq n\}} |g|^q\right)^{\frac1q} \leq \|\phi\|.\]
+En faisant $n\to \infty$ et en appliquant le théorème de Beppo-Levi, on obtient $\|g\|_q \leq \|\phi\|$ donc $g\in \L^q(\mu)$.
+On conclut en étendant la formule \[\phi(f)=\int_X fg\diff\mu= \Phi_g(f)\] à toute fonction $f$ de $\L^p(\mu)$ en l'approchant par des fonctions 
+mesurables bornées, et par continuité de $\Phi_g$ sur $\L^p(\mu)$, maintenant que l'on sait que $g\in \L^q(\mu)$. Cela donne la surjectivité de $\Phi$.
+
+De plus, la preuve montre que $\|g\|_q \leq \|\phi\|=\|\Phi_g\|\leq \|g\|_q$ d'où la propriété d'isométrie.
+\end{proof}
+
+Lorsque $\mu$ est seulement  $\sigma$-finie, on utilise le lemme suivant.
+
+\begin{lmm}
+Il existe une fonction $w\in \L^1 (\mu)$ telle que $\forall x\in X, 0<w(x) <1$.
+\end{lmm}
+
+\begin{proof}[Preuve du lemme]
+Soient $X_n\in \mathcal{A}$ tels que $\mu(X_n) <\infty$, et $\bigcup_{n\geq 1} X_n=X$.
+Posons \[w_n(x)= \frac{1}{2^n}\cdot \frac{\1_{X_n}}{1+\mu(X_n)}\] et \[w=\sum_{n\geq 1} w_n.\]
+Cette fonction convient.
+\end{proof}
+
+\begin{proof}[Preuve dans le cas général]
+On observe que, la fonction $w$ du lemme étant fixée, si $\tilde{\mu}=w\diff\mu$ alors $\tilde{\mu}$ est finie, positive et
+\[
+    \begin{array}{rcl}
+    \L^p(\tilde{\mu})& \to& \L^{p}(\mu) \\
+    \tilde{f}&\mapsto &\tilde{f}w^{1/p}
+    \end{array}\] est une isométrie surjective.
+En effet,
+\[ \|\tilde{f}w^{1/p}\|_{\L^p(\mu)}=\int_X\left| \tilde{f}w^{1/p}\right|^p\diff\mu =\int_X|\tilde{f}|^p w\diff\mu = \|\tilde{f}\|_{\L^p(\tilde{\mu})}\]
+la surjectivité vient de ce que $w$ est strictement positive.
+Si $\phi\in (\L^p(\mu))'$, on définit un élément $\tilde{\phi} \in (\L^p(\tilde{\mu}))'$
+Comme $\tilde{\phi}(\tilde{f}) =\phi(\tilde{f}w^{1/p}), \tilde{f}\in  \L^p(\tilde{\mu})$,
+on a $\|\tilde{\phi}\|=\|\phi\|$ et par le cas précédent il existe $\tilde{g}\in \L^q(\tilde{\mu})$ telle que
+\begin{align*}
+\tilde{\phi} (\tilde{f}) &= \int_X\tilde{f}\tilde{g} \diff\tilde{\mu}\\
+    &= \int_X\tilde{f}\tilde{g} w\diff\mu\\
+&= \int_X(\tilde{f}w^{1/p})(\tilde{g}w^{1/q}) \diff\mu
+\end{align*}
+Ainsi, si $ f\in \L^p(\mu)$, avec $\tilde{f}=fw^{-1/p}$, on obtient \[\phi(f)= \tilde{\phi}(fw^{-1/p}) =\int_X f(\tilde{g}w^{1/q})\diff\mu\]
+On pose $g= \tilde{g}w^{1/q} \in \L^q(\mu)$. On conclut comme ci-dessus que $\|\phi\|=\|g\|_p$, par la même preuve.
+\end{proof}
+
+\begin{rem}
+Si $p=+\infty$, le résultat est faux en général
+\end{rem}
+
+\begin{ex}
+$l^\infty= l^\infty(\N)$. Soit $H=\{ \underline{x}\in l^\infty,\quad  \lim_{k\to\infty}x_k \text{ existe}\}$
+sous espace fermé de $l^\infty$.
+Posons pour $\underline{x}\in H$, $\phi(\underline{x}) = \lim \underline{x}$. C'est une forme linéaire sur $H$ 
+et $|\phi(\underline{x})|\leq 1.\| \underline{x}\|_{\infty}$.
+Par le théorème de Hahn-Banach, il existe un prolongement $\phi: l^\infty (\N)\to \C$ tel que $\|\phi\|\leq 1$
+et $\forall \underline{x}\in H,\phi(\underline{x}) =\lim \underline{x}$ donc $\phi\in (l^\infty)'$.
+On ne peut pas écrire
+\[ \phi(\underline{x}) = \int_{\N}\underline{a}.\underline{x}\diff\#_{\N}= \sum_{k\geq 0}a_kx_k\]
+avec $(a_k)\in l^1(\N)$ car si $\underline{x}= (0,\dots,0,1,0,\dots) \in H$ (vaut 1 au $n$ ième rang)
+on a $\sum_{k\geq 0} a_k x_k = a_n$ et $\phi(\underline{x}) =0$ donc $a_n=0$, donc $\forall n, \phi=0$ absurde.
+\end{ex}

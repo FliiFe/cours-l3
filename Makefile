@@ -86,7 +86,7 @@ target:
 
 .SECONDEXPANSION:
 PER := %
-target/%.pdf: %.tex src/preamble.tex src/preamble/*.tex $$(find src/%.tex,$$(wildcard src/*.tex)) $$(wildcard src/%-*.tex) $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
+target/%.pdf: %.tex src/preamble.tex src/preamble/*.tex $$(findstring src/%.tex,$$(wildcard src/*.tex)) $$(wildcard src/%-*.tex) $$(patsubst $$(PER).tex,$$(PER).pdf,$$(wildcard src/figures/%-*.tex))
 	@echo "$(GREEN)Compiling document $(YELLOW)$(<F)$(GREEN) into $(YELLOW)$@$(RESET)"
 	$(LATEXMK) $<
 	cp build/$(@F) $@

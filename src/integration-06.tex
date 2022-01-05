@@ -117,7 +117,7 @@ Alors $\nu(\bigcup_{n\geq 0}C_n)=\sum_{n\in\N}\nu(C_n)$ contradiction.
     Une mesure complexe peut s'écrire $\Re(\nu)+i\Im(\nu)$ avec $\Re(\nu)$ et $\Im(\nu)$ des mesures complexes à valeurs dans $ \R$. On parle alors de mesures signées\index{mesure!signée}. Si $\xi$ est une telle mesure signée et $|\xi|$ est sa mesure de variation totale alors les mesures $\xi^+, \xi_-$ sont des mesures positives finies et $\xi=\xi^+-\xi^-$, $|\xi|=\xi^++\xi^-$. Cette décomposition s'appelle la décomposition de Jordan\index{Jordan (décomposition)} de $\xi$.
 \end{rem}
 
-\section{Théorème de Radon-Nikodyn}
+\section{Théorème de Radon-Nikodym}
 
 \begin{dfn}
     Soit $\mu$ une mesure positive et  $\nu$ une mesure positive ou complexe. On dit que  $\nu$ est absolument continue par rapport à  $\mu$\index{absolue continuité (mesure)}\index{mesure!absolument continue} si  \[
@@ -145,8 +145,8 @@ Si $\nu \ll \mu$, alors  $|\nu|\ll\mu$
     Si $\mu$ est positive et  $f \in  \mathcal  L^1_{\C}(\mu)$, alors $\nu=f\diff \mu\ll\mu$
 \end{ex}
 
-\begin{thm}[Radon-Nikodyn\index{Radon-Nikodyn (théorème)}]
-Si $\mu$ est une mesure  $\sigma$-finie et  $\nu$ est une mesure  $\sigma$-finie ou complexe telle que  $\nu\ll\mu$, alors il existe  $g\geq 0$ mesurable, unique à égalité $\mu$-presque partout, telle que  $\mu=g\diff \mu$
+\begin{thm}[Radon-Nikodym\index{Radon-Nikodym (théorème)}]
+Si $\mu$ est une mesure  $\sigma$-finie et  $\nu$ est une mesure  $\sigma$-finie ou complexe telle que  $\nu\ll\mu$, alors il existe  $g\geq 0$ mesurable, unique à égalité $\mu$-presque partout près, telle que  $\nu=g\diff \mu$
 \end{thm}
 
 \begin{thm}[Décomposition de Lebesgue]
@@ -196,7 +196,7 @@ où $h=\frac{g}{1-g}\1_{N^c}$,
 donc $\1_{N^c}\diff\nu=h \diff\mu$. On peut donc écrire $\nu= \1_{N^c}\diff\nu +\1_N\diff\nu = h\diff\mu + \1_N \diff\nu = \nu_a + \nu_s$
 où $\nu_a \ll \mu$ et $\nu_s \bot \mu$.
 
-Cela donne le théorème de Radon-Nikodyn dans le cas $\mu,\nu$ positives fines. Montrons l'unicité. Supposons que $\nu= \nu_a+\nu_s = \nu_a' + \nu_s'$
+Cela donne le théorème de Radon-Nikodym dans le cas $\mu,\nu$ positives fines. Montrons l'unicité. Supposons que $\nu= \nu_a+\nu_s = \nu_a' + \nu_s'$
 Alors $\nu_a- \nu_a'= \nu_s'-\nu_s$, et il existe $N,N'\in \mathcal{A}$, avec $\mu(N)=\mu(N')=0$ et $\nu_s'((N')^c)=\nu_s (N^c)=0$.
 Alors si $A\in \mathcal{A}$,
 \begin{align*}
@@ -254,7 +254,7 @@ Soient $\mu$ une mesure positive et $\nu$ une mesure complexe. Il y a équivalen
 \end{thm}
 
 \begin{proof}
-    $\nu\ll|\nu|$ donc par le théorème de Radon-Nikodyn, il existe  $h \in  \mathcal  L^1_{\C}(|\nu|)$. Il reste à vérifier que $\nu$-presque partout,  $|h|=1$. 
+    $\nu\ll|\nu|$ donc par le théorème de Radon-Nikodym, il existe  $h \in  \mathcal  L^1_{\C}(|\nu|)$. Il reste à vérifier que $\nu$-presque partout,  $|h|=1$. 
     Soit $A_r=\{x, \quad  |h(x)|<r\}= \{|h|<r\}$ où $r\in ]0,1[$. Soit $(B_n)_{n\geq 0}$ une partition mesurable de $A_r$.
     \begin{align*}
         \sum_{n\geq 0}|\nu(B_n)| &= \sum_{n\geq 0}\left| \int_{B_n}h\diff|\nu|\right|\\
@@ -297,7 +297,7 @@ La décomposition de Jordan est minimale au sens où si $\xi$ est une mesure sig
 \end{prop}
 
 \begin{rem}
-    On a noté $\nu = g\diff \mu$. On note souvent  $g=\frac{\diff \nu}{\diff \mu}$, et l'on dit que  $g$ est la dérivée de Radon-nokodyn de  $\nu$ par rapport à  $\mu$
+    On a noté $\nu = g\diff \mu$. On note souvent  $g=\frac{\diff \nu}{\diff \mu}$, et l'on dit que  $g$ est la dérivée de Radon-nokodym de  $\nu$ par rapport à  $\mu$
 \end{rem}
 
 \section{Dualité \texorpdfstring{$\L^p$ -- $\L^q$}{L^p - L^q}}
@@ -338,7 +338,7 @@ Supposons que $\mu$ est finie.
         \[\sum_{j=0}^k\nu(A_{i_j}) = \phi\left(\sum_{j=0}^k \1_{A_{i_j}}\right)\xrightarrow[k\to \infty]{} \phi\left(\1_{\bigcup_{i\in I}A_i}\right)= \nu\left(\bigcup_{i\in I}A_i\right)\]
         donc \[\nu\left(\bigcup_{i\in I}A_i\right)= \sum_{i\in I}\nu(A_i)\] et cela ne dépend pas de l'ordre de sommation.
 Si $A\in \mathcal{A},\mu(A)=0$, alors $\1_A=0$ dans $\L^p(\mu)$ donc $\nu(A) =\phi(\1_A) =\phi(0)=0$ donc $\nu\ll \mu$.
-Comme $\mu$ est $\sigma$-finie, le théorème de Radon-Nikodyn garantit l'existence de $g\in \L^1(\mu)$ telle que $\nu=g\diff\mu$.
+Comme $\mu$ est $\sigma$-finie, le théorème de Radon-Nikodym garantit l'existence de $g\in \L^1(\mu)$ telle que $\nu=g\diff\mu$.
 Ainsi, $\forall A\in \mathcal{A}, \phi(\1_A) =\nu(A)= \int_Ag\diff\mu$ donc pour toute fonction simple $f$, \[\phi(f)=\int_X fg\diff\mu\]
 donc c'est aussi vrai pour $f$ mesurable bornée, puisque toute telle fonction est limite uniforme (donc dans $\L^p(\mu)$ car $\mu$ est finie) de fonctions simples.
 
